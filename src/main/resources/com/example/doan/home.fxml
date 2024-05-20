@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doan.HomeController">
+   <children>
+      <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #b85b56;">
+         <children>
+            <Text fill="WHITE" layoutX="78.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="12.0" style="-fx-font-weight: bold;" text="BLOG COMICS" x="5.0" y="10.0">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <TextField layoutX="499.0" layoutY="7.0" prefHeight="35.0" prefWidth="300.0" />
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="815.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/icons8-find-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1139.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/icons8-logout-80.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1068.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/icons8-tanjiro-kamado-48.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="100.0" layoutY="55.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #de741c;">
+         <children>
+            <Text fill="#f2f2f2" layoutX="163.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Theo dõi">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#f2f2f2" layoutX="363.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Lịch sử">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#f2f2f2" layoutX="529.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Thể loại">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#f2f2f2" layoutX="700.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Thông báo">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="5.0">
+         <image>
+            <Image url="@../../../image/icons8-fun-48.png" />
+         </image>
+      </ImageView>
+      <ScrollPane layoutY="110.0" prefHeight="690.0" prefWidth="1200.0" />
+   </children>
+</AnchorPane>
