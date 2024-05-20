@@ -7,18 +7,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomeController extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(HomeController.class.getResource("/com/example/doan/home.fxml"));
+public class HomeController {
 
-        Scene scene = new Scene(loader.load());
-        stage.setHeight(800);
-        stage.setWidth(1200);
-        stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
-    }
 }
