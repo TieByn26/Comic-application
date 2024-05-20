@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="doananana" />
+        <module name="DoAnCoSo1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="doananana" target="22" />
+    </bytecodeTargetLevel>
   </component>
 </project>
