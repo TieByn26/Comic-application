@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnect {
-    private static String jdbcUri = "jdbc:mySQL://localhost:3306/dbtruyentranh?";
+    private static String jdbcUri = "jdbc:mySQL://localhost:3306/doancoso1?";
     private static String username = "root";
     private static String password ="";
     public DatabaseConnect(){
