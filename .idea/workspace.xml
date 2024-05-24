@@ -4,43 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b11b7acf-7176-4b2d-be55-30055781ce70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../BWD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Clock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connect/EmailConnect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_ChangePass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_CheckOtp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_GetOtp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_LoginInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_NewComic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_RegisterInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryComics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Chapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ComicsInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Comments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_History.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Reply.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Statistic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DoAnJava_hk2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MVCtexteditor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TKWEB" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../copy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../java_iostream" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_html_css1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="b11b7acf-7176-4b2d-be55-30055781ce70" name="Changes" comment="code base">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_Comments.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Connect/DatabaseConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connect/DatabaseConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AccountDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/Comic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_GetOtp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryComics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryComics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Chapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Chapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ComicsInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ComicsInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Comments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_History.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Reply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Reply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Statistic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DoAnJava_hk2" beforeDir="false" afterPath="$PROJECT_DIR$/../DoAnJava_hk2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../copy" beforeDir="false" afterPath="$PROJECT_DIR$/../copy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java_iostream" beforeDir="false" afterPath="$PROJECT_DIR$/../java_iostream" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,26 +70,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "server",
-    "jdk.selected.JAVA_MODULE": "openjdk-21",
-    "last_opened_file_path": "C:/gitc/DoAnCoSo1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;server&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/gitc/DoAnCoSo1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main" />
@@ -132,11 +116,25 @@
       <workItem from="1716215108093" duration="222000" />
       <workItem from="1716436618890" duration="2556000" />
       <workItem from="1716448376247" duration="1375000" />
-      <workItem from="1716474441754" duration="3678000" />
+      <workItem from="1716474441754" duration="9723000" />
+      <workItem from="1716532200934" duration="9000" />
     </task>
+    <task id="LOCAL-00001" summary="code base">
+      <option name="closed" value="true" />
+      <created>1716482981200</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716482981200</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="code base" />
+    <option name="LAST_COMMIT_MESSAGE" value="code base" />
   </component>
 </project>

@@ -22,13 +22,10 @@ public class    ComicServer {
             Thread threadCLient = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ExecuteClientRequest(socket);
+                    ClientHandler.ExecuteClientRequest(socket);
                 }
             });
             threadCLient.start();
         }
-    }
-    public void ExecuteClientRequest(Socket socket){
-
     }
 }
