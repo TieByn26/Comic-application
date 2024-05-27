@@ -4,27 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b11b7acf-7176-4b2d-be55-30055781ce70" name="Changes" comment="code base">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_Comments.java" afterDir="false" />
+    <list default="true" id="b11b7acf-7176-4b2d-be55-30055781ce70" name="Changes" comment="new update base">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/HashController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BWD" beforeDir="false" afterPath="$PROJECT_DIR$/../BWD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_GetOtp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryComics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryComics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CategoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Chapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Chapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ComicsInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ComicsInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Comments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_History.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Reply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Reply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Statistic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_RegisterInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_RegisterInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/doan/hello-view.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../DoAnJava_hk2" beforeDir="false" afterPath="$PROJECT_DIR$/../DoAnJava_hk2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../copy" beforeDir="false" afterPath="$PROJECT_DIR$/../copy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../java_iostream" beforeDir="false" afterPath="$PROJECT_DIR$/../java_iostream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_html_css1" beforeDir="false" afterPath="$PROJECT_DIR$/../practice_html_css1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,8 +84,14 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="main" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="main" type="Application" factoryName="Application" folderName="New Folder" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="main" />
+      <module name="DoAnCoSo1" />
+      <selectedOptions>
+        <option name="environmentVariables" visible="false" />
+      </selectedOptions>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -117,7 +116,9 @@
       <workItem from="1716436618890" duration="2556000" />
       <workItem from="1716448376247" duration="1375000" />
       <workItem from="1716474441754" duration="9723000" />
-      <workItem from="1716532200934" duration="9000" />
+      <workItem from="1716532200934" duration="2446000" />
+      <workItem from="1716736710793" duration="4136000" />
+      <workItem from="1716772980549" duration="2109000" />
     </task>
     <task id="LOCAL-00001" summary="code base">
       <option name="closed" value="true" />
@@ -135,6 +136,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="code base" />
-    <option name="LAST_COMMIT_MESSAGE" value="code base" />
+    <MESSAGE value="new update base" />
+    <option name="LAST_COMMIT_MESSAGE" value="new update base" />
   </component>
 </project>
