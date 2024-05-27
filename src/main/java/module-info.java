@@ -5,6 +5,6 @@ module com.example.doan {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
 
-    opens com.example.doan to javafx.fxml;
-    exports com.example.doan;
+    opens Controller.BaseProject to javafx.fxml;
+    exports Controller.BaseProject;
 }

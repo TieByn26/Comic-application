@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="70.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doan.PaneTopUser">
+<AnchorPane prefHeight="70.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.PaneTopUserController">
    <children>
       <Label fx:id="TU_name" layoutX="66.0" layoutY="4.0" prefHeight="20.0" prefWidth="131.0" text="hoang thap long">
          <font>
@@ -16,7 +16,7 @@
       </Label>
       <ImageView fx:id="TU_avt" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
+            <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
          </image>
       </ImageView>
       <Label layoutX="66.0" layoutY="25.0" prefHeight="20.0" prefWidth="32.0" text="level">

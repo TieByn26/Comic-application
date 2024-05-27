@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doan.PaneComicsController">
+<AnchorPane prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.PaneComicsController">
    <children>
       <ImageView fx:id="paneComics_img" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
+            <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
          </image>
       </ImageView>
       <Label layoutX="14.0" layoutY="230.0" text="chapter :">

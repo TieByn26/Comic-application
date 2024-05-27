@@ -1,4 +1,4 @@
-package com.example.doan;
+package Controller.BaseProject;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,13 +6,12 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
 public class HomeController {
-    private String pathPaneComics = "/com/example/doan/paneComics.fxml";
-    private String pathTopUser = "/com/example/doan/paneTopUser.fxml";
+    private String pathPaneComics = "/Controller/BaseProject/ViewPaneComics.fxml";
+    private String pathTopUser = "/Controller/BaseProject/ViewPaneTopUser.fxml";
 
     @FXML
     private ScrollPane home_scroller;

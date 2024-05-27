@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doan.HomeController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.HomeController">
    <children>
       <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #b85b56;">
          <children>
@@ -25,17 +25,17 @@
             <TextField layoutX="499.0" layoutY="7.0" prefHeight="35.0" prefWidth="300.0" />
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="815.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../image/icons8-find-50.png" />
+                  <Image url="@../../image/icons8-find-50.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1139.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../image/icons8-logout-80.png" />
+                  <Image url="@../../image/icons8-logout-80.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1068.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../image/icons8-tanjiro-kamado-48.png" />
+                  <Image url="@../../image/icons8-tanjiro-kamado-48.png" />
                </image>
             </ImageView>
          </children>
@@ -66,7 +66,7 @@
       </Pane>
       <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="5.0">
          <image>
-            <Image url="@../../../image/icons8-fun-48.png" />
+            <Image url="@../../image/icons8-fun-48.png" />
          </image>
       </ImageView>
       <ScrollPane fx:id="home_scroller" fitToHeight="true" fitToWidth="true" layoutY="410.0" prefHeight="390.0" prefWidth="990.0">

@@ -1,4 +1,4 @@
-package com.example.doan;
+package Controller.BaseProject;
 
 public class PaneComicsController {
 }
