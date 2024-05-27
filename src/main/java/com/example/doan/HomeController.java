@@ -30,7 +30,7 @@ public class HomeController {
     private VBox home_listTopUser;
 
     @FXML
-    private  ScrollPane home_scrollListTopUser;
+    private ScrollPane home_scrollListTopUser;
 
     public void initialize() throws Exception {
         //call function upload list comics to screen
@@ -44,7 +44,7 @@ public class HomeController {
 
     }
 
-    private void uploadListComics() throws Exception{
+    private void uploadListComics() throws Exception {
         // Thiết lập TilePane
         home_listComics.setPadding(new Insets(10));
         home_listComics.setHgap(10);
@@ -61,8 +61,8 @@ public class HomeController {
         home_parentListComics.setPadding(new Insets(10));
     }
 
-    private void uploadListTopComics() throws  Exception {
-        for(int i = 0; i < 30; i++) {
+    private void uploadListTopComics() throws Exception {
+        for (int i = 0; i < 30; i++) {
             FXMLLoader newTopComics = new FXMLLoader(getClass().getResource(pathPaneComics));
             Parent rootNewTopComics = newTopComics.load();
 
