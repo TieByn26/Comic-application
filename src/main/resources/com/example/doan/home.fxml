@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doan.HomeController">
    <children>
@@ -37,24 +40,24 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="100.0" layoutY="55.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #de741c;">
+      <Pane layoutX="100.0" layoutY="55.0" prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #de741c;">
          <children>
-            <Text fill="#f2f2f2" layoutX="163.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Theo dõi">
+            <Text fx:id="nav_follow" fill="#f2f2f2" layoutX="163.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Theo dõi">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text fill="#f2f2f2" layoutX="363.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Lịch sử">
+            <Text fx:id="nav_history" fill="#f2f2f2" layoutX="363.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Lịch sử">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text fill="#f2f2f2" layoutX="529.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Thể loại">
+            <Text fx:id="nav_category" fill="#f2f2f2" layoutX="529.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Thể loại">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text fill="#f2f2f2" layoutX="700.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Thông báo">
+            <Text fx:id="nav_notfication" fill="#f2f2f2" layoutX="700.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;" text="Thông báo">
                <font>
                   <Font size="24.0" />
                </font>
@@ -66,6 +69,38 @@
             <Image url="@../../../image/icons8-fun-48.png" />
          </image>
       </ImageView>
-      <ScrollPane layoutY="110.0" prefHeight="690.0" prefWidth="1200.0" />
+      <ScrollPane fx:id="home_scroller" fitToHeight="true" fitToWidth="true" layoutY="410.0" prefHeight="390.0" prefWidth="990.0">
+         <content>
+            <VBox fx:id="home_parentListComics" alignment="CENTER" prefHeight="390.0" prefWidth="990.0">
+               <children>
+                  <TilePane fx:id="home_listComics" alignment="CENTER" prefHeight="390.0" prefWidth="990.0" />
+               </children>
+            </VBox>
+         </content></ScrollPane>
+      <Label layoutX="21.0" layoutY="380.0" style="-fx-font-weight: bold;" text="Danh sách truyện" textFill="#0e3b87">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="101.0" style="-fx-font-weight: bold;" text="Top truyện" textFill="#0e3b87">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="home_scrollListTopComics" fitToHeight="true" fitToWidth="true" layoutY="130.0" prefHeight="250.0" prefWidth="1200.0">
+         <content>
+            <HBox fx:id="home_listTopComics" prefHeight="250.0" prefWidth="1200.0" spacing="10.0" />
+         </content>
+      </ScrollPane>
+      <Label layoutX="1024.0" layoutY="380.0" style="-fx-font-weight: bold;" text="Top người đọc" textFill="#042c9c">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="home_scrollListTopUser" layoutX="1000.0" layoutY="410.0" prefHeight="390.0" prefWidth="200.0">
+         <content>
+            <VBox fx:id="home_listTopUser" prefHeight="390.0" prefWidth="200.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
