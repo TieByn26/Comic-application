@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.PaneComicsController">
+<AnchorPane prefHeight="250.0" prefWidth="200.0" style="-fx-cursor: hand;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.PaneComicsController">
    <children>
-      <ImageView fx:id="paneComics_img" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
+      <ImageView fx:id="PC_img" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
          <image>
             <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
          </image>
@@ -18,12 +18,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="paneCoimcs_nameComics" layoutY="200.0" minWidth="200.0" prefHeight="31.0" prefWidth="200.0" text="  Nhất lực phá thiên" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="PC_nameComics" layoutY="200.0" minWidth="200.0" prefHeight="31.0" prefWidth="200.0" text="  Nhất lực phá thiên" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Label fx:id="paneComics_chapter" layoutX="77.0" layoutY="230.0" text="12">
+      <Label fx:id="PC_chapter" layoutX="77.0" layoutY="230.0" text="12">
          <font>
             <Font size="14.0" />
          </font>
