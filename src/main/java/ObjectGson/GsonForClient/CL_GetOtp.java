@@ -1,4 +1,4 @@
-package Server.ObjectGson.GsonForClient;
+package ObjectGson.GsonForClient;
 
 public class CL_GetOtp {
     private String username;
