@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="doan" target="22" />
+      <module name="doan" target="21" />
       <module name="doananana" target="22" />
     </bytecodeTargetLevel>
   </component>

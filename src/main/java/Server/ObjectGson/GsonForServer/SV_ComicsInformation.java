@@ -20,6 +20,12 @@ public class SV_ComicsInformation {
         this.numberOfChapter = numberOfChapter;
     }
 
+    public SV_ComicsInformation(String nameComic, String avatarComic, int numberOfChapter) {
+        this.nameComic = nameComic;
+        this.avatarComic = avatarComic;
+        this.numberOfChapter = numberOfChapter;
+    }
+
     public String getNameComic() {
         return nameComic;
     }

@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b11b7acf-7176-4b2d-be55-30055781ce70" name="Changes" comment="new update base">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/HashController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BWD" beforeDir="false" afterPath="$PROJECT_DIR$/../BWD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/RunServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_RegisterInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_RegisterInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/doan/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoAnJava_hk2" beforeDir="false" afterPath="$PROJECT_DIR$/../DoAnJava_hk2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../copy" beforeDir="false" afterPath="$PROJECT_DIR$/../copy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java_iostream" beforeDir="false" afterPath="$PROJECT_DIR$/../java_iostream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../practice_html_css1" beforeDir="false" afterPath="$PROJECT_DIR$/../practice_html_css1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ComicsInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ComicsInformation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
