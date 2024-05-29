@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.FollowController">
+    <children>
+        <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #b85b56;">
+            <children>
+                <Text fill="WHITE" layoutX="78.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="12.0" style="-fx-font-weight: bold;" text="BLOG COMICS" x="5.0" y="10.0">
+                    <font>
+                        <Font size="26.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="home_inputDataFind" layoutX="499.0" layoutY="7.0" prefHeight="35.0" prefWidth="300.0" />
+                <ImageView fx:id="home_iconFind" fitHeight="40.0" fitWidth="40.0" layoutX="815.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                    <image>
+                        <Image url="@../../image/icons8-find-50.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="home_iconLogout" fitHeight="40.0" fitWidth="40.0" layoutX="1139.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                    <image>
+                        <Image url="@../../image/icons8-logout-80.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="home_iconProfile" fitHeight="40.0" fitWidth="40.0" layoutX="1068.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                    <image>
+                        <Image url="@../../image/icons8-tanjiro-kamado-48.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="100.0" layoutY="55.0" prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #de741c;">
+            <children>
+                <Label fx:id="nav_follow" layoutX="259.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Theo dõi" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_notfications" layoutX="807.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thông báo" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_history" layoutX="460.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Lịch sử" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_category" layoutX="633.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thể loại" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_home" layoutX="95.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Home" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="5.0">
+            <image>
+                <Image url="@../../image/icons8-fun-48.png" />
+            </image>
+        </ImageView>
+        <ScrollPane fx:id="FL_scroller" fitToHeight="true" fitToWidth="true" layoutY="162.0" prefHeight="638.0" prefWidth="1200.0">
+            <content>
+                <VBox fx:id="FL_parentListComics" alignment="CENTER" prefHeight="390.0" prefWidth="1200.0">
+                    <children>
+                        <TilePane fx:id="FL_listComics" alignment="CENTER" prefHeight="638.0" prefWidth="1200.0" />
+                    </children>
+                </VBox>
+            </content></ScrollPane>
+        <Label layoutX="44.0" layoutY="124.0" style="-fx-font-weight: bold;" text="Danh sách truyện đang theo dõi" textFill="#0e3b87">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <ScrollPane fx:id="TL_scroll_ListNotifications" fitToHeight="true" fitToWidth="true" layoutX="550.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+            <content>
+                <VBox fx:id="TL_listNotifications" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red;" />
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package getDataFromServer;
+package GetDataFromServer;
 
 import ConnectServer.Connect;
 import ObjectGson.GsonForClient.CL_IdComics;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class GetInformationComics {
 
-    public static ArrayList<SV_ComicsInformation> getAllComicInformations() {
+    public static ArrayList<SV_ComicsInformation> getAllComics() {
        // tạo một đối tượng gson đẻ truyền thông tin giữa server và client
         Gson gson = new Gson();
 
@@ -38,7 +38,7 @@ public class GetInformationComics {
             sendReqtoServer.writeBytes(rpJson + "\n");
 
             //nhận và đọc dữ liệu json từ server
-            BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
             String comicsInformations = receive.readLine();
 
             // chuyển đổi từ json sang đối tượng

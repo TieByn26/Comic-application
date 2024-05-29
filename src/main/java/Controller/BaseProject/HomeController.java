@@ -1,17 +1,22 @@
 package Controller.BaseProject;
 
 
+import GetDataFromServer.GetInformationComics;
+import ObjectGson.GsonForServer.SV_ComicsInformation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+
+import java.util.ArrayList;
 
 public class HomeController {
     private static String pathPaneComics = "/Controller/BaseProject/ViewPaneComics.fxml";
@@ -81,7 +86,6 @@ public class HomeController {
 
         //set event click for nav_home
         General.EvenOfNav.setEventForNavHome(nav_home);
-
     }
 
     private void uploadListComics() throws Exception {
@@ -90,21 +94,10 @@ public class HomeController {
         home_listComics.setHgap(10);
         home_listComics.setVgap(10);
 
-        // Thêm các phần tử vào TilePane
-        for (int i = 0; i < 30; i++) {
-            FXMLLoader newComicsLoader = new FXMLLoader(getClass().getResource(pathPaneComics));
-            Parent comicPane = newComicsLoader.load();
-
-            //set su kien click cho cac pane truyen
-//            comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//                @Override
-//                public void handle(MouseEvent event) {
-//                    changeSceneToComicsInformation(event);
-//                }
-//            });
-
-            home_listComics.getChildren().add(comicPane);
-        }
+        //lay du lieu cac bo truyen tu server
+        ArrayList<SV_ComicsInformation> listComics = GetInformationComics.getAllComics();
+        //goi ham set thong tin cho cac paneComics
+        setValueForPaneComics(listComics);
 
         // Thiết lập VBox để căn giữa TilePane
         home_parentListComics.setPadding(new Insets(10));
@@ -128,5 +121,34 @@ public class HomeController {
             home_listTopUser.getChildren().add(rootNewTopUser);
         }
         home_listTopUser.setSpacing(10);
+    }
+
+    private void setValueForPaneComics(ArrayList<SV_ComicsInformation> listComics) throws Exception {
+        // Thêm các phần tử vào TilePane
+        for (SV_ComicsInformation comics : listComics) {
+            FXMLLoader newComicsLoader = new FXMLLoader(getClass().getResource(pathPaneComics));
+            Parent comicPane = newComicsLoader.load();
+            // lay cac bien cua paneComics
+            ImageView avtComics = (ImageView) comicPane.lookup("#PC_img");
+            Label nameComic = (Label) comicPane.lookup("#PC_nameComics");
+            Label chapter = (Label) comicPane.lookup("#PC_chapter");
+            // set du lieu cho bien paneComics
+            Image imgAvt = new Image(comics.getAvatarComic());  //tao hinh anh de nhet vao avt comics
+            avtComics.setImage(imgAvt);
+            nameComic.setText(comics.getNameComic());
+            chapter.setText(comics.getNumberOfChapter()+"");
+
+
+            //set su kien click cho cac pane truyen
+//            comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//                @Override
+//                public void handle(MouseEvent event) {
+//                    changeSceneToComicsInformation(event);
+//                }
+//            });
+
+            home_listComics.getChildren().add(comicPane);
+        }
+
     }
 }
