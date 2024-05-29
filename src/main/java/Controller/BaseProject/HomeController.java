@@ -1,8 +1,11 @@
 package Controller.BaseProject;
 
 
+import ChangeScene.ChangeSceneGeneral;
+import ChangeScene.ChangedSceneToComicsInformation;
 import GetDataFromServer.GetInformationComics;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -21,6 +24,7 @@ import java.util.ArrayList;
 public class HomeController {
     private static String pathPaneComics = "/Controller/BaseProject/ViewPaneComics.fxml";
     private static String pathTopUser = "/Controller/BaseProject/ViewPaneTopUser.fxml";
+    private static String pathComicsInformation = "/Controller/BaseProject/ViewComicsInformation.fxml";
     @FXML
     private ScrollPane home_scroller;
 
@@ -138,14 +142,13 @@ public class HomeController {
             nameComic.setText(comics.getNameComic());
             chapter.setText(comics.getNumberOfChapter()+"");
 
-
-            //set su kien click cho cac pane truyen
-//            comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//                @Override
-//                public void handle(MouseEvent event) {
-//                    changeSceneToComicsInformation(event);
-//                }
-//            });
+            // set su kien click vao cac bo truyen
+            comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    ChangedSceneToComicsInformation.ChangeScene(event,pathComicsInformation,"Thông tin truyện",nameComic.getText());
+                }
+            });
 
             home_listComics.getChildren().add(comicPane);
         }

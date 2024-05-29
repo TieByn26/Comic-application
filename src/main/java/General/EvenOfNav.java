@@ -15,7 +15,6 @@ public class EvenOfNav {
     private static String pathHistory = "/Controller/BaseProject/ViewHistory.fxml";
     private static  String pathProfile = "/Controller/BaseProject/ViewProfile.fxml";
     private static  String pathHome = "/Controller/BaseProject/ViewHome.fxml";
-    private static String pathComicsInformation = "/Controller/BaseProject/ViewComicsInformation.fxml";
 
     private static boolean isHide_listCategory = false;
 
