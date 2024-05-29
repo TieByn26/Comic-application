@@ -1,11 +1,27 @@
-package ObjectGson.GsonForClient;
+package ObjectGson.GsonForServer;
 
-public class CL_Comments {
+public class SV_Reply {
+    private String idComment;
     private int idUser;
     private String idComic;
     private String comment;
 
-    public CL_Comments() {
+    public SV_Reply() {
+    }
+
+    public SV_Reply(String idComment, int idUser, String idComic, String comment) {
+        this.idComment = idComment;
+        this.idUser = idUser;
+        this.idComic = idComic;
+        this.comment = comment;
+    }
+
+    public String getIdComment() {
+        return idComment;
+    }
+
+    public void setIdComment(String idComment) {
+        this.idComment = idComment;
     }
 
     public int getIdUser() {
@@ -34,8 +50,9 @@ public class CL_Comments {
 
     @Override
     public String toString() {
-        return "CL_Comments{" +
-                "idUser='" + idUser + '\'' +
+        return "SV_Reply{" +
+                "idComment='" + idComment + '\'' +
+                ", idUser=" + idUser +
                 ", idComic='" + idComic + '\'' +
                 ", comment='" + comment + '\'' +
                 '}';

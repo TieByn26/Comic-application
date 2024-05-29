@@ -1,9 +1,13 @@
-package Server.ObjectGson.GsonForClient;
+package ObjectGson.GsonForClient;
 
 public class CL_Request {
     private String request;
 
     public CL_Request() {
+    }
+
+    public CL_Request(String request) {
+        this.request = request;
     }
 
     public String getRequest() {

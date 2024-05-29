@@ -4,6 +4,7 @@ module com.example.doan {
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
+    requires com.google.gson;
 
     opens Controller.BaseProject to javafx.fxml;
     exports Controller.BaseProject;
