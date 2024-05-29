@@ -1,4 +1,4 @@
-package org.Connect;
+package Connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

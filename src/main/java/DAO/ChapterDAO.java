@@ -1,4 +1,4 @@
-package org.Connect.DAO;
+package DAO;
 
 public class ChapterDAO {
 }

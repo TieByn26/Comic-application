@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b11b7acf-7176-4b2d-be55-30055781ce70" name="Changes" comment="new update base">
-      <change afterPath="$PROJECT_DIR$/src/main/java/RunServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Connect/DatabaseConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connect/DatabaseConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Connect/StreamSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connect/StreamSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AccountDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ChapterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ChapterDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ComicsInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ComicsInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/HistoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/HistoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/ComicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/ComicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/RunServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/RunServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Client" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -75,6 +87,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="Application" factoryName="Application" folderName="New Folder" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
