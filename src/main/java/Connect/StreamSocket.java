@@ -14,8 +14,9 @@ public class StreamSocket<T> {
         String json = "";
         try{
             //doc du lieu json duoc gui tu client
-            BufferedReader jsonToClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedReader jsonToClient = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
             json = jsonToClient.readLine();
+
 
         } catch (IOException e){
             throw new RuntimeException(e);
@@ -26,11 +27,12 @@ public class StreamSocket<T> {
     public Boolean sendDataToCLient(Socket socket, T data){
         Gson gson = new Gson();
         try{
-            OutputStreamWriter osw = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
-            DataOutputStream toClient = new DataOutputStream(socket.getOutputStream());
+            OutputStream output = socket.getOutputStream();
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(output, "UTF-8");
+            BufferedWriter toClient = new BufferedWriter(outputStreamWriter);
             // chuyen doi data thanh json
             String json = gson.toJson(data);
-            toClient.writeBytes(json);
+            toClient.write(json);
             //dam bao du lieu duoc gui day du
             toClient.flush();
             System.out.println("Dữ liệu server đã gửi: "+ json);
@@ -53,7 +55,7 @@ public class StreamSocket<T> {
         DataOutputStream fromServer = null;
         try {
             fromServer = new DataOutputStream(socket.getOutputStream());
-            fromServer.writeBytes("Check: Okey\n");
+            fromServer.writeBytes("Check connect: Okey\n");
         } catch (IOException e){
             throw new RuntimeException(e);
         }

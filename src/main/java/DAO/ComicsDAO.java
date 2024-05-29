@@ -10,33 +10,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class ComicsDAO {
-    public static SV_ListComicsInformations selectALL() {
-        //tao connect toi server
+    public static SV_ListComicsInformations selectALLComics() {  // lay thong tin truyen gom: ten truyen, so luong chapter, avatar truyen  (load ra home)
         Connection connection = DatabaseConnect.getConnect();
-        // tao doi tuong de nhan du lieu tu database
+
         SV_ListComicsInformations listComics = new SV_ListComicsInformations();
         try {
-            // tao ra cau query sql
             String querySQL = "SELECT `nameComics`, `avatarComcis`, `numberOfChapter` FROM `comicsinformation`";
             PreparedStatement st = connection.prepareStatement(querySQL);
 
-            // thuc thi cau query
             ResultSet rs = st.executeQuery();
 
-            // load du lieu sau khi thuc hien cau query
             while (rs.next()) {
                 String name = rs.getString(1);
                 String avtComics = rs.getString(2);
                 int numberOfChapter = rs.getInt(3);
 
-                // tao doi tuong nhan du lieu tu server
                 SV_ComicsInformation newInf = new SV_ComicsInformation(name, avtComics, numberOfChapter);
 
                 //nhet cac doi tuong vao 1 arraylist cua doi tuong SV_ListComicsInformations
                 listComics.getListComicsInfomations().add(newInf);
             }
 
-            // dong connect database
             DatabaseConnect.closeConnect(connection);
 
 
@@ -47,30 +41,35 @@ public class ComicsDAO {
         return listComics;
     }
 
-    public static SV_ListComicsInformations () {
+    public static SV_ComicsInformation selectFullComicsInformationByNameComics(String nameComics) {  //ham lay tat ca thong tin cua truyen
         //tao connect toi server
         Connection connection = DatabaseConnect.getConnect();
         // tao doi tuong de nhan du lieu tu database
-        SV_ListComicsInformations listComics = new SV_ListComicsInformations();
+        SV_ComicsInformation fullComicsInformation = null;
         try {
             // tao ra cau query sql
-            String querySQL = "SELECT `nameComics`, `avatarComcis`, `numberOfChapter` FROM `comicsinformation`";
+            String querySQL = "SELECT `idComics`, `author`, `status`, `description`, `avatarComcis`, `numberOfChapter` FROM `comicsinformation` WHERE nameComics = ?";
             PreparedStatement st = connection.prepareStatement(querySQL);
+
+            st.setString(1,nameComics);
 
             // thuc thi cau query
             ResultSet rs = st.executeQuery();
 
             // load du lieu sau khi thuc hien cau query
-            while (rs.next()) {
-                String name = rs.getString(1);
-                String avtComics = rs.getString(2);
-                int numberOfChapter = rs.getInt(3);
+            if(rs.next()) {  // kiem tra xem ket qua tra ve co null khong
+              String idComics =  rs.getString(1);
+              String author = rs.getString(2);
+              String status = rs.getString(3);
+              String description = rs.getString(4);
+              String avatarComics = rs.getString(5);
+              int numberOfChapter = rs.getInt(6);
 
-                // tao doi tuong nhan du lieu tu server
-                SV_ComicsInformation newInf = new SV_ComicsInformation(name, avtComics, numberOfChapter);
-
-                //nhet cac doi tuong vao 1 arraylist cua doi tuong SV_ListComicsInformations
-                listComics.getListComicsInfomations().add(newInf);
+              // khoi tao doi tuong de luu tru du lieu nhan duoc tu cau query
+                fullComicsInformation = new SV_ComicsInformation(idComics,author,status, description,avatarComics,numberOfChapter);
+            }
+            else {
+                System.out.println("selectFullComicsInformationByNameComics is null");
             }
 
             // dong connect database
@@ -81,8 +80,7 @@ public class ComicsDAO {
             e.printStackTrace();
         }
 
-        return listComics;
+        return fullComicsInformation;
+
     }
-
-
 }
