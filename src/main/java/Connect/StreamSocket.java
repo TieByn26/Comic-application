@@ -1,4 +1,4 @@
-package Connect;
+package org.Connect;
 
 import com.google.gson.Gson;
 

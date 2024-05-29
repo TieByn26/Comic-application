@@ -1,18 +1,18 @@
-package DAO;
+package org.Connect.DAO;
 
-import Connect.DatabaseConnect;
-import Server.ObjectGson.GsonForServer.SV_ComicsInformation;
+import org.Connect.DatabaseConnect;
+import org.Connect.Server.ObjectGson.GsonForServer.SV_ComicsInformation;
+import org.Connect.Server.ObjectGson.GsonForServer.SV_ListComicsInformations;
 
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 public class ComicsDAO {
-    public static ArrayList<SV_ComicsInformation> selectALL() {
+    public static SV_ListComicsInformations selectALL() {
         Connection connection =DatabaseConnect.getConnect();
-        ArrayList<SV_ComicsInformation> listComics = new ArrayList<>();
+        SV_ListComicsInformations listComics = new SV_ListComicsInformations();
 
 
         try {
@@ -22,8 +22,6 @@ public class ComicsDAO {
 
             ResultSet rs = st.executeQuery();
 
-            // tao ra tung doi tuong Room de nhan du lieu tuong ung tu csdl truyen ve
-
             while (rs.next()) {
                 String name = rs.getString(1);
                 String avtComics = rs.getString(2);
@@ -31,7 +29,7 @@ public class ComicsDAO {
 
                 SV_ComicsInformation newInf = new SV_ComicsInformation(name, avtComics, numberOfChapter);
 
-                listComics.add(newInf);
+                listComics.getListComicsInfomations().add(newInf);
             }
 
 
@@ -42,7 +40,7 @@ public class ComicsDAO {
             e.printStackTrace();
         }
 
-        for (SV_ComicsInformation ls : listComics ){
+        for (SV_ComicsInformation ls : listComics.getListComicsInfomations() ){
             System.out.println(ls);
         }
 

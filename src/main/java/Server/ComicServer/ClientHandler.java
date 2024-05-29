@@ -1,5 +1,6 @@
 package Server.ComicServer;
 
+import Server.Controller.ComicController;
 import Server.ObjectGson.GsonForClient.CL_Request;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.Request;
@@ -20,7 +21,13 @@ public class ClientHandler {
 
             //thuc hien request
             switch (clRequest.getRequest()){
-
+                case "/get/allcomic" : {
+                    try {
+                        ComicController.getAllComics(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
                 default:
                     break;
             }

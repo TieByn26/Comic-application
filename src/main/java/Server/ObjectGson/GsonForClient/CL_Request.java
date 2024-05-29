@@ -6,6 +6,10 @@ public class CL_Request {
     public CL_Request() {
     }
 
+    public CL_Request(String request) {
+        this.request = request;
+    }
+
     public String getRequest() {
         return request;
     }

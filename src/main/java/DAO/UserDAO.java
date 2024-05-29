@@ -1,7 +1,7 @@
-package DAO;
+package org.Connect.DAO;
 
-import Connect.DatabaseConnect;
-import Server.ObjectGson.GsonForServer.SV_User;
+import org.Connect.DatabaseConnect;
+import org.Connect.Server.ObjectGson.GsonForServer.SV_User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
