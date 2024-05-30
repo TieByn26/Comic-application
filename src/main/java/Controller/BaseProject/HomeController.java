@@ -1,9 +1,8 @@
 package Controller.BaseProject;
 
 
-import ChangeScene.ChangeSceneGeneral;
 import ChangeScene.ChangedSceneToComicsInformation;
-import GetDataFromServer.GetInformationComics;
+import RequestForServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

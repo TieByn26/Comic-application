@@ -1,6 +1,6 @@
 package Controller.BaseProject;
 
-import GetDataFromServer.GetInformationComics;
+import RequestForServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

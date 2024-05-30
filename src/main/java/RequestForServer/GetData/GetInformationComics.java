@@ -1,4 +1,4 @@
-package GetDataFromServer;
+package RequestForServer.GetData;
 
 import ConnectServer.Connect;
 import ObjectGson.GsonForClient.CL_IdComics;
