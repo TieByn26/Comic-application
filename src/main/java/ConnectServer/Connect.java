@@ -7,7 +7,7 @@ import java.net.Socket;
 
 public class Connect {
     private static String ipServer = "";
-    private static int port = 7749;
+    private static int port = 5525;
 
     public static Socket getSocket() {
         Socket socket;
@@ -24,7 +24,7 @@ public class Connect {
         BufferedReader fromServer = null;
         try {
             fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            fromServer.readLine();
+            System.out.println(fromServer.readLine());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

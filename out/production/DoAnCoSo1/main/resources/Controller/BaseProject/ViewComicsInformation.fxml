@@ -8,10 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.VBox?>
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.ComicsInformationController">
     <children>
         <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #b85b56;">
@@ -78,7 +78,7 @@
             <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
          </image>
       </ImageView>
-      <Text fx:id="CI_nameComics" layoutX="150.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hoang ba ado tej fn gnsld eno g" textAlignment="CENTER" wrappingWidth="900.0">
+      <Text layoutX="150.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hoang ba ado tej fn gnsld eno g" textAlignment="CENTER" wrappingWidth="900.0">
          <font>
             <Font size="34.0" />
          </font>
@@ -108,7 +108,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <ScrollPane layoutX="630.0" layoutY="530.0" prefHeight="250.0" prefWidth="375.0">
+      <ScrollPane layoutX="630.0" layoutY="530.0" prefHeight="250.0" prefWidth="530.0">
          <content>
             <Text fx:id="CI_descriptions" layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" translateX="15.0" wrappingWidth="500.0">
                <font>

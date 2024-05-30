@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.ComicsInformationController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.NotificationController">
     <children>
         <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #b85b56;">
             <children>
@@ -73,95 +72,30 @@
                 <Image url="@../../image/icons8-fun-48.png" />
             </image>
         </ImageView>
-      <ImageView fx:id="CI_avatarComics" fitHeight="400.0" fitWidth="359.0" layoutX="265.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
-         </image>
-      </ImageView>
-      <Text fx:id="CI_nameComics" layoutX="150.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hoang ba ado tej fn gnsld eno g" textAlignment="CENTER" wrappingWidth="900.0">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </Text>
-      <Text layoutX="620.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tác giả :" textAlignment="CENTER" wrappingWidth="97.2630615234375">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="620.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tình trạng :" textAlignment="CENTER" wrappingWidth="131.396484375">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="620.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thể loại :" textAlignment="CENTER" wrappingWidth="104.7298583984375">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="610.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lượt xem :" textAlignment="CENTER" wrappingWidth="140.99652099609375">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="613.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số chapter :" textAlignment="CENTER" wrappingWidth="148.94737243652344">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <ScrollPane layoutX="630.0" layoutY="530.0" prefHeight="250.0" prefWidth="375.0">
+        <Label layoutX="35.0" layoutY="120.0" style="-fx-font-weight: bold;" text="Danh sách thông báo" textFill="#0e3b87">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <ScrollPane fx:id="home_scrollListTopUser" layoutX="10.0" layoutY="156.0" prefHeight="645.0" prefWidth="250.0">
          <content>
-            <Text fx:id="CI_descriptions" layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" translateX="15.0" wrappingWidth="500.0">
+                <VBox fx:id="NT_listNotifications" prefHeight="645.0" prefWidth="250.0" />
+         </content>
+        </ScrollPane>
+      <Pane layoutX="270.0" layoutY="156.0" prefHeight="645.0" prefWidth="930.0">
+         <children>
+            <Text fx:id="NC_contentNotifications" layoutX="9.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk" wrappingWidth="908.5366516113281">
                <font>
-                  <Font size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
-         </content>
-      </ScrollPane>
-      <Text layoutX="600.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mô tả truyện " textAlignment="CENTER" wrappingWidth="198.59649658203125">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Button fx:id="CI_readLastChapter" layoutX="260.0" layoutY="634.0" mnemonicParsing="false" text="Đọc mới nhất">
+         </children>
+      </Pane>
+      <Label layoutX="685.0" layoutY="119.0" style="-fx-font-weight: bold;" text="Nội dung " textFill="#0e3b87">
          <font>
             <Font size="20.0" />
          </font>
-      </Button>
-      <Button fx:id="CI_btnReadBegin" layoutX="452.0" layoutY="634.0" mnemonicParsing="false" text="Đọc từ đầu">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="CI_readContinue" layoutX="381.0" layoutY="685.0" mnemonicParsing="false" text="Đọc tiếp">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Text fx:id="CI_author" layoutX="715.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tác giả " wrappingWidth="460.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text fx:id="CI_category" layoutX="720.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tác giả " wrappingWidth="450.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text fx:id="CI_status" layoutX="750.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tác giả " wrappingWidth="430.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text fx:id="CI_views" layoutX="735.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tác giả " wrappingWidth="435.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text fx:id="CI_numberOfChapter" layoutX="750.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tác giả " wrappingWidth="420.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
+      </Label>
         <ScrollPane fx:id="TL_scroll_ListNotifications" fitToHeight="true" fitToWidth="true" layoutX="550.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
             <content>
                 <VBox fx:id="TL_listNotifications" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red;" />
