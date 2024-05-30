@@ -110,7 +110,7 @@
       </Text>
       <ScrollPane layoutX="630.0" layoutY="530.0" prefHeight="250.0" prefWidth="375.0">
          <content>
-            <Text fx:id="CI_descriptions" layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" translateX="15.0" wrappingWidth="500.0">
+            <Text fx:id="CI_descriptions" layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" translateX="15.0" wrappingWidth="345.0">
                <font>
                   <Font size="20.0" />
                </font>

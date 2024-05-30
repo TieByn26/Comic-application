@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -79,37 +81,53 @@
                 <VBox fx:id="TL_listNotifications" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red;" />
             </content>
         </ScrollPane>
-      <ImageView fx:id="RC_next" fitHeight="40.0" fitWidth="40.0" layoutX="790.0" layoutY="755.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="RC_next" fitHeight="40.0" fitWidth="40.0" layoutX="630.0" layoutY="754.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/icons8-arrow-readComcis.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="RC_back" fitHeight="40.0" fitWidth="40.0" layoutX="408.0" layoutY="755.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+      <ImageView fx:id="RC_back" fitHeight="40.0" fitWidth="40.0" layoutX="227.0" layoutY="756.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <image>
             <Image url="@../../image/icons8-arrow-readComcis.png" />
          </image>
       </ImageView>
-      <ChoiceBox layoutX="468.0" layoutY="753.0" minHeight="40.0" prefWidth="300.0" />
-      <ScrollPane fx:id="RC_scroll" layoutX="100.0" layoutY="157.0" prefHeight="583.0" prefWidth="1000.0">
+      <ChoiceBox layoutX="298.0" layoutY="756.0" minHeight="40.0" prefWidth="300.0" />
+      <ScrollPane fx:id="RC_scroll" layoutX="10.0" layoutY="157.0" prefHeight="583.0" prefWidth="866.0">
          <content>
-            <TilePane fx:id="RC_listImages" prefHeight="583.0" prefWidth="1000.0" />
+            <TilePane fx:id="RC_listImages" prefHeight="583.0" prefWidth="866.0" />
          </content>
       </ScrollPane>
-      <Text fx:id="RC_nameComics" layoutX="200.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="Ten truyen" textAlignment="CENTER" wrappingWidth="800.0">
+      <Text fx:id="RC_nameComics" layoutX="41.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="sdvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" textAlignment="CENTER" wrappingWidth="715.7333984375">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="542.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 600;" text="chapter : " textAlignment="CENTER" wrappingWidth="100.0">
+      <Text layoutX="350.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 600;" text="chapter : " textAlignment="CENTER" wrappingWidth="100.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="RC_chapter" layoutX="635.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="30.0">
+      <Text fx:id="RC_chapter" layoutX="450.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="30.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
+      <ScrollPane fx:id="RC_listComments" layoutX="890.0" layoutY="157.0" prefHeight="494.0" prefWidth="300.0" />
+      <Text fx:id="RC_nameComics1" layoutX="943.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="Bình luận" textAlignment="CENTER" wrappingWidth="200.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="RC_formInputComment" layoutX="888.0" layoutY="655.0" prefHeight="38.0" prefWidth="303.0" promptText="Nhập bình luận" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="RC_btnSubmit" layoutX="999.0" layoutY="738.0" mnemonicParsing="false" text="Bình luận">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
 
     </children>
 </AnchorPane>

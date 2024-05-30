@@ -1,7 +1,7 @@
 package Controller.BaseProject;
 
 import GetDataFromServer.GetInformationComics;
-import ObjectGson.GsonForServer.SV_ComicsInformation;
+import ObjectGson.GsonForServer.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -69,9 +69,16 @@ public class ComicsInformationController {
     }
 
     public void loadComicsInformation () {
+        System.out.println("dasfa");
         // lay du lieu tu server
         SV_ComicsInformation sv_comicsInformation =  GetInformationComics.getFullComicsInformationByNameComics(nameComics);
-        System.out.println(sv_comicsInformation);
+        // lay so luong view
+        SV_Statistic svStatistic = GetInformationComics.getAllViewByIdComics(sv_comicsInformation.getIdComic());
+        //lay idCategory
+        SV_CategoryManager svCategoryManager = GetInformationComics.getIdCategoryByIdComics(sv_comicsInformation.getIdComic());
+        //lay ten the loai bang id the loai
+        SV_CategoryName svCategoryComics = GetInformationComics.getCategoryNameByIdCategory(svCategoryManager.getIdCategory());
+
         //set du lieu cho cac bien
         CI_nameComics.setText(nameComics);
         CI_author.setText(sv_comicsInformation.getAuthor());
@@ -81,6 +88,8 @@ public class ComicsInformationController {
         CI_numberOfChapter.setText(sv_comicsInformation.getNumberOfChapter()+"");
         Image avtComics = new Image(sv_comicsInformation.getAvatarComic());
         CI_avatarComics.setImage(avtComics);
+        CI_views.setText(svStatistic.getAllView()+"");
+        CI_category.setText(svCategoryComics.getCategoryName());
     }
 
     public String getNameComics() {

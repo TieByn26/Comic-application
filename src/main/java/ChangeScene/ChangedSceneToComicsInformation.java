@@ -40,7 +40,7 @@ public class ChangedSceneToComicsInformation {
 
         // Lấy đối tượng Stage từ sự kiện (MouseEvent)
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setHeight(800);
+        stage.setHeight(820);
         stage.setWidth(1200);
         // Đặt giao diện mới làm giao diện chính
         stage.setScene(new Scene(root));

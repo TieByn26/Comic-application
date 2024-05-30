@@ -7,4 +7,4 @@ FL -> bien cua ViewFollow
 TL -> bien cua pane the loai
 PF -> bien cua ViewProfile
 CI -> bien cua ViewComicsInformation
-RX -> bien cua ViewReadComics
+RC -> bien cua ViewReadComics
