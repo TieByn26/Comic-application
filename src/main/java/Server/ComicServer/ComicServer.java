@@ -1,5 +1,6 @@
 package Server.ComicServer;
 
+import Connect.StreamSocket;
 import com.google.gson.Gson;
 
 import java.io.DataOutputStream;
@@ -7,9 +8,10 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ComicServer <T>{
+public class ComicServer{
     private ServerSocket serverSocket;
     private int Port = 5525;
+
 
 
     public ComicServer() throws IOException {
@@ -31,6 +33,10 @@ public class ComicServer <T>{
             });
             threadCLient.start();
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+        new ComicServer();
     }
 
 }

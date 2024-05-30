@@ -3,6 +3,7 @@ package DAO;
 import Connect.DatabaseConnect;
 import Server.ObjectGson.GsonForServer.SV_ComicsInformation;
 import Server.ObjectGson.GsonForServer.SV_ListComicsInformations;
+import Server.ObjectGson.GsonForServer.SV_Statistic;
 
 import java.sql.Connection;
 
@@ -81,6 +82,42 @@ public class ComicsDAO {
         }
 
         return fullComicsInformation;
+
+    }
+
+    public static SV_Statistic selectAllView(String idComics) {  //ham tong so views cua truyen
+        //tao connect toi server
+        Connection connection = DatabaseConnect.getConnect();
+        // tao doi tuong de nhan du lieu tu database
+        SV_Statistic allViews = null;
+        try {
+            // tao ra cau query sql
+            String querySQL = "SELECT `allViews`  FROM `statistics` WHERE idComcis = ?";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+
+            st.setString(1,idComics);
+
+            // thuc thi cau query
+            ResultSet rs = st.executeQuery();
+
+            // load du lieu sau khi thuc hien cau query
+            if(rs.next()) {  // kiem tra xem ket qua tra ve co null khong
+             int allViewFromDatabase = rs.getInt(1);
+             allViews = new SV_Statistic(allViewFromDatabase);
+             }
+            else {
+                System.out.println("select allView is null");
+            }
+
+            // dong connect database
+            DatabaseConnect.closeConnect(connection);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return allViews;
 
     }
 }

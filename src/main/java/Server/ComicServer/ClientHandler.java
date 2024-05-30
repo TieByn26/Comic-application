@@ -13,6 +13,7 @@ public class ClientHandler {
             Gson gson = new Gson();
             //doc du lieu
             BufferedReader fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            System.out.println("ggd12");
             String clientRequest = fromClient.readLine();
             System.out.println(clientRequest);
             //chuyen doi du lieu gson thanh doi tuong java va anh xa vao model
@@ -32,6 +33,15 @@ public class ClientHandler {
                     try {
 
                         ComicController.responeFullComicsInformationByNameComics(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/get/viewByIdComics" : {
+                    try {
+
+                        ComicController.responeAllViews(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

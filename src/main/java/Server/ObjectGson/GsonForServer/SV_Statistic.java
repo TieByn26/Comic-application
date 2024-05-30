@@ -16,6 +16,10 @@ public class SV_Statistic {
         this.lastUpdate = lastUpdate;
     }
 
+    public SV_Statistic(int allView) {
+        this.allView = allView;
+    }
+
     public String getIdCommic() {
         return idCommic;
     }

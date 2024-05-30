@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class StreamSocket<T> {
     public StreamSocket() {
@@ -27,12 +28,11 @@ public class StreamSocket<T> {
     public Boolean sendDataToCLient(Socket socket, T data){
         Gson gson = new Gson();
         try{
-            OutputStream output = socket.getOutputStream();
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(output, "UTF-8");
-            BufferedWriter toClient = new BufferedWriter(outputStreamWriter);
+            OutputStreamWriter osw = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
+            DataOutputStream toClient = new DataOutputStream(socket.getOutputStream());
             // chuyen doi data thanh json
             String json = gson.toJson(data);
-            toClient.write(json);
+            toClient.write(json.getBytes(StandardCharsets.UTF_8));
             //dam bao du lieu duoc gui day du
             toClient.flush();
             System.out.println("Dữ liệu server đã gửi: "+ json);
@@ -55,7 +55,7 @@ public class StreamSocket<T> {
         DataOutputStream fromServer = null;
         try {
             fromServer = new DataOutputStream(socket.getOutputStream());
-            fromServer.writeBytes("Check connect: Okey\n");
+            fromServer.writeBytes("Check connect: Okey" + "\n");
         } catch (IOException e){
             throw new RuntimeException(e);
         }
