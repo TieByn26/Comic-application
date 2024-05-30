@@ -32,7 +32,7 @@ public class ClientHandler {
                 case "/get/comicInformationByNameComics" : {
                     try {
 
-                        ComicController.responeFullComicsInformationByNameComics(socket);
+                        ComicController.responeComicInformationByNameComics(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -40,8 +40,23 @@ public class ClientHandler {
                 }
                 case "/get/viewByIdComics" : {
                     try {
-                        System.out.println("send #543");
                         ComicController.responeAllViews(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/get/IdCategoryByIdComics" : {
+                    try {
+                        ComicController.responeIdCategoryByIdComics(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/get/CategoryNameByIdCategory" : {
+                    try {
+                        ComicController.responeCategoryNameByIdCategory(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

@@ -20,6 +20,7 @@ public class SV_ComicsInformation {
         this.numberOfChapter = numberOfChapter;
     }
 
+
     public SV_ComicsInformation(String idComic, String author, String status, String description, String avatarComic, int numberOfChapter) {
         this.idComic = idComic;
         this.author = author;

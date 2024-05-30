@@ -10,6 +10,10 @@ public class SV_CategoryManager {
         this.idCategory = idCategory;
     }
 
+    public SV_CategoryManager(String idCategory) {
+        this.idCategory = idCategory;
+    }
+
     public String getIdComic() {
         return idComic;
     }

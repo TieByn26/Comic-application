@@ -29,7 +29,7 @@ public class DatabaseConnect {
             if (connection != null){
                 //ngat ket noi
                 connection.close();
-                System.out.printf("Ngắt kết nối thành công!");
+                System.out.println("Ngắt kết nối thành công!");
             }
         } catch (Exception e){
             e.printStackTrace();

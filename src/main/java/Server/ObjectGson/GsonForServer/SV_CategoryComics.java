@@ -8,6 +8,10 @@ public class SV_CategoryComics {
     public SV_CategoryComics() {
     }
 
+    public SV_CategoryComics(String idCategory) {
+        this.idCategory = idCategory;
+    }
+
     public SV_CategoryComics(String idCategory, String categoryName, String categoryDescript) {
         this.idCategory = idCategory;
         this.categoryName = categoryName;

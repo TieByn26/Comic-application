@@ -2,15 +2,12 @@ package Server.Controller;
 
 import Connect.StreamSocket;
 import DAO.ComicsDAO;
+import Server.ObjectGson.GsonForClient.CL_IdCategory;
 import Server.ObjectGson.GsonForClient.CL_IdComics;
 import Server.ObjectGson.GsonForClient.CL_NameComics;
-import Server.ObjectGson.GsonForServer.SV_ComicsInformation;
-import Server.ObjectGson.GsonForServer.SV_ListComicsInformations;
-import Server.ObjectGson.GsonForServer.SV_Statistic;
+import Server.ObjectGson.GsonForServer.*;
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.net.Socket;
 
 public class ComicController {
@@ -19,7 +16,7 @@ public class ComicController {
         new StreamSocket<SV_ListComicsInformations>().sendDataToCLient(socket,listAllComics);
     }
 
-    public static void responeFullComicsInformationByNameComics(Socket socket)  throws Exception{ //tra ve tat ca thong tin cua truyen
+    public static void responeComicInformationByNameComics  (Socket socket)  throws Exception{ //tra ve tat ca thong tin cua truyen
         Gson gson = new Gson();
 
         StreamSocket.checkConnect(socket);
@@ -44,5 +41,33 @@ public class ComicController {
 
         SV_Statistic svStatistic = ComicsDAO.selectAllView(idComics.getIdComics());
         new StreamSocket<SV_Statistic>().sendDataToCLient(socket,svStatistic);
+    }
+
+    public static void responeIdCategoryByIdComics(Socket socket) throws Exception { // tra ve id the loai
+        Gson gson = new Gson();
+
+        StreamSocket.checkConnect(socket);
+
+        //doc du lieu can thiet cho cau query
+        String idComicsJson = StreamSocket.readGsonFromClient(socket);
+        // chuyen tu json sang class
+        CL_IdComics idComics = gson.fromJson(idComicsJson,CL_IdComics.class);
+
+        SV_CategoryManager idCategory = ComicsDAO.selectIdCategoryByIdComics(idComics.getIdComics());
+        new StreamSocket<SV_CategoryManager>().sendDataToCLient(socket,idCategory);
+    }
+
+    public static void responeCategoryNameByIdCategory(Socket socket) throws Exception { // tra ve ten the loai theo id the loai
+        Gson gson = new Gson();
+
+        StreamSocket.checkConnect(socket);
+
+        //doc du lieu can thiet cho cau query
+        String idCategoryJson = StreamSocket.readGsonFromClient(socket);
+        // chuyen tu json sang class
+        CL_IdCategory idCategory = gson.fromJson(idCategoryJson,CL_IdCategory.class);
+
+        SV_CategoryName categoryName = ComicsDAO.selectCategoryNameByIdCategory(idCategory.getIdCategory());
+        new StreamSocket<SV_CategoryName>().sendDataToCLient(socket,categoryName);
     }
 }
