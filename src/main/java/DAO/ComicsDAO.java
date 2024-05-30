@@ -117,6 +117,8 @@ public class ComicsDAO {
             e.printStackTrace();
         }
 
+        System.out.println(allViews);
+
         return allViews;
 
     }

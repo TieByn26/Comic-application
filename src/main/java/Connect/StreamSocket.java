@@ -30,8 +30,10 @@ public class StreamSocket<T> {
         try{
             OutputStreamWriter osw = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
             DataOutputStream toClient = new DataOutputStream(socket.getOutputStream());
+
             // chuyen doi data thanh json
             String json = gson.toJson(data);
+
             toClient.write(json.getBytes(StandardCharsets.UTF_8));
             //dam bao du lieu duoc gui day du
             toClient.flush();

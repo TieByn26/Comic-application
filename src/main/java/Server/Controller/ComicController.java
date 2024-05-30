@@ -6,6 +6,7 @@ import Server.ObjectGson.GsonForClient.CL_IdComics;
 import Server.ObjectGson.GsonForClient.CL_NameComics;
 import Server.ObjectGson.GsonForServer.SV_ComicsInformation;
 import Server.ObjectGson.GsonForServer.SV_ListComicsInformations;
+import Server.ObjectGson.GsonForServer.SV_Statistic;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -38,10 +39,10 @@ public class ComicController {
 
         //doc du lieu can thiet cho cau query
         String idComicsJson = StreamSocket.readGsonFromClient(socket);
-
+        // chuyen tu json sang class
         CL_IdComics idComics = gson.fromJson(idComicsJson,CL_IdComics.class);
 
-
-
+        SV_Statistic svStatistic = ComicsDAO.selectAllView(idComics.getIdComics());
+        new StreamSocket<SV_Statistic>().sendDataToCLient(socket,svStatistic);
     }
 }

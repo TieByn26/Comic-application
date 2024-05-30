@@ -40,7 +40,7 @@ public class ClientHandler {
                 }
                 case "/get/viewByIdComics" : {
                     try {
-
+                        System.out.println("send #543");
                         ComicController.responeAllViews(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
