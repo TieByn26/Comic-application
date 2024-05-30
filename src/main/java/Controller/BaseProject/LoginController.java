@@ -68,7 +68,7 @@ public class LoginController {
         textpassword1.setVisible(false);
         transition1.setDuration(Duration.seconds(0.5));
         transition1.setNode(banner);
-        transition1.setByX(400);
+        transition1.setByX(395);
         transition1.play();
 
         TranslateTransition transition2 = new TranslateTransition();
@@ -101,7 +101,7 @@ public class LoginController {
 
         transition1.setDuration(Duration.seconds(0.5));
         transition1.setNode(banner);
-        transition1.setByX(-400);
+        transition1.setByX(-395);
         transition1.play();
 
         TranslateTransition transition2 = new TranslateTransition();
@@ -126,7 +126,7 @@ public class LoginController {
     }
     private void changeToForget(ActionEvent event){
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("ViewCapcha.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("ViewOTP.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = ((Node) event.getSource()).getScene();
             scene.setRoot(root);
