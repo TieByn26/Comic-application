@@ -10,7 +10,7 @@ import java.io.IOException;
 public class HomeApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(HomeApp.class.getResource("ViewLogin.fxml"));
+        FXMLLoader loader = new FXMLLoader(HomeApp.class.getResource("ViewHome.fxml"));
 
         Scene scene = new Scene(loader.load(), 700, 500);
         stage.setScene(scene);
