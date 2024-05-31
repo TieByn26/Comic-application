@@ -3,10 +3,10 @@ package Connect;
 import org.apache.commons.mail.SimpleEmail;
 
 public class EmailConnect {
-    private static String username = "";
-    private static String appPassword = "";
+    private static String username = "dxuantienn@gmail.com";
+    private static String appPassword = "pspofvstxlfpouin";
     private static SimpleEmail email;
-    private static Boolean sendMail(String emailTo ,String Subject, String Messenge){
+    public static Boolean sendMail(String emailTo ,String Subject, String Messenge){
         email = new SimpleEmail();
         email.setHostName("smtp.gmail.com");
         email.setSmtpPort(587);

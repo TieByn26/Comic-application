@@ -7,6 +7,11 @@ public class CL_ChangePass {
     public CL_ChangePass() {
     }
 
+    public CL_ChangePass(String username, String newPass) {
+        this.username = username;
+        this.newPass = newPass;
+    }
+
     public String getNewPass() {
         return newPass;
     }
@@ -15,10 +20,19 @@ public class CL_ChangePass {
         this.newPass = newPass;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return "CL_ChangePass{" +
-                "newPass='" + newPass + '\'' +
+                "username='" + username + '\'' +
+                ", newPass='" + newPass + '\'' +
                 '}';
     }
 }

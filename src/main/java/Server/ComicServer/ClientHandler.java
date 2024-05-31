@@ -1,6 +1,8 @@
 package Server.ComicServer;
 
 import Server.Controller.ComicController;
+import Server.Controller.LoginController;
+import Server.Controller.RegisterController;
 import Server.ObjectGson.GsonForClient.CL_Request;
 import com.google.gson.Gson;
 
@@ -31,7 +33,6 @@ public class ClientHandler {
                 }
                 case "/get/comicInformationByNameComics" : {
                     try {
-
                         ComicController.responeComicInformationByNameComics(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
@@ -59,6 +60,38 @@ public class ClientHandler {
                         ComicController.responeCategoryNameByIdCategory(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/register/new/account" :{
+                    try{
+                        RegisterController.resisterNewAcount(socket);
+                    }catch (Exception e){
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/login/account":{
+                    try{
+                        LoginController.checkLogin(socket);
+                    }catch (Exception e){
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/get/otp":{
+                    try{
+                        LoginController.sendOtp(socket);
+                    }catch (Exception e){
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/change/password":{
+                    try {
+
+                    }catch (Exception e){
+                        e.printStackTrace();
                     }
                     break;
                 }
