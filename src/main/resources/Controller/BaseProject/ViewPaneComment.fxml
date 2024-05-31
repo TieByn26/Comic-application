@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="290.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="CM_avatar" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/admin.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="CM_name" layoutX="79.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hoang ba dao" wrappingWidth="195.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="CM_imgLike" fitHeight="27.0" fitWidth="43.0" layoutX="130.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../../image/icons8-like-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="CM_imgDislike" fitHeight="27.0" fitWidth="43.0" layoutX="205.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../../image/icons8-dislike-64.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="CM_NumberOflike" layoutX="130.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1024" wrappingWidth="70.0" />
+      <Text fx:id="CM_NumberOfDislike" layoutX="205.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1024" wrappingWidth="70.0" />
+      <ScrollPane fx:id="CM_scrollComment" layoutX="77.0" layoutY="49.0" prefHeight="100.0" prefWidth="209.0">
+         <content>
+            <Text fx:id="CM_comment" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" translateX="10.0" translateY="5.0" wrappingWidth="190.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </content>
+      </ScrollPane>
+   </children>
+</Pane>

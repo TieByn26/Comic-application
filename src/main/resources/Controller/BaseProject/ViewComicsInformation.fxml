@@ -73,7 +73,7 @@
                 <Image url="@../../image/icons8-fun-48.png" />
             </image>
         </ImageView>
-      <ImageView fx:id="CI_avatarComics" fitHeight="400.0" fitWidth="359.0" layoutX="265.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="CI_avatarComics" fitHeight="400.0" fitWidth="330.0" layoutX="255.0" layoutY="212.0" pickOnBounds="true">
          <image>
             <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
          </image>
@@ -108,7 +108,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <ScrollPane layoutX="630.0" layoutY="530.0" prefHeight="250.0" prefWidth="375.0">
+      <ScrollPane layoutX="630.0" layoutY="530.0" prefHeight="219.0" prefWidth="375.0">
          <content>
             <Text fx:id="CI_descriptions" layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" translateX="15.0" wrappingWidth="345.0">
                <font>

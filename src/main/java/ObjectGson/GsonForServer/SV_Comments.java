@@ -1,27 +1,19 @@
 package ObjectGson.GsonForServer;
 
 public class SV_Comments {
-    private String idComment;
     private int idUser;
-    private String idComic;
     private String comment;
+    private int like;
+    private int dislike;
 
     public SV_Comments() {
     }
 
-    public SV_Comments(String idComment, int idUser, String idComic, String comment) {
-        this.idComment = idComment;
+    public SV_Comments(int idUser,  String comment, int like, int dislike) {
         this.idUser = idUser;
-        this.idComic = idComic;
         this.comment = comment;
-    }
-
-    public String getIdComment() {
-        return idComment;
-    }
-
-    public void setIdComment(String idComment) {
-        this.idComment = idComment;
+        this.like = like;
+        this.dislike = dislike;
     }
 
     public int getIdUser() {
@@ -32,14 +24,6 @@ public class SV_Comments {
         this.idUser = idUser;
     }
 
-    public String getIdComic() {
-        return idComic;
-    }
-
-    public void setIdComic(String idComic) {
-        this.idComic = idComic;
-    }
-
     public String getComment() {
         return comment;
     }
@@ -48,13 +32,29 @@ public class SV_Comments {
         this.comment = comment;
     }
 
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getDislike() {
+        return dislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.dislike = dislike;
+    }
+
     @Override
     public String toString() {
         return "SV_Comments{" +
-                "idComment='" + idComment + '\'' +
-                ", idUser=" + idUser +
-                ", idComic='" + idComic + '\'' +
+                "idUser=" + idUser +
                 ", comment='" + comment + '\'' +
+                ", like=" + like +
+                ", dislike=" + dislike +
                 '}';
     }
 }

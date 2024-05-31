@@ -1,16 +1,21 @@
 package Controller.BaseProject;
 
-import GetDataFromServer.GetInformationComics;
+import ChangeScene.ChangedSceneToReadComics;
+import RequestToServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.*;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class ComicsInformationController {
+
+    private String pathViewReadComics = "/Controller/BaseProject/ViewReadComics.fxml";
 
     @FXML
     private Label nav_notfications;
@@ -65,6 +70,17 @@ public class ComicsInformationController {
 
         //set event click for nav_home
         General.EvenOfNav.setEventForNavHome(nav_home);
+
+        CI_btnReadBegin.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", Integer.parseInt(idComics));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
     }
 
