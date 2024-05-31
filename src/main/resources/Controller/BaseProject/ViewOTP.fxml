@@ -2,26 +2,32 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.ForgetController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.OtpController">
     <children>
         <Pane layoutX="306.0" prefHeight="500.0" prefWidth="397.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Button fx:id="submitButton" layoutX="151.0" layoutY="360.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: #e7a610;" text="SUBMIT" textFill="#e7e3e3">
+                <Button fx:id="submitButton" layoutX="152.0" layoutY="344.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: #eaab0c;" text="SUBMIT" textFill="#e7e3e3" visible="false">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Button fx:id="cancelButton" layoutX="79.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: 0,0,0,0;" text="Cancel and login?" textFill="#e7a610" />
-                <PasswordField fx:id="passwordField1" layoutX="75.0" layoutY="250.0" prefHeight="40.0" prefWidth="250.0" promptText="Enter again new password" />
-                <PasswordField fx:id="passwordField2" layoutX="75.0" layoutY="188.0" prefHeight="40.0" prefWidth="250.0" promptText="Enter new password" />
-                <Label layoutX="78.0" layoutY="45.0" prefHeight="69.0" prefWidth="231.0" text="        Forgot Password" textAlignment="CENTER" textFill="#e7a610">
+                <Button fx:id="getcapchaButton" layoutX="152.0" layoutY="344.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: #eaab0c;" text="GETCAPCHA" textFill="#e7e3e3">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Button fx:id="cancelButton" layoutX="80.0" layoutY="305.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: 0,0,0,0;" text="Cancel and login?" textFill="#eaab0c" />
+                <TextField fx:id="textField1" layoutX="75.0" layoutY="191.0" prefHeight="40.0" prefWidth="250.0" promptText="Enter username" />
+                <TextField fx:id="textField2" layoutX="75.0" layoutY="250.0" prefHeight="40.0" prefWidth="250.0" promptText="Enter capcha" />
+                <Label layoutX="128.0" layoutY="163.0" prefHeight="17.0" prefWidth="147.0" text="enter username to get otp" textFill="#eaab0c" />
+                <Label layoutX="86.0" layoutY="44.0" prefHeight="69.0" prefWidth="231.0" text="      Identity verification" textAlignment="CENTER" textFill="#eaab0c">
                     <font>
                         <Font size="20.0" />
                     </font>

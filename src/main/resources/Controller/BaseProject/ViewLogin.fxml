@@ -12,44 +12,44 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.LoginController">
     <children>
-        <Pane fx:id="banner2" layoutX="306.0" prefHeight="500.0" prefWidth="397.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane fx:id="banner2" layoutX="303.2" prefHeight="500.0" prefWidth="397.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="303.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Button fx:id="button3" layoutX="152.0" layoutY="344.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: green;" text="SIGN IN" textFill="#e7e3e3">
+                <Button fx:id="button3" layoutX="152.0" layoutY="344.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: eaab00;" text="SIGN IN" textFill="#e7e3e3">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
                 <TextField fx:id="textfield" layoutX="75.0" layoutY="191.0" prefHeight="40.0" prefWidth="250.0" promptText="Enter username" />
                 <PasswordField fx:id="textpassword1" layoutX="75.0" layoutY="250.0" prefHeight="40.0" prefWidth="250.0" promptText="Enter password" />
-                <Label fx:id="labelsi" layoutX="85.0" layoutY="45.0" prefHeight="69.0" prefWidth="231.0" text="    Sign In To Flappybird" textAlignment="CENTER" textFill="#0e9c09">
+                <Label fx:id="labelsi" layoutX="76.0" layoutY="45.0" prefHeight="69.0" prefWidth="231.0" text="    Sign In To Blog Comics" textAlignment="CENTER" textFill="#eaab00">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Label>
-                <Button fx:id="buttonforget" layoutX="80.0" layoutY="305.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: 0,0,0,0;" text="Forget Your Password !" textFill="#2c8e10" />
+                <Button fx:id="buttonforget" layoutX="80.0" layoutY="305.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: 0,0,0,0;" text="Forget Your Password !" textFill="#eaab00" />
                 <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="180.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@image/gicon.png" />
+                        <Image url="@../../image/icons8-google-40.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="104.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@image/fbicon.png" />
+                        <Image url="@../../image/icons8-facebook-40.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="252.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@image/mailicon.png" />
+                        <Image url="@../../image/icons8-mail-40.png" />
                     </image>
                 </ImageView>
-                <Label fx:id="labeltemp" layoutX="144.0" layoutY="158.0" prefHeight="17.0" prefWidth="128.0" text="or use email account " textFill="#15a423" />
+                <Label fx:id="labeltemp" layoutX="127.0" layoutY="159.0" prefHeight="17.0" prefWidth="150.0" text="or use blogcomics account " textFill="#dfba00" />
                 <PasswordField fx:id="textpassword2" layoutX="76.0" layoutY="375.0" prefHeight="40.0" prefWidth="250.0" promptText="Enter again password" visible="false" />
-                <Button fx:id="button4" layoutX="152.0" layoutY="433.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: green;" text="SIGN UP" textFill="#e7e3e3" visible="false">
+                <Button fx:id="button4" layoutX="152.0" layoutY="433.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: #eaab00;" text="SIGN UP" textFill="#e7e3e3" visible="false">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Label fx:id="labelsu" layoutX="86.0" layoutY="45.0" prefHeight="69.0" prefWidth="231.0" text="    Sign Up To Flappybird" textAlignment="CENTER" textFill="#0e9c09" visible="false">
+                <Label fx:id="labelsu" layoutX="86.0" layoutY="45.0" prefHeight="69.0" prefWidth="231.0" text="    Sign Up To Blog Comics" textAlignment="CENTER" textFill="#eaab00" visible="false">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -60,27 +60,27 @@
         </Pane>
         <Pane fx:id="banner" layoutY="130.0" prefHeight="500.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
             <children>
-                <ImageView fitHeight="540.0" fitWidth="304.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="500.0" fitWidth="305.0" pickOnBounds="true">
                     <image>
-                        <Image url="@image/BannerLogin.jpg" />
+                        <Image url="@../../image/imgLogin.jpg" />
                     </image>
                 </ImageView>
-                <Button fx:id="buttonSignUp" layoutX="102.0" layoutY="414.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: WHITE;" text="SIGN UP" textFill="#11a10a">
+                <Button fx:id="buttonSignUp" layoutX="102.0" layoutY="414.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: WHITE;" text="SIGN UP" textFill="#eaab00">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
-                <Label fx:id="label1" layoutX="58.0" layoutY="364.0" prefHeight="40.0" prefWidth="188.0" text="Do not have an account?" textFill="WHITE">
+                <Label fx:id="label1" layoutX="58.0" layoutY="364.0" prefHeight="40.0" prefWidth="188.0" text="Do not have an account?" textFill="RED">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
-                <Label fx:id="label2" layoutX="58.0" layoutY="364.0" prefHeight="40.0" prefWidth="188.0" text="       Sign In nowww" textFill="WHITE" visible="false">
+                <Label fx:id="label2" layoutX="58.0" layoutY="364.0" prefHeight="40.0" prefWidth="188.0" text="       Sign In nowww" textFill="#fc0000" visible="false">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
-                <Button fx:id="buttonSignIn" layoutX="102.0" layoutY="414.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: WHITE;" text="SIGN IN" textFill="#11a10a" visible="false">
+                <Button fx:id="buttonSignIn" layoutX="102.0" layoutY="414.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 999; -fx-background-color: WHITE;" text="SIGN IN" textFill="#eaab00" visible="false">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
