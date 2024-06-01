@@ -18,6 +18,11 @@ public class SV_User {
         this.level = level;
     }
 
+    public SV_User(String fullName, String avatar) {
+        this.fullName = fullName;
+        this.avatar = avatar;
+    }
+
     public int getIdUser() {
         return idUser;
     }

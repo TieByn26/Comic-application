@@ -18,7 +18,6 @@ public class StreamSocket<T> {
             BufferedReader jsonToClient = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
             json = jsonToClient.readLine();
 
-
         } catch (IOException e){
             throw new RuntimeException(e);
         }
