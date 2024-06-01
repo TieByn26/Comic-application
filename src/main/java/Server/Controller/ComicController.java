@@ -2,9 +2,9 @@ package Server.Controller;
 
 import Connect.StreamSocket;
 import DAO.ComicsDAO;
-import Server.ObjectGson.GsonForClient.CL_IdCategory;
-import Server.ObjectGson.GsonForClient.CL_IdComics;
-import Server.ObjectGson.GsonForClient.CL_NameComics;
+import DAO.CommentDAO;
+import DAO.UserDAO;
+import Server.ObjectGson.GsonForClient.*;
 import Server.ObjectGson.GsonForServer.*;
 import com.google.gson.Gson;
 

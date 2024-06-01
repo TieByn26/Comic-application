@@ -1,19 +1,29 @@
 package Server.ObjectGson.GsonForServer;
 
 public class SV_Comments {
-    private String idComment;
     private int idUser;
-    private String idComic;
     private String comment;
+    private int like;
+    private int dislike;
+
+    private String idComment;
 
     public SV_Comments() {
     }
 
-    public SV_Comments(String idComment, int idUser, String idComic, String comment) {
-        this.idComment = idComment;
+    public SV_Comments(int idUser,  String comment, int like, int dislike) {
         this.idUser = idUser;
-        this.idComic = idComic;
         this.comment = comment;
+        this.like = like;
+        this.dislike = dislike;
+    }
+
+    public SV_Comments(int idUser, String comment, int like, int dislike, String idComment) {
+        this.idUser = idUser;
+        this.comment = comment;
+        this.like = like;
+        this.dislike = dislike;
+        this.idComment = idComment;
     }
 
     public String getIdComment() {
@@ -24,20 +34,28 @@ public class SV_Comments {
         this.idComment = idComment;
     }
 
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getDislike() {
+        return dislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.dislike = dislike;
+    }
+
     public int getIdUser() {
         return idUser;
     }
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
-    }
-
-    public String getIdComic() {
-        return idComic;
-    }
-
-    public void setIdComic(String idComic) {
-        this.idComic = idComic;
     }
 
     public String getComment() {
@@ -51,10 +69,11 @@ public class SV_Comments {
     @Override
     public String toString() {
         return "SV_Comments{" +
-                "idComment='" + idComment + '\'' +
-                ", idUser=" + idUser +
-                ", idComic='" + idComic + '\'' +
+                "idUser=" + idUser +
                 ", comment='" + comment + '\'' +
+                ", like=" + like +
+                ", dislike=" + dislike +
+                ", idComment='" + idComment + '\'' +
                 '}';
     }
 }

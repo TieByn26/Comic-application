@@ -1,9 +1,13 @@
 package Server.ComicServer;
 
 import Connect.StreamSocket;
+import DAO.UserDAO;
+import Server.Controller.ChapterController;
 import Server.Controller.ComicController;
 import Server.Controller.LoginController;
 import Server.Controller.RegisterController;
+import Server.Controller.CommentController;
+import Server.Controller.UserController;
 import Server.ObjectGson.GsonForClient.CL_Request;
 import com.google.gson.Gson;
 
@@ -18,6 +22,7 @@ public class ClientHandler {
             BufferedReader fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println("ggd12");
             String clientRequest = fromClient.readLine();
+            System.out.println(clientRequest);
             //chuyen doi du lieu gson thanh doi tuong java va anh xa vao model
             CL_Request clRequest = gson.fromJson(clientRequest, CL_Request.class);
             System.out.println(clRequest.getRequest());
@@ -34,6 +39,7 @@ public class ClientHandler {
                 }
                 case "/get/comicInformationByNameComics" : {
                     try {
+
                         ComicController.responeComicInformationByNameComics(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
@@ -59,6 +65,54 @@ public class ClientHandler {
                 case "/get/CategoryNameByIdCategory" : {
                     try {
                         ComicController.responeCategoryNameByIdCategory(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/get/AllCommentByIdComics" : {
+                    try {
+                        CommentController.responeAllComment(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/get/InforUserForComment" : {
+                    try {
+                        UserController.responeInforUserForComment(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/update/numberOfLike" : {
+                    try {
+                        CommentController.updateNumberOflike(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/update/numberOfDislike" : {
+                    try {
+                        CommentController.updateNumberOfDislike(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/update/newComment" : {
+                    try {
+                        CommentController.createNewComment(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/get/AllImagesOfChapter" : {
+                    try {
+                        ChapterController.responeAllImagesOfChapter(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

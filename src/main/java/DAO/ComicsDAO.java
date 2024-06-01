@@ -7,6 +7,7 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class ComicsDAO {
     public static SV_ListComicsInformations selectALLComics() {  // lay thong tin truyen gom: ten truyen, so luong chapter, avatar truyen  (load ra home)
@@ -178,7 +179,7 @@ public class ComicsDAO {
                 categoryName = new SV_CategoryName(categoryInfotmation);
             }
             else {
-                System.out.println("select allView is null");
+                System.out.println("selectCategoryNameByIdCategory is null");
             }
 
             // dong connect database
@@ -191,6 +192,5 @@ public class ComicsDAO {
 
         return categoryName;
     }
-
 
 }

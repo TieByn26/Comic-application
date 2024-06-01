@@ -26,6 +26,7 @@ public class StreamSocket<T> {
     public Boolean sendDataToCLient(Socket socket, T data){
         Gson gson = new Gson();
         try{
+            OutputStreamWriter osw = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
             DataOutputStream toClient = new DataOutputStream(socket.getOutputStream());
 
             // chuyen doi data thanh json

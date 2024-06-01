@@ -5,7 +5,28 @@ public class CL_Comments {
     private String idComic;
     private String comment;
 
+
+    private String idComment;
+
     public CL_Comments() {
+    }
+
+    public CL_Comments(int idUser, String idComic, String comment) {
+        this.idUser = idUser;
+        this.idComic = idComic;
+        this.comment = comment;
+    }
+
+    public CL_Comments(String idComment) {
+        this.idComment = idComment;
+    }
+
+    public String getIdComment() {
+        return idComment;
+    }
+
+    public void setIdComment(String idComment) {
+        this.idComment = idComment;
     }
 
     public int getIdUser() {
