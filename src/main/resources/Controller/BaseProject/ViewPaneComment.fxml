@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="290.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="290.0" style="-fx-border-color: gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.PaneCommentController">
    <children>
       <ImageView fx:id="CM_avatar" fitHeight="82.0" fitWidth="70.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>

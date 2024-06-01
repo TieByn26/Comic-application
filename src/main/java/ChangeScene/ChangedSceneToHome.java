@@ -1,6 +1,7 @@
 package ChangeScene;
 
 import Controller.BaseProject.HomeController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ChangedSceneToHome {
-    public static void ChangeScene(MouseEvent event, String pathFileFxml,String title,int idUser) {
+    public static void ChangeScene(ActionEvent event, String pathFileFxml, String title, int idUser) {
         // Tạo một đối tượng FXMLLoader
         FXMLLoader loader = new FXMLLoader(ChangedSceneToHome.class.getResource(pathFileFxml));
 
@@ -28,7 +29,7 @@ public class ChangedSceneToHome {
             controller.setIdUser(idUser);
         }
         else {
-
+            System.out.println("HomeController is null");
         }
 
         // Lấy đối tượng Stage từ sự kiện (MouseEvent)

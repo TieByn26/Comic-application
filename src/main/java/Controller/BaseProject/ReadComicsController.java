@@ -20,9 +20,6 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -72,11 +69,14 @@ public class ReadComicsController {
     private ScrollPane TL_scroll_ListNotifications;
     @FXML
     private ScrollPane RC_scrollListComment;
+    @FXML
+    private ChoiceBox RC_listChapter;
     private String idcomics;
     private int idUser;
     private int idComment;
     private int chapter = 1;
     private int numberOfChapter = 6;
+    private String nameComics;
     boolean isLiked = false;
     boolean isDislike = false;
 
@@ -267,7 +267,26 @@ public class ReadComicsController {
             }
         });
     }
+    public void setComicsInformation() {
+        RC_nameComics.setText(nameComics);
+        RC_chapter.setText(chapter + "");
 
+        for(int i = 1; i <= numberOfChapter; i++) {
+            RC_listChapter.getItems().add("chapter: " + i);
+        }
+
+        //gia tri mac dinh la chapter dang doc
+        RC_listChapter.setValue(RC_listChapter.getItems().get(chapter - 1)); // phan tu trong choicebox chay tu vi tri 0
+
+        // Xử lý sự kiện khi lựa chọn thay đổi
+        RC_listChapter.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+//            // Chỉ lấy phần số của newValue
+//            String numberOnly = newValue.replaceAll("[^0-9]", "");
+//            System.out.println("Number Only: " + numberOnly);
+//            uploadImageOfChapter();
+        });
+
+    }
     public String getIdcomics() {
         return idcomics;
     }

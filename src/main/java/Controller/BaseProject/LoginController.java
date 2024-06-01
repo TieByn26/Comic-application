@@ -1,5 +1,6 @@
 package Controller.BaseProject;
 
+import ChangeScene.ChangedSceneToHome;
 import ObjectGson.GsonForClient.CL_LoginInformation;
 import ObjectGson.GsonForClient.CL_RegisterInformation;
 import ObjectGson.GsonForServer.SV_CheckLogin;
@@ -57,7 +58,7 @@ public class LoginController {
         buttonSignUp.setOnAction(actionEvent -> changeToSignUp());
         buttonSignIn.setOnAction(actionEvent -> changeToSignIn());
         buttonforget.setOnAction(this::changeToForget);
-        button3.setOnAction(actionEvent -> signInNow());
+        button3.setOnAction(this::signInNow);
         button4.setOnAction(actionEvent -> signUpNow());
     }
     private void changeToSignUp(){
@@ -136,7 +137,7 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-    private void signInNow(){
+    private void signInNow(ActionEvent event){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try {
             if ( textfield.getText() == null || textfield.getText().trim().isEmpty()
@@ -148,9 +149,7 @@ public class LoginController {
                 CL_LoginInformation cl_loginInformation = new CL_LoginInformation(textfield.getText(),textpassword1.getText());
                 SV_CheckLogin svCheckLogin = RequestLogin.requestLogin(cl_loginInformation);
                 if (svCheckLogin.getCheck()) {
-                    alert.setTitle("Information Dialog");
-                    alert.setContentText("Ok đúng mật khẩu");
-                    alert.showAndWait();
+                    ChangedSceneToHome.ChangeScene(event,"/Controller/BaseProject/ViewHome.fxml","Home",svCheckLogin.getIdUser());
                 } else {
                     alert.setTitle("Information Dialog");
                     alert.setContentText("Sai tài khoản hoặc mật khẩu");

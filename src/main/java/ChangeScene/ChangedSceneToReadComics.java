@@ -37,6 +37,9 @@ public class ChangedSceneToReadComics {
 
             //load anh cua chapter len giao dien
             controller.uploadImageOfChapter();
+
+            //cap nhat cac thong tin cua truyenn
+            controller.setComicsInformation();
         } else {
             System.out.println("controller ComicsInformation");
         }
