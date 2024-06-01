@@ -11,6 +11,10 @@ public class SV_Chapter {
         this.chapter = chapter;
         this.linkImage = linkImage;
     }
+    public SV_Chapter(String linkImage) {
+        this.linkImage = linkImage;
+    }
+
 
     public String getIdComic() {
         return idComic;

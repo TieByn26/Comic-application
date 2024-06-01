@@ -1,6 +1,7 @@
 package Server.ComicServer;
 
 import DAO.UserDAO;
+import Server.Controller.ChapterController;
 import Server.Controller.ComicController;
 import Server.Controller.CommentController;
 import Server.Controller.UserController;
@@ -99,6 +100,14 @@ public class ClientHandler {
                 case "/update/newComment" : {
                     try {
                         CommentController.createNewComment(socket);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+                case "/get/AllImagesOfChapter" : {
+                    try {
+                        ChapterController.responeAllImagesOfChapter(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

@@ -18,7 +18,6 @@ public class ComicServer{
         //tao serversocket
         serverSocket = new ServerSocket(Port);
         System.out.println("Server open port: "+ Port);
-
         //lap vo han chap nhan cac yeu cau ket noi tu client
         while (true){
             Socket socket = serverSocket.accept();
