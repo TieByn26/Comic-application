@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.ReadComicsController">
+<AnchorPane minHeight="800.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.ReadComicsController">
     <children>
         <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #b85b56;">
             <children>
@@ -127,7 +127,7 @@
             <Font size="20.0" />
          </font>
       </TextArea>
-      <Button fx:id="RC_btnSubmit" layoutX="999.0" layoutY="738.0" mnemonicParsing="false" text="Bình luận">
+      <Button fx:id="RC_btnSubmit" layoutX="999.0" layoutY="727.0" mnemonicParsing="false" text="Bình luận">
          <font>
             <Font size="16.0" />
          </font>

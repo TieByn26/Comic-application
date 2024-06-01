@@ -63,6 +63,8 @@ public class HomeController {
     @FXML
     private ScrollPane TL_scroll_ListNotifications;
 
+    private int idUser = 1; // set mac dinh bang 1 (chua co gia tri tu db)
+
 
 
     public void initialize() throws Exception {
@@ -145,7 +147,7 @@ public class HomeController {
             comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    ChangedSceneToComicsInformation.ChangeScene(event,pathComicsInformation,"Thông tin truyện",nameComic.getText());
+                    ChangedSceneToComicsInformation.ChangeScene(event,pathComicsInformation,"Thông tin truyện",nameComic.getText(), idUser);
                 }
             });
 

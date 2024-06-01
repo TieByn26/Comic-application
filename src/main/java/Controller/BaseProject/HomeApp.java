@@ -12,7 +12,7 @@ public class HomeApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(HomeApp.class.getResource("ViewHome.fxml"));
 
-        Scene scene = new Scene(loader.load(), 700, 500);
+        Scene scene = new Scene(loader.load(), 1200, 800);
         stage.setScene(scene);
         stage.show();
     }
