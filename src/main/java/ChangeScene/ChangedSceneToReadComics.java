@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ChangedSceneToReadComics {
-    public static void ChangeScene(MouseEvent event, String pathFileFxml, String title, String idComics,int idUser) throws Exception {
+    public static void ChangeScene(MouseEvent event, String pathFileFxml, String title, String idComics,int idUser,String nameComics,int numberOfChapter) throws Exception {
         // Tạo một đối tượng FXMLLoader
         FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
 
@@ -29,17 +29,19 @@ public class ChangedSceneToReadComics {
             //set gia tri ten truyen cho bien idComics trong controller
             controller.setIdcomics(idComics);
             controller.setIdUser(idUser);
+            controller.setNameComics(nameComics);
+            controller.setNumberOfChapter(numberOfChapter);
             //set du lieu cho cac comment
             controller.setDataForComment();
-
             //set su kien tao comment
             controller.eventCreateNewComment();
-
             //load anh cua chapter len giao dien
             controller.uploadImageOfChapter();
-
             //cap nhat cac thong tin cua truyenn
             controller.setComicsInformation();
+            //set su kien cho nut next va back
+            controller.setEventForIconBackAndNext();
+
         } else {
             System.out.println("controller ComicsInformation");
         }

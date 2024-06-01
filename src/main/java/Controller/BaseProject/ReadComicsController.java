@@ -70,6 +70,8 @@ public class ReadComicsController {
     @FXML
     private ScrollPane RC_scrollListComment;
     @FXML
+    private ScrollPane RC_scrollListImg;
+    @FXML
     private ChoiceBox RC_listChapter;
     private String idcomics;
     private int idUser;
@@ -99,16 +101,17 @@ public class ReadComicsController {
         //set event click for nav_home
         General.EvenOfNav.setEventForNavHome(nav_home);
     }
-
-    public void uploadImageOfChapter() { // upload cac anh cua chapter len giao dien
+    // upload cac anh cua chapter len giao dien
+    public void uploadImageOfChapter() {
+        //lam moi lai list tryuen
+        RC_listImages.getChildren().clear();
+        // set lai vi tri ban dau cho scroll
+        RC_scrollListImg.setVvalue(0);
         SV_Chapter chapterInformation = GetInformationChapter.getAllimageOfChapter(idcomics, chapter);
-
         // Khởi tạo ConcurrentHashMap để lưu trữ các ảnh
         imgMap = new ConcurrentHashMap<>();
-
         // Khởi tạo ExecutorService với 15 luồng
         executors = Executors.newFixedThreadPool(15);
-
 
         //list img sau khi xu li
         String listImg[] = splitString(chapterInformation.getLinkImage());
@@ -131,8 +134,8 @@ public class ReadComicsController {
         for (int i = 0; i < index; i++) {
             ImageView imageView = new ImageView();
             imageView.setImage(imgMap.get(i));
-            imageView.setFitHeight(700);
-            imageView.setFitWidth(600);
+            imageView.setFitHeight(780);
+            imageView.setFitWidth(650);
             RC_listImages.getChildren().add(imageView);
         }
     }
@@ -280,27 +283,46 @@ public class ReadComicsController {
 
         // Xử lý sự kiện khi lựa chọn thay đổi
         RC_listChapter.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
-//            // Chỉ lấy phần số của newValue
-//            String numberOnly = newValue.replaceAll("[^0-9]", "");
-//            System.out.println("Number Only: " + numberOnly);
-//            uploadImageOfChapter();
+            String chapterStr = newValue.toString();
+            String subChapterStr = chapterStr.substring(9);
+            //cap nhat lai chapter
+            chapter = Integer.parseInt(subChapterStr);
+            //cap nhat lai chapter tren giao dien
+            RC_chapter.setText(chapter+"");
+            //load lai anh cua chapter
+            uploadImageOfChapter();
         });
 
     }
-    public String getIdcomics() {
-        return idcomics;
-    }
-
-    public void setIdcomics(String idcomics) {
-        this.idcomics = idcomics;
-    }
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setEventForIconBackAndNext() {
+        RC_next.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (chapter + 1  <= numberOfChapter) {
+                    chapter++; //cap nhat lai chapter
+                    RC_chapter.setText(chapter+"");
+                    RC_listChapter.setValue(RC_listChapter.getItems().get(chapter - 1)); // phan tu trong choicebox chay tu vi tri 0
+                    uploadImageOfChapter();
+                }
+                else  {
+                    showAlert(Alert.AlertType.ERROR,"Không thể next", "hết chapter!");
+                }
+            }
+        });
+        RC_back.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (chapter -1 > 0) {
+                    chapter--;
+                    RC_chapter.setText(chapter+"");
+                    RC_listChapter.setValue(RC_listChapter.getItems().get(chapter - 1)); // phan tu trong choicebox chay tu vi tri 0
+                    uploadImageOfChapter();
+                }
+                else  {
+                    showAlert(Alert.AlertType.ERROR,"Không thể back", "hết chapter!");
+                }
+            }
+        });
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
@@ -345,4 +367,43 @@ public class ReadComicsController {
 //
 //        });
 //    }
+public String getIdcomics() {
+    return idcomics;
+}
+
+    public void setIdcomics(String idcomics) {
+        this.idcomics = idcomics;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    public int getChapter() {
+        return chapter;
+    }
+
+    public void setChapter(int chapter) {
+        this.chapter = chapter;
+    }
+
+    public String getNameComics() {
+        return nameComics;
+    }
+
+    public void setNameComics(String nameComics) {
+        this.nameComics = nameComics;
+    }
+
+    public int getNumberOfChapter() {
+        return numberOfChapter;
+    }
+
+    public void setNumberOfChapter(int numberOfChapter) {
+        this.numberOfChapter = numberOfChapter;
+    }
 }

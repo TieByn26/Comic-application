@@ -132,7 +132,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="CI_readContinue" layoutX="381.0" layoutY="685.0" mnemonicParsing="false" text="Đọc tiếp">
+      <Button fx:id="CI_readContinue" layoutX="318.0" layoutY="685.0" mnemonicParsing="false" text="Đọc tiếp">
          <font>
             <Font size="20.0" />
          </font>
@@ -167,5 +167,10 @@
                 <VBox fx:id="TL_listNotifications" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red;" />
             </content>
         </ScrollPane>
+      <Button fx:id="CI_Follow" layoutX="437.0" layoutY="685.0" mnemonicParsing="false" text="Theo dõi">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

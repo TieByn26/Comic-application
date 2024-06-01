@@ -92,7 +92,7 @@
          </image>
       </ImageView>
       <ChoiceBox fx:id="RC_listChapter" layoutX="293.0" layoutY="715.0" minHeight="40.0" prefWidth="300.0" />
-      <ScrollPane fx:id="RC_scroll" layoutX="10.0" layoutY="157.0" prefHeight="546.0" prefWidth="866.0">
+      <ScrollPane fx:id="RC_scrollListImg" layoutX="10.0" layoutY="157.0" prefHeight="546.0" prefWidth="866.0">
          <content>
             <TilePane fx:id="RC_listImages" alignment="CENTER" prefHeight="546.0" prefWidth="851.0" />
          </content>
