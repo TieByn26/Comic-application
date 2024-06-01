@@ -6,6 +6,10 @@ public class CL_CheckOtp {
     public CL_CheckOtp() {
     }
 
+    public CL_CheckOtp(int OTP) {
+        this.OTP = OTP;
+    }
+
     public int getOTP() {
         return OTP;
     }

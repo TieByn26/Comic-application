@@ -7,6 +7,11 @@ public class CL_LoginInformation {
     public CL_LoginInformation() {
     }
 
+    public CL_LoginInformation(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public String getUsername() {
         return username;
     }
