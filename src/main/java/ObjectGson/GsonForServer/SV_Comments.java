@@ -6,6 +6,8 @@ public class SV_Comments {
     private int like;
     private int dislike;
 
+    private int idComment;
+
     public SV_Comments() {
     }
 
@@ -13,6 +15,31 @@ public class SV_Comments {
         this.idUser = idUser;
         this.comment = comment;
         this.like = like;
+        this.dislike = dislike;
+    }
+
+
+    public int getIdComment() {
+        return idComment;
+    }
+
+    public void setIdComment(int idComment) {
+        this.idComment = idComment;
+    }
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getDislike() {
+        return dislike;
+    }
+
+    public void setDislike(int dislike) {
         this.dislike = dislike;
     }
 
@@ -30,22 +57,6 @@ public class SV_Comments {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public int getLike() {
-        return like;
-    }
-
-    public void setLike(int like) {
-        this.like = like;
-    }
-
-    public int getDislike() {
-        return dislike;
-    }
-
-    public void setDislike(int dislike) {
-        this.dislike = dislike;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package Controller.BaseProject;
 
 import ChangeScene.ChangedSceneToReadComics;
-import RequestToServer.GetData.GetInformationComics;
+import RequestForServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.*;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -55,6 +55,7 @@ public class ComicsInformationController {
     private Button CI_readContinue;
     private String nameComics; // bien de controller goi den tu phuong thuc changedScene de luu gia tri ten truyen
     private String idComics;
+    private int idUSer;
     public void initialize() throws Exception {
         //set event click for nav_category
         General.EvenOfNav.setEventForNavCategory(nav_category,TL_scroll_ListNotifications);
@@ -75,7 +76,7 @@ public class ComicsInformationController {
             @Override
             public void handle(MouseEvent event) {
                 try {
-                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", Integer.parseInt(idComics));
+                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics,idUSer);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
@@ -114,5 +115,13 @@ public class ComicsInformationController {
 
     public void setNameComics(String nameComics) {
         this.nameComics = nameComics;
+    }
+
+    public int getIdUSer() {
+        return idUSer;
+    }
+
+    public void setIdUSer(int idUSer) {
+        this.idUSer = idUSer;
     }
 }

@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ChangedSceneToReadComics {
-    public static void ChangeScene(MouseEvent event, String pathFileFxml, String title,int idComics) throws Exception {
+    public static void ChangeScene(MouseEvent event, String pathFileFxml, String title, String idComics,int idUser) throws Exception {
         // Tạo một đối tượng FXMLLoader
         FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
 
@@ -22,25 +22,28 @@ public class ChangedSceneToReadComics {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         //lay controller
         ReadComicsController controller = (ReadComicsController) loader.getController();
 
         if (controller != null) {
             //set gia tri ten truyen cho bien idComics trong controller
             controller.setIdcomics(idComics);
-//
-//            //set du lieu cho cac comment
+            controller.setIdUser(idUser);
+            //set du lieu cho cac comment
             controller.setDataForComment();
 
-        }
-        else {
+            //set su kien tao comment
+            controller.eventCreateNewComment();
+
+            //load anh cua chapter len giao dien
+            controller.uploadImageOfChapter();
+        } else {
             System.out.println("controller ComicsInformation");
         }
 
         // Lấy đối tượng Stage từ sự kiện (MouseEvent)
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setHeight(820);
+        stage.setHeight(800);
         stage.setWidth(1200);
         // Đặt giao diện mới làm giao diện chính
         stage.setScene(new Scene(root));

@@ -3,7 +3,7 @@ package Controller.BaseProject;
 
 import ChangeScene.ChangedSceneToComicsInformation;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
-import RequestToServer.GetData.GetInformationComics;
+import RequestForServer.GetData.GetInformationComics;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,6 +62,8 @@ public class HomeController {
 
     @FXML
     private ScrollPane TL_scroll_ListNotifications;
+
+    private int idUser = 1; // set mac dinh bang 1 (chua co gia tri tu db)
 
 
 
@@ -145,7 +147,7 @@ public class HomeController {
             comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    ChangedSceneToComicsInformation.ChangeScene(event,pathComicsInformation,"Thông tin truyện",nameComic.getText());
+                    ChangedSceneToComicsInformation.ChangeScene(event,pathComicsInformation,"Thông tin truyện",nameComic.getText(), idUser);
                 }
             });
 
