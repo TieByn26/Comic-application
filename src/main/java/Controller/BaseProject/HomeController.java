@@ -3,7 +3,7 @@ package Controller.BaseProject;
 
 import ChangeScene.ChangedSceneToComicsInformation;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
-import RequestToServer.GetData.GetInformationComics;
+import RequestForServer.GetData.GetInformationComics;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

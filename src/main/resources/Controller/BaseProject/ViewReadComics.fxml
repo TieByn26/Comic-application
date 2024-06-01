@@ -81,20 +81,20 @@
                 <VBox fx:id="TL_listNotifications" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red;" />
             </content>
         </ScrollPane>
-      <ImageView fx:id="RC_next" fitHeight="40.0" fitWidth="40.0" layoutX="630.0" layoutY="745.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="RC_next" fitHeight="40.0" fitWidth="40.0" layoutX="613.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/icons8-arrow-readComcis.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="RC_back" fitHeight="40.0" fitWidth="40.0" layoutX="230.0" layoutY="745.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+      <ImageView fx:id="RC_back" fitHeight="40.0" fitWidth="40.0" layoutX="234.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <image>
             <Image url="@../../image/icons8-arrow-readComcis.png" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="RC_listChapter" layoutX="298.0" layoutY="745.0" minHeight="40.0" prefWidth="300.0" />
-      <ScrollPane fx:id="RC_scroll" layoutX="10.0" layoutY="157.0" prefHeight="583.0" prefWidth="866.0">
+      <ChoiceBox fx:id="RC_listChapter" layoutX="293.0" layoutY="715.0" minHeight="40.0" prefWidth="300.0" />
+      <ScrollPane fx:id="RC_scroll" layoutX="10.0" layoutY="157.0" prefHeight="546.0" prefWidth="866.0">
          <content>
-            <TilePane fx:id="RC_listImages" prefHeight="583.0" prefWidth="866.0" />
+            <TilePane fx:id="RC_listImages" alignment="CENTER" prefHeight="546.0" prefWidth="851.0" />
          </content>
       </ScrollPane>
       <Text fx:id="RC_nameComics" layoutX="41.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="sdvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" textAlignment="CENTER" wrappingWidth="715.7333984375">
@@ -127,7 +127,7 @@
             <Font size="20.0" />
          </font>
       </TextArea>
-      <Button fx:id="RC_btnSubmit" layoutX="999.0" layoutY="727.0" mnemonicParsing="false" text="Bình luận">
+      <Button fx:id="RC_btnSubmit" layoutX="999.0" layoutY="720.0" mnemonicParsing="false" text="Bình luận">
          <font>
             <Font size="16.0" />
          </font>

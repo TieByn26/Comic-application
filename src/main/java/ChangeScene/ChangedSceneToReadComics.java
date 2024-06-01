@@ -34,6 +34,9 @@ public class ChangedSceneToReadComics {
 
             //set su kien tao comment
             controller.eventCreateNewComment();
+
+            //load anh cua chapter len giao dien
+            controller.uploadImageOfChapter();
         } else {
             System.out.println("controller ComicsInformation");
         }

@@ -1,4 +1,4 @@
-package RequestToServer.PostData;
+package RequestForServer.PostData;
 
 import ConnectServer.Connect;
 import ObjectGson.GsonForClient.*;

@@ -1,11 +1,12 @@
 package Controller.BaseProject;
 
+import ObjectGson.GsonForServer.SV_Chapter;
 import ObjectGson.GsonForServer.SV_User;
-import RequestToServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.SV_Comments;
-import RequestToServer.GetData.GetInformationComment;
-import RequestToServer.GetData.GetInformationUser;
-import RequestToServer.PostData.UpdateComment;
+import RequestForServer.GetData.GetInformationChapter;
+import RequestForServer.GetData.GetInformationComment;
+import RequestForServer.GetData.GetInformationUser;
+import RequestForServer.PostData.UpdateComment;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,14 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class ReadComicsController {
 
@@ -64,13 +72,16 @@ public class ReadComicsController {
     private ScrollPane TL_scroll_ListNotifications;
     @FXML
     private ScrollPane RC_scrollListComment;
-
     private String idcomics;
     private int idUser;
     private int idComment;
-
+    private int chapter = 1;
+    private int numberOfChapter = 6;
     boolean isLiked = false;
     boolean isDislike = false;
+
+    ExecutorService executors;
+    ConcurrentHashMap<Integer, Image> imgMap;
 
     public void initialize() throws Exception {
         //set event click for nav_category
@@ -89,9 +100,46 @@ public class ReadComicsController {
         General.EvenOfNav.setEventForNavHome(nav_home);
     }
 
+    public void uploadImageOfChapter() { // upload cac anh cua chapter len giao dien
+        SV_Chapter chapterInformation = GetInformationChapter.getAllimageOfChapter(idcomics, chapter);
+
+        // Khởi tạo ConcurrentHashMap để lưu trữ các ảnh
+        imgMap = new ConcurrentHashMap<>();
+
+        // Khởi tạo ExecutorService với 15 luồng
+        executors = Executors.newFixedThreadPool(15);
+
+
+        //list img sau khi xu li
+        String listImg[] = splitString(chapterInformation.getLinkImage());
+        int index = 0;  // vi tri cua anh
+        //load list anh
+        for (String img : listImg) {
+            int currentIndex = index;
+            executors.execute(() -> loadImage(currentIndex, img));
+            index++;
+            System.out.println(img);
+        }
+        // Chờ tất cả các tác vụ hoàn thành
+        executors.shutdown();
+        try {
+            executors.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < index; i++) {
+            ImageView imageView = new ImageView();
+            imageView.setImage(imgMap.get(i));
+            imageView.setFitHeight(700);
+            imageView.setFitWidth(600);
+            RC_listImages.getChildren().add(imageView);
+        }
+    }
+
     public void setDataForComment() {
         //lam moi lai list comment
-       RC_listComments.getChildren().clear();
+        RC_listComments.getChildren().clear();
 
         ArrayList<SV_Comments> listComment = GetInformationComment.getAllComment(idcomics + "");
 
@@ -157,19 +205,19 @@ public class ReadComicsController {
                 @Override
                 public void handle(MouseEvent event) {
                     if (isDislike == false) { // nhan dislike lan 1
-                            CM_NumberOfDislike.setText(comment.getDislike() + 1 + "");
-                            isDislike = true;
+                        CM_NumberOfDislike.setText(comment.getDislike() + 1 + "");
+                        isDislike = true;
                         //goi gam cap nhat lai so dislike
                         int statusUpdate = UpdateComment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
                         if (statusUpdate == 0) {
-                            CM_NumberOfDislike.setText(comment.getDislike()  + ""); // reset lai so luot dislike
+                            CM_NumberOfDislike.setText(comment.getDislike() + ""); // reset lai so luot dislike
                             isDislike = false;
                             showAlert(Alert.AlertType.WARNING, "Thông báo", "dislike không thành công");
                         }
 
                     } else {  // nhan dislike lan 2
-                            CM_NumberOfDislike.setText(comment.getDislike() + "");
-                            isDislike = false;
+                        CM_NumberOfDislike.setText(comment.getDislike() + "");
+                        isDislike = false;
                         //goi gam cap nhat lai so dislike
                         int statusUpdate = UpdateComment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
                         if (statusUpdate == 0) {
@@ -195,28 +243,26 @@ public class ReadComicsController {
         RC_btnSubmit.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-              int statusUpdate = UpdateComment.createNewComment(idcomics,idUser,RC_formInputComment.getText());
-              if(statusUpdate > 0) {
-                  setDataForComment();
-                  //lam moi o nhap comment
-                  RC_formInputComment.setText("");
-              }
-              else {
-                  showAlert(Alert.AlertType.INFORMATION,"Thông báo", "Bình luân lỗi");
-              }
+                int statusUpdate = UpdateComment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
+                if (statusUpdate > 0) {
+                    setDataForComment();
+                    //lam moi o nhap comment
+                    RC_formInputComment.setText("");
+                } else {
+                    showAlert(Alert.AlertType.INFORMATION, "Thông báo", "Bình luân lỗi");
+                }
             }
         });
         RC_formInputComment.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 event.consume(); // Ngăn chặn hành động mặc định của phím Enter
-                int statusUpdate = UpdateComment.createNewComment(idcomics,idUser,RC_formInputComment.getText());
-                if(statusUpdate > 0) {
+                int statusUpdate = UpdateComment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
+                if (statusUpdate > 0) {
                     setDataForComment();
                     //lam moi o nhap comment
                     RC_formInputComment.setText("");
-                }
-                else {
-                    showAlert(Alert.AlertType.INFORMATION,"Thông báo", "Bình luân lỗi");
+                } else {
+                    showAlert(Alert.AlertType.INFORMATION, "Thông báo", "Bình luân lỗi");
                 }
             }
         });
@@ -244,4 +290,40 @@ public class ReadComicsController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    public static String[] splitString(String input) { // tra ve 1 mang img
+        if (input == null || input.isEmpty()) {
+            return new String[0];
+        }
+        return input.split(",");
+    }
+
+        private void loadImage(int index, String imageUrl) {
+            try {
+               Image image =  new Image(imageUrl);
+               imgMap.put(index,image);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+    }
+
+//    private void loadImage(int index, String imageUrl) {
+//        executors.execute(() -> {
+//            try {
+//                URL url = new URL(imageUrl);
+//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                connection.setRequestProperty("referer", "https://www.nettruyenmck.com/");
+//                try (InputStream inputStream = connection.getInputStream()) {
+//                    Image image = new Image(inputStream);
+//                    imgMap.put(index, image);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            } catch (Exception exception) {
+//                exception.printStackTrace();
+//            }
+//
+//        });
+//    }
 }

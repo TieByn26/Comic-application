@@ -1,9 +1,10 @@
-package RequestToServer.GetData;
+package RequestForServer.GetData;
 
 import ConnectServer.Connect;
-import ObjectGson.GsonForClient.CL_IdUser;
+import ObjectGson.GsonForClient.CL_IdComics;
 import ObjectGson.GsonForClient.CL_Request;
-import ObjectGson.GsonForServer.SV_User;
+import ObjectGson.GsonForServer.SV_Comments;
+import ObjectGson.GsonForServer.SV_listComment;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -11,24 +12,24 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
-public class GetInformationUser {
-    public static SV_User getInforUserForComment(int idUser) {
+public class GetInformationComment {
+    public static ArrayList<SV_Comments> getAllComment(String idComics) {
         Gson gson = new Gson();
         Socket socket = Connect.getSocket();
-        SV_User infotUser = null;
-        CL_Request req = new CL_Request("/get/InforUserForComment");
+        ArrayList<SV_Comments> allComment = new ArrayList<>();
+        CL_Request req = new CL_Request("/get/AllCommentByIdComics");
 
         // data de server thuc hien query
-        CL_IdUser cl_idUser = new CL_IdUser(idUser);
+        CL_IdComics cl_idComics = new CL_IdComics(idComics);
 
         // chuyen req thanh json
         String reqJson = gson.toJson(req);
-        String cl_idUserJson = gson.toJson(cl_idUser);
+        String cl_idComicsJson = gson.toJson(cl_idComics);
 
         try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
-            BufferedWriter sendReqtoServer = new BufferedWriter(outputStreamWriter);
+            BufferedWriter sendReqtoServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
 
             //gửi dữ liệu JSon từ client cho Server
             sendReqtoServer.write(reqJson + "\n");
@@ -38,33 +39,35 @@ public class GetInformationUser {
             // ktra server đã nhận đc yêu cầu chưa
             Connect.receiveStatus(socket);
 
-            sendReqtoServer.write(cl_idUserJson + "\n");
+            sendReqtoServer.write(cl_idComicsJson + "\n");
             sendReqtoServer.flush();
 
 
             //đọc dữ liệu json từ server
             BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
-            String inforUserJson = receive.readLine();
+            String listCommentJson = receive.readLine();
 
             // chuyển đổi từ json sang đối tượng
-            SV_User dataConvertFromServer = gson.fromJson(inforUserJson, SV_User.class);
+            SV_listComment dataConvertFromServer = gson.fromJson(listCommentJson, SV_listComment.class);
 
             // truyền dữ liệu từ server vào arrayList đã tạo sẵn
             if(dataConvertFromServer != null) {
-                infotUser = dataConvertFromServer;
+                for (SV_Comments comment : dataConvertFromServer.getListComment()) {
+                    allComment.add(comment);
+                }
             }
             else {
-                System.out.println("/get/InforUserForComment is null");
+                System.out.println("/get/AllCommentByIdComics  is null");
             }
 
             sendReqtoServer.close();
-            outputStreamWriter.close();
             receive.close();
             socket.close();
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        return infotUser;
+        return allComment;
     }
+
 }
