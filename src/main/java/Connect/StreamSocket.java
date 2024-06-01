@@ -17,8 +17,6 @@ public class StreamSocket<T> {
             //doc du lieu json duoc gui tu client
             BufferedReader jsonToClient = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
             json = jsonToClient.readLine();
-
-
         } catch (IOException e){
             throw new RuntimeException(e);
         }
@@ -28,7 +26,6 @@ public class StreamSocket<T> {
     public Boolean sendDataToCLient(Socket socket, T data){
         Gson gson = new Gson();
         try{
-            OutputStreamWriter osw = new OutputStreamWriter(socket.getOutputStream(), "UTF-8");
             DataOutputStream toClient = new DataOutputStream(socket.getOutputStream());
 
             // chuyen doi data thanh json

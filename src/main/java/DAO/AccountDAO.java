@@ -67,7 +67,7 @@ public class AccountDAO {
         try (Connection con = DatabaseConnect.getConnect()) {
             String sql = "UPDATE account SET password = ? WHERE username = ?";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
-                pstm.setString(1,clChangePass.getNewPass());
+                pstm.setString(1,HashController.sha256(clChangePass.getNewPass()));
                 pstm.setString(2,clChangePass.getUsername());
                 int ketqua = pstm.executeUpdate();
                 System.out.println("Da thuc thi query: "+sql);

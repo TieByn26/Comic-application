@@ -1,5 +1,6 @@
 package Server.ComicServer;
 
+import Connect.StreamSocket;
 import Server.Controller.ComicController;
 import Server.Controller.LoginController;
 import Server.Controller.RegisterController;
@@ -17,9 +18,9 @@ public class ClientHandler {
             BufferedReader fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println("ggd12");
             String clientRequest = fromClient.readLine();
-            System.out.println(clientRequest);
             //chuyen doi du lieu gson thanh doi tuong java va anh xa vao model
             CL_Request clRequest = gson.fromJson(clientRequest, CL_Request.class);
+            System.out.println(clRequest.getRequest());
 
             //thuc hien request
             switch (clRequest.getRequest()){
@@ -89,7 +90,7 @@ public class ClientHandler {
                 }
                 case "/change/password":{
                     try {
-
+                        LoginController.changePassword(socket);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
