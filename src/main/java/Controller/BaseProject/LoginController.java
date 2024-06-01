@@ -197,7 +197,7 @@ public class LoginController {
                     if (textpassword2.getText().equals(textpassword3.getText())) {
                         cl_registerInformation.setPassword(textpassword2.getText());
                         String check = RequestRegister.requestRegister(cl_registerInformation);
-                        if (check.equals("dang ky thanh cong\n")) {
+                        if (check.equals("dang ky thanh cong")) {
                             alert.setTitle("Information Dialog");
                             alert.setContentText("Đăng Ký Thành Công");
                             alert.showAndWait();
