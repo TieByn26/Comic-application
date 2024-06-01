@@ -153,6 +153,13 @@ public class HomeController {
 
             home_listComics.getChildren().add(comicPane);
         }
+    }
 
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }
