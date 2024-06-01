@@ -30,7 +30,7 @@ public class UserDAO {
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
                 pstm.setInt(1,idUser);
                 pstm.setString(2, cl_registerInformation.getUsername());
-                pstm.setString(3, "src/main/resources/image/icons8-tanjiro-kamado-48.png");
+                pstm.setString(3, "https://img.icons8.com/?size=100&id=otuYOSexWmVT&format=png&color=000000");
                 int ketqua = pstm.executeUpdate();
                 System.out.println("da thuc thi query: "+sql);
                 System.out.println("co "+ketqua+" dong duoc thay doi");
