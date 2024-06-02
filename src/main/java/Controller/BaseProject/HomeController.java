@@ -83,6 +83,9 @@ public class HomeController {
 
         //call function upload list top user to screen
         uploadTopUser();
+    }
+
+    public void setEventForNav (){
         //set event click for nav_category
         evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory,idUser);
         //set event click for nav_follow
@@ -93,7 +96,6 @@ public class HomeController {
         EvenOfNav.setEventForNavNotifications(nav_notfications);
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
-
     }
 
     private void uploadListComics() throws Exception {

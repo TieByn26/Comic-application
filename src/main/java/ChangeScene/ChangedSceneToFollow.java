@@ -30,8 +30,6 @@ public class ChangedSceneToFollow {
         if (controller != null) {
             //set gia tri ten truyen cho bien nameComics trong controller
             controller.setIdUser(idUser);
-
-            // goi cac ham de upload du lieu
             controller.setValueForPaneComics();
             //set event for nav
             controller.setEventForNav();

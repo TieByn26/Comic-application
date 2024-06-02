@@ -29,10 +29,15 @@ public class ChangedSceneToComicsInformation {
         if (controller != null) {
             //set gia tri ten truyen cho bien nameComics trong controller
             controller.setNameComics(nameComics);
+            controller.setIdUser(idUser);
+            //set event for nav
+
+            controller.setEventForNav();
 
             // goi cac ham de upload du lieu
             controller.loadComicsInformation();
             controller.setIdUser(idUser);
+            System.out.println("home comicsInfor " + controller.getIdUser());
             controller.checkStatusFollow();
         }
         else {

@@ -68,20 +68,6 @@ public class ComicsInformationController {
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
     public void initialize() throws Exception {
-        //set event click for nav_category
-        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory,idUser);
-
-        //set event click for nav_follow
-        EvenOfNav.setEventForNavFollow(nav_follow,idUser);
-
-        //set event click for nav_history
-        EvenOfNav.setEventForNavHistory(nav_history,idUser);
-
-        //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications);
-
-        //set event click for nav_home
-        EvenOfNav.setEventForNavHome(nav_home,idUser);
         CI_btnReadBegin.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -126,6 +112,23 @@ public class ComicsInformationController {
               }
             }
         });
+    }
+
+    public void setEventForNav () {
+        //set event click for nav_category
+        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory,idUser);
+
+        //set event click for nav_follow
+        EvenOfNav.setEventForNavFollow(nav_follow,idUser);
+
+        //set event click for nav_history
+        EvenOfNav.setEventForNavHistory(nav_history,idUser);
+
+        //set event click for nav_notification
+        EvenOfNav.setEventForNavNotifications(nav_notfications);
+
+        //set event click for nav_home
+        EvenOfNav.setEventForNavHome(nav_home,idUser);
     }
 
     public void loadComicsInformation () {

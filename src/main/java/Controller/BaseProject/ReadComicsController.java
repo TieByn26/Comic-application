@@ -1,5 +1,6 @@
 package Controller.BaseProject;
 
+import General.EvenOfNav;
 import ObjectGson.GsonForServer.SV_Chapter;
 import ObjectGson.GsonForServer.SV_User;
 import ObjectGson.GsonForServer.SV_Comments;
@@ -82,14 +83,33 @@ public class ReadComicsController {
     private int numberOfChapter = 6;
     private String nameComics;
     private int allView;
+    @FXML
+    private TilePane TL_listCategory;
+    @FXML
+    private ScrollPane TL_scroll_ListCategory;
     boolean isLiked = false;
     boolean isDislike = false;
 
     ExecutorService executors;
     ConcurrentHashMap<Integer, Image> imgMap;
+    //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
+    EvenOfNav evenOfNav = new EvenOfNav();
 
     public void initialize() throws Exception {
     }
+    public void setEventForNav (){
+        //set event click for nav_category
+        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory,idUser);
+        //set event click for nav_follow
+        EvenOfNav.setEventForNavFollow(nav_follow,idUser);
+        //set event click for nav_history
+        EvenOfNav.setEventForNavHistory(nav_history,idUser);
+        //set event click for nav_notification
+        EvenOfNav.setEventForNavNotifications(nav_notfications);
+        //set event click for nav_home
+        EvenOfNav.setEventForNavHome(nav_home,idUser);
+    }
+
     // upload cac anh cua chapter len giao dien
     public void uploadImageOfChapter() {
         //lam moi lai list tryuen

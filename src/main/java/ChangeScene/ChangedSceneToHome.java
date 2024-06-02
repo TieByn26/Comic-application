@@ -27,6 +27,9 @@ public class ChangedSceneToHome {
         HomeController controller = loader.getController();
         if(controller != null) {
             controller.setIdUser(idUser);
+            //set event for nav
+            controller.setEventForNav();
+            System.out.println("home idUser" + controller.getIdUser());
             //load thong tin truyen ra giao dien
             try {
                 System.out.println(324);

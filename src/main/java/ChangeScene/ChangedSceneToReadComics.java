@@ -48,6 +48,9 @@ public class ChangedSceneToReadComics {
             //cap nhat lich su doc truyen
             controller.updateListHistory();
 
+            //set event for Nav
+            controller.setEventForNav();
+
         } else {
             System.out.println("controller ComicsInformation");
         }
