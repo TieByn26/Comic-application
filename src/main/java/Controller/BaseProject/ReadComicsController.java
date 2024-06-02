@@ -7,6 +7,7 @@ import RequestForServer.GetData.GetInformationChapter;
 import RequestForServer.GetData.GetInformationComment;
 import RequestForServer.GetData.GetInformationUser;
 import RequestForServer.PostData.Comment;
+import RequestForServer.PostData.History;
 import RequestForServer.PostData.Statistics;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -109,6 +110,8 @@ public class ReadComicsController {
         RC_listImages.getChildren().clear();
         // set lai vi tri ban dau cho scroll
         RC_scrollListImg.setVvalue(0);
+        //cap nhat lai lich su truyen
+        updateListHistory();
         SV_Chapter chapterInformation = GetInformationChapter.getAllimageOfChapter(idcomics, chapter);
         // Khởi tạo ConcurrentHashMap để lưu trữ các ảnh
         imgMap = new ConcurrentHashMap<>();
@@ -335,7 +338,14 @@ public class ReadComicsController {
           System.out.println("update view fail");
       }
     }
-
+public void updateListHistory () {
+        if(History.updateChapterOfHistory(idcomics,idUser,chapter) > 0) {
+            System.out.println("update history success");
+        }
+        else {
+            System.out.println("update history fail");
+        }
+}
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);

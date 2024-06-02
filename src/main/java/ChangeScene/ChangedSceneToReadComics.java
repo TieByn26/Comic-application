@@ -45,6 +45,8 @@ public class ChangedSceneToReadComics {
             controller.setEventForIconBackAndNext();
             //cap nhat view khi load giao dien thanh cong
             controller.updateView();
+            //cap nhat lich su doc truyen
+            controller.updateListHistory();
 
         } else {
             System.out.println("controller ComicsInformation");

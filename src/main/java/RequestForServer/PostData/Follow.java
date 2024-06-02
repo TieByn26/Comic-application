@@ -145,7 +145,7 @@ public class Follow {
                 statusUpdate = dataConvertFromServer.getStatusUpdate();
             }
             else {
-                System.out.println("/update/addNewFollow fail");
+                System.out.println("checkStatusFollow fail");
             }
 
             sendReqtoServer.close();
