@@ -44,27 +44,32 @@
         </Pane>
         <Pane layoutX="100.0" layoutY="55.0" prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #de741c;">
             <children>
-                <Label fx:id="nav_follow" layoutX="259.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Theo dõi" textFill="WHITE">
+                <Label fx:id="nav_follow" layoutX="153.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Theo dõi" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_notfications" layoutX="807.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thông báo" textFill="WHITE">
+                <Label fx:id="nav_notfications" layoutX="626.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thông báo" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_history" layoutX="460.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Lịch sử" textFill="WHITE">
+                <Label fx:id="nav_history" layoutX="317.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Lịch sử" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_category" layoutX="633.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thể loại" textFill="WHITE">
+                <Label fx:id="nav_category" layoutX="465.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thể loại" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_home" layoutX="95.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Home" textFill="WHITE">
+                <Label fx:id="nav_home" layoutX="26.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Home" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_UpComics" layoutX="825.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Đăng truyện" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>

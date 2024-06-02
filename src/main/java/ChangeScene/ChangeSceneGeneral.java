@@ -26,6 +26,8 @@ public class ChangeSceneGeneral {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setHeight(800);
         stage.setWidth(1200);
+        stage.setResizable(false);
+        stage.centerOnScreen();
         // Đặt giao diện mới làm giao diện chính
         stage.setScene(new Scene(root));
 

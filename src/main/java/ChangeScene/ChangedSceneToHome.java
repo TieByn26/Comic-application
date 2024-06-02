@@ -29,7 +29,6 @@ public class ChangedSceneToHome {
             controller.setIdUser(idUser);
             //set event for nav
             controller.setEventForNav();
-            System.out.println("home idUser" + controller.getIdUser());
             //load thong tin truyen ra giao dien
             try {
                 System.out.println(324);
@@ -46,6 +45,8 @@ public class ChangedSceneToHome {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setHeight(800);
         stage.setWidth(1200);
+        stage.setResizable(false);
+        stage.centerOnScreen();
         // Đặt giao diện mới làm giao diện chính
         stage.setScene(new Scene(root));
 
@@ -74,7 +75,8 @@ public class ChangedSceneToHome {
             controller.setIdUser(idUser);
             controller.setIdCategory(idCategory);
             controller.setHome_nameListComics("Danh sách truyện theo thể loại "+categoryName);
-
+            //set event for nav
+            controller.setEventForNav();
             // load thong tin truyen ra giao dien
             try {
                 controller.decideDataWillUploadToPaneComics("");

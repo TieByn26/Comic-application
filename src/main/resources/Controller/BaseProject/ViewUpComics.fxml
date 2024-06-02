@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.UploadComicsByUserController">
+    <children>
+        <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #b85b56;">
+            <children>
+                <Text fill="WHITE" layoutX="78.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="12.0" style="-fx-font-weight: bold;" text="BLOG COMICS" x="5.0" y="10.0">
+                    <font>
+                        <Font size="26.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="home_inputDataFind" layoutX="499.0" layoutY="7.0" prefHeight="35.0" prefWidth="300.0" />
+                <ImageView fx:id="home_iconFind" fitHeight="40.0" fitWidth="40.0" layoutX="815.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                    <image>
+                        <Image url="@../../image/icons8-find-50.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="home_iconLogout" fitHeight="40.0" fitWidth="40.0" layoutX="1139.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                    <image>
+                        <Image url="@../../image/icons8-logout-80.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="home_iconProfile" fitHeight="40.0" fitWidth="40.0" layoutX="1068.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                    <image>
+                        <Image url="@../../image/icons8-tanjiro-kamado-48.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="100.0" layoutY="55.0" prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #de741c;">
+            <children>
+                <Label fx:id="nav_follow" layoutX="153.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Theo dõi" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_notfications" layoutX="626.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thông báo" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_history" layoutX="317.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Lịch sử" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_category" layoutX="465.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thể loại" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_home" layoutX="26.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Home" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            <Label fx:id="nav_UpComics" layoutX="825.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Đăng truyện" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            </children>
+        </Pane>
+        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="5.0">
+            <image>
+                <Image url="@../../image/icons8-fun-48.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="home_nameListComics" layoutX="904.0" layoutY="151.0" style="-fx-font-weight: bold;" text="Tên truyện " textFill="#0e3b87">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="560.0" layoutY="151.0" style="-fx-font-weight: bold;" text="Tác giả" textFill="#042c9c">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="650.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+            <content>
+                <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
+            </content>
+        </ScrollPane>
+      <ImageView fitHeight="420.0" fitWidth="350.0" layoutX="165.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/imgLogin.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="560.0" layoutY="239.0" style="-fx-font-weight: bold;" text="Thể loại" textFill="#042c9c">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="560.0" layoutY="410.0" style="-fx-font-weight: bold;" text="Mô tả truyện" textFill="#042c9c">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="904.0" layoutY="239.0" style="-fx-font-weight: bold;" text="Chapter" textFill="#042c9c">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="560.0" layoutY="320.0" style="-fx-font-weight: bold;" text="Tình trạng" textFill="#042c9c">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="904.0" layoutY="320.0" style="-fx-font-weight: bold;" text="Link avatar truyện" textFill="#042c9c">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="745.0" layoutY="600.0" mnemonicParsing="false" text="Đăng truyện">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="904.0" layoutY="410.0" style="-fx-font-weight: bold;" text="Link ảnh của chapter" textFill="#042c9c">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="519.0" layoutY="185.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="vui lòng lấy tên người dùng ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="860.0" layoutY="185.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="nhập tên truyện">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="519.0" layoutY="270.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Nhập thể loại">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="860.0" layoutY="270.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Chapter thứ mấy?">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="519.0" layoutY="351.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Hoàn thành hay chưa?">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="860.0" layoutY="351.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Nếu muốn cập nhật lại thì nhập">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextArea layoutX="519.0" layoutY="445.0" prefHeight="135.0" prefWidth="250.0" promptText="Nhập mô tả truyện">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextArea>
+      <TextArea layoutX="860.0" layoutY="445.0" prefHeight="135.0" prefWidth="250.0" promptText="mỗi link ảnh cách nhau bởi &quot;,&quot;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextArea>
+      <Button layoutX="235.0" layoutY="610.0" mnemonicParsing="false" text="xem trước avatar">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Pane layoutX="459.0" layoutY="650.0" prefHeight="139.0" prefWidth="707.0" style="-fx-border-color: gray;">
+         <children>
+            <Text fill="RED" fontSmoothingType="LCD" layoutX="25.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lưu ý: Link ảnh của chapter phải ở dạng network path(đường dẫn mạng).phải là 1 chuỗi link liên tục(không xuống dòng) mỗi link cách nhau 1 dấu ','" wrappingWidth="650.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#2b3ae3" layoutX="25.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/anh-meme-63.jpg,https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/anh-meme-63.jpg" wrappingWidth="650.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text fontSmoothingType="LCD" layoutX="25.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ví dụ :" wrappingWidth="67.20000000000005">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children></Pane>
+    </children>
+</AnchorPane>
