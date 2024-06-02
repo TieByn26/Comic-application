@@ -89,20 +89,6 @@ public class ReadComicsController {
     ConcurrentHashMap<Integer, Image> imgMap;
 
     public void initialize() throws Exception {
-        //set event click for nav_category
-        General.EvenOfNav.setEventForNavCategory(nav_category, TL_scroll_ListNotifications);
-
-        //set event click for nav_follow
-        General.EvenOfNav.setEventForNavFollow(nav_follow,idUser);
-
-        //set event click for nav_history
-        General.EvenOfNav.setEventForNavHistory(nav_history);
-
-        //set event click for nav_notification
-        General.EvenOfNav.setEventForNavNotifications(nav_notfications);
-
-        //set event click for nav_home
-        General.EvenOfNav.setEventForNavHome(nav_home);
     }
     // upload cac anh cua chapter len giao dien
     public void uploadImageOfChapter() {

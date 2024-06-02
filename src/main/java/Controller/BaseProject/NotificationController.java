@@ -36,7 +36,7 @@ public class NotificationController {
         General.EvenOfNav.setEventForNavFollow(nav_follow,idUSer);
 
         //set event click for nav_history
-        General.EvenOfNav.setEventForNavHistory(nav_history);
+        General.EvenOfNav.setEventForNavHistory(nav_history,idUSer);
 
         //set event click for nav_notification
         General.EvenOfNav.setEventForNavNotifications(nav_notfications);

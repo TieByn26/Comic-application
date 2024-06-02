@@ -1,6 +1,7 @@
 package General;
 
 import ChangeScene.ChangeSceneGeneral;
+import ChangeScene.ChangeSceneToHistory;
 import ChangeScene.ChangedSceneToFollow;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -29,17 +30,18 @@ public class EvenOfNav {
                     throw new RuntimeException(e);
                 }
             }
-
         });
-
     }
-
-    public static void setEventForNavHistory(Label navHistory) {
+    public static void setEventForNavHistory(Label navHistory,int idUser) {
         navHistory.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 //call function change scene
-                ChangeSceneGeneral.ChangeScene(event, pathHistory, "Lịch sử");
+                try {
+                    ChangeSceneToHistory.ChangeScene(event, pathHistory, "Lịch sử",idUser);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }

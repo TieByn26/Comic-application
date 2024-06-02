@@ -77,7 +77,7 @@
             <content>
                 <VBox fx:id="HT_parentListComics" alignment="CENTER" prefHeight="390.0" prefWidth="1200.0">
                     <children>
-                        <TilePane fx:id="HT_listComics" alignment="CENTER" prefHeight="638.0" prefWidth="1200.0" />
+                        <TilePane fx:id="HT_listComics" alignment="CENTER" hgap="10.0" prefHeight="638.0" prefWidth="1200.0" vgap="20.0" />
                     </children>
                 </VBox>
             </content></ScrollPane>

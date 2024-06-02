@@ -33,6 +33,8 @@ public class ChangedSceneToFollow {
 
             // goi cac ham de upload du lieu
             controller.setValueForPaneComics();
+            //set event for nav
+            controller.setEventForNav();
         }
         else {
             System.out.println("controller ComicsInformation");

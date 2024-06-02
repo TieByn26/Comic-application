@@ -85,7 +85,7 @@ public class HomeController {
         General.EvenOfNav.setEventForNavFollow(nav_follow,idUser);
 
         //set event click for nav_history
-        General.EvenOfNav.setEventForNavHistory(nav_history);
+        General.EvenOfNav.setEventForNavHistory(nav_history,idUser);
 
         //set event click for nav_notification
         General.EvenOfNav.setEventForNavNotifications(nav_notfications);

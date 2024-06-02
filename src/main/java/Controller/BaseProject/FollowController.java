@@ -45,6 +45,8 @@ public class FollowController {
 
     private int idUser;
     public void initialize() throws Exception {
+    }
+    public void setEventForNav() {
         //set event click for nav_category
         General.EvenOfNav.setEventForNavCategory(nav_category,TL_scroll_ListNotifications);
 
@@ -52,7 +54,7 @@ public class FollowController {
         General.EvenOfNav.setEventForNavFollow(nav_follow,idUser);
 
         //set event click for nav_history
-        General.EvenOfNav.setEventForNavHistory(nav_history);
+        General.EvenOfNav.setEventForNavHistory(nav_history,idUser);
 
         //set event click for nav_notification
         General.EvenOfNav.setEventForNavNotifications(nav_notfications);
