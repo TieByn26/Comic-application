@@ -27,12 +27,13 @@ public class NotificationController {
 
     @FXML
     private ScrollPane TL_scroll_ListNotifications;
+    private int idUSer;
     public void initialize() throws Exception {
         //set event click for nav_category
         General.EvenOfNav.setEventForNavCategory(nav_category,TL_scroll_ListNotifications);
 
         //set event click for nav_follow
-        General.EvenOfNav.setEventForNavFollow(nav_follow);
+        General.EvenOfNav.setEventForNavFollow(nav_follow,idUSer);
 
         //set event click for nav_history
         General.EvenOfNav.setEventForNavHistory(nav_history);
@@ -42,5 +43,13 @@ public class NotificationController {
 
         //set event click for nav_home
         General.EvenOfNav.setEventForNavHome(nav_home);
+    }
+
+    public int getIdUSer() {
+        return idUSer;
+    }
+
+    public void setIdUSer(int idUSer) {
+        this.idUSer = idUSer;
     }
 }

@@ -66,7 +66,7 @@ public class ComicsInformationController {
         General.EvenOfNav.setEventForNavCategory(nav_category,TL_scroll_ListNotifications);
 
         //set event click for nav_follow
-        General.EvenOfNav.setEventForNavFollow(nav_follow);
+        General.EvenOfNav.setEventForNavFollow(nav_follow,idUSer);
 
         //set event click for nav_history
         General.EvenOfNav.setEventForNavHistory(nav_history);
@@ -123,7 +123,6 @@ public class ComicsInformationController {
     }
 
     public void loadComicsInformation () {
-        System.out.println("dasfa");
         // lay du lieu tu server
         SV_ComicsInformation sv_comicsInformation =  GetInformationComics.getFullComicsInformationByNameComics(nameComics);
         // lay so luong view

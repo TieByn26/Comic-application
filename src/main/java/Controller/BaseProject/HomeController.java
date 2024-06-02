@@ -2,6 +2,7 @@ package Controller.BaseProject;
 
 
 import ChangeScene.ChangedSceneToComicsInformation;
+import ChangeScene.ChangedSceneToFollow;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
 import RequestForServer.GetData.GetInformationComics;
 import javafx.event.EventHandler;
@@ -81,7 +82,7 @@ public class HomeController {
         General.EvenOfNav.setEventForNavCategory(nav_category,TL_scroll_ListNotifications);
 
         //set event click for nav_follow
-        General.EvenOfNav.setEventForNavFollow(nav_follow);
+        General.EvenOfNav.setEventForNavFollow(nav_follow,idUser);
 
         //set event click for nav_history
         General.EvenOfNav.setEventForNavHistory(nav_history);

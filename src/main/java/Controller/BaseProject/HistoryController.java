@@ -28,12 +28,14 @@ public class HistoryController {
     @FXML
     private ScrollPane TL_scroll_ListNotifications;
 
+    private int idUser;
+
     public void initialize() throws Exception {
         //set event click for nav_category
         General.EvenOfNav.setEventForNavCategory(nav_category,TL_scroll_ListNotifications);
 
         //set event click for nav_follow
-        General.EvenOfNav.setEventForNavFollow(nav_follow);
+        General.EvenOfNav.setEventForNavFollow(nav_follow,idUser);
 
         //set event click for nav_history
         General.EvenOfNav.setEventForNavHistory(nav_history);
@@ -43,5 +45,13 @@ public class HistoryController {
 
         //set event click for nav_home
         General.EvenOfNav.setEventForNavHome(nav_home);
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }

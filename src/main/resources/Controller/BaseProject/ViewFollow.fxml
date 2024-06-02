@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -74,13 +75,13 @@
             </image>
         </ImageView>
         <ScrollPane fx:id="FL_scroller" fitToHeight="true" fitToWidth="true" layoutY="162.0" prefHeight="638.0" prefWidth="1200.0">
-            <content>
-                <VBox fx:id="FL_parentListComics" alignment="CENTER" prefHeight="390.0" prefWidth="1200.0">
-                    <children>
-                        <TilePane fx:id="FL_listComics" alignment="CENTER" prefHeight="638.0" prefWidth="1200.0" />
-                    </children>
-                </VBox>
-            </content></ScrollPane>
+         <content>
+                  <TilePane fx:id="FL_listComics" alignment="CENTER" hgap="20.0" prefHeight="638.0" prefWidth="1200.0">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </TilePane>
+         </content></ScrollPane>
         <Label layoutX="44.0" layoutY="124.0" style="-fx-font-weight: bold;" text="Danh sách truyện đang theo dõi" textFill="#0e3b87">
             <font>
                 <Font size="20.0" />

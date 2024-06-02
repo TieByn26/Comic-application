@@ -93,7 +93,7 @@ public class ReadComicsController {
         General.EvenOfNav.setEventForNavCategory(nav_category, TL_scroll_ListNotifications);
 
         //set event click for nav_follow
-        General.EvenOfNav.setEventForNavFollow(nav_follow);
+        General.EvenOfNav.setEventForNavFollow(nav_follow,idUser);
 
         //set event click for nav_history
         General.EvenOfNav.setEventForNavHistory(nav_history);

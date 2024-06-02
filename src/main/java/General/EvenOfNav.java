@@ -1,6 +1,7 @@
 package General;
 
 import ChangeScene.ChangeSceneGeneral;
+import ChangeScene.ChangedSceneToFollow;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -15,15 +16,18 @@ public class EvenOfNav {
     private static String pathHistory = "/Controller/BaseProject/ViewHistory.fxml";
     private static  String pathProfile = "/Controller/BaseProject/ViewProfile.fxml";
     private static  String pathHome = "/Controller/BaseProject/ViewHome.fxml";
-
     private static boolean isHide_listCategory = false;
 
-    public static  void setEventForNavFollow (Label navFollow) {
+    public static  void setEventForNavFollow (Label navFollow, int idUser) {
         navFollow.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 //call function change scene
-                ChangeSceneGeneral.ChangeScene(event, pathFollow, "Theo dõi");
+                try {
+                    ChangedSceneToFollow.ChangeScene(event, pathFollow, "Theo dõi",idUser);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
 
         });
