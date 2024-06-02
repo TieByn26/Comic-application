@@ -1,13 +1,9 @@
 package Server.ComicServer;
 
 import Connect.StreamSocket;
+import DAO.CategoryDAO;
 import DAO.UserDAO;
-import Server.Controller.ChapterController;
-import Server.Controller.ComicController;
-import Server.Controller.LoginController;
-import Server.Controller.RegisterController;
-import Server.Controller.CommentController;
-import Server.Controller.UserController;
+import Server.Controller.*;
 import Server.ObjectGson.GsonForClient.CL_Request;
 import com.google.gson.Gson;
 
@@ -48,7 +44,7 @@ public class ClientHandler {
                 }
                 case "/get/viewByIdComics" : {
                     try {
-                        ComicController.responeAllViews(socket);
+                        StatisticsController.responeAllViews(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -56,7 +52,7 @@ public class ClientHandler {
                 }
                 case "/get/IdCategoryByIdComics" : {
                     try {
-                        ComicController.responeIdCategoryByIdComics(socket);
+                        CategoryController.responeIdCategoryByIdComics(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -64,7 +60,7 @@ public class ClientHandler {
                 }
                 case "/get/CategoryNameByIdCategory" : {
                     try {
-                        ComicController.responeCategoryNameByIdCategory(socket);
+                        CategoryController.responeCategoryNameByIdCategory(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -145,6 +141,14 @@ public class ClientHandler {
                 case "/change/password":{
                     try {
                         LoginController.changePassword(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/AllView":{
+                    try {
+                        StatisticsController.updateView(socket);
                     }catch (Exception e){
                         e.printStackTrace();
                     }

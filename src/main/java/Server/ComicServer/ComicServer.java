@@ -10,9 +10,7 @@ import java.net.Socket;
 
 public class ComicServer{
     private ServerSocket serverSocket;
-    private int Port = 5321;
-
-
+    private int Port = 5525;
 
     public ComicServer() throws IOException {
         //tao serversocket
