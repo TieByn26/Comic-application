@@ -187,6 +187,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/AllComicsFollow":{
+                    try {
+                        FollowController.responeComicsFollowInformationByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }

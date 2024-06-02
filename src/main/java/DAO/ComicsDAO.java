@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class ComicsDAO {
-    public static SV_ListComicsInformations selectALLComics() {  // lay thong tin truyen gom: ten truyen, so luong chapter, avatar truyen  (load ra home)
+    public static SV_ListComicsInformations selectALLComics() {  // lay thong tin truyen gom: ten truyen, so luong chapter, avatar truyen  cua tat ca truyen
         Connection connection = DatabaseConnect.getConnect();
 
         SV_ListComicsInformations listComics = new SV_ListComicsInformations();
@@ -40,7 +40,36 @@ public class ComicsDAO {
 
         return listComics;
     }
+    public static SV_ComicsInformation selectComicsInformationByIdComics(String idComics) {  // lay thong tin truyen gom: ten truyen, so luong chapter, avatar truyen
+        Connection connection = DatabaseConnect.getConnect();
 
+        SV_ComicsInformation comicsInformaton = new SV_ComicsInformation();
+        try {
+            String querySQL = "SELECT `nameComics`, `avatarComcis`, `numberOfChapter` FROM `comicsinformation` WHERE idComics = ?";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+
+            st.setString(1,idComics);
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String name = rs.getString(1);
+                String avtComics = rs.getString(2);
+                int numberOfChapter = rs.getInt(3);
+
+                comicsInformaton = new SV_ComicsInformation(name, avtComics, numberOfChapter);
+
+            }
+
+            DatabaseConnect.closeConnect(connection);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return comicsInformaton;
+    }
     public static SV_ComicsInformation selectFullComicsInformationByNameComics(String nameComics) {  //ham lay tat ca thong tin cua truyen
         //tao connect toi server
         Connection connection = DatabaseConnect.getConnect();

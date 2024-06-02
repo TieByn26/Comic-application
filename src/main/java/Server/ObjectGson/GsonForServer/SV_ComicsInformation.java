@@ -36,6 +36,7 @@ public class SV_ComicsInformation {
         this.numberOfChapter = numberOfChapter;
     }
 
+
     public String getNameComic() {
         return nameComic;
     }
