@@ -55,7 +55,7 @@ public class HistoryController {
 
     public void  setEventForNav () {
         //set event click for nav_category
-        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory);
+        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory,idUser);
 
         //set event click for nav_follow
         EvenOfNav.setEventForNavFollow(nav_follow,idUser);
@@ -67,7 +67,7 @@ public class HistoryController {
         EvenOfNav.setEventForNavNotifications(nav_notfications);
 
         //set event click for nav_home
-        EvenOfNav.setEventForNavHome(nav_home);
+        EvenOfNav.setEventForNavHome(nav_home,idUser);
     }
 
     public void setValueForPaneComics() throws Exception {

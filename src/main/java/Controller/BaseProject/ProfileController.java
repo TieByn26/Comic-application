@@ -38,7 +38,7 @@ public class ProfileController {
     EvenOfNav evenOfNav = new EvenOfNav();
     public void initialize() throws Exception {
         //set event click for nav_category
-        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory);
+        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory,idUser);
 
         //set event click for nav_follow
         EvenOfNav.setEventForNavFollow(nav_follow,idUser);
@@ -50,7 +50,7 @@ public class ProfileController {
         EvenOfNav.setEventForNavNotifications(nav_notfications);
 
         //set event click for nav_home
-        EvenOfNav.setEventForNavHome(nav_home);
+        EvenOfNav.setEventForNavHome(nav_home,idUser);
     }
 
     public int getIdUSer() {

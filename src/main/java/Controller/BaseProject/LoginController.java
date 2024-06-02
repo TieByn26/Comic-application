@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -58,7 +59,7 @@ public class LoginController {
         buttonSignUp.setOnAction(actionEvent -> changeToSignUp());
         buttonSignIn.setOnAction(actionEvent -> changeToSignIn());
         buttonforget.setOnAction(this::changeToForget);
-        button3.setOnAction(this::signInNow);
+        button3.setOnMouseClicked(this::signInNow);
         button4.setOnAction(actionEvent -> signUpNow());
     }
     private void changeToSignUp(){
@@ -137,7 +138,7 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-    private void signInNow(ActionEvent event){
+    private void signInNow(MouseEvent event){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try {
             if ( textfield.getText() == null || textfield.getText().trim().isEmpty()

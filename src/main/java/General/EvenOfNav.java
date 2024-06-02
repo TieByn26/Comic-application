@@ -3,6 +3,7 @@ package General;
 import ChangeScene.ChangeSceneGeneral;
 import ChangeScene.ChangeSceneToHistory;
 import ChangeScene.ChangedSceneToFollow;
+import ChangeScene.ChangedSceneToHome;
 import ObjectGson.GsonForServer.SV_CategoryComics;
 import RequestForServer.GetData.GetInformationCategory;
 import javafx.event.EventHandler;
@@ -67,17 +68,17 @@ public class EvenOfNav {
         });
     }
 
-    public static void setEventForNavHome(Label nav_home){
+    public static void setEventForNavHome(Label nav_home, int idUser){
         nav_home.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 //call function change scene
-                ChangeSceneGeneral.ChangeScene(event, pathHome, "Thông báo");
+                ChangedSceneToHome.ChangeScene(event, pathHome, "Thông báo",idUser);
             }
         });
     }
 
-    public  void setEventForNavCategory(Label nav_category, TilePane list_category ,ScrollPane scrollCategory) {
+    public  void setEventForNavCategory(Label nav_category, TilePane list_category ,ScrollPane scrollCategory, int idUser) {
         nav_category.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -91,6 +92,15 @@ public class EvenOfNav {
                     newCategory.setFont(Font.font("System", FontWeight.BOLD, 20));
                     newCategory.setFill(Color.rgb(0,	103,	107));
                     newCategory.setCursor(Cursor.HAND);
+                    // set su kien click cho tung the loai
+                    newCategory.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+                        @Override
+                        public void handle(MouseEvent event) {
+                            ChangedSceneToHome.ChangeSceneRequestIdCategory(event,pathHome,"Home",idUser, category.getIdCategory(),category.getCategoryName());
+                        }
+                    });
+
                     list_category.getChildren().add(newCategory);
                 }
                 // hien thi box chua category
