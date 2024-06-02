@@ -7,6 +7,7 @@ import RequestForServer.GetData.GetInformationChapter;
 import RequestForServer.GetData.GetInformationComment;
 import RequestForServer.GetData.GetInformationUser;
 import RequestForServer.PostData.UpdateComment;
+import RequestForServer.PostData.UpdateStatistics;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,6 +80,7 @@ public class ReadComicsController {
     private int chapter = 1;
     private int numberOfChapter = 6;
     private String nameComics;
+    private int allView;
     boolean isLiked = false;
     boolean isDislike = false;
 
@@ -324,6 +326,15 @@ public class ReadComicsController {
             }
         });
     }
+    public void updateView() {
+      int statusUpdate = UpdateStatistics.updateView(idcomics,allView + 1);
+      if(statusUpdate > 0) {
+          System.out.println("update view success");
+      }
+      else {
+          System.out.println("update view fail");
+      }
+    }
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
@@ -405,5 +416,13 @@ public String getIdcomics() {
 
     public void setNumberOfChapter(int numberOfChapter) {
         this.numberOfChapter = numberOfChapter;
+    }
+
+    public int getAllView() {
+        return allView;
+    }
+
+    public void setAllView(int allView) {
+        this.allView = allView;
     }
 }

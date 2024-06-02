@@ -76,7 +76,17 @@ public class ComicsInformationController {
             @Override
             public void handle(MouseEvent event) {
                 try {
-                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics,idUSer,nameComics,Integer.parseInt(CI_numberOfChapter.getText()));
+                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics,idUSer,nameComics,Integer.parseInt(CI_numberOfChapter.getText()),Integer.parseInt(CI_views.getText()),1);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        CI_readLastChapter.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics,idUSer,nameComics,Integer.parseInt(CI_numberOfChapter.getText()),Integer.parseInt(CI_views.getText()),Integer.parseInt(CI_numberOfChapter.getText()));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
