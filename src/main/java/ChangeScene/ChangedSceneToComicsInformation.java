@@ -32,7 +32,7 @@ public class ChangedSceneToComicsInformation {
 
             // goi cac ham de upload du lieu
             controller.loadComicsInformation();
-            controller.setIdUSer(idUser);
+            controller.setIdUser(idUser);
             controller.checkStatusFollow();
         }
         else {

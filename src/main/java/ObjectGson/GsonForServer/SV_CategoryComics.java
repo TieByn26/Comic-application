@@ -3,16 +3,19 @@ package ObjectGson.GsonForServer;
 public class SV_CategoryComics {
     private String idCategory;
     private String categoryName;
-    private String categoryDescript;
 
     public SV_CategoryComics() {
     }
 
-    public SV_CategoryComics(String idCategory, String categoryName, String categoryDescript) {
+    public SV_CategoryComics(String idCategory) {
+        this.idCategory = idCategory;
+    }
+
+    public SV_CategoryComics(String idCategory, String categoryName) {
         this.idCategory = idCategory;
         this.categoryName = categoryName;
-        this.categoryDescript = categoryDescript;
     }
+
 
     public String getIdCategory() {
         return idCategory;
@@ -30,20 +33,11 @@ public class SV_CategoryComics {
         this.categoryName = categoryName;
     }
 
-    public String getCategoryDescript() {
-        return categoryDescript;
-    }
-
-    public void setCategoryDescript(String categoryDescript) {
-        this.categoryDescript = categoryDescript;
-    }
-
     @Override
     public String toString() {
         return "SV_CategoryComics{" +
                 "idCategory=" + idCategory +
                 ", categoryName='" + categoryName + '\'' +
-                ", categoryDescript='" + categoryDescript + '\'' +
                 '}';
     }
 }

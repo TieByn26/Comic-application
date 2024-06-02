@@ -2,6 +2,7 @@ package Controller.BaseProject;
 
 import ChangeScene.ChangedSceneToComicsInformation;
 import ChangeScene.ChangedSceneToFollow;
+import General.EvenOfNav;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
 import RequestForServer.GetData.GetInformationFollow;
 import javafx.event.EventHandler;
@@ -37,30 +38,31 @@ public class FollowController {
     @FXML
     private Label nav_home;
     @FXML
-    private ScrollPane TL_scroll_ListNotifications;
+    private TilePane TL_listCategory;
+    @FXML
+    private ScrollPane TL_scroll_ListCategory;
     @FXML
     private TilePane FL_listComics;
-
-
-
     private int idUser;
+    //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
+    EvenOfNav evenOfNav = new EvenOfNav();
     public void initialize() throws Exception {
     }
     public void setEventForNav() {
         //set event click for nav_category
-        General.EvenOfNav.setEventForNavCategory(nav_category,TL_scroll_ListNotifications);
+        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory);
 
         //set event click for nav_follow
-        General.EvenOfNav.setEventForNavFollow(nav_follow,idUser);
+        EvenOfNav.setEventForNavFollow(nav_follow,idUser);
 
         //set event click for nav_history
-        General.EvenOfNav.setEventForNavHistory(nav_history,idUser);
+        EvenOfNav.setEventForNavHistory(nav_history,idUser);
 
         //set event click for nav_notification
-        General.EvenOfNav.setEventForNavNotifications(nav_notfications);
+        EvenOfNav.setEventForNavNotifications(nav_notfications);
 
         //set event click for nav_home
-        General.EvenOfNav.setEventForNavHome(nav_home);
+        EvenOfNav.setEventForNavHome(nav_home);
     }
 
     public void setValueForPaneComics() throws Exception {

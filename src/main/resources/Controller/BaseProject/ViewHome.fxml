@@ -107,9 +107,9 @@
             <VBox fx:id="home_listTopUser" prefHeight="390.0" prefWidth="200.0" />
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="TL_scroll_ListNotifications" fitToHeight="true" fitToWidth="true" layoutX="550.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+      <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="650.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
          <content>
-            <VBox fx:id="TL_listNotifications" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red;" />
+            <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
          </content>
       </ScrollPane>
    </children>
