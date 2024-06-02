@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
-public class UpdateStatistics {
+public class Statistics {
     public static int updateView(String idComics, int allView) {
         Gson gson  = new Gson();
 

@@ -30,10 +30,10 @@ public class ChangedSceneToComicsInformation {
             //set gia tri ten truyen cho bien nameComics trong controller
             controller.setNameComics(nameComics);
 
-            //set du lieu cho cac bien
+            // goi cac ham de upload du lieu
             controller.loadComicsInformation();
             controller.setIdUSer(idUser);
-
+            controller.checkStatusFollow();
         }
         else {
             System.out.println("controller ComicsInformation");

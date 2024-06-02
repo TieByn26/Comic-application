@@ -3,8 +3,10 @@ package Controller.BaseProject;
 import ChangeScene.ChangedSceneToReadComics;
 import RequestForServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.*;
+import RequestForServer.PostData.Follow;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -52,10 +54,13 @@ public class ComicsInformationController {
     @FXML
     private Button CI_btnReadBegin;
     @FXML
+    private Button CI_Follow;
+    @FXML
     private Button CI_readContinue;
     private String nameComics; // bien de controller goi den tu phuong thuc changedScene de luu gia tri ten truyen
     private String idComics;
     private int idUSer;
+    boolean isFollow = false;
     public void initialize() throws Exception {
         //set event click for nav_category
         General.EvenOfNav.setEventForNavCategory(nav_category,TL_scroll_ListNotifications);
@@ -71,7 +76,6 @@ public class ComicsInformationController {
 
         //set event click for nav_home
         General.EvenOfNav.setEventForNavHome(nav_home);
-
         CI_btnReadBegin.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -92,7 +96,30 @@ public class ComicsInformationController {
                 }
             }
         });
-
+        // su kien nhan nut theo doi
+        CI_Follow.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+              if(isFollow  == false) {
+                  CI_Follow.setStyle("-fx-background-color: #FF6699;-fx-cursor: hand");
+                  isFollow = true;
+                  if(Follow.addNewFollow(idComics,idUSer) == 0) {
+                      CI_Follow.setStyle("-fx-background-color: #FFCC66; -fx-cursor: hand");
+                      isFollow = false;
+                      showAlert(Alert.AlertType.ERROR,"loi he thong","không thể theo dõi");
+                  }
+              }
+              else {
+                      CI_Follow.setStyle("-fx-background-color: #FFCC66; -fx-cursor: hand");
+                      isFollow = false;
+                      if(Follow.deleteFollow(idComics,idUSer) == 0) {
+                          CI_Follow.setStyle("-fx-background-color: #FF6699;-fx-cursor: hand");
+                          showAlert(Alert.AlertType.ERROR,"loi he thong","không thể hủy theo dõi");
+                          isFollow = true;
+                  }
+              }
+            }
+        });
     }
 
     public void loadComicsInformation () {
@@ -117,6 +144,22 @@ public class ComicsInformationController {
         CI_avatarComics.setImage(avtComics);
         CI_views.setText(svStatistic.getAllView()+"");
         CI_category.setText(svCategoryComics.getCategoryName());
+    }
+    public void checkStatusFollow () { // kiem tra xem truyen da duoc theo doi hay chua
+        // xem truyen da duoc theo doi hay chua
+        if (Follow.checkStatusFollow(idComics,idUSer) == 0) {
+            isFollow = false;
+        }
+        else {
+            CI_Follow.setStyle("-fx-background-color: #FF6699;-fx-cursor: hand");
+            isFollow = true;
+        }
+    }
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public String getNameComics() {

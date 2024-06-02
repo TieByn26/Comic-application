@@ -6,8 +6,8 @@ import ObjectGson.GsonForServer.SV_Comments;
 import RequestForServer.GetData.GetInformationChapter;
 import RequestForServer.GetData.GetInformationComment;
 import RequestForServer.GetData.GetInformationUser;
-import RequestForServer.PostData.UpdateComment;
-import RequestForServer.PostData.UpdateStatistics;
+import RequestForServer.PostData.Comment;
+import RequestForServer.PostData.Statistics;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -183,7 +183,7 @@ public class ReadComicsController {
                         CM_NumberOflike.setText(comment.getLike() + 1 + "");
                         isLiked = true;
                         //goi gam cap nhat lai so like
-                        int statusUpdate = UpdateComment.updateNumberOfLike(comment.getIdComment(), Integer.parseInt(CM_NumberOflike.getText()));
+                        int statusUpdate = Comment.updateNumberOfLike(comment.getIdComment(), Integer.parseInt(CM_NumberOflike.getText()));
                         if (statusUpdate == 0) {
                             CM_NumberOflike.setText(comment.getLike() + "");
                             isLiked = false;
@@ -195,7 +195,7 @@ public class ReadComicsController {
                         isLiked = false;
 
                         //goi gam cap nhat lai so like
-                        int statusUpdate = UpdateComment.updateNumberOfLike(comment.getIdComment(), Integer.parseInt(CM_NumberOflike.getText()));
+                        int statusUpdate = Comment.updateNumberOfLike(comment.getIdComment(), Integer.parseInt(CM_NumberOflike.getText()));
                         if (statusUpdate == 0) {
                             CM_NumberOflike.setText(comment.getLike() + 1 + ""); // reset lai so luot like
                             isLiked = false;
@@ -213,7 +213,7 @@ public class ReadComicsController {
                         CM_NumberOfDislike.setText(comment.getDislike() + 1 + "");
                         isDislike = true;
                         //goi gam cap nhat lai so dislike
-                        int statusUpdate = UpdateComment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
+                        int statusUpdate = Comment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
                         if (statusUpdate == 0) {
                             CM_NumberOfDislike.setText(comment.getDislike() + ""); // reset lai so luot dislike
                             isDislike = false;
@@ -224,7 +224,7 @@ public class ReadComicsController {
                         CM_NumberOfDislike.setText(comment.getDislike() + "");
                         isDislike = false;
                         //goi gam cap nhat lai so dislike
-                        int statusUpdate = UpdateComment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
+                        int statusUpdate = Comment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
                         if (statusUpdate == 0) {
                             CM_NumberOfDislike.setText(comment.getDislike() + 1 + ""); // resset lai luot dislike
                             isDislike = false;
@@ -248,7 +248,7 @@ public class ReadComicsController {
         RC_btnSubmit.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                int statusUpdate = UpdateComment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
+                int statusUpdate = Comment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
                 if (statusUpdate > 0) {
                     setDataForComment();
                     //lam moi o nhap comment
@@ -261,7 +261,7 @@ public class ReadComicsController {
         RC_formInputComment.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 event.consume(); // Ngăn chặn hành động mặc định của phím Enter
-                int statusUpdate = UpdateComment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
+                int statusUpdate = Comment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
                 if (statusUpdate > 0) {
                     setDataForComment();
                     //lam moi o nhap comment
@@ -327,7 +327,7 @@ public class ReadComicsController {
         });
     }
     public void updateView() {
-      int statusUpdate = UpdateStatistics.updateView(idcomics,allView + 1);
+      int statusUpdate = Statistics.updateView(idcomics,allView + 1);
       if(statusUpdate > 0) {
           System.out.println("update view success");
       }

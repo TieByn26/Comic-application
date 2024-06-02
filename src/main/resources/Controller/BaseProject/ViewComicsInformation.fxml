@@ -122,17 +122,17 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="CI_readLastChapter" layoutX="260.0" layoutY="634.0" mnemonicParsing="false" text="Đọc mới nhất">
+      <Button fx:id="CI_readLastChapter" layoutX="260.0" layoutY="634.0" mnemonicParsing="false" style="-fx-background-color: #FFCC66; -fx-cursor: hand;" text="Đọc mới nhất">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="CI_btnReadBegin" layoutX="452.0" layoutY="634.0" mnemonicParsing="false" text="Đọc từ đầu">
+      <Button fx:id="CI_btnReadBegin" layoutX="452.0" layoutY="634.0" mnemonicParsing="false" style="-fx-background-color: #FFCC66; -fx-cursor: hand;" text="Đọc từ đầu">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="CI_readContinue" layoutX="318.0" layoutY="685.0" mnemonicParsing="false" text="Đọc tiếp">
+      <Button fx:id="CI_readContinue" layoutX="318.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: #FFCC66; -fx-cursor: hand;" text="Đọc tiếp">
          <font>
             <Font size="20.0" />
          </font>
@@ -167,7 +167,7 @@
                 <VBox fx:id="TL_listNotifications" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red;" />
             </content>
         </ScrollPane>
-      <Button fx:id="CI_Follow" layoutX="437.0" layoutY="685.0" mnemonicParsing="false" text="Theo dõi">
+      <Button fx:id="CI_Follow" layoutX="437.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: #FFCC66; -fx-cursor: hand;" text="Theo dõi">
          <font>
             <Font size="20.0" />
          </font>

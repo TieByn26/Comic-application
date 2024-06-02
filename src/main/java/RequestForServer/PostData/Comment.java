@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
-public class UpdateComment {
+public class Comment {
     public static int updateNumberOfLike (int idComment, int numberOflike) { //ham cap nhat lai so luot like
         Gson gson  = new Gson();
 
