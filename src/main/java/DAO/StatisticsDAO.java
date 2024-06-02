@@ -16,7 +16,7 @@ public class StatisticsDAO {
         SV_Statistic allViews = null;
         try {
             // tao ra cau query sql
-            String querySQL = "SELECT `allViews`  FROM `statistics` WHERE idComcis = ?";
+            String querySQL = "SELECT `allViews`  FROM `statistics` WHERE idComics = ?";
             PreparedStatement st = connection.prepareStatement(querySQL);
 
             st.setString(1,idComics);
@@ -51,7 +51,7 @@ public class StatisticsDAO {
         int checkPerform = 0;
         try {
             // tao ra cau query sql
-            String querySQL = "UPDATE `statistics` SET `allViews`= ? WHERE idComcis = ?";
+            String querySQL = "UPDATE `statistics` SET `allViews`= ? WHERE idComics = ?";
             PreparedStatement st = connection.prepareStatement(querySQL);
             st.setInt(1,numberOfView);
             st.setString(2,idComics);
