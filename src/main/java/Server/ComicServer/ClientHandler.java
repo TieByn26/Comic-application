@@ -203,6 +203,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/AllComicsByCategory":{
+                    try {
+                        CategoryController.responeAllComicsByCategory(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 case "/get/AllCategory":{
                     try {
                         CategoryController.selectAllCategory(socket);

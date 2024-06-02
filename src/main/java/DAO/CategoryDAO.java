@@ -1,14 +1,12 @@
 package DAO;
 
 import Connect.DatabaseConnect;
-import Server.ObjectGson.GsonForServer.SV_CategoryComics;
-import Server.ObjectGson.GsonForServer.SV_CategoryManager;
-import Server.ObjectGson.GsonForServer.SV_CategoryName;
-import Server.ObjectGson.GsonForServer.SV_listCategory;
+import Server.ObjectGson.GsonForServer.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class CategoryDAO {
     public static SV_CategoryManager selectIdCategoryByIdComics(String idComics) {  // ham tra ve id the loai
@@ -110,8 +108,39 @@ public class CategoryDAO {
             e.printStackTrace();
         }
         System.out.println("database tra ve: " + listCategory);
-
         return listCategory;
+    }
+    public static SV_ListComicsInformations selectALlComicsByCategory(String idCategory) {  // ham tra ve thong tin truyen theo 1 the loai nhat dinh
+        //tao connect toi server
+        Connection connection = DatabaseConnect.getConnect();
+        // tao doi tuong de nhan du lieu tu database
+        SV_ListComicsInformations listComics = new SV_ListComicsInformations();
+        ArrayList<String> listIdComics = new ArrayList<>();
+        try {
+            // tao ra cau query sql
+            String querySQL = "SELECT `idComics` FROM `managercategorycomics` WHERE idCategory = ?";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+            st.setString(1,idCategory);
+            // thuc thi cau query
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String idComics = rs.getString(1);
+                listIdComics.add(idComics);
+            }
+            // dong connect database
+            DatabaseConnect.closeConnect(connection);
+
+            // lay tat ca thong tin cua tung idComics
+             for (String id : listIdComics) {
+                 SV_ComicsInformation comicsInformation = ComicsDAO.selectComicsInformationByIdComics(id);
+                 listComics.getListComicsInfomations().add(comicsInformation);
+             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("database tra ve: " + listComics);
+        return listComics;
     }
 
 }
