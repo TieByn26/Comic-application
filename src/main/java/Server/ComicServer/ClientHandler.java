@@ -2,6 +2,7 @@ package Server.ComicServer;
 
 import Connect.StreamSocket;
 import DAO.CategoryDAO;
+import DAO.FollowDAO;
 import DAO.UserDAO;
 import Server.Controller.*;
 import Server.ObjectGson.GsonForClient.CL_Request;
@@ -149,6 +150,30 @@ public class ClientHandler {
                 case "/update/AllView":{
                     try {
                         StatisticsController.updateView(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/addNewFollow":{
+                    try {
+                        FollowController.addNewFollow(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/deleteFollow":{
+                    try {
+                        FollowController.deletedFollow(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/check/statusFollow":{
+                    try {
+                        FollowController.checkFollow(socket);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
