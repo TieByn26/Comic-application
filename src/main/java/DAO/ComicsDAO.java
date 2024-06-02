@@ -15,7 +15,7 @@ public class ComicsDAO {
 
         SV_ListComicsInformations listComics = new SV_ListComicsInformations();
         try {
-            String querySQL = "SELECT `nameComics`, `avatarComcis`, `numberOfChapter` FROM `comicsinformation`";
+            String querySQL = "SELECT `nameComics`, `avatarComics`, `numberOfChapter` FROM `comicsinformation`";
             PreparedStatement st = connection.prepareStatement(querySQL);
 
             ResultSet rs = st.executeQuery();
@@ -45,7 +45,7 @@ public class ComicsDAO {
 
         SV_ComicsInformation comicsInformaton = new SV_ComicsInformation();
         try {
-            String querySQL = "SELECT `nameComics`, `avatarComcis`, `numberOfChapter` FROM `comicsinformation` WHERE idComics = ?";
+            String querySQL = "SELECT `nameComics`, `avatarComics`, `numberOfChapter` FROM `comicsinformation` WHERE idComics = ?";
             PreparedStatement st = connection.prepareStatement(querySQL);
 
             st.setString(1,idComics);
@@ -77,7 +77,7 @@ public class ComicsDAO {
         SV_ComicsInformation fullComicsInformation = null;
         try {
             // tao ra cau query sql
-            String querySQL = "SELECT `idComics`, `author`, `status`, `description`, `avatarComcis`, `numberOfChapter` FROM `comicsinformation` WHERE nameComics = ?";
+            String querySQL = "SELECT `idComics`, `author`, `status`, `description`, `avatarComics`, `numberOfChapter` FROM `comicsinformation` WHERE nameComics = ?";
             PreparedStatement st = connection.prepareStatement(querySQL);
 
             st.setString(1,nameComics);
