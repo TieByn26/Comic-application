@@ -195,6 +195,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/AllComicsHistory":{
+                    try {
+                        HistoryController.responeComicsHistoryInformationByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }
