@@ -179,6 +179,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/update/ChapterHistory":{
+                    try {
+                        HistoryController.updateChapterHistory(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }
