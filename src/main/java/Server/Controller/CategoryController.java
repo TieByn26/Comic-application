@@ -7,6 +7,7 @@ import Server.ObjectGson.GsonForClient.CL_IdCategory;
 import Server.ObjectGson.GsonForClient.CL_IdComics;
 import Server.ObjectGson.GsonForServer.SV_CategoryManager;
 import Server.ObjectGson.GsonForServer.SV_CategoryName;
+import Server.ObjectGson.GsonForServer.SV_listCategory;
 import com.google.gson.Gson;
 
 import java.net.Socket;
@@ -38,5 +39,10 @@ public class CategoryController {
 
         SV_CategoryName categoryName = CategoryDAO.selectCategoryNameByIdCategory(idCategory.getIdCategory());
         new StreamSocket<SV_CategoryName>().sendDataToCLient(socket,categoryName);
+    }
+    public static void selectAllCategory(Socket socket) throws Exception { // tra ve thong tin tat ca the loai
+        System.out.println(21);
+        SV_listCategory listCategory = CategoryDAO.selecAllCategory();
+        new StreamSocket<SV_listCategory>().sendDataToCLient(socket,listCategory);
     }
 }

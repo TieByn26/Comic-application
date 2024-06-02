@@ -203,6 +203,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/AllCategory":{
+                    try {
+                        CategoryController.selectAllCategory(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }

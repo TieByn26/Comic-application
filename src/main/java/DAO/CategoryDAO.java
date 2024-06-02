@@ -1,8 +1,10 @@
 package DAO;
 
 import Connect.DatabaseConnect;
+import Server.ObjectGson.GsonForServer.SV_CategoryComics;
 import Server.ObjectGson.GsonForServer.SV_CategoryManager;
 import Server.ObjectGson.GsonForServer.SV_CategoryName;
+import Server.ObjectGson.GsonForServer.SV_listCategory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,7 +48,7 @@ public class CategoryDAO {
         return idCategory;
     }
 
-    public static SV_CategoryName selectCategoryNameByIdCategory(String idCategory) {  // ham tra ve id the loai
+    public static SV_CategoryName selectCategoryNameByIdCategory(String idCategory) {  // ham tra ve ten the loai theo id
         //tao connect toi server
         Connection connection = DatabaseConnect.getConnect();
         // tao doi tuong de nhan du lieu tu database
@@ -79,6 +81,37 @@ public class CategoryDAO {
         System.out.println("database tra ve: " + categoryName);
 
         return categoryName;
+    }
+
+    public static SV_listCategory selecAllCategory() {  // ham tra ve thong tin tat ca the loai
+        //tao connect toi server
+        Connection connection = DatabaseConnect.getConnect();
+        // tao doi tuong de nhan du lieu tu database
+        SV_listCategory listCategory = new SV_listCategory();
+        try {
+            // tao ra cau query sql
+            String querySQL = "SELECT `idCategory`, `categoryInformation` FROM `categorycomics` ";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+            // thuc thi cau query
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String idCategory = rs.getString(1);
+                String categoryName = rs.getString(2);
+
+                SV_CategoryComics newCategory = new SV_CategoryComics(idCategory,categoryName);
+
+                listCategory.getListCategory().add(newCategory);
+            }
+            // dong connect database
+            DatabaseConnect.closeConnect(connection);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("database tra ve: " + listCategory);
+
+        return listCategory;
     }
 
 }
