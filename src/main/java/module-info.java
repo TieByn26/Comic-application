@@ -7,7 +7,7 @@ module com.example.doan {
     requires com.google.gson;
 
     opens Controller.BaseProject to javafx.fxml;
-    opens  ObjectGson.GsonForServer to com.google.gson;
-    opens  ObjectGson.GsonForClient to com.google.gson;
+    opens ObjectGson.GsonForServer to com.google.gson, javafx.base;
+    opens ObjectGson.GsonForClient to com.google.gson;
     exports Controller.BaseProject;
 }

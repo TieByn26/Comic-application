@@ -11,23 +11,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.AdminController">
+<AnchorPane prefHeight="647.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.AdminController">
    <children>
-      <Pane prefHeight="75.0" prefWidth="900.0" style="-fx-background-color: orange;">
+      <Pane prefHeight="75.0" prefWidth="1100.0" style="-fx-background-color: orange;">
          <children>
-            <Button layoutX="785.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="70.0" style="-fx-background-color: rgba(225,225,225,0);">
-               <graphic>
-                  <ImageView fitHeight="62.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../image/admin.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button layoutX="191.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Thông Báo" textAlignment="CENTER" wrapText="true">
+            <Button layoutX="785.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="70.0" style="-fx-background-color: rgba(225,225,225,0);" />
+            <Button fx:id="notifiButton" layoutX="191.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" style="-fx-border-color: #A0522D; -fx-background-color: #EEE8AA;" text="Thông Báo" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
-            <Button layoutX="300.0" layoutY="23.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="141.0" text="Danh Sách Truyện" wrapText="true">
+            <Button fx:id="listComicButton" layoutX="300.0" layoutY="23.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="141.0" style="-fx-border-color: #A0522D; -fx-background-color: #EEE8AA;" text="Danh Sách Truyện" wrapText="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
@@ -41,36 +34,38 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-         </children>
-      </Pane>
-      <Pane layoutY="75.0" prefHeight="54.0" prefWidth="900.0" style="-fx-background-color: gray;">
-         <children>
-            <Button layoutX="778.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Truyện Mới" wrapText="true" />
-            <Button layoutX="640.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Truyện Người dùng" wrapText="true" />
-            <ImageView fitHeight="25.0" fitWidth="23.0" layoutX="863.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="62.0" fitWidth="63.0" layoutX="983.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../image/down.png" />
+                  <Image url="@../../image/admin.png" />
                </image>
             </ImageView>
+            <Button fx:id="comicUserButton" layoutX="461.0" layoutY="23.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #A0522D; -fx-background-color: #EEE8AA;" text="Truyện User" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="newComicButton" layoutX="607.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" style="-fx-border-color: #A0522D; -fx-background-color: #EEE8AA;" text="Truyện Mới" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
          </children>
       </Pane>
-      <Pane layoutY="129.0" prefHeight="571.0" prefWidth="217.0" style="-fx-background-color: yellow;">
+      <Pane layoutY="75.0" prefHeight="571.0" prefWidth="410.0" style="-fx-background-color: yellow;">
          <children>
-            <TableView prefHeight="571.0" prefWidth="218.0">
+            <TableView fx:id="tableListComic" prefHeight="571.0" prefWidth="410.0" style="-fx-background-color: #FDF5E6;">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="141.59993743896484" text="C2" />
+                <TableColumn fx:id="colum1" prefWidth="71.20001220703125" text="Cột 1" />
+                <TableColumn fx:id="colum2" prefWidth="340.0" text="Cột 2" />
               </columns>
             </TableView>
          </children></Pane>
-      <Pane layoutX="218.0" layoutY="129.0" prefHeight="571.0" prefWidth="681.0" style="-fx-background-color: cyan;">
+      <Pane layoutX="410.0" layoutY="75.0" prefHeight="571.0" prefWidth="690.0" style="-fx-background-color: #FDF5E6;">
          <children>
-            <ImageView fitHeight="226.0" fitWidth="200.0" layoutX="37.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageComic" fitHeight="226.0" fitWidth="200.0" layoutX="37.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="291.0" layoutY="26.0" prefHeight="54.0" prefWidth="242.0" text="Vo Luyen Dinh Phong">
+            <Label fx:id="nameComic" layoutX="291.0" layoutY="26.0" prefHeight="54.0" prefWidth="388.0" text="Vo Luyen Dinh Phong">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -90,9 +85,9 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Pane layoutX="291.0" layoutY="286.0" prefHeight="226.0" prefWidth="333.0" style="-fx-background-color: white;">
+            <Pane layoutX="291.0" layoutY="314.0" prefHeight="226.0" prefWidth="333.0" style="-fx-background-color: white; -fx-border-color: #A0522D;">
                <children>
-                  <Text layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="332.9999999999998">
+                  <Text fx:id="description" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="332.9999999999998">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -109,31 +104,41 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="421.0" layoutY="66.0" prefHeight="54.0" prefWidth="96.0" text="Tác giả">
+            <Label fx:id="author" layoutX="421.0" layoutY="66.0" prefHeight="54.0" prefWidth="262.0" text="Tác giả">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="421.0" layoutY="103.0" prefHeight="54.0" prefWidth="96.0" text="Tác giả">
+            <Label fx:id="category" layoutX="421.0" layoutY="103.0" prefHeight="54.0" prefWidth="262.0" text="Tác giả">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="421.0" layoutY="139.0" prefHeight="54.0" prefWidth="96.0" text="Tác giả">
+            <Label fx:id="numView" layoutX="421.0" layoutY="139.0" prefHeight="54.0" prefWidth="262.0" text="Tác giả">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="421.0" layoutY="176.0" prefHeight="54.0" prefWidth="96.0" text="Tác giả">
+            <Label fx:id="numChapter" layoutX="421.0" layoutY="176.0" prefHeight="54.0" prefWidth="262.0" text="Tác giả">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="421.0" layoutY="217.0" prefHeight="54.0" prefWidth="96.0" text="Tác giả">
+            <Label fx:id="status" layoutX="421.0" layoutY="217.0" prefHeight="54.0" prefWidth="262.0" text="Tác giả">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <Button fx:id="reviewButton" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Xem trước" visible="false" />
+            <Button fx:id="deleteButton" layoutX="20.0" layoutY="286.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Hủy" visible="false" />
+            <Button fx:id="acceptButton" layoutX="124.0" layoutY="286.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Duyệt" visible="false" />
+            <Label layoutX="291.0" layoutY="281.0" prefHeight="35.0" prefWidth="130.0" text="Mô tả:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="reviewButton2" layoutX="37.0" layoutY="269.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Xem trước" />
+            <Button fx:id="editButton" layoutX="133.0" layoutY="269.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Edit" />
          </children>
       </Pane>
    </children>
