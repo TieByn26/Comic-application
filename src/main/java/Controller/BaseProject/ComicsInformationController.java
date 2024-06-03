@@ -1,16 +1,20 @@
 package Controller.BaseProject;
 
 import ChangeScene.ChangedSceneToReadComics;
+import General.EvenOfNav;
 import RequestForServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.*;
+import RequestForServer.PostData.Follow;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 
 public class ComicsInformationController {
@@ -30,7 +34,9 @@ public class ComicsInformationController {
     @FXML
     private Label nav_home;
     @FXML
-    private ScrollPane TL_scroll_ListNotifications;
+    private TilePane TL_listCategory;
+    @FXML
+    private ScrollPane TL_scroll_ListCategory;
     @FXML
     private Text CI_nameComics;
     @FXML
@@ -52,41 +58,80 @@ public class ComicsInformationController {
     @FXML
     private Button CI_btnReadBegin;
     @FXML
+    private Button CI_Follow;
+    @FXML
     private Button CI_readContinue;
     private String nameComics; // bien de controller goi den tu phuong thuc changedScene de luu gia tri ten truyen
     private String idComics;
-    private int idUSer;
+    private int idUser;
+    boolean isFollow = false;
+    //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
+    EvenOfNav evenOfNav = new EvenOfNav();
     public void initialize() throws Exception {
-        //set event click for nav_category
-        General.EvenOfNav.setEventForNavCategory(nav_category,TL_scroll_ListNotifications);
-
-        //set event click for nav_follow
-        General.EvenOfNav.setEventForNavFollow(nav_follow);
-
-        //set event click for nav_history
-        General.EvenOfNav.setEventForNavHistory(nav_history);
-
-        //set event click for nav_notification
-        General.EvenOfNav.setEventForNavNotifications(nav_notfications);
-
-        //set event click for nav_home
-        General.EvenOfNav.setEventForNavHome(nav_home);
-
         CI_btnReadBegin.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 try {
-                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics,idUSer,nameComics,Integer.parseInt(CI_numberOfChapter.getText()));
+                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics, idUser,nameComics,Integer.parseInt(CI_numberOfChapter.getText()),Integer.parseInt(CI_views.getText()),1);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }
         });
+        CI_readLastChapter.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics, idUser,nameComics,Integer.parseInt(CI_numberOfChapter.getText()),Integer.parseInt(CI_views.getText()),Integer.parseInt(CI_numberOfChapter.getText()));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        // su kien nhan nut theo doi
+        CI_Follow.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+              if(isFollow  == false) {
+                  CI_Follow.setStyle("-fx-background-color: #FF6699;-fx-cursor: hand");
+                  isFollow = true;
+                  if(Follow.addNewFollow(idComics, idUser) == 0) {
+                      CI_Follow.setStyle("-fx-background-color: #FFCC66; -fx-cursor: hand");
+                      isFollow = false;
+                      showAlert(Alert.AlertType.ERROR,"loi he thong","không thể theo dõi");
+                  }
+              }
+              else {
+                      CI_Follow.setStyle("-fx-background-color: #FFCC66; -fx-cursor: hand");
+                      isFollow = false;
+                      if(Follow.deleteFollow(idComics, idUser) == 0) {
+                          CI_Follow.setStyle("-fx-background-color: #FF6699;-fx-cursor: hand");
+                          showAlert(Alert.AlertType.ERROR,"loi he thong","không thể hủy theo dõi");
+                          isFollow = true;
+                  }
+              }
+            }
+        });
+    }
 
+    public void setEventForNav () {
+        //set event click for nav_category
+        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory,idUser);
+
+        //set event click for nav_follow
+        EvenOfNav.setEventForNavFollow(nav_follow,idUser);
+
+        //set event click for nav_history
+        EvenOfNav.setEventForNavHistory(nav_history,idUser);
+
+        //set event click for nav_notification
+        EvenOfNav.setEventForNavNotifications(nav_notfications);
+
+        //set event click for nav_home
+        EvenOfNav.setEventForNavHome(nav_home,idUser);
     }
 
     public void loadComicsInformation () {
-        System.out.println("dasfa");
         // lay du lieu tu server
         SV_ComicsInformation sv_comicsInformation =  GetInformationComics.getFullComicsInformationByNameComics(nameComics);
         // lay so luong view
@@ -108,6 +153,22 @@ public class ComicsInformationController {
         CI_views.setText(svStatistic.getAllView()+"");
         CI_category.setText(svCategoryComics.getCategoryName());
     }
+    public void checkStatusFollow () { // kiem tra xem truyen da duoc theo doi hay chua
+        // xem truyen da duoc theo doi hay chua
+        if (Follow.checkStatusFollow(idComics, idUser) == 0) {
+            isFollow = false;
+        }
+        else {
+            CI_Follow.setStyle("-fx-background-color: #FF6699;-fx-cursor: hand");
+            isFollow = true;
+        }
+    }
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     public String getNameComics() {
         return nameComics;
@@ -117,11 +178,11 @@ public class ComicsInformationController {
         this.nameComics = nameComics;
     }
 
-    public int getIdUSer() {
-        return idUSer;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setIdUSer(int idUSer) {
-        this.idUSer = idUSer;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }

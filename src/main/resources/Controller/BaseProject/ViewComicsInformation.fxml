@@ -12,6 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.TilePane?>
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.ComicsInformationController">
     <children>
         <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #b85b56;">
@@ -41,27 +42,32 @@
         </Pane>
         <Pane layoutX="100.0" layoutY="55.0" prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #de741c;">
             <children>
-                <Label fx:id="nav_follow" layoutX="259.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Theo dõi" textFill="WHITE">
+                <Label fx:id="nav_follow" layoutX="153.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Theo dõi" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_notfications" layoutX="807.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thông báo" textFill="WHITE">
+                <Label fx:id="nav_notfications" layoutX="626.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thông báo" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_history" layoutX="460.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Lịch sử" textFill="WHITE">
+                <Label fx:id="nav_history" layoutX="317.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Lịch sử" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_category" layoutX="633.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thể loại" textFill="WHITE">
+                <Label fx:id="nav_category" layoutX="465.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thể loại" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_home" layoutX="95.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Home" textFill="WHITE">
+                <Label fx:id="nav_home" layoutX="26.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Home" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_UpComics" layoutX="825.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Đăng truyện" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -122,17 +128,17 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="CI_readLastChapter" layoutX="260.0" layoutY="634.0" mnemonicParsing="false" text="Đọc mới nhất">
+      <Button fx:id="CI_readLastChapter" layoutX="260.0" layoutY="634.0" mnemonicParsing="false" style="-fx-background-color: #FFCC66; -fx-cursor: hand;" text="Đọc mới nhất">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="CI_btnReadBegin" layoutX="452.0" layoutY="634.0" mnemonicParsing="false" text="Đọc từ đầu">
+      <Button fx:id="CI_btnReadBegin" layoutX="452.0" layoutY="634.0" mnemonicParsing="false" style="-fx-background-color: #FFCC66; -fx-cursor: hand;" text="Đọc từ đầu">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="CI_readContinue" layoutX="318.0" layoutY="685.0" mnemonicParsing="false" text="Đọc tiếp">
+      <Button fx:id="CI_readContinue" layoutX="318.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: #FFCC66; -fx-cursor: hand;" text="Đọc tiếp">
          <font>
             <Font size="20.0" />
          </font>
@@ -162,12 +168,12 @@
             <Font size="24.0" />
          </font>
       </Text>
-        <ScrollPane fx:id="TL_scroll_ListNotifications" fitToHeight="true" fitToWidth="true" layoutX="550.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="650.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
             <content>
-                <VBox fx:id="TL_listNotifications" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red;" />
+                <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
             </content>
         </ScrollPane>
-      <Button fx:id="CI_Follow" layoutX="437.0" layoutY="685.0" mnemonicParsing="false" text="Theo dõi">
+      <Button fx:id="CI_Follow" layoutX="437.0" layoutY="685.0" mnemonicParsing="false" style="-fx-background-color: #FFCC66; -fx-cursor: hand;" text="Theo dõi">
          <font>
             <Font size="20.0" />
          </font>

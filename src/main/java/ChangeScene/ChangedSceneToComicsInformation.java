@@ -29,11 +29,16 @@ public class ChangedSceneToComicsInformation {
         if (controller != null) {
             //set gia tri ten truyen cho bien nameComics trong controller
             controller.setNameComics(nameComics);
+            controller.setIdUser(idUser);
+            //set event for nav
 
-            //set du lieu cho cac bien
+            controller.setEventForNav();
+
+            // goi cac ham de upload du lieu
             controller.loadComicsInformation();
-            controller.setIdUSer(idUser);
-
+            controller.setIdUser(idUser);
+            System.out.println("home comicsInfor " + controller.getIdUser());
+            controller.checkStatusFollow();
         }
         else {
             System.out.println("controller ComicsInformation");
@@ -43,6 +48,8 @@ public class ChangedSceneToComicsInformation {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setHeight(800);
         stage.setWidth(1200);
+        stage.setResizable(false);
+        stage.centerOnScreen();
         // Đặt giao diện mới làm giao diện chính
         stage.setScene(new Scene(root));
         // Đặt tiêu đề cho cửa sổ

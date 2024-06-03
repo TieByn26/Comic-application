@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -41,27 +42,32 @@
         </Pane>
         <Pane layoutX="100.0" layoutY="55.0" prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #de741c;">
             <children>
-                <Label fx:id="nav_follow" layoutX="259.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Theo dõi" textFill="WHITE">
+                <Label fx:id="nav_follow" layoutX="153.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Theo dõi" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_notfications" layoutX="807.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thông báo" textFill="WHITE">
+                <Label fx:id="nav_notfications" layoutX="626.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thông báo" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_history" layoutX="460.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Lịch sử" textFill="WHITE">
+                <Label fx:id="nav_history" layoutX="317.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Lịch sử" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_category" layoutX="633.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thể loại" textFill="WHITE">
+                <Label fx:id="nav_category" layoutX="465.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Thể loại" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="nav_home" layoutX="95.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Home" textFill="WHITE">
+                <Label fx:id="nav_home" layoutX="26.0" layoutY="3.0" prefHeight="17.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Home" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="nav_UpComics" layoutX="825.0" layoutY="3.0" style="-fx-font-weight: bold; -fx-cursor: hand;" text="Đăng truyện" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -74,21 +80,21 @@
             </image>
         </ImageView>
         <ScrollPane fx:id="FL_scroller" fitToHeight="true" fitToWidth="true" layoutY="162.0" prefHeight="638.0" prefWidth="1200.0">
-            <content>
-                <VBox fx:id="FL_parentListComics" alignment="CENTER" prefHeight="390.0" prefWidth="1200.0">
-                    <children>
-                        <TilePane fx:id="FL_listComics" alignment="CENTER" prefHeight="638.0" prefWidth="1200.0" />
-                    </children>
-                </VBox>
-            </content></ScrollPane>
+         <content>
+                  <TilePane fx:id="FL_listComics" alignment="CENTER" hgap="20.0" prefHeight="638.0" prefWidth="1200.0">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </TilePane>
+         </content></ScrollPane>
         <Label layoutX="44.0" layoutY="124.0" style="-fx-font-weight: bold;" text="Danh sách truyện đang theo dõi" textFill="#0e3b87">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <ScrollPane fx:id="TL_scroll_ListNotifications" fitToHeight="true" fitToWidth="true" layoutX="550.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="650.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
             <content>
-                <VBox fx:id="TL_listNotifications" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: red;" />
+                <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
             </content>
         </ScrollPane>
     </children>

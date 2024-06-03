@@ -1,5 +1,7 @@
 package ChangeScene;
 
+import Controller.BaseProject.ComicsInformationController;
+import Controller.BaseProject.FollowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -9,8 +11,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ChangeSceneGeneral {
-    public static void ChangeScene(MouseEvent event, String pathFileFxml,String title) {
+public class ChangedSceneToFollow {
+    public static void ChangeScene(MouseEvent event, String pathFileFxml, String title, int idUser) throws Exception{
         // Tạo một đối tượng FXMLLoader
         FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
 
@@ -22,6 +24,20 @@ public class ChangeSceneGeneral {
             throw new RuntimeException(e);
         }
 
+        //lay controller
+        FollowController controller = (FollowController) loader.getController();
+
+        if (controller != null) {
+            //set gia tri ten truyen cho bien nameComics trong controller
+            controller.setIdUser(idUser);
+            controller.setValueForPaneComics();
+            //set event for nav
+            controller.setEventForNav();
+        }
+        else {
+            System.out.println("controller ComicsInformation");
+        }
+
         // Lấy đối tượng Stage từ sự kiện (MouseEvent)
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setHeight(800);
@@ -30,7 +46,6 @@ public class ChangeSceneGeneral {
         stage.centerOnScreen();
         // Đặt giao diện mới làm giao diện chính
         stage.setScene(new Scene(root));
-
         // Đặt tiêu đề cho cửa sổ
         stage.setTitle(title);
 

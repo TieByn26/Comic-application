@@ -1,12 +1,15 @@
 package Controller.BaseProject;
 
+import General.EvenOfNav;
 import ObjectGson.GsonForServer.SV_Chapter;
 import ObjectGson.GsonForServer.SV_User;
 import ObjectGson.GsonForServer.SV_Comments;
 import RequestForServer.GetData.GetInformationChapter;
 import RequestForServer.GetData.GetInformationComment;
 import RequestForServer.GetData.GetInformationUser;
-import RequestForServer.PostData.UpdateComment;
+import RequestForServer.PostData.Comment;
+import RequestForServer.PostData.History;
+import RequestForServer.PostData.Statistics;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,34 +82,42 @@ public class ReadComicsController {
     private int chapter = 1;
     private int numberOfChapter = 6;
     private String nameComics;
+    private int allView;
+    @FXML
+    private TilePane TL_listCategory;
+    @FXML
+    private ScrollPane TL_scroll_ListCategory;
     boolean isLiked = false;
     boolean isDislike = false;
 
     ExecutorService executors;
     ConcurrentHashMap<Integer, Image> imgMap;
+    //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
+    EvenOfNav evenOfNav = new EvenOfNav();
 
     public void initialize() throws Exception {
-        //set event click for nav_category
-        General.EvenOfNav.setEventForNavCategory(nav_category, TL_scroll_ListNotifications);
-
-        //set event click for nav_follow
-        General.EvenOfNav.setEventForNavFollow(nav_follow);
-
-        //set event click for nav_history
-        General.EvenOfNav.setEventForNavHistory(nav_history);
-
-        //set event click for nav_notification
-        General.EvenOfNav.setEventForNavNotifications(nav_notfications);
-
-        //set event click for nav_home
-        General.EvenOfNav.setEventForNavHome(nav_home);
     }
+    public void setEventForNav (){
+        //set event click for nav_category
+        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory,idUser);
+        //set event click for nav_follow
+        EvenOfNav.setEventForNavFollow(nav_follow,idUser);
+        //set event click for nav_history
+        EvenOfNav.setEventForNavHistory(nav_history,idUser);
+        //set event click for nav_notification
+        EvenOfNav.setEventForNavNotifications(nav_notfications);
+        //set event click for nav_home
+        EvenOfNav.setEventForNavHome(nav_home,idUser);
+    }
+
     // upload cac anh cua chapter len giao dien
     public void uploadImageOfChapter() {
         //lam moi lai list tryuen
         RC_listImages.getChildren().clear();
         // set lai vi tri ban dau cho scroll
         RC_scrollListImg.setVvalue(0);
+        //cap nhat lai lich su truyen
+        updateListHistory();
         SV_Chapter chapterInformation = GetInformationChapter.getAllimageOfChapter(idcomics, chapter);
         // Khởi tạo ConcurrentHashMap để lưu trữ các ảnh
         imgMap = new ConcurrentHashMap<>();
@@ -181,7 +192,7 @@ public class ReadComicsController {
                         CM_NumberOflike.setText(comment.getLike() + 1 + "");
                         isLiked = true;
                         //goi gam cap nhat lai so like
-                        int statusUpdate = UpdateComment.updateNumberOfLike(comment.getIdComment(), Integer.parseInt(CM_NumberOflike.getText()));
+                        int statusUpdate = Comment.updateNumberOfLike(comment.getIdComment(), Integer.parseInt(CM_NumberOflike.getText()));
                         if (statusUpdate == 0) {
                             CM_NumberOflike.setText(comment.getLike() + "");
                             isLiked = false;
@@ -193,7 +204,7 @@ public class ReadComicsController {
                         isLiked = false;
 
                         //goi gam cap nhat lai so like
-                        int statusUpdate = UpdateComment.updateNumberOfLike(comment.getIdComment(), Integer.parseInt(CM_NumberOflike.getText()));
+                        int statusUpdate = Comment.updateNumberOfLike(comment.getIdComment(), Integer.parseInt(CM_NumberOflike.getText()));
                         if (statusUpdate == 0) {
                             CM_NumberOflike.setText(comment.getLike() + 1 + ""); // reset lai so luot like
                             isLiked = false;
@@ -211,7 +222,7 @@ public class ReadComicsController {
                         CM_NumberOfDislike.setText(comment.getDislike() + 1 + "");
                         isDislike = true;
                         //goi gam cap nhat lai so dislike
-                        int statusUpdate = UpdateComment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
+                        int statusUpdate = Comment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
                         if (statusUpdate == 0) {
                             CM_NumberOfDislike.setText(comment.getDislike() + ""); // reset lai so luot dislike
                             isDislike = false;
@@ -222,7 +233,7 @@ public class ReadComicsController {
                         CM_NumberOfDislike.setText(comment.getDislike() + "");
                         isDislike = false;
                         //goi gam cap nhat lai so dislike
-                        int statusUpdate = UpdateComment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
+                        int statusUpdate = Comment.updateNumberOfDislike(comment.getIdComment(), Integer.parseInt(CM_NumberOfDislike.getText()));
                         if (statusUpdate == 0) {
                             CM_NumberOfDislike.setText(comment.getDislike() + 1 + ""); // resset lai luot dislike
                             isDislike = false;
@@ -246,7 +257,7 @@ public class ReadComicsController {
         RC_btnSubmit.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                int statusUpdate = UpdateComment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
+                int statusUpdate = Comment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
                 if (statusUpdate > 0) {
                     setDataForComment();
                     //lam moi o nhap comment
@@ -259,7 +270,7 @@ public class ReadComicsController {
         RC_formInputComment.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 event.consume(); // Ngăn chặn hành động mặc định của phím Enter
-                int statusUpdate = UpdateComment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
+                int statusUpdate = Comment.createNewComment(idcomics, idUser, RC_formInputComment.getText());
                 if (statusUpdate > 0) {
                     setDataForComment();
                     //lam moi o nhap comment
@@ -324,7 +335,23 @@ public class ReadComicsController {
             }
         });
     }
-
+    public void updateView() {
+      int statusUpdate = Statistics.updateView(idcomics,allView + 1);
+      if(statusUpdate > 0) {
+          System.out.println("update view success");
+      }
+      else {
+          System.out.println("update view fail");
+      }
+    }
+public void updateListHistory () {
+        if(History.updateChapterOfHistory(idcomics,idUser,chapter) > 0) {
+            System.out.println("update history success");
+        }
+        else {
+            System.out.println("update history fail");
+        }
+}
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -405,5 +432,13 @@ public String getIdcomics() {
 
     public void setNumberOfChapter(int numberOfChapter) {
         this.numberOfChapter = numberOfChapter;
+    }
+
+    public int getAllView() {
+        return allView;
+    }
+
+    public void setAllView(int allView) {
+        this.allView = allView;
     }
 }
