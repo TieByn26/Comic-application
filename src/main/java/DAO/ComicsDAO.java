@@ -1,12 +1,14 @@
 package DAO;
 
 import Connect.DatabaseConnect;
+import Server.ObjectGson.GsonForClient.CL_NewComic;
 import Server.ObjectGson.GsonForServer.*;
 
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ComicsDAO {
@@ -48,7 +50,7 @@ public class ComicsDAO {
         SV_ComicsInformation fullComicsInformation = null;
         try {
             // tao ra cau query sql
-            String querySQL = "SELECT `idComics`, `author`, `status`, `description`, `avatarComcis`, `numberOfChapter` FROM `comicsinformation` WHERE nameComics = ?";
+            String querySQL = "SELECT `idComics`, `author`, `status`, `description`, `avatarComics`, `numberOfChapter` FROM `comicsinformation` WHERE nameComics = ?";
             PreparedStatement st = connection.prepareStatement(querySQL);
 
             st.setString(1,nameComics);
@@ -91,7 +93,7 @@ public class ComicsDAO {
         SV_Statistic allViews = null;
         try {
             // tao ra cau query sql
-            String querySQL = "SELECT `allViews`  FROM `statistics` WHERE idComcis = ?";
+            String querySQL = "SELECT `allViews`  FROM `statistics` WHERE idComics = ?";
             PreparedStatement st = connection.prepareStatement(querySQL);
 
             st.setString(1,idComics);
@@ -192,5 +194,107 @@ public class ComicsDAO {
 
         return categoryName;
     }
+    public static SV_ListComicsInformations getAllComicInformation(){
+        SV_ListComicsInformations list = null;
+        ArrayList<SV_ComicsInformation> listComic = new ArrayList<>();
+        try (Connection con = DatabaseConnect.getConnect()) {
+            String sql = "SELECT  * FROM comicsinformation";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                ResultSet rs = pstm.executeQuery();
+                System.out.println("Da thuc hien query: "+sql);
+                System.out.println("Du lieu duoc lay ra tu database ");
+                while (rs.next()) {
+                    listComic.add(new SV_ComicsInformation(
+                            rs.getString("nameComics"),
+                            rs.getString("idComics"),
+                            rs.getString("author"),
+                            rs.getString("status"),
+                            rs.getString("description"),
+                            rs.getString("avatarComics"),
+                            rs.getInt("numberOfChapter")
+                    ));
+                }
+                list = new SV_ListComicsInformations(listComic);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public static SV_ListStatistic getAllNumView(){
+        SV_ListStatistic list = null;
+        ArrayList<SV_Statistic> listView = new ArrayList<>();
+        try (Connection con = DatabaseConnect.getConnect()) {
+            String sql = "SELECT * FROM statistics";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                ResultSet rs = pstm.executeQuery();
+                System.out.println("Da thuc hien query: "+sql);
+                System.out.println("Du lieu duoc lay ra tu database ");
+                while (rs.next()){
+                    listView.add(new SV_Statistic(
+                            rs.getString("idComics"),
+                            rs.getInt("allViews")
+                    ));
+                }
+                list = new SV_ListStatistic(listView);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public static void addNewComic(CL_NewComic cl_newComic){
+        try (Connection con = DatabaseConnect.getConnect()) {
+            String sql = "INSERT INTO comicsinformation(nameComics,idComics,author,status,description,avatarComics,numberOfChapter) VALUES(?,?,?,?,?,?,?) ";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setString(1,cl_newComic.getNameComic());
+                pstm.setString(2, cl_newComic.getIdComic());
+                pstm.setString(3, cl_newComic.getAuthor());
+                pstm.setString(4, cl_newComic.getStatus());
+                pstm.setString(5, cl_newComic.getDescription());
+                pstm.setString(6, cl_newComic.getAvatarComic());
+                pstm.setInt(7, cl_newComic.getNumberOfChapter());
 
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: "+sql);
+                System.out.println("Co "+ketqua+" dong duoc thay doi");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void addStatistics(CL_NewComic cl_newComic){
+        try (Connection con  = DatabaseConnect.getConnect()) {
+            String sql = "INSERT INTO statistics(idComics,allViews) VALUES (?,?)";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setString(1,cl_newComic.getIdComic());
+                pstm.setInt(2,0);
+
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: "+sql);
+                System.out.println("Co "+ketqua+" dong duoc thay doi");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void updateComics(CL_NewComic cl_newComic){
+        try (Connection con  = DatabaseConnect.getConnect()) {
+            String sql = "UPDATE comicsinformation SET nameComics = ?, author = ?, status = ?, description = ?, avatarComics = ? WHERE idComics = ?";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setString(1,cl_newComic.getNameComic());
+                pstm.setString(2,cl_newComic.getAuthor());
+                pstm.setString(3, cl_newComic.getStatus());
+                pstm.setString(4,cl_newComic.getDescription());
+                pstm.setString(5,cl_newComic.getAvatarComic());
+                pstm.setString(7,cl_newComic.getIdComic());
+
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: "+sql);
+                System.out.println("Co "+ketqua+" dong duoc thay doi");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

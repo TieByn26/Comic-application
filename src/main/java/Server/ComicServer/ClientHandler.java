@@ -2,12 +2,7 @@ package Server.ComicServer;
 
 import Connect.StreamSocket;
 import DAO.UserDAO;
-import Server.Controller.ChapterController;
-import Server.Controller.ComicController;
-import Server.Controller.LoginController;
-import Server.Controller.RegisterController;
-import Server.Controller.CommentController;
-import Server.Controller.UserController;
+import Server.Controller.*;
 import Server.ObjectGson.GsonForClient.CL_Request;
 import com.google.gson.Gson;
 
@@ -25,7 +20,6 @@ public class ClientHandler {
             System.out.println(clientRequest);
             //chuyen doi du lieu gson thanh doi tuong java va anh xa vao model
             CL_Request clRequest = gson.fromJson(clientRequest, CL_Request.class);
-            System.out.println(clRequest.getRequest());
 
             //thuc hien request
             switch (clRequest.getRequest()){
@@ -146,6 +140,30 @@ public class ClientHandler {
                     try {
                         LoginController.changePassword(socket);
                     }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/all/comics":{
+                    try {
+                        ListComicsController.getAllComic(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/all/view/comics":{
+                    try {
+                        ListComicsController.getAllNumView(socket);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/add/new/comic":{
+                    try{
+
+                    } catch (Exception e){
                         e.printStackTrace();
                     }
                     break;

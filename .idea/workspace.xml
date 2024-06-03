@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b11b7acf-7176-4b2d-be55-30055781ce70" name="Changes" comment="new update base">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/ListComicsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/NewComicController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ListStatistic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_NewComic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_NewComic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CheckUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CheckUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Statistic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DoAnJava_hk2" beforeDir="false" afterPath="$PROJECT_DIR$/../DoAnJava_hk2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../copy" beforeDir="false" afterPath="$PROJECT_DIR$/../copy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../java_iostream" beforeDir="false" afterPath="$PROJECT_DIR$/../java_iostream" afterDir="false" />
@@ -32,6 +39,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -123,7 +131,10 @@
       <workItem from="1716736710793" duration="4136000" />
       <workItem from="1716772980549" duration="2109000" />
       <workItem from="1717257396080" duration="513000" />
-      <workItem from="1717261117908" duration="979000" />
+      <workItem from="1717261117908" duration="1698000" />
+      <workItem from="1717297214841" duration="15114000" />
+      <workItem from="1717351679664" duration="250000" />
+      <workItem from="1717424775124" duration="1384000" />
     </task>
     <task id="LOCAL-00001" summary="code base">
       <option name="closed" value="true" />

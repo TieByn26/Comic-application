@@ -1,7 +1,7 @@
 package Server.ObjectGson.GsonForServer;
 
 public class SV_CheckUpdate {
- private int statusUpdate;
+    private int statusUpdate;
 
     public SV_CheckUpdate(int statusUpdate) {
         this.statusUpdate = statusUpdate;
