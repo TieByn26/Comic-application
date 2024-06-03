@@ -1,6 +1,8 @@
 package Server.ComicServer;
 
 import Connect.StreamSocket;
+import DAO.CategoryDAO;
+import DAO.FollowDAO;
 import DAO.UserDAO;
 import Server.Controller.*;
 import Server.ObjectGson.GsonForClient.CL_Request;
@@ -20,6 +22,7 @@ public class ClientHandler {
             System.out.println(clientRequest);
             //chuyen doi du lieu gson thanh doi tuong java va anh xa vao model
             CL_Request clRequest = gson.fromJson(clientRequest, CL_Request.class);
+            System.out.println(clRequest.getRequest());
 
             //thuc hien request
             switch (clRequest.getRequest()){
@@ -42,7 +45,7 @@ public class ClientHandler {
                 }
                 case "/get/viewByIdComics" : {
                     try {
-                        ComicController.responeAllViews(socket);
+                        StatisticsController.responeAllViews(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -50,7 +53,7 @@ public class ClientHandler {
                 }
                 case "/get/IdCategoryByIdComics" : {
                     try {
-                        ComicController.responeIdCategoryByIdComics(socket);
+                        CategoryController.responeIdCategoryByIdComics(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -58,7 +61,7 @@ public class ClientHandler {
                 }
                 case "/get/CategoryNameByIdCategory" : {
                     try {
-                        ComicController.responeCategoryNameByIdCategory(socket);
+                        CategoryController.responeCategoryNameByIdCategory(socket);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -164,6 +167,78 @@ public class ClientHandler {
                     try{
 
                     } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/AllView":{
+                    try {
+                        StatisticsController.updateView(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/addNewFollow":{
+                    try {
+                        FollowController.addNewFollow(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/deleteFollow":{
+                    try {
+                        FollowController.deletedFollow(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/check/statusFollow":{
+                    try {
+                        FollowController.checkFollow(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/ChapterHistory":{
+                    try {
+                        HistoryController.updateChapterHistory(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/AllComicsFollow":{
+                    try {
+                        FollowController.responeComicsFollowInformationByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/AllComicsHistory":{
+                    try {
+                        HistoryController.responeComicsHistoryInformationByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/AllComicsByCategory":{
+                    try {
+                        CategoryController.responeAllComicsByCategory(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/AllCategory":{
+                    try {
+                        CategoryController.selectAllCategory(socket);
+                    }catch (Exception e){
                         e.printStackTrace();
                     }
                     break;

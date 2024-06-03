@@ -9,9 +9,5 @@
         <module name="DoAnCoSo1" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="doan" target="22" />
-      <module name="doananana" target="22" />
-    </bytecodeTargetLevel>
   </component>
 </project>

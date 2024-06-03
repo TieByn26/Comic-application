@@ -8,9 +8,12 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/ListComicsController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/NewComicController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ListStatistic.java" afterDir="false" />
+    <list default="true" id="dce853f1-8d8c-42f5-bb68-51ec4c23c9b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CategoryDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_NewComic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_NewComic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CheckUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CheckUpdate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Statistic.java" afterDir="false" />
@@ -61,14 +64,20 @@
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
-  <component name="ProjectId" id="2gVmGl88TVK9a162BF5EWcCvhfz" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2hHc8XQK7gxnDiGzyaVU2evYXEr" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;server&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -88,6 +97,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
+}</component>
 }</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -111,10 +121,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b11b7acf-7176-4b2d-be55-30055781ce70" name="Changes" comment="" />
-      <created>1715791028325</created>
+      <changelist id="dce853f1-8d8c-42f5-bb68-51ec4c23c9b9" name="Changes" comment="" />
+      <created>1717254285024</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+      <updated>1717254285024</updated>
       <updated>1715791028325</updated>
       <workItem from="1715791029366" duration="1000" />
       <workItem from="1715792980853" duration="582000" />

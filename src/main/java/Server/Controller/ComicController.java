@@ -3,6 +3,7 @@ package Server.Controller;
 import Connect.StreamSocket;
 import DAO.ComicsDAO;
 import DAO.CommentDAO;
+import DAO.StatisticsDAO;
 import DAO.UserDAO;
 import Server.ObjectGson.GsonForClient.*;
 import Server.ObjectGson.GsonForServer.*;
@@ -27,47 +28,5 @@ public class ComicController {
         System.out.println(nameComics.getNameComics());
         SV_ComicsInformation comicsInformation = ComicsDAO.selectFullComicsInformationByNameComics(nameComics.getNameComics());
         new StreamSocket<SV_ComicsInformation>().sendDataToCLient(socket,comicsInformation);
-    }
-
-    public static void responeAllViews(Socket socket) throws Exception { // tra ve tat ca luot xem
-        Gson gson = new Gson();
-
-        StreamSocket.checkConnect(socket);
-
-        //doc du lieu can thiet cho cau query
-        String idComicsJson = StreamSocket.readGsonFromClient(socket);
-        // chuyen tu json sang class
-        CL_IdComics idComics = gson.fromJson(idComicsJson,CL_IdComics.class);
-
-        SV_Statistic svStatistic = ComicsDAO.selectAllView(idComics.getIdComics());
-        new StreamSocket<SV_Statistic>().sendDataToCLient(socket,svStatistic);
-    }
-
-    public static void responeIdCategoryByIdComics(Socket socket) throws Exception { // tra ve id the loai
-        Gson gson = new Gson();
-
-        StreamSocket.checkConnect(socket);
-
-        //doc du lieu can thiet cho cau query
-        String idComicsJson = StreamSocket.readGsonFromClient(socket);
-        // chuyen tu json sang class
-        CL_IdComics idComics = gson.fromJson(idComicsJson,CL_IdComics.class);
-
-        SV_CategoryManager idCategory = ComicsDAO.selectIdCategoryByIdComics(idComics.getIdComics());
-        new StreamSocket<SV_CategoryManager>().sendDataToCLient(socket,idCategory);
-    }
-
-    public static void responeCategoryNameByIdCategory(Socket socket) throws Exception { // tra ve ten the loai theo id the loai
-        Gson gson = new Gson();
-
-        StreamSocket.checkConnect(socket);
-
-        //doc du lieu can thiet cho cau query
-        String idCategoryJson = StreamSocket.readGsonFromClient(socket);
-        // chuyen tu json sang class
-        CL_IdCategory idCategory = gson.fromJson(idCategoryJson,CL_IdCategory.class);
-
-        SV_CategoryName categoryName = ComicsDAO.selectCategoryNameByIdCategory(idCategory.getIdCategory());
-        new StreamSocket<SV_CategoryName>().sendDataToCLient(socket,categoryName);
     }
 }
