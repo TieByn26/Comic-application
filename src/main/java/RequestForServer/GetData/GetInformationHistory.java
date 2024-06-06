@@ -1,8 +1,11 @@
 package RequestForServer.GetData;
 
 import ConnectServer.Connect;
+import ObjectGson.GsonForClient.CL_IdComicsAndIdUser;
 import ObjectGson.GsonForClient.CL_IdUser;
 import ObjectGson.GsonForClient.CL_Request;
+import ObjectGson.GsonForServer.SV_Chapter;
+import ObjectGson.GsonForServer.SV_ChapterOfComics;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
 import ObjectGson.GsonForServer.SV_ListComicsInformations;
 import com.google.gson.Gson;
@@ -67,5 +70,56 @@ public class GetInformationHistory {
             e.printStackTrace();
         }
         return listComicsInformation;
+    }
+    public static SV_ChapterOfComics getLastReadChapter(int idUser, String idComics) {  // lay ra chapter ma nguoi dung doc cuoi cung
+        // tạo một đối tượng gson đẻ truyền thông tin giữa server và client
+        Gson gson = new Gson();
+
+        //tạo 1 kết nối đến server
+        Socket socket = Connect.getSocket();
+
+        //tao request yêu cầu server thực hiện cái gì
+        CL_Request req = new CL_Request("/get/lastReadChapter");
+        CL_IdComicsAndIdUser queryInformation = new CL_IdComicsAndIdUser(idComics,idUser);
+
+        // chuyen req thanh json
+        String reqJson = gson.toJson(req);
+        String queryJson = gson.toJson(queryInformation);
+
+        SV_ChapterOfComics chapterInformation = null;
+
+        try {
+            BufferedWriter sendReqtoServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+            //gửi dữ liệu JSon từ client cho Server
+            sendReqtoServer.write(reqJson + "\n");
+            sendReqtoServer.flush();
+
+            Connect.receiveStatus(socket);
+
+            sendReqtoServer.write(queryJson + "\n");
+            sendReqtoServer.flush();
+
+            //nhận và đọc dữ liệu json từ server
+            BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String comicsInformations = receive.readLine();
+
+            // chuyển đổi từ json sang đối tượng
+            SV_ChapterOfComics dataConvertFromServer = gson.fromJson(comicsInformations, SV_ChapterOfComics.class);
+
+            // truyền dữ liệu từ server vào arrayList đã tạo sẵn
+            if(dataConvertFromServer != null) {
+                chapterInformation = dataConvertFromServer;
+            }
+            else {
+                System.out.println("/get/lastReadChapter is null");
+            }
+            sendReqtoServer.close();
+            receive.close();
+            socket.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return chapterInformation ;
     }
 }

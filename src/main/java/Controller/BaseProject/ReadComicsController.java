@@ -110,14 +110,13 @@ public class ReadComicsController {
         EvenOfNav.setEventForNavHome(nav_home,idUser);
     }
 
-    // upload cac anh cua chapter len giao dien
+    // upload cac anh cua chapter len giao dien theo co
     public void uploadImageOfChapter() {
         //lam moi lai list tryuen
         RC_listImages.getChildren().clear();
         // set lai vi tri ban dau cho scroll
         RC_scrollListImg.setVvalue(0);
-        //cap nhat lai lich su truyen
-        updateListHistory();
+
         SV_Chapter chapterInformation = GetInformationChapter.getAllimageOfChapter(idcomics, chapter);
         // Khởi tạo ConcurrentHashMap để lưu trữ các ảnh
         imgMap = new ConcurrentHashMap<>();
@@ -149,6 +148,9 @@ public class ReadComicsController {
             imageView.setFitWidth(650);
             RC_listImages.getChildren().add(imageView);
         }
+
+        //cap nhat lai lich su truyen
+        updateListHistory();
     }
 
     public void setDataForComment() {
@@ -328,6 +330,7 @@ public class ReadComicsController {
                     RC_chapter.setText(chapter+"");
                     RC_listChapter.setValue(RC_listChapter.getItems().get(chapter - 1)); // phan tu trong choicebox chay tu vi tri 0
                     uploadImageOfChapter();
+
                 }
                 else  {
                     showAlert(Alert.AlertType.ERROR,"Không thể back", "hết chapter!");

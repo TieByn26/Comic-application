@@ -97,7 +97,7 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="650.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="480.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
             <content>
                 <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
             </content>
@@ -165,16 +165,15 @@
             </Text>
          </children>
       </Pane>
-      <Button fx:id="PF_btnEdit" layoutX="960.0" layoutY="329.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="edit">
+      <Button fx:id="PF_btnEdit" layoutX="806.0" layoutY="323.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="edit">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="PF_btnUpdate" layoutX="820.0" layoutY="329.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="update">
+      <Button fx:id="PF_btnUpdate" layoutX="968.0" layoutY="323.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="update">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-
     </children>
 </AnchorPane>

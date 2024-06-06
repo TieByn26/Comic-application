@@ -89,7 +89,7 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="650.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="480.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
             <content>
                 <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
             </content>

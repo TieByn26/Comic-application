@@ -4,6 +4,7 @@ import ChangeScene.ChangedSceneToReadComics;
 import General.EvenOfNav;
 import RequestForServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.*;
+import RequestForServer.GetData.GetInformationHistory;
 import RequestForServer.PostData.Follow;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -83,6 +84,19 @@ public class ComicsInformationController {
             public void handle(MouseEvent event) {
                 try {
                     ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics, idUser,nameComics,Integer.parseInt(CI_numberOfChapter.getText()),Integer.parseInt(CI_views.getText()),Integer.parseInt(CI_numberOfChapter.getText()));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        CI_readContinue.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    //lay chapter nguoi dung doc lan cuoi cung
+                    SV_ChapterOfComics lastReadChapter = GetInformationHistory.getLastReadChapter(idUser,idComics);
+                    System.out.println("chapter cuoi cung: "+lastReadChapter.getChapter());
+                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics, idUser,nameComics,Integer.parseInt(CI_numberOfChapter.getText()),Integer.parseInt(CI_views.getText()),lastReadChapter.getChapter());
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
