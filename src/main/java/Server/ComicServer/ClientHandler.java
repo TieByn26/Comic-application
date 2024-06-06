@@ -251,6 +251,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/update/ExperienceAndLevelUser":{
+                    try {
+                        UserController.updateExperienceAndLevelUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }

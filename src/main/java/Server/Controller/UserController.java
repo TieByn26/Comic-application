@@ -3,6 +3,8 @@ package Server.Controller;
 import Connect.StreamSocket;
 import DAO.UserDAO;
 import Server.ObjectGson.GsonForClient.CL_IdUser;
+import Server.ObjectGson.GsonForClient.CL_User;
+import Server.ObjectGson.GsonForServer.SV_CheckUpdate;
 import Server.ObjectGson.GsonForServer.SV_User;
 import com.google.gson.Gson;
 
@@ -22,5 +24,19 @@ public class UserController {
 
         SV_User inforUser = UserDAO.getInforUserForComment(idUSer.getIdUser());
         new StreamSocket<SV_User>().sendDataToCLient(socket,inforUser);
+    }
+    public static void updateExperienceAndLevelUser(Socket socket) throws Exception {
+        Gson gson = new Gson();
+
+        StreamSocket.checkConnect(socket);
+
+        //doc du lieu can thiet cho cau query
+        String dataQueryJson = StreamSocket.readGsonFromClient(socket);
+        // chuyen tu json sang class
+        CL_IdUser dataQueryClass = gson.fromJson(dataQueryJson,CL_IdUser.class);
+
+        SV_CheckUpdate statusUpdate = UserDAO.updateExperienceAndLevelUser(dataQueryClass.getIdUser());
+
+        new StreamSocket<SV_CheckUpdate>().sendDataToCLient(socket,statusUpdate);
     }
 }

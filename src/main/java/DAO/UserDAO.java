@@ -3,6 +3,7 @@ package DAO;
 import Connect.DatabaseConnect;
 import Server.ObjectGson.GsonForClient.CL_LoginInformation;
 import Server.ObjectGson.GsonForClient.CL_RegisterInformation;
+import Server.ObjectGson.GsonForServer.SV_CheckUpdate;
 import Server.ObjectGson.GsonForServer.SV_Comments;
 import Server.ObjectGson.GsonForServer.SV_User;
 
@@ -113,4 +114,43 @@ public class UserDAO {
 
         return inforUser;
     }
+
+    //update experience and level user
+    public static SV_CheckUpdate updateExperienceAndLevelUser(int idUser) {
+        Connection connection = DatabaseConnect.getConnect();
+
+        SV_CheckUpdate checkPerform = null;
+        try {
+            String querySQL = "UPDATE `user` \n" +
+                    "SET `experience` = `experience` + 5, \n" +
+                    "    `level` = CASE \n" +
+                    "                WHEN `experience` + 5 >= 500 THEN 'Trúc cơ'\n" +
+                    "                WHEN `experience` + 5 >= 5000 THEN 'Kim đan'\n" +
+                    "                WHEN experience + 5 >= 10000 THEN 'Nguyên anh'\n" +
+                    "                WHEN experience + 5 >= 10000 THEN 'Hóa thần'\n" +
+                    "                WHEN experience + 5 >= 20000 THEN 'Luyện hư'\n" +
+                    "                 WHEN experience + 5 >= 50000 THEN 'Hợp thể'\n" +
+                    "                 WHEN experience + 5 >= 70000 THEN 'Đại thừa'\n" +
+                    "                 WHEN experience + 5 >= 100000 THEN 'Độ kiếp'\n" +
+                    "                 WHEN experience + 5 >= 120000 THEN 'Ngụy tiên'\n" +
+                    "                 WHEN experience + 5 >= 150000 THEN 'Tán tiên'\n" +
+                    "                 WHEN experience + 5 >= 120000 THEN 'tiên nhân'\n" +
+                    "                 WHEN experience + 5 >= 200000 THEN 'Đại tiên'\n" +
+                    "                ELSE `level`\n" +
+                    "              END \n" +
+                    "WHERE `idUser` = ? \n";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+
+            st.setInt(1,idUser);
+
+            checkPerform = new SV_CheckUpdate(st.executeUpdate());
+
+            DatabaseConnect.closeConnect(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("ket qua cap nhat kinh nghiem va level nguoi doc: " + checkPerform);
+        return checkPerform;
+    }
+
 }
