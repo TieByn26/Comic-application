@@ -1,9 +1,7 @@
 package DAO;
 
 import Connect.DatabaseConnect;
-import Server.ObjectGson.GsonForServer.SV_CheckUpdate;
-import Server.ObjectGson.GsonForServer.SV_ComicsInformation;
-import Server.ObjectGson.GsonForServer.SV_ListComicsInformations;
+import Server.ObjectGson.GsonForServer.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -67,5 +65,37 @@ public class HistoryDAO {
         }
         System.out.println("database tra ve: " + listComicsFollow.getListComicsInfomations());
         return listComicsFollow;
+    }
+
+    public static SV_ChapterOfComics selectChapterByIdComicsAndIdUser(int idUser, String idComics) {  // lay ra chapter cuoi cung ma nguoi dung doc
+        Connection connection = DatabaseConnect.getConnect();
+        SV_ChapterOfComics chapterInformation = null;
+
+        try {
+            // tao ra cau query sql de lay tat ca idComics
+            String querySQL = "SELECT `chapter` FROM `historyreadcomic` WHERE idUser = ? and idComics = ?";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+
+            st.setInt(1,idUser);
+            st.setString(2,idComics);
+
+            // thuc thi cau query
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                int chapter = rs.getInt(1);
+
+                chapterInformation = new SV_ChapterOfComics(chapter);
+            }
+            else {
+                System.out.println("/get/lastReadChapter is null");
+            }
+
+            // dong connect database
+            DatabaseConnect.closeConnect(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("database tra ve: " + chapterInformation);
+        return chapterInformation;
     }
 }

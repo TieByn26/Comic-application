@@ -219,6 +219,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/lastReadChapter":{
+                    try {
+                        HistoryController.responelastChapter(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }

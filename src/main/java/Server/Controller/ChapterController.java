@@ -3,10 +3,13 @@ package Server.Controller;
 import Connect.StreamSocket;
 import DAO.ChapterDAO;
 import DAO.ComicsDAO;
+import DAO.HistoryDAO;
 import Server.ObjectGson.GsonForClient.CL_Chapter;
 import Server.ObjectGson.GsonForClient.CL_IdCategory;
+import Server.ObjectGson.GsonForClient.CL_IdComicsAndIdUser;
 import Server.ObjectGson.GsonForServer.SV_CategoryName;
 import Server.ObjectGson.GsonForServer.SV_Chapter;
+import Server.ObjectGson.GsonForServer.SV_ChapterOfComics;
 import com.google.gson.Gson;
 
 import java.net.Socket;
@@ -25,4 +28,5 @@ public class ChapterController {
         SV_Chapter resqoneData = ChapterDAO.getAllImagesOfChapter(chapterInfomation.getIdComics(),chapterInfomation.getChapter());
         new StreamSocket<SV_Chapter>().sendDataToCLient(socket,resqoneData);
     }
+
 }

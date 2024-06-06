@@ -1,10 +1,13 @@
 package Server.Controller;
 
 import Connect.StreamSocket;
-import DAO.FollowDAO;
+import DAO.ChapterDAO;
 import DAO.HistoryDAO;
 import Server.ObjectGson.GsonForClient.CL_History;
 import Server.ObjectGson.GsonForClient.CL_IdUser;
+import Server.ObjectGson.GsonForClient.CL_IdComicsAndIdUser;
+import Server.ObjectGson.GsonForServer.SV_Chapter;
+import Server.ObjectGson.GsonForServer.SV_ChapterOfComics;
 import Server.ObjectGson.GsonForServer.SV_CheckUpdate;
 import Server.ObjectGson.GsonForServer.SV_ListComicsInformations;
 import com.google.gson.Gson;
@@ -36,4 +39,17 @@ public class HistoryController {
 
         new StreamSocket<SV_ListComicsInformations>().sendDataToCLient(socket,listComicsInformations);
     }
+    public static void responelastChapter(Socket socket) { // tra ve chapter ma nguoi dung doc cuoi cung
+        Gson gson = new Gson();
+        StreamSocket.checkConnect(socket);
+        // doc du lieu lan 2
+        String dataQueryJson = StreamSocket.readGsonFromClient(socket);
+
+        CL_IdComicsAndIdUser dataQuery = gson.fromJson(dataQueryJson,CL_IdComicsAndIdUser.class);
+        System.out.println("thong tin client gui: "  + dataQuery);
+        SV_ChapterOfComics chapterInformation = HistoryDAO.selectChapterByIdComicsAndIdUser(dataQuery.getIdUSer(),dataQuery.getIdComics());
+
+        new StreamSocket<SV_ChapterOfComics>().sendDataToCLient(socket,chapterInformation);
+    }
+
 }
