@@ -8,5 +8,6 @@ module Server {
 
     opens Server.ObjectGson.GsonForClient to com.google.gson;
     opens Server.ObjectGson.GsonForServer to com.google.gson;
+    
 
 }

@@ -147,6 +147,30 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/all/comics":{
+                    try {
+                        ListComicsController.getAllComic(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/all/view/comics":{
+                    try {
+                        ListComicsController.getAllNumView(socket);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/add/new/comic":{
+                    try{
+
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 case "/update/AllView":{
                     try {
                         StatisticsController.updateView(socket);

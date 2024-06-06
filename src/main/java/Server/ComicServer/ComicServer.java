@@ -12,6 +12,8 @@ public class ComicServer{
     private ServerSocket serverSocket;
     private int Port = 5525;
 
+
+
     public ComicServer() throws IOException {
         //tao serversocket
         serverSocket = new ServerSocket(Port);

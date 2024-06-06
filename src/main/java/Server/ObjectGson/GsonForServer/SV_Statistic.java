@@ -10,7 +10,7 @@ public class SV_Statistic {
     public SV_Statistic() {
     }
 
-    public SV_Statistic(String idCommic, int allView, LocalDateTime lastUpdate) {
+    public SV_Statistic(String idCommic, int allView) {
         this.idCommic = idCommic;
         this.allView = allView;
 
