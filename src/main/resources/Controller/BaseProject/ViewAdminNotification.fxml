@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="420.0" prefWidth="450.0" style="-fx-background-color: PaleGoldenrod;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.AdminNotificationController">
+   <children>
+      <TextField fx:id="enterUser" layoutX="28.0" layoutY="39.0" prefHeight="38.0" prefWidth="386.0" promptText="Enter user">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></TextField>
+      <TextArea fx:id="enterContent" layoutX="28.0" layoutY="89.0" prefHeight="261.0" prefWidth="386.0" promptText="Enter text">
+         <font>
+            <Font size="16.0" />
+         </font></TextArea>
+      <Button fx:id="sendButton" layoutX="298.0" layoutY="368.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #FDF5E6; -fx-border-color: #A0522D;" text="Send" />
+      <ImageView fitHeight="83.0" fitWidth="93.0" layoutX="356.0" layoutY="24.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../image/admin.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

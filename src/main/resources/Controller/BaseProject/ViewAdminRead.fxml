@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="723.0" prefWidth="876.0" style="-fx-background-color: #FAFAD2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.AdminReadController">
+   <children>
+      <Pane layoutX="65.0" layoutY="57.0" prefHeight="584.0" prefWidth="746.0" style="-fx-background-color: white;">
+         <children>
+            <TilePane layoutY="-6.0" prefHeight="591.0" prefWidth="746.0">
+               <children>
+                  <ScrollBar orientation="VERTICAL" prefHeight="590.0" prefWidth="14.0" />
+               </children>
+            </TilePane>
+         </children>
+      </Pane>
+      <ChoiceBox layoutX="272.0" layoutY="655.0" prefHeight="45.0" prefWidth="310.0" />
+      <ImageView fitHeight="46.0" fitWidth="48.0" layoutX="209.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+         <image>
+            <Image url="@../../image/icons8-arrow-readComcis.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="48.0" layoutX="596.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/icons8-arrow-readComcis.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="355.0" layoutY="18.0" prefHeight="28.0" prefWidth="82.0" text="CHAPTER: ">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="438.0" layoutY="18.0" prefHeight="18.0" prefWidth="8.0" text="1">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="96.0" fitWidth="107.0" layoutX="748.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/admin.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
