@@ -4,7 +4,7 @@ import Connect.DatabaseConnect;
 import Server.ObjectGson.GsonForClient.CL_LoginInformation;
 import Server.ObjectGson.GsonForClient.CL_RegisterInformation;
 import Server.ObjectGson.GsonForServer.SV_CheckUpdate;
-import Server.ObjectGson.GsonForServer.SV_Comments;
+import Server.ObjectGson.GsonForServer.SV_ListUser;
 import Server.ObjectGson.GsonForServer.SV_User;
 
 import java.sql.Connection;
@@ -245,5 +245,30 @@ public class UserDAO {
         }
         System.out.println("database tra ve: " + nameUser);
         return nameUser;
+    }
+    public static SV_ListUser selectTop10User() { // lay 10 nguoi dung co experience cao nhat
+        Connection connection = DatabaseConnect.getConnect();
+        SV_ListUser listUser = new SV_ListUser();
+        try {
+            String querySQL = "SELECT fullName,avatar,level,experience FROM user ORDER BY experience DESC LIMIT 10;";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String name = rs.getString(1);
+                String avatar = rs.getString(2);
+                String level = rs.getNString(3);
+                int experience = rs.getInt(4);
+
+                SV_User newUSer = new SV_User(name,avatar,experience,level);
+                listUser.getListUser().add(newUSer);
+            }
+            DatabaseConnect.closeConnect(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("database tra ve: " + listUser.toString());
+        return listUser;
     }
 }

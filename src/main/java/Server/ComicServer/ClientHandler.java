@@ -292,6 +292,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/TopUser":{
+                    try {
+                        UserController.responeListTopUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }

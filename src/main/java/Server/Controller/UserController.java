@@ -6,6 +6,7 @@ import Server.ObjectGson.GsonForClient.CL_IdUser;
 import Server.ObjectGson.GsonForClient.CL_UpComicsByUser;
 import Server.ObjectGson.GsonForClient.CL_User;
 import Server.ObjectGson.GsonForServer.SV_CheckUpdate;
+import Server.ObjectGson.GsonForServer.SV_ListUser;
 import Server.ObjectGson.GsonForServer.SV_User;
 import com.google.gson.Gson;
 
@@ -74,4 +75,11 @@ public class UserController {
         new StreamSocket<SV_User>().sendDataToCLient(socket,fullname);
     }
 
+    public static void responeListTopUser(Socket socket) {
+        StreamSocket.checkConnect(socket);
+
+        SV_ListUser listTopUser = UserDAO.selectTop10User();
+
+        new StreamSocket<SV_ListUser>().sendDataToCLient(socket,listTopUser);
+    }
 }
