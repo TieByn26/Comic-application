@@ -39,4 +39,26 @@ public class UserController {
 
         new StreamSocket<SV_CheckUpdate>().sendDataToCLient(socket,statusUpdate);
     }
+
+    public static void responeUserinformaitonByIdUser(Socket socket) {
+        Gson gson = new Gson();
+        StreamSocket.checkConnect(socket);
+        String dataQueryJson = StreamSocket.readGsonFromClient(socket);
+        CL_IdUser dataQueryClass = gson.fromJson(dataQueryJson,CL_IdUser.class);
+
+        SV_User inforUser = UserDAO.getInformationUsereByIdUser(dataQueryClass.getIdUser());
+
+        new StreamSocket<SV_User>().sendDataToCLient(socket,inforUser);
+    }
+
+    public static void updateStoryUserByIdUser(Socket socket) {
+        Gson gson = new Gson();
+        StreamSocket.checkConnect(socket);
+        String dataQueryJson = StreamSocket.readGsonFromClient(socket);
+        CL_User dataQueryClass = gson.fromJson(dataQueryJson,CL_User.class);
+
+        SV_CheckUpdate statusUpdate = UserDAO.updateStoryByIdUser(dataQueryClass.getIdUser(),dataQueryClass.getStory());
+
+        new StreamSocket<SV_CheckUpdate>().sendDataToCLient(socket,statusUpdate);
+    }
 }

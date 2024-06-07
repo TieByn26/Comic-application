@@ -259,6 +259,22 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/AllInformationUser":{
+                    try {
+                        UserController.responeUserinformaitonByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/StoryUser":{
+                    try {
+                        UserController.updateStoryUserByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }

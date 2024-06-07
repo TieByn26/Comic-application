@@ -6,8 +6,17 @@ public class SV_User {
     private String avatar;
     private int experience;
     private String level;
+    private String story;
 
     public SV_User() {
+    }
+
+    public SV_User(String fullName, String avatar, int experience, String level, String story) {
+        this.fullName = fullName;
+        this.avatar = avatar;
+        this.experience = experience;
+        this.level = level;
+        this.story = story;
     }
 
     public SV_User(int idUser, String fullName, String avatar, int experience, String level) {

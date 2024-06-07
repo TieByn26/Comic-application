@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="997ba22c-b271-4daa-9cf5-378f4f96bce3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,11 +59,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "server"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;git-widget-placeholder&quot;: &quot;server&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -85,7 +86,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="dce853f1-8d8c-42f5-bb68-51ec4c23c9b9" name="Changes" comment="" />
+      <changelist id="997ba22c-b271-4daa-9cf5-378f4f96bce3" name="Changes" comment="" />
       <created>1717254285024</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

@@ -153,4 +153,70 @@ public class UserDAO {
         return checkPerform;
     }
 
+    public static SV_User getInformationUsereByIdUser(int idUser) { // lay tat ca thong tin cua user
+        //tao connect toi server
+        Connection connection = DatabaseConnect.getConnect();
+        // tao doi tuong de nhan du lieu tu database
+        SV_User inforUser = null;
+        try {
+            // tao ra cau query sql
+            String querySQL = "SELECT  `fullName`, `avatar`, `experience`, `level`, `story` FROM `user` WHERE idUser = ?";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+
+            st.setInt(1,idUser);
+
+            // thuc thi cau query
+            ResultSet rs = st.executeQuery();
+
+            // load du lieu sau khi thuc hien cau query
+            if(rs.next()) {  // kiem tra xem ket qua tra ve co null khong
+                String fullName = rs.getString(1);
+                String avatar = rs.getString(2);
+                int experience = rs.getInt(3);
+                String level = rs.getString(4);
+                String story = rs.getString(5);
+
+                inforUser = new SV_User(fullName,avatar,experience,level,story);
+            }
+            else {
+                System.out.println("select information user by idUser is null");
+            }
+
+            // dong connect database
+            DatabaseConnect.closeConnect(connection);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("database tra ve: " + inforUser);
+
+        return inforUser;
+    }
+
+    public static SV_CheckUpdate updateStoryByIdUser(int idUser, String story) { // cap nhat tieu su nguoi dung
+        Connection connection = DatabaseConnect.getConnect();
+        SV_CheckUpdate statusUpdate = null;
+        try {
+            String querySQL = "UPDATE `user` SET `story`= ? WHERE idUser = ?";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+
+            st.setString(1,story);
+            st.setInt(2,idUser);
+
+            int checkPerform = st.executeUpdate();
+
+            if(checkPerform > 0) {  // kiem tra xem ket qua tra ve co null khong
+                statusUpdate = new SV_CheckUpdate(checkPerform);
+            }
+            else {
+                System.out.println("update story user is fail");
+            }
+            DatabaseConnect.closeConnect(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("database tra ve: " + statusUpdate);
+        return statusUpdate;
+    }
+
 }

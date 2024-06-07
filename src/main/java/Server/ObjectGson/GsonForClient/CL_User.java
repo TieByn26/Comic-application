@@ -6,6 +6,7 @@ public class CL_User {
     private String fullName;
     private int experience;
     private String level;
+    private String story;
 
     public CL_User() {
     }
@@ -16,9 +17,17 @@ public class CL_User {
         this.level = level;
     }
 
-    public CL_User(int idUser, String level) {
+    public CL_User(int idUser, String story) {
         this.idUser = idUser;
-        this.level = level;
+        this.story = story;
+    }
+
+    public String getStory() {
+        return story;
+    }
+
+    public void setStory(String story) {
+        this.story = story;
     }
 
     public int getIdUser() {
