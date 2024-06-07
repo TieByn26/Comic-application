@@ -118,4 +118,57 @@ public class GetInformationUser {
         }
         return infotUser;
     }
+
+    public static SV_User getFullName(int idUser) {
+        Gson gson = new Gson();
+        Socket socket = Connect.getSocket();
+        SV_User infotUser = null;
+        CL_Request req = new CL_Request("/get/FullnameUser");
+
+        // data de server thuc hien query
+        CL_IdUser cl_idUser = new CL_IdUser(idUser);
+
+        // chuyen req thanh json
+        String reqJson = gson.toJson(req);
+        String cl_idUserJson = gson.toJson(cl_idUser);
+
+        try {
+            BufferedWriter sendReqtoServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+
+            //gửi dữ liệu JSon từ client cho Server
+            sendReqtoServer.write(reqJson + "\n");
+            sendReqtoServer.flush();
+
+
+            // ktra server đã nhận đc yêu cầu chưa
+            Connect.receiveStatus(socket);
+
+            sendReqtoServer.write(cl_idUserJson + "\n");
+            sendReqtoServer.flush();
+
+
+            //đọc dữ liệu json từ server
+            BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
+            String inforUserJson = receive.readLine();
+
+            // chuyển đổi từ json sang đối tượng
+            SV_User dataConvertFromServer = gson.fromJson(inforUserJson, SV_User.class);
+
+            // truyền dữ liệu từ server vào arrayList đã tạo sẵn
+            if(dataConvertFromServer != null) {
+                infotUser = dataConvertFromServer;
+            }
+            else {
+                System.out.println("get/FullnameUser is null");
+            }
+
+            sendReqtoServer.close();
+            receive.close();
+            socket.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return infotUser;
+    }
 }

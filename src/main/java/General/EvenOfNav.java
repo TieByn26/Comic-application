@@ -21,12 +21,11 @@ import java.util.ArrayList;
 
 public class EvenOfNav {
     private static String pathFollow = "/Controller/BaseProject/ViewFollow.fxml";
-    private static String pathPaneComics = "/Controller/BaseProject/ViewPaneComics.fxml";
-    private static String pathTopUser = "/Controller/BaseProject/ViewPaneTopUser.fxml";
     private static String pathNotifications = "/Controller/BaseProject/ViewNotifications.fxml";
     private static String pathHistory = "/Controller/BaseProject/ViewHistory.fxml";
     private static  String pathProfile = "/Controller/BaseProject/ViewProfile.fxml";
     private static  String pathHome = "/Controller/BaseProject/ViewHome.fxml";
+    private static String pathUpComics = "/Controller/BaseProject/ViewUpComics.fxml";
     private boolean isHide_listCategory = false;
 
     public static  void setEventForNavFollow (Label navFollow, int idUser) {
@@ -56,12 +55,12 @@ public class EvenOfNav {
         });
     }
 
-    public static void setEventForNavNotifications(Label nav_notifications){
+    public static void setEventForNavNotifications(Label nav_notifications,int idUser){
         nav_notifications.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 //call function change scene
-                ChangeSceneGeneral.ChangeScene(event, pathNotifications, "Thông báo");
+                ChangeSceneToNotifications.ChangeScene(event, pathNotifications, "Thông báo",idUser);
             }
         });
     }
@@ -117,6 +116,15 @@ public class EvenOfNav {
                     scrollCategory.setVisible(false);
                     isHide_listCategory = false;
                 }
+            }
+        });
+    }
+
+    public static void setEventForNavUpComics(Label nav_UpComics,int idUser) {
+        nav_UpComics.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                ChangedSceneToUpComics.ChangeScene(event,pathUpComics,"Đăng truyện",idUser);
             }
         });
     }

@@ -70,6 +70,8 @@ public class HomeController {
     @FXML
     private ScrollPane TL_scroll_ListCategory;
     private String idCategory;
+    @FXML
+    private Label nav_UpComics;
 
     private int idUser = 1; // set mac dinh bang 1 (chua co gia tri tu db)
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
@@ -93,12 +95,14 @@ public class HomeController {
         //set event click for nav_history
         EvenOfNav.setEventForNavHistory(nav_history,idUser);
         //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications);
+        EvenOfNav.setEventForNavNotifications(nav_notfications,idUser);
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
 
         //profile
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
+
+        EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
     }
 
     private void uploadListComics() throws Exception {

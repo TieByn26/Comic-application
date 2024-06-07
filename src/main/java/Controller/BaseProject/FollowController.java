@@ -37,6 +37,8 @@ public class FollowController {
     @FXML
     private ImageView home_iconProfile;
     @FXML
+    private Label nav_UpComics;
+    @FXML
     private Label nav_home;
     @FXML
     private TilePane TL_listCategory;
@@ -60,13 +62,15 @@ public class FollowController {
         EvenOfNav.setEventForNavHistory(nav_history,idUser);
 
         //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications);
+        EvenOfNav.setEventForNavNotifications(nav_notfications,idUser);
 
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
 
         //profile
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
+
+        EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
     }
 
     public void setValueForPaneComics() throws Exception {

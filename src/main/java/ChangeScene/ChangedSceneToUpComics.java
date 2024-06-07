@@ -1,6 +1,7 @@
 package ChangeScene;
 
 import Controller.BaseProject.ProfileController;
+import Controller.BaseProject.UploadComicsByUserController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ChangeSceneToProfile {
+public class ChangedSceneToUpComics {
     public static void ChangeScene(MouseEvent event, String pathFileFxml,String title,int idUser) {
         // Tạo một đối tượng FXMLLoader
         FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
@@ -23,16 +24,22 @@ public class ChangeSceneToProfile {
             throw new RuntimeException(e);
         }
 
-        ProfileController controller = loader.getController();
+        UploadComicsByUserController controller = loader.getController();
 
         if(controller != null) {
             controller.setIdUSer(idUser);
             //set event for navv
             controller.setEventForNav();
-            // tai du lieu ra giao dien
-            controller.uploadDataUser();
-            //set su kien cho update va eidt tieu su
-            controller.setEventForStory();
+
+            controller.UpComics();
+
+            controller.upLoadFullNameUSer();
+
+            controller.checkValidData();
+
+
+
+            System.out.println("id user upComics: "+controller.getIdUSer());
         }
         else  {
             System.out.println("profile controller is null");

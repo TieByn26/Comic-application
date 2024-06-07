@@ -93,6 +93,8 @@ public class ReadComicsController {
     boolean isLiked = false;
     boolean isDislike = false;
 
+    @FXML
+    private Label nav_UpComics;
     ExecutorService executors;
     ConcurrentHashMap<Integer, Image> imgMap;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
@@ -108,12 +110,14 @@ public class ReadComicsController {
         //set event click for nav_history
         EvenOfNav.setEventForNavHistory(nav_history,idUser);
         //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications);
+        EvenOfNav.setEventForNavNotifications(nav_notfications,idUser);
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
 
         //profile
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
+
+        EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
     }
 
     // upload cac anh cua chapter len giao dien theo co

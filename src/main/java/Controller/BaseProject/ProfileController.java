@@ -68,37 +68,14 @@ public class ProfileController {
     private int idUser;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
+    @FXML
+    private Label nav_UpComics;
 
     public void initialize() throws Exception {
 
     }
 
-    public void setEventForNav() {
-        //set event click for nav_category
-        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory, TL_scroll_ListCategory, idUser);
-
-        //set event click for nav_follow
-        EvenOfNav.setEventForNavFollow(nav_follow, idUser);
-
-        //set event click for nav_history
-        EvenOfNav.setEventForNavHistory(nav_history, idUser);
-
-        //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications);
-
-        //set event click for nav_home
-        EvenOfNav.setEventForNavHome(nav_home, idUser);
-
-        //profile
-        EvenOfNav.setEventForProfile(home_iconProfile, idUser);
-
-        PF_btnEdit.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                PF_story.setEditable(true);
-            }
-        });
-
+    public void setEventForStory() {
         PF_btnUpdate.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -122,6 +99,35 @@ public class ProfileController {
                 }
                 //khong cho nguoi dung sua tieu su
                 PF_story.setEditable(false);
+            }
+        });
+    }
+
+    public void setEventForNav() {
+        //set event click for nav_category
+        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory, TL_scroll_ListCategory, idUser);
+
+        //set event click for nav_follow
+        EvenOfNav.setEventForNavFollow(nav_follow, idUser);
+
+        //set event click for nav_history
+        EvenOfNav.setEventForNavHistory(nav_history, idUser);
+
+        //set event click for nav_notification
+        EvenOfNav.setEventForNavNotifications(nav_notfications,idUser);
+
+        //set event click for nav_home
+        EvenOfNav.setEventForNavHome(nav_home, idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile, idUser);
+
+        EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+
+        PF_btnEdit.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                PF_story.setEditable(true);
             }
         });
     }
