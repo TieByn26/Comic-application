@@ -40,6 +40,7 @@ public class HistoryController {
     @FXML
     private Label nav_home;
 
+
     @FXML
     private TilePane TL_listCategory;
     @FXML
@@ -68,6 +69,9 @@ public class HistoryController {
 
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile,idUser);
     }
 
     public void setValueForPaneComics() throws Exception {

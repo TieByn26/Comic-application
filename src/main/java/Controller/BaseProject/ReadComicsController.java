@@ -112,15 +112,8 @@ public class ReadComicsController {
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
 
-        // set su kien cho viec cap nhat kinh nghiem va level nguoi doc
-        RC_scrollListImg.vvalueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.doubleValue() == 1.0) {
-                    System.out.println("update experience return: "+User.updateExperienceAndLevelUser(idUser));
-                }
-            }
-        });
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile,idUser);
     }
 
     // upload cac anh cua chapter len giao dien theo co
@@ -164,6 +157,16 @@ public class ReadComicsController {
 
         //cap nhat lai lich su truyen
         updateListHistory();
+
+        // set su kien cho viec cap nhat kinh nghiem va level nguoi doc
+        RC_scrollListImg.vvalueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.doubleValue() == 1.0) {
+                    System.out.println("update experience return: "+User.updateExperienceAndLevelUser(idUser));
+                }
+            }
+        });
     }
 
     public void setDataForComment() {

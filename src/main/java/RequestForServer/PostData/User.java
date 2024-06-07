@@ -29,7 +29,6 @@ public class User {
         try {
             BufferedWriter sendReqtoServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
 
-            //gửi dữ liệu JSon từ client cho Server
             sendReqtoServer.write(reqJson + "\n");
             sendReqtoServer.flush();
             // ktra server đã nhận đc yêu cầu chưa
@@ -45,12 +44,58 @@ public class User {
             // chuyển đổi từ json sang đối tượng
             SV_CheckUpdate dataConvertFromServer = gson.fromJson(statusUpdateJson, SV_CheckUpdate.class);
 
-            // truyền dữ liệu từ server vào arrayList đã tạo sẵn
             if(dataConvertFromServer.getStatusUpdate() > 0) {
                 statusUpdate = dataConvertFromServer.getStatusUpdate();
             }
             else {
                 System.out.println("/update/ExperienceAndLevelUser is fail");
+            }
+
+            sendReqtoServer.close();
+            receive.close();
+            socket.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return statusUpdate;
+    }
+
+    public static int updateStoryUser(int idUser,String story) {
+        Gson gson  = new Gson();
+
+        Socket socket = Connect.getSocket();
+
+        int statusUpdate = 0;
+
+        CL_Request req = new CL_Request("/update/StoryUser");
+        CL_User reqUser = new CL_User(idUser,story);
+
+        String reqJson = gson.toJson(req);
+        String reqUserJson = gson.toJson(reqUser);
+        try {
+            BufferedWriter sendReqtoServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+
+            sendReqtoServer.write(reqJson + "\n");
+            sendReqtoServer.flush();
+            // ktra server đã nhận đc yêu cầu chưa
+            Connect.receiveStatus(socket);
+
+            sendReqtoServer.write(reqUserJson + "\n");
+            sendReqtoServer.flush();
+
+            //đọc dữ liệu json từ server
+            BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
+            String statusUpdateJson = receive.readLine();
+
+            // chuyển đổi từ json sang đối tượng
+            SV_CheckUpdate dataConvertFromServer = gson.fromJson(statusUpdateJson, SV_CheckUpdate.class);
+
+            if(dataConvertFromServer.getStatusUpdate() > 0) {
+                statusUpdate = dataConvertFromServer.getStatusUpdate();
+            }
+            else {
+                System.out.println("/update/StoryUser is fail");
             }
 
             sendReqtoServer.close();

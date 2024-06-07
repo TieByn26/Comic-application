@@ -1,15 +1,13 @@
 package General;
 
-import ChangeScene.ChangeSceneGeneral;
-import ChangeScene.ChangeSceneToHistory;
-import ChangeScene.ChangedSceneToFollow;
-import ChangeScene.ChangedSceneToHome;
+import ChangeScene.*;
 import ObjectGson.GsonForServer.SV_CategoryComics;
 import RequestForServer.GetData.GetInformationCategory;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
@@ -77,7 +75,14 @@ public class EvenOfNav {
             }
         });
     }
-
+    public static void setEventForProfile(ImageView avt,int idUser) {
+        avt.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                ChangeSceneToProfile.ChangeScene(event,pathProfile,"Hồ Sơ Người Dùng",idUser);
+            }
+        });
+    }
     public  void setEventForNavCategory(Label nav_category, TilePane list_category ,ScrollPane scrollCategory, int idUser) {
         nav_category.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

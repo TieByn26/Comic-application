@@ -50,6 +50,10 @@ public class NotificationController {
 
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile,idUser);
+
     }
 
     public int getIdUser() {

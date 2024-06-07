@@ -1,11 +1,18 @@
 package Controller.BaseProject;
 
 import General.EvenOfNav;
+import ObjectGson.GsonForServer.SV_CheckUpdate;
+import ObjectGson.GsonForServer.SV_User;
+import RequestForServer.GetData.GetInformationUser;
+import RequestForServer.PostData.User;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
+import javafx.scene.text.Text;
 
 
 public class ProfileController {
@@ -33,24 +40,106 @@ public class ProfileController {
     @FXML
     private ScrollPane TL_scroll_ListCategory;
 
+
+    @FXML
+    private Text PF_idUSer;
+
+    @FXML
+    private Text PF_fullName;
+
+    @FXML
+    private Text PF_level;
+
+    @FXML
+    private Text PF_experience;
+
+    @FXML
+    private ImageView PF_avatarUser;
+    @FXML
+    private TextArea PF_story;
+    @FXML
+    private Button PF_btnEdit;
+    @FXML
+    private Button PF_btnUpdate;
+    @FXML
+    private TilePane PF_listComics;
+
+
     private int idUser;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
+
     public void initialize() throws Exception {
+
+    }
+
+    public void setEventForNav() {
         //set event click for nav_category
-        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory,TL_scroll_ListCategory,idUser);
+        evenOfNav.setEventForNavCategory(nav_category, TL_listCategory, TL_scroll_ListCategory, idUser);
 
         //set event click for nav_follow
-        EvenOfNav.setEventForNavFollow(nav_follow,idUser);
+        EvenOfNav.setEventForNavFollow(nav_follow, idUser);
 
         //set event click for nav_history
-        EvenOfNav.setEventForNavHistory(nav_history,idUser);
+        EvenOfNav.setEventForNavHistory(nav_history, idUser);
 
         //set event click for nav_notification
         EvenOfNav.setEventForNavNotifications(nav_notfications);
 
         //set event click for nav_home
-        EvenOfNav.setEventForNavHome(nav_home,idUser);
+        EvenOfNav.setEventForNavHome(nav_home, idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile, idUser);
+
+        PF_btnEdit.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                PF_story.setEditable(true);
+            }
+        });
+
+        PF_btnUpdate.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                int statusUpdate = User.updateStoryUser(idUser,PF_story.getText());
+
+                if (statusUpdate > 0) {
+                    Alert notification = new Alert(Alert.AlertType.INFORMATION);
+                    notification.setTitle("Thông báo");
+                    notification.setHeaderText("Cập nhật tiểu sử");
+                    notification.setContentText("Cập nhật thành công");
+                    // Hiển thị Alert
+                    notification.showAndWait();
+                }
+                else {
+                    Alert notification = new Alert(Alert.AlertType.INFORMATION);
+                    notification.setTitle("Thông báo");
+                    notification.setHeaderText("Cập nhật tiểu sử");
+                    notification.setContentText("Cập nhật thành công");
+                    // Hiển thị Alert
+                    notification.showAndWait();
+                }
+                //khong cho nguoi dung sua tieu su
+                PF_story.setEditable(false);
+            }
+        });
+    }
+
+    public void uploadDataUser() {
+        SV_User dataUser = GetInformationUser.getAllInforUserByIdUser(idUser);
+
+        PF_story.setText(dataUser.getStory());
+        PF_fullName.setText(dataUser.getFullName());
+        PF_experience.setText(dataUser.getExperience() + "");
+        PF_level.setText(dataUser.getLevel());
+        PF_idUSer.setText(idUser+"");
+
+        //khong cho nguoi dung nhap tieu su
+        PF_story.setEditable(false);
+
+        Image avt = new Image(dataUser.getAvatar());
+        PF_avatarUser.setImage(avt);
     }
 
     public int getIdUSer() {

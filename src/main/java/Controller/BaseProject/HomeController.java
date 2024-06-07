@@ -96,6 +96,9 @@ public class HomeController {
         EvenOfNav.setEventForNavNotifications(nav_notfications);
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile,idUser);
     }
 
     private void uploadListComics() throws Exception {

@@ -34,7 +34,8 @@ public class FollowController {
 
     @FXML
     private Label nav_category;
-
+    @FXML
+    private ImageView home_iconProfile;
     @FXML
     private Label nav_home;
     @FXML
@@ -63,6 +64,9 @@ public class FollowController {
 
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile,idUser);
     }
 
     public void setValueForPaneComics() throws Exception {
