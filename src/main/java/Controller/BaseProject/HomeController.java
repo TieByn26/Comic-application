@@ -5,8 +5,11 @@ import ChangeScene.ChangedSceneToComicsInformation;
 import ChangeScene.ChangedSceneToFollow;
 import General.EvenOfNav;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
+import ObjectGson.GsonForServer.SV_ListUser;
+import ObjectGson.GsonForServer.SV_User;
 import RequestForServer.GetData.GetInformationCategory;
 import RequestForServer.GetData.GetInformationComics;
+import RequestForServer.GetData.GetInformationUser;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -141,9 +144,23 @@ public class HomeController {
     }
 
     private void uploadTopUser() throws Exception {
-        for (int i = 0; i < 20; i++) {
+        SV_ListUser listUser = GetInformationUser.getTop10User();
+        for (SV_User user : listUser.getListUser()) {
             FXMLLoader newTopUser = new FXMLLoader(getClass().getResource(pathTopUser));
             Parent rootNewTopUser = newTopUser.load();
+
+            // lay cac bien trong pane user
+            Label nameUser = (Label) rootNewTopUser.lookup("#TU_name");
+            Label levelUser = (Label) rootNewTopUser.lookup("#TU_level");
+            Label experience = (Label) rootNewTopUser.lookup("#TU_experience");
+            ImageView avatarUser = (ImageView) rootNewTopUser.lookup("#TU_avt");
+
+            // set gia tri cho pane user
+            nameUser.setText(user.getFullName());
+            levelUser.setText(user.getLevel());
+            experience.setText(user.getExperience() + "");
+            Image avt = new Image(user.getAvatar());
+            avatarUser.setImage(avt);
 
             home_listTopUser.getChildren().add(rootNewTopUser);
         }

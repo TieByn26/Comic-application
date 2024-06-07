@@ -403,7 +403,7 @@ public void updateListHistory () {
 //            try {
 //                URL url = new URL(imageUrl);
 //                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                connection.setRequestProperty("referer", "https://www.nettruyenmck.com/");
+//                connection.setRequestProperty("referer", "https://truyenqqviet.com");
 //                try (InputStream inputStream = connection.getInputStream()) {
 //                    Image image = new Image(inputStream);
 //                    imgMap.put(index, image);

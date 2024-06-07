@@ -3,6 +3,7 @@ package RequestForServer.GetData;
 import ConnectServer.Connect;
 import ObjectGson.GsonForClient.CL_IdUser;
 import ObjectGson.GsonForClient.CL_Request;
+import ObjectGson.GsonForServer.SV_ListUser;
 import ObjectGson.GsonForServer.SV_User;
 import com.google.gson.Gson;
 
@@ -170,5 +171,48 @@ public class GetInformationUser {
             e.printStackTrace();
         }
         return infotUser;
+    }
+
+    public static SV_ListUser getTop10User() {
+        Gson gson = new Gson();
+        Socket socket = Connect.getSocket();
+
+        SV_ListUser listUser = new SV_ListUser();
+
+        CL_Request req = new CL_Request("/get/TopUser");
+        // chuyen req thanh json
+        String reqJson = gson.toJson(req);
+
+        try {
+            BufferedWriter sendReqtoServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+            //gửi dữ liệu JSon từ client cho Server
+            sendReqtoServer.write(reqJson + "\n");
+            sendReqtoServer.flush();
+            // ktra server đã nhận đc yêu cầu chưa
+            Connect.receiveStatus(socket);
+            //đọc dữ liệu json từ server
+            BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
+            String inforUserJson = receive.readLine();
+
+            // chuyển đổi từ json sang đối tượng
+            SV_ListUser dataConvertFromServer = gson.fromJson(inforUserJson, SV_ListUser.class);
+
+            // truyền dữ liệu từ server vào arrayList đã tạo sẵn
+            if(dataConvertFromServer != null) {
+                for (SV_User user : dataConvertFromServer.getListUser()) {
+                    listUser.getListUser().add(user);
+                }
+            }
+            else {
+                System.out.println("/get/TopUser is null");
+            }
+            sendReqtoServer.close();
+            receive.close();
+            socket.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listUser;
     }
 }
