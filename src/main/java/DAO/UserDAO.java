@@ -219,4 +219,31 @@ public class UserDAO {
         return statusUpdate;
     }
 
+    public static SV_User selectFullNameByIdUser(int idUser) { // lay ten nguoi dung
+        Connection connection = DatabaseConnect.getConnect();
+        SV_User nameUser = null;
+        try {
+            String querySQL = "SELECT `fullName` FROM `user` WHERE idUser = ?";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+
+            st.setInt(1,idUser);
+
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                String name = rs.getString(1);
+
+                nameUser = new SV_User(name);
+            }
+            else {
+                System.out.println("select fullname user return null");
+            }
+
+            DatabaseConnect.closeConnect(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("database tra ve: " + nameUser);
+        return nameUser;
+    }
 }

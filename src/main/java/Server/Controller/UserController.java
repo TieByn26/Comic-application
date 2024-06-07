@@ -3,6 +3,7 @@ package Server.Controller;
 import Connect.StreamSocket;
 import DAO.UserDAO;
 import Server.ObjectGson.GsonForClient.CL_IdUser;
+import Server.ObjectGson.GsonForClient.CL_UpComicsByUser;
 import Server.ObjectGson.GsonForClient.CL_User;
 import Server.ObjectGson.GsonForServer.SV_CheckUpdate;
 import Server.ObjectGson.GsonForServer.SV_User;
@@ -61,4 +62,16 @@ public class UserController {
 
         new StreamSocket<SV_CheckUpdate>().sendDataToCLient(socket,statusUpdate);
     }
+
+    public static void responeFullnameUserByIdUser(Socket socket) {
+        Gson gson = new Gson();
+        StreamSocket.checkConnect(socket);
+        String dataQueryJson = StreamSocket.readGsonFromClient(socket);
+        CL_IdUser dataQueryClass = gson.fromJson(dataQueryJson,CL_IdUser.class);
+
+        SV_User fullname = UserDAO.selectFullNameByIdUser(dataQueryClass.getIdUser());
+
+        new StreamSocket<SV_User>().sendDataToCLient(socket,fullname);
+    }
+
 }

@@ -275,9 +275,27 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/update/ComicByUser":{
+                    try {
+                        ComicController.upComicsByUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+
+                case "/get/FullnameUser":{
+                    try {
+                        UserController.responeFullnameUserByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }
+
         } catch (IOException e){
             e.printStackTrace();
         }

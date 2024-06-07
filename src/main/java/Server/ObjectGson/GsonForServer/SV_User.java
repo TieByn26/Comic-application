@@ -27,6 +27,10 @@ public class SV_User {
         this.level = level;
     }
 
+    public SV_User(String fullName) {
+        this.fullName = fullName;
+    }
+
     public SV_User(String fullName, String avatar) {
         this.fullName = fullName;
         this.avatar = avatar;
