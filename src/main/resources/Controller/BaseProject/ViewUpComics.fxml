@@ -196,7 +196,7 @@
             </Text>
          </children></Pane>
       <ChoiceBox fx:id="UC_status" layoutX="519.0" layoutY="351.0" prefHeight="40.0" prefWidth="250.0" />
-        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" prefHeight="500.0" prefWidth="250.0" visible="false">
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="490.0" layoutY="98.0" prefHeight="500.0" prefWidth="250.0" visible="false">
             <content>
                 <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
             </content>
