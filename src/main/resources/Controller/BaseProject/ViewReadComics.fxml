@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -35,7 +34,7 @@
                         <Image url="@../../image/icons8-logout-80.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="home_iconProfile" fitHeight="40.0" fitWidth="40.0" layoutX="1068.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                <ImageView fx:id="home_iconProfile" fitHeight="40.0" fitWidth="40.0" layoutX="1068.0" layoutY="3.0" pickOnBounds="true" style="-fx-cursor: hand;">
                     <image>
                         <Image url="@../../image/icons8-tanjiro-kamado-48.png" />
                     </image>

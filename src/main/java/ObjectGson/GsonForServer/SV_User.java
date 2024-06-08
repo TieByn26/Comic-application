@@ -36,6 +36,12 @@ public class SV_User {
         this.avatar = avatar;
     }
 
+    public SV_User(String fullName, String avatar, String level) {
+        this.fullName = fullName;
+        this.avatar = avatar;
+        this.level = level;
+    }
+
     public String getStory() {
         return story;
     }

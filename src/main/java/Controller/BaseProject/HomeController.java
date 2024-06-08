@@ -36,8 +36,6 @@ public class HomeController {
     @FXML
     private TilePane home_listComics;
 
-    @FXML
-    private VBox home_parentListComics;
 
     @FXML
     private HBox home_listTopComics;
@@ -113,9 +111,6 @@ public class HomeController {
         home_listComics.setPadding(new Insets(10));
         home_listComics.setHgap(10);
         home_listComics.setVgap(10);
-
-        // Thiết lập VBox để căn giữa TilePane
-        home_parentListComics.setPadding(new Insets(10));
     }
 
     public void decideDataWillUploadToPaneComics(String decided) throws Exception { // ham quyet dinh xem se in ra man hinh du lieu cua thang nao (vi se co su kien nhan vao the loai thi se load truyen ra giao dien theo thang idCategory)
@@ -134,11 +129,30 @@ public class HomeController {
     }
 
     private void uploadListTopComics() throws Exception {
-        for (int i = 0; i < 30; i++) {
-            FXMLLoader newTopComics = new FXMLLoader(getClass().getResource(pathPaneComics));
-            Parent rootNewTopComics = newTopComics.load();
+        ArrayList<SV_ComicsInformation> listComics = GetInformationComics.getTopComics();
+        // Thêm các phần tử vào TilePane
+        for (SV_ComicsInformation comics : listComics) {
+            FXMLLoader newComicsLoader = new FXMLLoader(getClass().getResource(pathPaneComics));
+            Parent comicPane = newComicsLoader.load();
+            // lay cac bien cua paneComics
+            ImageView avtComics = (ImageView) comicPane.lookup("#PC_img");
+            Label nameComic = (Label) comicPane.lookup("#PC_nameComics");
+            Label chapter = (Label) comicPane.lookup("#PC_chapter");
+            // set du lieu cho bien paneComics
+            Image imgAvt = new Image(comics.getAvatarComic());  //tao hinh anh de nhet vao avt comics
+            avtComics.setImage(imgAvt);
+            nameComic.setText(comics.getNameComic());
+            chapter.setText(comics.getNumberOfChapter()+"");
 
-            home_listTopComics.getChildren().add(rootNewTopComics);
+            // set su kien click vao cac bo truyen
+            comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    ChangedSceneToComicsInformation.ChangeScene(event,pathComicsInformation,"Thông tin truyện",nameComic.getText(), idUser);
+                }
+            });
+
+            home_listTopComics.getChildren().add(comicPane);
         }
         home_listTopComics.setSpacing(10);
     }
