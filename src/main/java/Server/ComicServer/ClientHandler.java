@@ -300,6 +300,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/TopComics":{
+                    try {
+                        ComicController.responeTopComics(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }

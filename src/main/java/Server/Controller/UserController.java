@@ -79,7 +79,6 @@ public class UserController {
         StreamSocket.checkConnect(socket);
 
         SV_ListUser listTopUser = UserDAO.selectTop10User();
-
         new StreamSocket<SV_ListUser>().sendDataToCLient(socket,listTopUser);
     }
 }

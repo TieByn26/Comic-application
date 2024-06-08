@@ -74,6 +74,29 @@ public class ComicsDAO {
         return comicsInformaton;
     }
 
+    public static SV_ListComicsInformations selectTopComics() {  // lay thong tin 20 bo truyen hot
+        Connection connection = DatabaseConnect.getConnect();
+
+        SV_ListComicsInformations listComics = new SV_ListComicsInformations();
+        String sql = "SELECT nameComics,numberOfChapter,avatarComics FROM `comicsinformation` JOIN statistics ON comicsinformation.idComics = statistics.idComics  ORDER BY statistics.allViews DESC LIMIT 20";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String nameComic = rs.getString(1);
+                int numberOfChapter = rs.getInt(2);
+                String avt = rs.getString(3);
+
+                SV_ComicsInformation newComics = new SV_ComicsInformation(nameComic, avt, numberOfChapter);
+                listComics.getListComicsInfomations().add(newComics);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listComics;
+    }
+
     public static SV_ComicsInformation selectFullComicsInformationByNameComics(String nameComics) {  //ham lay tat ca thong tin cua truyen
         //tao connect toi server
         Connection connection = DatabaseConnect.getConnect();
@@ -116,7 +139,7 @@ public class ComicsDAO {
 
     }
 
-        public static SV_CheckUpdate upComicsByUser(String nameComic,String category, String status, String avatarComic, String linkImageOfChapter, String description, int chapter,String author) {  // dang truyen boi ngui dung
+    public static SV_CheckUpdate upComicsByUser(String nameComic, String category, String status, String avatarComic, String linkImageOfChapter, String description, int chapter, String author) {  // dang truyen boi ngui dung
         //tao connect toi server
         Connection connection = DatabaseConnect.getConnect();
         // tao doi tuong de nhan du lieu tu database
@@ -126,14 +149,14 @@ public class ComicsDAO {
             String querySQL = "INSERT INTO `comicsofuser`(`nameComic`, `category`, `status`, `avatarComic`, `linkImageOfChapter`, `description`, `chapter`, `author`) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement st = connection.prepareStatement(querySQL);
 
-            st.setString(1,nameComic);
-            st.setString(2,category);
-            st.setString(3,status);
-            st.setString(4,avatarComic);
-            st.setString(5,linkImageOfChapter);
-            st.setString(6,description);
-            st.setInt(7,chapter);
-            st.setString(8,author);
+            st.setString(1, nameComic);
+            st.setString(2, category);
+            st.setString(3, status);
+            st.setString(4, avatarComic);
+            st.setString(5, linkImageOfChapter);
+            st.setString(6, description);
+            st.setInt(7, chapter);
+            st.setString(8, author);
 
             int checkPerform = st.executeUpdate();
 
