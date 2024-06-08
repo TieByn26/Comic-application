@@ -308,6 +308,30 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/AllNotificaitons":{
+                    try {
+                        NotificationController.responeAllNotification(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/delete/Notification":{
+                    try {
+                        NotificationController.deleteNotification(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/StatusNotification":{
+                    try {
+                        NotificationController.updateStatus(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }
