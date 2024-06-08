@@ -91,11 +91,6 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="480.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
-            <content>
-                <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
-            </content>
-        </ScrollPane>
       <ImageView fx:id="UC_avatarComic" fitHeight="420.0" fitWidth="350.0" layoutX="165.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/imgLogin.jpg" />
@@ -201,6 +196,11 @@
             </Text>
          </children></Pane>
       <ChoiceBox fx:id="UC_status" layoutX="519.0" layoutY="351.0" prefHeight="40.0" prefWidth="250.0" />
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" prefHeight="500.0" prefWidth="250.0" visible="false">
+            <content>
+                <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
+            </content>
+        </ScrollPane>
       <Button fx:id="UC_previewComics" layoutX="825.0" layoutY="585.0" minHeight="43.0" minWidth="110.0" mnemonicParsing="false" style="-fx-background-color: #F09C42;" text="Xem trước" textFill="WHITE">
          <font>
             <Font size="17.0" />

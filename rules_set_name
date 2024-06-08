@@ -11,3 +11,4 @@ RC -> bien cua ViewReadComics
 CM -> bien cua ViewPaneComment
 UC -> bien cua ViewUpComics
 PV -> bien cua viewPreviewComic
+PNT -> bien cua ViewPaneNotification
