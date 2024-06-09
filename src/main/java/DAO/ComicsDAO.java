@@ -17,7 +17,7 @@ public class ComicsDAO {
 
         SV_ListComicsInformations listComics = new SV_ListComicsInformations();
         try {
-            String querySQL = "SELECT `nameComics`, `avatarComcis`, `numberOfChapter` FROM `comicsinformation`";
+            String querySQL = "SELECT `nameComics`, `avatarComics`, `numberOfChapter` FROM `comicsinformation`";
             PreparedStatement st = connection.prepareStatement(querySQL);
 
             ResultSet rs = st.executeQuery();
@@ -317,6 +317,20 @@ public class ComicsDAO {
                 pstm.setString(4,cl_newComic.getDescription());
                 pstm.setString(5,cl_newComic.getAvatarComic());
                 pstm.setString(7,cl_newComic.getIdComic());
+
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: "+sql);
+                System.out.println("Co "+ketqua+" dong duoc thay doi");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void deleteComic(CL_NewComic cl_newComic){
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "DELETE FROM comicsinformation WHERE id = ?";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setString(1, cl_newComic.getIdComic());
 
                 int ketqua = pstm.executeUpdate();
                 System.out.println("Da thuc thi sql: "+sql);
