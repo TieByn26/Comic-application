@@ -29,4 +29,16 @@ public class NewComicController {
             e.printStackTrace();
         }
     }
+    public static void updateComic(){
+
+    }
+    public static void deleteComic(){
+
+    }
+    public static void addNewChapterForComic(){
+
+    }
+    public static void updateChapter(){
+
+    }
 }

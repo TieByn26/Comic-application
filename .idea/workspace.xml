@@ -4,12 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="997ba22c-b271-4daa-9cf5-378f4f96bce3" name="Changes" comment="">
+    <list default="true" id="bbc2d37d-cf4d-4484-a107-f6fc7121f1c5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_IdComicsAndIdUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_Notification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_UpComicsByUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ChapterOfComics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ListNotification.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ChapterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ChapterDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/HistoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/HistoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/NotificationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/NotificationDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/ChapterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/ChapterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/ComicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/ComicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/HistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ListUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ListUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Reply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,13 +72,16 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2hHc8XQK7gxnDiGzyaVU2evYXEr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;git-widget-placeholder&quot;: &quot;server&quot;
+    &quot;git-widget-placeholder&quot;: &quot;Merging server&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -85,6 +106,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="1c2a3be2-4610-4147-9f42-baabe1c037f6" name="Changes" comment="" />
       <changelist id="997ba22c-b271-4daa-9cf5-378f4f96bce3" name="Changes" comment="" />
       <created>1717254285024</created>
       <option name="number" value="Default" />
@@ -109,6 +131,22 @@
       <workItem from="1717297214841" duration="15114000" />
       <workItem from="1717351679664" duration="250000" />
       <workItem from="1717424775124" duration="1384000" />
+      <workItem from="1717483490191" duration="57000" />
+      <workItem from="1717484032882" duration="762000" />
+      <workItem from="1717512716697" duration="332000" />
+      <workItem from="1717523856168" duration="1636000" />
+      <workItem from="1717529834432" duration="983000" />
+      <workItem from="1717532809900" duration="64000" />
+      <workItem from="1717591164999" duration="1941000" />
+      <workItem from="1717601092094" duration="345000" />
+      <workItem from="1717603363286" duration="2356000" />
+      <workItem from="1717610691186" duration="1903000" />
+      <workItem from="1717644634584" duration="39000" />
+      <workItem from="1717693446019" duration="94000" />
+      <workItem from="1717727397895" duration="7982000" />
+      <workItem from="1717814386933" duration="15406000" />
+      <workItem from="1717871350834" duration="1114000" />
+      <workItem from="1717914765186" duration="1581000" />
     </task>
     <task id="LOCAL-00001" summary="code base">
       <option name="closed" value="true" />

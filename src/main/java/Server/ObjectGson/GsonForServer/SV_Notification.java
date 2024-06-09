@@ -1,12 +1,13 @@
 package Server.ObjectGson.GsonForServer;
 
 public class SV_Notification {
-    private int idNotification;
     private int idUser;
+    private int idNotification;
     private String content;
-    private boolean status;
+    private Boolean status = false;
 
-    public SV_Notification(int idNotification, String content, boolean status) {
+    public SV_Notification(int idUser, int idNotification, String content, Boolean status) {
+        this.idUser = idUser;
         this.idNotification = idNotification;
         this.content = content;
         this.status = status;
@@ -15,12 +16,10 @@ public class SV_Notification {
     public SV_Notification() {
     }
 
-    public int getIdNotification() {
-        return idNotification;
-    }
-
-    public void setIdNotification(int idNotification) {
+    public SV_Notification(int idNotification, String content, Boolean status) {
         this.idNotification = idNotification;
+        this.content = content;
+        this.status = status;
     }
 
     public int getIdUser() {
@@ -31,6 +30,14 @@ public class SV_Notification {
         this.idUser = idUser;
     }
 
+    public int getIdNotification() {
+        return idNotification;
+    }
+
+    public void setIdNotification(int idNotification) {
+        this.idNotification = idNotification;
+    }
+
     public String getContent() {
         return content;
     }
@@ -39,19 +46,19 @@ public class SV_Notification {
         this.content = content;
     }
 
-    public boolean isStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
     @Override
     public String toString() {
         return "SV_Notification{" +
-                "idNotification=" + idNotification +
-                ", idUser=" + idUser +
+                "idUser=" + idUser +
+                ", idNotification=" + idNotification +
                 ", content='" + content + '\'' +
                 ", status=" + status +
                 '}';

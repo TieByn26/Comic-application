@@ -243,6 +243,13 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/send/notification":{
+                    try{
+                        NotificationController.sendNotification(socket);
+                    }catch (Exception e){
+                        throw new RuntimeException(e);
+                    }
+                }
                 case "/get/lastReadChapter":{
                     try {
                         HistoryController.responelastChapter(socket);

@@ -11,6 +11,10 @@ public class SV_User {
     public SV_User() {
     }
 
+    public SV_User(int idUser) {
+        this.idUser = idUser;
+    }
+
     public SV_User(String fullName, String avatar, int experience, String level, String story) {
         this.fullName = fullName;
         this.avatar = avatar;
