@@ -11,6 +11,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -70,12 +74,20 @@ public class PreviewComicsController {
 
     private void loadImage(int index, String imageUrl) {
         try {
-            Image image = new Image(imageUrl);
-            imgMap.put(index, image);
+            URL url = new URL(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("referer", "https://truyenqqviet.com/");
+            try (InputStream inputStream = connection.getInputStream()) {
+                Image image = new Image(inputStream);
+                imgMap.put(index, image);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
+
 
     public void setInfNameComic () {
         PV_nameComic.setText(nameComic);

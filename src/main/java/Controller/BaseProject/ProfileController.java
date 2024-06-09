@@ -1,12 +1,18 @@
 package Controller.BaseProject;
 
+import ChangeScene.ChangedSceneToComicsInformation;
 import General.EvenOfNav;
 import ObjectGson.GsonForServer.SV_CheckUpdate;
+import ObjectGson.GsonForServer.SV_ComicsInformation;
 import ObjectGson.GsonForServer.SV_User;
+import RequestForServer.GetData.GetInformationComics;
 import RequestForServer.GetData.GetInformationUser;
 import RequestForServer.PostData.User;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,8 +20,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+
 
 public class ProfileController {
+    private String pathPaneComics = "/Controller/BaseProject/ViewPaneComics.fxml";
+    private String pathComicsInformation = "/Controller/BaseProject/ViewComicsInformation.fxml";
 
     @FXML
     private Label nav_notfications;
@@ -66,6 +76,7 @@ public class ProfileController {
 
 
     private int idUser;
+    private String userName;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
     @FXML
@@ -87,15 +98,15 @@ public class ProfileController {
                     notification.setHeaderText("Cập nhật tiểu sử");
                     notification.setContentText("Cập nhật thành công");
                     // Hiển thị Alert
-                    notification.showAndWait();
+                    notification.show();
                 }
                 else {
                     Alert notification = new Alert(Alert.AlertType.INFORMATION);
                     notification.setTitle("Thông báo");
                     notification.setHeaderText("Cập nhật tiểu sử");
-                    notification.setContentText("Cập nhật thành công");
+                    notification.setContentText("Cập nhật thất bại");
                     // Hiển thị Alert
-                    notification.showAndWait();
+                    notification.show();
                 }
                 //khong cho nguoi dung sua tieu su
                 PF_story.setEditable(false);
@@ -140,12 +151,56 @@ public class ProfileController {
         PF_experience.setText(dataUser.getExperience() + "");
         PF_level.setText(dataUser.getLevel());
         PF_idUSer.setText(idUser+"");
+        userName = dataUser.getFullName();
 
         //khong cho nguoi dung nhap tieu su
         PF_story.setEditable(false);
 
         Image avt = new Image(dataUser.getAvatar());
         PF_avatarUser.setImage(avt);
+    }
+
+    public void uploadAllComicUploadByUser(){
+        try{
+            ArrayList<SV_ComicsInformation> listComics = GetInformationComics.getAllComicsUploadByUser(userName);
+
+            if (listComics != null) {
+                for (SV_ComicsInformation comic: listComics) {
+                    FXMLLoader newComicsLoader = new FXMLLoader(getClass().getResource(pathPaneComics));
+                    Parent comicPane = newComicsLoader.load();
+                    // lay cac bien cua paneComics
+                    ImageView avtComics = (ImageView) comicPane.lookup("#PC_img");
+                    Label nameComic = (Label) comicPane.lookup("#PC_nameComics");
+                    Label chapter = (Label) comicPane.lookup("#PC_chapter");
+                    // set du lieu cho bien paneComics
+                    Image imgAvt = new Image(comic.getAvatarComic());  //tao hinh anh de nhet vao avt comics
+                    avtComics.setImage(imgAvt);
+                    nameComic.setText(comic.getNameComic());
+                    chapter.setText(comic.getNumberOfChapter()+"");
+
+                    // set su kien click vao cac bo truyen
+                    comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            ChangedSceneToComicsInformation.ChangeScene(event,pathComicsInformation,"Thông tin truyện",nameComic.getText(), idUser);
+                        }
+                    });
+
+                    PF_listComics.getChildren().add(comicPane);
+
+                }
+
+                // Thiết lập TilePane
+                PF_listComics.setPadding(new Insets(10));
+                PF_listComics.setHgap(10);
+                PF_listComics.setVgap(10);
+            }
+            else {
+                System.out.println("Nguoi dung chua up truyen nao");
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public int getIdUSer() {

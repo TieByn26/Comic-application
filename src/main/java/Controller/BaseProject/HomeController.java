@@ -78,8 +78,6 @@ public class HomeController {
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
     public void initialize() throws Exception {
-        //call function upload list comics to screen
-        uploadListComics();
 
         //call function upload list top comics to screen
         uploadListTopComics();
@@ -104,13 +102,6 @@ public class HomeController {
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
-    }
-
-    private void uploadListComics() throws Exception {
-        // Thiết lập TilePane
-        home_listComics.setPadding(new Insets(10));
-        home_listComics.setHgap(10);
-        home_listComics.setVgap(10);
     }
 
     public void decideDataWillUploadToPaneComics(String decided) throws Exception { // ham quyet dinh xem se in ra man hinh du lieu cua thang nao (vi se co su kien nhan vao the loai thi se load truyen ra giao dien theo thang idCategory)
@@ -206,6 +197,10 @@ public class HomeController {
 
             home_listComics.getChildren().add(comicPane);
         }
+        // Thiết lập TilePane
+        home_listComics.setPadding(new Insets(10));
+        home_listComics.setHgap(10);
+        home_listComics.setVgap(10);
     }
 
     public int getIdUser() {

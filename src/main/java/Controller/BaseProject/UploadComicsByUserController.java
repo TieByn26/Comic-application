@@ -145,8 +145,20 @@ public class UploadComicsByUserController {
 
                 String status = (String) UC_status.getValue();
                 if (isCorrect == true) {
-                    System.out.println(12);
-                    Comics.upComicByUser(UC_nameComic.getText(), UC_category.getText(), status, UC_linkAvatarComic.getText(), UC_LinkImageOfChapter.getText(), UC_description.getText(), Integer.parseInt(UC_chapter.getText()), UC_author.getText());
+                    int statusUpComic = Comics.upComicByUser(UC_nameComic.getText(), UC_category.getText(), status, UC_linkAvatarComic.getText(), UC_LinkImageOfChapter.getText(), UC_description.getText(), Integer.parseInt(UC_chapter.getText()), UC_author.getText());
+                    if (statusUpComic > 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Thành công");
+                        alert.setContentText("Đăng truyện thành công. Hãy chờ admin duyệt truyện của bạn");
+                        alert.show();
+                    }
+                    else {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Thất ");
+                        alert.setContentText("Đăng truyện thất bại");
+                        alert.show();
+                    }
+
                 }
             }
         });

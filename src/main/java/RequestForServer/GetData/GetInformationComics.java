@@ -57,6 +57,58 @@ public class GetInformationComics {
 
     }
 
+    public static ArrayList<SV_ComicsInformation> getAllComicsUploadByUser(String userName) {
+        Gson gson = new Gson();
+
+        Socket socket = Connect.getSocket();
+        // tạo ArrayList để lưu dữ liệu từ server
+        ArrayList<SV_ComicsInformation> listComicsInformation = new ArrayList<>();
+
+        CL_Request req = new CL_Request("/get/AllComicsUploadByUser");
+        CL_User reqUser = new CL_User(userName);
+
+        String reqJson = gson.toJson(req);
+        String reqUserJson = gson.toJson(reqUser);
+
+        try {
+            BufferedWriter sendReqtoServer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+            //gửi dữ liệu JSon từ client cho Server
+            sendReqtoServer.write(reqJson + "\n");
+            sendReqtoServer.flush();
+
+            Connect.receiveStatus(socket);
+
+            //gửi dữ liệu JSon từ client cho Server
+            sendReqtoServer.write(reqUserJson + "\n");
+            sendReqtoServer.flush();
+
+            //nhận và đọc dữ liệu json từ server
+            BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String comicsInformations = receive.readLine();
+
+            // chuyển đổi từ json sang đối tượng
+            SV_ListComicsInformations dataConvertFromServer = gson.fromJson(comicsInformations, SV_ListComicsInformations.class);
+
+            // truyền dữ liệu từ server vào arrayList đã tạo sẵn
+            if(dataConvertFromServer != null) {
+                for (SV_ComicsInformation data : dataConvertFromServer.getListComicsInfomations()) {
+                    listComicsInformation.add(data);
+                }
+            }
+            else {
+                System.out.println("/get/AllComicsUploadByUser");
+            }
+            sendReqtoServer.close();
+            receive.close();
+            socket.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listComicsInformation;
+    }
+
+
     //  lay thong tin nhu ten truyen, tong so chapter va avatar truyen de load ra home
     public static ArrayList<SV_ComicsInformation> getTopComics() {
         Gson gson = new Gson();

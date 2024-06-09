@@ -33,6 +33,8 @@ public class ChangeSceneToProfile {
             controller.uploadDataUser();
             //set su kien cho update va eidt tieu su
             controller.setEventForStory();
+
+            controller.uploadAllComicUploadByUser();
         }
         else  {
             System.out.println("profile controller is null");

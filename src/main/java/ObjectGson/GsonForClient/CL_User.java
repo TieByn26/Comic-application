@@ -22,6 +22,10 @@ public class CL_User {
         this.story = story;
     }
 
+    public CL_User(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getStory() {
         return story;
     }
