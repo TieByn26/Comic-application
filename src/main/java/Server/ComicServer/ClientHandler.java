@@ -332,6 +332,14 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/AllComicsUploadByUser":{
+                    try {
+                        ComicController.responeAllComicsByUsername(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }

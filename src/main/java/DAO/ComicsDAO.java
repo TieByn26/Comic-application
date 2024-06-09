@@ -96,6 +96,29 @@ public class ComicsDAO {
         }
         return listComics;
     }
+    public static SV_ListComicsInformations selectAllComicsByUsername(String username) {  // lay danh sach truyen ma nguoi dung đăng
+        Connection connection = DatabaseConnect.getConnect();
+
+        SV_ListComicsInformations listComics = new SV_ListComicsInformations();
+        String sql = "SELECT `nameComics`, `avatarComics`, `numberOfChapter` FROM `comicsinformation` WHERE author = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1,username);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String nameComic = rs.getString(1);
+                String avt = rs.getString(2);
+                int numberOfChapter = rs.getInt(3);
+
+
+                SV_ComicsInformation newComics = new SV_ComicsInformation(nameComic, avt, numberOfChapter);
+                listComics.getListComicsInfomations().add(newComics);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listComics;
+    }
 
     public static SV_ComicsInformation selectFullComicsInformationByNameComics(String nameComics) {  //ham lay tat ca thong tin cua truyen
         //tao connect toi server

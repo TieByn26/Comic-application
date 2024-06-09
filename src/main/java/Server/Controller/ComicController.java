@@ -45,4 +45,13 @@ public class ComicController {
         SV_ListComicsInformations listComics = ComicsDAO.selectTopComics();
         new StreamSocket<SV_ListComicsInformations>().sendDataToCLient(socket,listComics);
     }
+
+    public static void responeAllComicsByUsername(Socket socket) {  // tra ve truyen nguoi dung da dang
+        Gson gson = new Gson();
+        StreamSocket.checkConnect(socket);
+        String dataqueryJson = StreamSocket.readGsonFromClient(socket);
+        SV_User dataqueryClass = gson.fromJson(dataqueryJson,SV_User.class);
+        SV_ListComicsInformations listComics = ComicsDAO.selectAllComicsByUsername(dataqueryClass.getFullName());
+        new StreamSocket<SV_ListComicsInformations>().sendDataToCLient(socket,listComics);
+    }
 }
