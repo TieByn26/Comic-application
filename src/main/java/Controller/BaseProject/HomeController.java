@@ -5,8 +5,11 @@ import ChangeScene.ChangedSceneToComicsInformation;
 import ChangeScene.ChangedSceneToFollow;
 import General.EvenOfNav;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
+import ObjectGson.GsonForServer.SV_ListUser;
+import ObjectGson.GsonForServer.SV_User;
 import RequestForServer.GetData.GetInformationCategory;
 import RequestForServer.GetData.GetInformationComics;
+import RequestForServer.GetData.GetInformationUser;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,8 +36,6 @@ public class HomeController {
     @FXML
     private TilePane home_listComics;
 
-    @FXML
-    private VBox home_parentListComics;
 
     @FXML
     private HBox home_listTopComics;
@@ -70,6 +71,8 @@ public class HomeController {
     @FXML
     private ScrollPane TL_scroll_ListCategory;
     private String idCategory;
+    @FXML
+    private Label nav_UpComics;
 
     private int idUser = 1; // set mac dinh bang 1 (chua co gia tri tu db)
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
@@ -93,9 +96,14 @@ public class HomeController {
         //set event click for nav_history
         EvenOfNav.setEventForNavHistory(nav_history,idUser);
         //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications);
+        EvenOfNav.setEventForNavNotifications(nav_notfications,idUser);
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile,idUser);
+
+        EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
     }
 
     private void uploadListComics() throws Exception {
@@ -103,9 +111,6 @@ public class HomeController {
         home_listComics.setPadding(new Insets(10));
         home_listComics.setHgap(10);
         home_listComics.setVgap(10);
-
-        // Thiết lập VBox để căn giữa TilePane
-        home_parentListComics.setPadding(new Insets(10));
     }
 
     public void decideDataWillUploadToPaneComics(String decided) throws Exception { // ham quyet dinh xem se in ra man hinh du lieu cua thang nao (vi se co su kien nhan vao the loai thi se load truyen ra giao dien theo thang idCategory)
@@ -124,19 +129,52 @@ public class HomeController {
     }
 
     private void uploadListTopComics() throws Exception {
-        for (int i = 0; i < 30; i++) {
-            FXMLLoader newTopComics = new FXMLLoader(getClass().getResource(pathPaneComics));
-            Parent rootNewTopComics = newTopComics.load();
+        ArrayList<SV_ComicsInformation> listComics = GetInformationComics.getTopComics();
+        // Thêm các phần tử vào TilePane
+        for (SV_ComicsInformation comics : listComics) {
+            FXMLLoader newComicsLoader = new FXMLLoader(getClass().getResource(pathPaneComics));
+            Parent comicPane = newComicsLoader.load();
+            // lay cac bien cua paneComics
+            ImageView avtComics = (ImageView) comicPane.lookup("#PC_img");
+            Label nameComic = (Label) comicPane.lookup("#PC_nameComics");
+            Label chapter = (Label) comicPane.lookup("#PC_chapter");
+            // set du lieu cho bien paneComics
+            Image imgAvt = new Image(comics.getAvatarComic());  //tao hinh anh de nhet vao avt comics
+            avtComics.setImage(imgAvt);
+            nameComic.setText(comics.getNameComic());
+            chapter.setText(comics.getNumberOfChapter()+"");
 
-            home_listTopComics.getChildren().add(rootNewTopComics);
+            // set su kien click vao cac bo truyen
+            comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    ChangedSceneToComicsInformation.ChangeScene(event,pathComicsInformation,"Thông tin truyện",nameComic.getText(), idUser);
+                }
+            });
+
+            home_listTopComics.getChildren().add(comicPane);
         }
         home_listTopComics.setSpacing(10);
     }
 
     private void uploadTopUser() throws Exception {
-        for (int i = 0; i < 20; i++) {
+        SV_ListUser listUser = GetInformationUser.getTop10User();
+        for (SV_User user : listUser.getListUser()) {
             FXMLLoader newTopUser = new FXMLLoader(getClass().getResource(pathTopUser));
             Parent rootNewTopUser = newTopUser.load();
+
+            // lay cac bien trong pane user
+            Label nameUser = (Label) rootNewTopUser.lookup("#TU_name");
+            Label levelUser = (Label) rootNewTopUser.lookup("#TU_level");
+            Label experience = (Label) rootNewTopUser.lookup("#TU_experience");
+            ImageView avatarUser = (ImageView) rootNewTopUser.lookup("#TU_avt");
+
+            // set gia tri cho pane user
+            nameUser.setText(user.getFullName());
+            levelUser.setText(user.getLevel());
+            experience.setText(user.getExperience() + "");
+            Image avt = new Image(user.getAvatar());
+            avatarUser.setImage(avt);
 
             home_listTopUser.getChildren().add(rootNewTopUser);
         }

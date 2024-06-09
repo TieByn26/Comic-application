@@ -6,25 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="70.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.PaneTopUserController">
    <children>
-      <Label fx:id="TU_name" layoutX="66.0" layoutY="4.0" prefHeight="20.0" prefWidth="131.0" text="hoang thap long">
+      <Label fx:id="TU_name" layoutX="66.0" layoutY="4.0" prefHeight="20.0" prefWidth="131.0" style="-fx-font-weight: 700;" text="hoang thap long" textFill="#1d5fb4">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fx:id="TU_avt" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="TU_avt" fitHeight="70.0" fitWidth="60.0" pickOnBounds="true">
          <image>
             <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="66.0" layoutY="25.0" prefHeight="20.0" prefWidth="32.0" text="level">
+      <Label fx:id="TU_experience" layoutX="66.0" layoutY="46.0" prefHeight="20.0" prefWidth="131.0" style="-fx-font-weight: bold;" text="experience" textFill="#165ec9">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="TU_level" layoutX="102.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" text="hoa than">
+      <Label fx:id="TU_level" layoutX="66.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" style="-fx-font-weight: bold;" text="hoa than" textFill="#2f6fb4">
          <font>
             <Font size="14.0" />
          </font>

@@ -40,12 +40,15 @@ public class HistoryController {
     @FXML
     private Label nav_home;
 
+
     @FXML
     private TilePane TL_listCategory;
     @FXML
     private ScrollPane TL_scroll_ListCategory;
     @FXML
     private TilePane HT_listComics;
+    @FXML
+    private Label nav_UpComics;
     private int idUser;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
@@ -64,10 +67,15 @@ public class HistoryController {
         EvenOfNav.setEventForNavHistory(nav_history,idUser);
 
         //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications);
+        EvenOfNav.setEventForNavNotifications(nav_notfications,idUser);
 
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile,idUser);
+
+        EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
     }
 
     public void setValueForPaneComics() throws Exception {

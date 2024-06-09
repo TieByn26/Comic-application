@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ChangeSceneGeneral {
-    public static void ChangeScene(MouseEvent event, String pathFileFxml,String title) {
+    public static void ChangeScene(MouseEvent event, String pathFileFxml,String title,int idUser) {
         // Tạo một đối tượng FXMLLoader
         FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
 

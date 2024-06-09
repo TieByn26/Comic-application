@@ -1,6 +1,8 @@
 package ChangeScene;
 
+import Controller.BaseProject.PreviewComicsController;
 import Controller.BaseProject.ProfileController;
+import Controller.BaseProject.UploadComicsByUserController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,8 +12,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ChangeSceneToProfile {
-    public static void ChangeScene(MouseEvent event, String pathFileFxml,String title,int idUser) {
+public class ChangedSceneToPreviewComic {
+    public static void ChangeScene(MouseEvent event, String pathFileFxml,String title,String linkImg, String nameComic) {
         // Tạo một đối tượng FXMLLoader
         FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
 
@@ -23,35 +25,33 @@ public class ChangeSceneToProfile {
             throw new RuntimeException(e);
         }
 
-        ProfileController controller = loader.getController();
+        PreviewComicsController controller = loader.getController();
 
         if(controller != null) {
-            controller.setIdUSer(idUser);
-            //set event for navv
-            controller.setEventForNav();
-            // tai du lieu ra giao dien
-            controller.uploadDataUser();
-            //set su kien cho update va eidt tieu su
-            controller.setEventForStory();
+            controller.setNameComic(nameComic);
+            controller.setLimkImg(linkImg);
+            controller.setInfNameComic();
+            controller.uploadImageOfChapter();
         }
         else  {
-            System.out.println("profile controller is null");
+            System.out.println("PreviewComicsController is null");
         }
 
         // Lấy đối tượng Stage từ sự kiện (MouseEvent)
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setHeight(800);
-        stage.setWidth(1200);
-        stage.setResizable(false);
-        stage.centerOnScreen();
+        Stage newWindow = new Stage();
+        newWindow.setHeight(790);
+        newWindow.setWidth(700);
+        newWindow.setResizable(false);
+        newWindow.centerOnScreen();
+
         // Đặt giao diện mới làm giao diện chính
-        stage.setScene(new Scene(root));
+        newWindow.setScene(new Scene(root));
 
         // Đặt tiêu đề cho cửa sổ
-        stage.setTitle(title);
+        newWindow.setTitle(title);
 
         // Hiển thị cửa sổ
-        stage.show();
+        newWindow.show();
 
     }
 }

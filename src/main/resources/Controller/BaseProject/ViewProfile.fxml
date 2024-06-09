@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -97,14 +100,14 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="650.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="480.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
             <content>
                 <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
             </content>
         </ScrollPane>
       <Pane layoutY="130.0" prefHeight="250.0" prefWidth="630.0">
          <children>
-            <ImageView fx:id="PF_avatarUser" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="PF_avatarUser" fitHeight="250.0" fitWidth="200.0" pickOnBounds="true">
                <image>
                   <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
                </image>
@@ -156,25 +159,26 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Pane layoutX="640.0" layoutY="130.0" prefHeight="188.0" prefWidth="560.0">
-         <children>
-            <Text fx:id="PF_story" layoutX="18.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="527.0">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
-         </children>
-      </Pane>
-      <Button fx:id="PF_btnEdit" layoutX="960.0" layoutY="329.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="edit">
+      <Button fx:id="PF_btnEdit" layoutX="826.0" layoutY="323.0" minHeight="45.0" minWidth="70.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="109.0" style="-fx-background-color: #F1AF00; -fx-border-radius: 100; -fx-font-weight: bold;" text="Chỉnh sửa" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <effect>
+            <ColorAdjust />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="PF_btnUpdate" layoutX="948.0" layoutY="323.0" minHeight="45.0" minWidth="100.0" mnemonicParsing="false" style="-fx-cursor: hand; -fx-background-color: #009298; -fx-font-weight: bold;" text="Cập nhật" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="PF_story" layoutX="716.0" layoutY="130.0" prefHeight="188.0" prefWidth="439.0" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
-      </Button>
-      <Button fx:id="PF_btnUpdate" layoutX="820.0" layoutY="329.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="update">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-
+      </TextArea>
     </children>
 </AnchorPane>

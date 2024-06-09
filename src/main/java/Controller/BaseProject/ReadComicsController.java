@@ -10,6 +10,9 @@ import RequestForServer.GetData.GetInformationUser;
 import RequestForServer.PostData.Comment;
 import RequestForServer.PostData.History;
 import RequestForServer.PostData.Statistics;
+import RequestForServer.PostData.User;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +26,9 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -90,6 +96,8 @@ public class ReadComicsController {
     boolean isLiked = false;
     boolean isDislike = false;
 
+    @FXML
+    private Label nav_UpComics;
     ExecutorService executors;
     ConcurrentHashMap<Integer, Image> imgMap;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
@@ -105,51 +113,16 @@ public class ReadComicsController {
         //set event click for nav_history
         EvenOfNav.setEventForNavHistory(nav_history,idUser);
         //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications);
+        EvenOfNav.setEventForNavNotifications(nav_notfications,idUser);
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile,idUser);
+
+        EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
     }
 
-    // upload cac anh cua chapter len giao dien
-    public void uploadImageOfChapter() {
-        //lam moi lai list tryuen
-        RC_listImages.getChildren().clear();
-        // set lai vi tri ban dau cho scroll
-        RC_scrollListImg.setVvalue(0);
-        //cap nhat lai lich su truyen
-        updateListHistory();
-        SV_Chapter chapterInformation = GetInformationChapter.getAllimageOfChapter(idcomics, chapter);
-        // Khởi tạo ConcurrentHashMap để lưu trữ các ảnh
-        imgMap = new ConcurrentHashMap<>();
-        // Khởi tạo ExecutorService với 15 luồng
-        executors = Executors.newFixedThreadPool(15);
-
-        //list img sau khi xu li
-        String listImg[] = splitString(chapterInformation.getLinkImage());
-        int index = 0;  // vi tri cua anh
-        //load list anh
-        for (String img : listImg) {
-            int currentIndex = index;
-            executors.execute(() -> loadImage(currentIndex, img));
-            index++;
-            System.out.println(img);
-        }
-        // Chờ tất cả các tác vụ hoàn thành
-        executors.shutdown();
-        try {
-            executors.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        for (int i = 0; i < index; i++) {
-            ImageView imageView = new ImageView();
-            imageView.setImage(imgMap.get(i));
-            imageView.setFitHeight(780);
-            imageView.setFitWidth(650);
-            RC_listImages.getChildren().add(imageView);
-        }
-    }
 
     public void setDataForComment() {
         //lam moi lai list comment
@@ -328,6 +301,7 @@ public class ReadComicsController {
                     RC_chapter.setText(chapter+"");
                     RC_listChapter.setValue(RC_listChapter.getItems().get(chapter - 1)); // phan tu trong choicebox chay tu vi tri 0
                     uploadImageOfChapter();
+
                 }
                 else  {
                     showAlert(Alert.AlertType.ERROR,"Không thể back", "hết chapter!");
@@ -363,38 +337,86 @@ public void updateListHistory () {
         if (input == null || input.isEmpty()) {
             return new String[0];
         }
-        return input.split(",");
+        return input.split(", ");
     }
+    public void uploadImageOfChapter() {
+        //lam moi lai list tryuen
+        RC_listImages.getChildren().clear();
+        // set lai vi tri ban dau cho scroll
+        RC_scrollListImg.setVvalue(0);
 
-        private void loadImage(int index, String imageUrl) {
-            try {
-               Image image =  new Image(imageUrl);
-               imgMap.put(index,image);
-            } catch (Exception exception) {
-                exception.printStackTrace();
+        SV_Chapter chapterInformation = GetInformationChapter.getAllimageOfChapter(idcomics, chapter);
+        System.out.println("list img of chpater: " + chapterInformation);
+        // Khởi tạo ConcurrentHashMap để lưu trữ các ảnh
+        imgMap = new ConcurrentHashMap<>();
+        // Khởi tạo ExecutorService với 15 luồng
+        executors = Executors.newFixedThreadPool(15);
+
+        //list img sau khi xu li
+        String listImg[] = splitString(chapterInformation.getLinkImage());
+        int index = 0;  // vi tri cua anh
+        //load list anh
+        for (String img : listImg) {
+            int currentIndex = index;
+            executors.execute(() -> loadImage(currentIndex, img));
+            index++;
+            System.out.println(img);
+        }
+
+        // Chờ tất cả các tác vụ hoàn thành
+        executors.shutdown();
+        try {
+            if (!executors.awaitTermination(60, TimeUnit.SECONDS)) {
+                executors.shutdownNow();
+                if (!executors.awaitTermination(60, TimeUnit.SECONDS)) {
+                    System.err.println("Executor did not terminate");
+                }
             }
+        } catch (InterruptedException e) {
+            executors.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+
+        for (int i = 0; i < index; i++) {
+            ImageView imageView = new ImageView();
+            imageView.setImage(imgMap.get(i));
+            imageView.setPreserveRatio(false);
+            imageView.setFitHeight(1200);
+            imageView.setFitWidth(650);
+            RC_listImages.getChildren().add(imageView);
+        }
+
+        //cap nhat lai lich su truyen
+        updateListHistory();
+
+        // set su kien cho viec cap nhat kinh nghiem va level nguoi doc
+        RC_scrollListImg.vvalueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.doubleValue() == 1.0) {
+                    System.out.println("update experience return: "+User.updateExperienceAndLevelUser(idUser));
+                }
+            }
+        });
     }
 
-//    private void loadImage(int index, String imageUrl) {
-//        executors.execute(() -> {
-//            try {
-//                URL url = new URL(imageUrl);
-//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                connection.setRequestProperty("referer", "https://www.nettruyenmck.com/");
-//                try (InputStream inputStream = connection.getInputStream()) {
-//                    Image image = new Image(inputStream);
-//                    imgMap.put(index, image);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            } catch (Exception exception) {
-//                exception.printStackTrace();
-//            }
-//
-//        });
-//    }
-public String getIdcomics() {
+    private void loadImage(int index, String imageUrl) {
+        try {
+            URL url = new URL(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("referer", "https://truyenqqviet.com/");
+            try (InputStream inputStream = connection.getInputStream()) {
+                Image image = new Image(inputStream);
+                imgMap.put(index, image);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public String getIdcomics() {
     return idcomics;
 }
 

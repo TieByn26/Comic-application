@@ -79,13 +79,9 @@
             <Image url="@../../image/icons8-fun-48.png" />
          </image>
       </ImageView>
-      <ScrollPane fx:id="home_scroller" fitToHeight="true" fitToWidth="true" layoutY="410.0" prefHeight="390.0" prefWidth="990.0">
+      <ScrollPane fx:id="home_scroller" fitToHeight="true" fitToWidth="true" layoutY="410.0" prefHeight="365.0" prefWidth="990.0">
          <content>
-            <VBox fx:id="home_parentListComics" alignment="CENTER" prefHeight="390.0" prefWidth="990.0">
-               <children>
-                  <TilePane fx:id="home_listComics" alignment="CENTER" prefHeight="390.0" prefWidth="990.0" />
-               </children>
-            </VBox>
+            <TilePane fx:id="home_listComics" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" />
          </content></ScrollPane>
       <Label fx:id="home_nameListComics" layoutX="21.0" layoutY="380.0" style="-fx-font-weight: bold;" text="Danh sách truyện" textFill="#0e3b87">
          <font>
@@ -107,12 +103,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="home_scrollListTopUser" layoutX="1000.0" layoutY="410.0" prefHeight="390.0" prefWidth="200.0">
+      <ScrollPane fx:id="home_scrollListTopUser" layoutX="1000.0" layoutY="410.0" prefHeight="366.0" prefWidth="200.0">
          <content>
-            <VBox fx:id="home_listTopUser" prefHeight="390.0" prefWidth="200.0" />
+            <VBox fx:id="home_listTopUser" prefHeight="365.0" prefWidth="200.0" />
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="650.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+      <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="480.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
          <content>
             <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
          </content>

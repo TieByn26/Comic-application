@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
@@ -13,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.UploadComicsByUserController">
+<AnchorPane prefHeight="775.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.UploadComicsByUserController">
     <children>
         <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: #b85b56;">
             <children>
@@ -89,12 +91,7 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="650.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
-            <content>
-                <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
-            </content>
-        </ScrollPane>
-      <ImageView fitHeight="420.0" fitWidth="350.0" layoutX="165.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="UC_avatarComic" fitHeight="420.0" fitWidth="350.0" layoutX="165.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/imgLogin.jpg" />
          </image>
@@ -124,69 +121,70 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="745.0" layoutY="600.0" mnemonicParsing="false" text="Đăng truyện">
+      <Button fx:id="UC_btnUpComic" layoutX="683.0" layoutY="585.0" minHeight="43.0" minWidth="110.0" mnemonicParsing="false" style="-fx-background-color: #F09C42;" text="Đăng truyện" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="17.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Label layoutX="904.0" layoutY="410.0" style="-fx-font-weight: bold;" text="Link ảnh của chapter" textFill="#042c9c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="519.0" layoutY="185.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="vui lòng lấy tên người dùng ">
+      <TextField fx:id="UC_author" layoutX="519.0" layoutY="185.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="vui lòng lấy tên người dùng ">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="860.0" layoutY="185.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="nhập tên truyện">
+      <TextField fx:id="UC_nameComic" layoutX="860.0" layoutY="185.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="nhập tên truyện">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="519.0" layoutY="270.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Nhập thể loại">
+      <TextField fx:id="UC_category" layoutX="519.0" layoutY="270.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Nhập thể loại">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="860.0" layoutY="270.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Chapter thứ mấy?">
+      <TextField fx:id="UC_chapter" layoutX="861.0" layoutY="270.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="nhập chapter thứ mấy?">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="519.0" layoutY="351.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Hoàn thành hay chưa?">
+      <TextField fx:id="UC_linkAvatarComic" layoutX="860.0" layoutY="351.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Nếu muốn cập nhật lại thì nhập">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="860.0" layoutY="351.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" promptText="Nếu muốn cập nhật lại thì nhập">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextArea layoutX="519.0" layoutY="445.0" prefHeight="135.0" prefWidth="250.0" promptText="Nhập mô tả truyện">
+      <TextArea fx:id="UC_description" layoutX="519.0" layoutY="445.0" prefHeight="135.0" prefWidth="250.0" promptText="Nhập mô tả truyện" wrapText="true">
          <font>
             <Font size="16.0" />
          </font>
       </TextArea>
-      <TextArea layoutX="860.0" layoutY="445.0" prefHeight="135.0" prefWidth="250.0" promptText="mỗi link ảnh cách nhau bởi &quot;,&quot;">
+      <TextArea fx:id="UC_LinkImageOfChapter" layoutX="860.0" layoutY="445.0" prefHeight="135.0" prefWidth="250.0" promptText="mỗi link ảnh cách nhau bởi &quot;,&quot;" wrapText="true">
          <font>
             <Font size="16.0" />
          </font>
       </TextArea>
-      <Button layoutX="235.0" layoutY="610.0" mnemonicParsing="false" text="xem trước avatar">
+      <Button fx:id="UC_btnPreviewAvatar" layoutX="254.0" layoutY="605.0" minHeight="45.0" minWidth="120.0" mnemonicParsing="false" style="-fx-background-color: F09C42;" text="xem trước avatar" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Pane layoutX="459.0" layoutY="650.0" prefHeight="139.0" prefWidth="707.0" style="-fx-border-color: gray;">
+      <Pane layoutX="459.0" layoutY="635.0" prefHeight="116.0" prefWidth="707.0" style="-fx-border-color: gray;">
          <children>
-            <Text fill="RED" fontSmoothingType="LCD" layoutX="25.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lưu ý: Link ảnh của chapter phải ở dạng network path(đường dẫn mạng).phải là 1 chuỗi link liên tục(không xuống dòng) mỗi link cách nhau 1 dấu ','" wrappingWidth="650.0">
+            <Text fill="RED" fontSmoothingType="LCD" layoutX="25.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lưu ý: Link ảnh phải ở dạng network path(dạng link https).phải là 1 chuỗi link liên tục(không xuống dòng) mỗi link cách nhau 1 dấu ','" wrappingWidth="650.0">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
-            <Text fill="#2b3ae3" layoutX="25.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/anh-meme-63.jpg,https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/anh-meme-63.jpg" wrappingWidth="650.0">
+            <Text fill="#2b3ae3" layoutX="24.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/anh-meme-63.jpg,https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/anh-meme-63.jpg" wrappingWidth="650.0">
                <font>
                   <Font size="17.0" />
                </font>
@@ -197,5 +195,19 @@
                </font>
             </Text>
          </children></Pane>
+      <ChoiceBox fx:id="UC_status" layoutX="519.0" layoutY="351.0" prefHeight="40.0" prefWidth="250.0" />
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="490.0" layoutY="98.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+            <content>
+                <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
+            </content>
+        </ScrollPane>
+      <Button fx:id="UC_previewComics" layoutX="825.0" layoutY="585.0" minHeight="43.0" minWidth="110.0" mnemonicParsing="false" style="-fx-background-color: #F09C42;" text="Xem trước" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
     </children>
 </AnchorPane>

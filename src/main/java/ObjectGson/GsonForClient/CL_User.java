@@ -1,45 +1,25 @@
-package ObjectGson.GsonForServer;
+package ObjectGson.GsonForClient;
 
-public class SV_User {
+public class CL_User {
     private int idUser;
-    private String fullName;
     private String avatar;
+    private String fullName;
     private int experience;
     private String level;
     private String story;
 
-    public SV_User() {
+    public CL_User() {
     }
 
-    public SV_User(String fullName, String avatar, int experience, String level, String story) {
-        this.fullName = fullName;
-        this.avatar = avatar;
-        this.experience = experience;
-        this.level = level;
-        this.story = story;
-    }
-
-    public SV_User(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public SV_User(int idUser, String fullName, String avatar, int experience, String level) {
+    public CL_User(int idUser, int experience, String level) {
         this.idUser = idUser;
-        this.fullName = fullName;
-        this.avatar = avatar;
         this.experience = experience;
         this.level = level;
     }
 
-    public SV_User(String fullName, String avatar) {
-        this.fullName = fullName;
-        this.avatar = avatar;
-    }
-
-    public SV_User(String fullName, String avatar, String level) {
-        this.fullName = fullName;
-        this.avatar = avatar;
-        this.level = level;
+    public CL_User(int idUser, String story) {
+        this.idUser = idUser;
+        this.story = story;
     }
 
     public String getStory() {
@@ -58,20 +38,20 @@ public class SV_User {
         this.idUser = idUser;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public String getAvatar() {
         return avatar;
     }
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public int getExperience() {
@@ -92,12 +72,13 @@ public class SV_User {
 
     @Override
     public String toString() {
-        return "SV_User{" +
+        return "CL_User{" +
                 "idUser=" + idUser +
-                ", fullName='" + fullName + '\'' +
                 ", avatar='" + avatar + '\'' +
+                ", fullName='" + fullName + '\'' +
                 ", experience=" + experience +
                 ", level='" + level + '\'' +
                 '}';
     }
 }
+

@@ -4,6 +4,7 @@ import ChangeScene.ChangedSceneToReadComics;
 import General.EvenOfNav;
 import RequestForServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.*;
+import RequestForServer.GetData.GetInformationHistory;
 import RequestForServer.PostData.Follow;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,6 +34,9 @@ public class ComicsInformationController {
     private Label nav_category;
     @FXML
     private Label nav_home;
+
+    @FXML
+    private Label nav_UpComics;
     @FXML
     private TilePane TL_listCategory;
     @FXML
@@ -88,6 +92,19 @@ public class ComicsInformationController {
                 }
             }
         });
+        CI_readContinue.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    //lay chapter nguoi dung doc lan cuoi cung
+                    SV_ChapterOfComics lastReadChapter = GetInformationHistory.getLastReadChapter(idUser,idComics);
+                    System.out.println("chapter cuoi cung: "+lastReadChapter.getChapter());
+                    ChangedSceneToReadComics.ChangeScene(event,pathViewReadComics,"Đọc truyện", idComics, idUser,nameComics,Integer.parseInt(CI_numberOfChapter.getText()),Integer.parseInt(CI_views.getText()),lastReadChapter.getChapter());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
         // su kien nhan nut theo doi
         CI_Follow.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -125,10 +142,15 @@ public class ComicsInformationController {
         EvenOfNav.setEventForNavHistory(nav_history,idUser);
 
         //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications);
+        EvenOfNav.setEventForNavNotifications(nav_notfications,idUser);
 
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home,idUser);
+
+        //profile
+        EvenOfNav.setEventForProfile(home_iconProfile,idUser);
+
+        EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
     }
 
     public void loadComicsInformation () {

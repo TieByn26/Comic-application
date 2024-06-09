@@ -3,6 +3,7 @@ package RequestForServer.GetData;
 import ConnectServer.Connect;
 import ObjectGson.GsonForClient.CL_Chapter;
 import ObjectGson.GsonForClient.CL_IdCategory;
+import ObjectGson.GsonForClient.CL_IdComicsAndIdUser;
 import ObjectGson.GsonForClient.CL_Request;
 import ObjectGson.GsonForServer.SV_CategoryName;
 import ObjectGson.GsonForServer.SV_Chapter;
@@ -67,5 +68,4 @@ public class GetInformationChapter {
         }
         return listImages;
     }
-
 }
