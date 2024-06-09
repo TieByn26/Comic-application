@@ -17,6 +17,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AdminController {
     @FXML
     Button notifiButton;
@@ -95,6 +98,7 @@ public class AdminController {
             return row;
         });
         setDataOnScreen();
+        listComicOnTable();
         notifiButton.setOnAction(actionEvent -> changeNotification());
         listComicButton.setOnAction(actionEvent -> listComicOnTable());
         editButton.setOnAction(actionEvent -> changeEdit());
@@ -124,23 +128,30 @@ public class AdminController {
         }
     }
     public void handleForRow(SV_ComicsInformation rowData){
+        // tao hasmap 1 key 1 value
+        Map<String, SV_ComicsInformation> comicsInfoMap = new HashMap<>();
         for (SV_ComicsInformation sv_comicsInformation : sv_listComicsInformations.getListComicsInfomations()) {
-            if (sv_comicsInformation.getIdComic().equals(rowData.getIdComic())) {
-                Image image = new Image(sv_comicsInformation.getAvatarComic());
-                imageComic.setImage(image);
-                nameComic.setText(sv_comicsInformation.getNameComic());
-                author.setText(sv_comicsInformation.getAuthor());
-                numChapter.setText(sv_comicsInformation.getNumberOfChapter()+"");
-                status.setText(sv_comicsInformation.getStatus());
-                description.setText(sv_comicsInformation.getDescription());
-                break;
-            }
+            comicsInfoMap.put(sv_comicsInformation.getIdComic(), sv_comicsInformation);
         }
-        for (SV_Statistic sv_statistic : sv_listStatistic.getListStatistic()){
-            if (rowData.getIdComic().equals(sv_statistic.getIdCommic())){
-                numView.setText(sv_statistic.getAllView()+"");
-                break;
-            }
+        Map<String, SV_Statistic> statisticsMap = new HashMap<>();
+        for (SV_Statistic sv_statistic : sv_listStatistic.getListStatistic()) {
+            statisticsMap.put(sv_statistic.getIdCommic(), sv_statistic);
+        }
+
+        // tim kiem theo key value
+        SV_ComicsInformation comicInfo = comicsInfoMap.get(rowData.getIdComic());
+        if (comicInfo != null) {
+            Image image = new Image(comicInfo.getAvatarComic());
+            imageComic.setImage(image);
+            nameComic.setText(comicInfo.getNameComic());
+            author.setText(comicInfo.getAuthor());
+            numChapter.setText(String.valueOf(comicInfo.getNumberOfChapter()));
+            status.setText(comicInfo.getStatus());
+            description.setText(comicInfo.getDescription());
+        }
+        SV_Statistic statistic = statisticsMap.get(rowData.getIdComic());
+        if (statistic != null) {
+            numView.setText(String.valueOf(statistic.getAllView()));
         }
     }
 
