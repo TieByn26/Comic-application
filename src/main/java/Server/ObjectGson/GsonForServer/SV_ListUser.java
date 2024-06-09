@@ -3,27 +3,27 @@ package Server.ObjectGson.GsonForServer;
 import java.util.ArrayList;
 
 public class SV_ListUser {
-    private ArrayList<SV_User> list = new ArrayList<>();
+    private ArrayList<SV_User> listUser = new ArrayList<>();
 
-    public SV_ListUser(ArrayList<SV_User> list) {
-        this.list = list;
+    public SV_ListUser(ArrayList<SV_User> listUser) {
+        this.listUser = listUser;
     }
 
     public SV_ListUser() {
     }
 
-    public ArrayList<SV_User> getList() {
-        return list;
+    public ArrayList<SV_User> getListUser() {
+        return listUser;
     }
 
-    public void setList(ArrayList<SV_User> list) {
-        this.list = list;
+    public void setListUser(ArrayList<SV_User> listUser) {
+        this.listUser = listUser;
     }
 
     @Override
     public String toString() {
         return "SV_ListUser{" +
-                "list=" + list +
+                "listUser=" + listUser +
                 '}';
     }
 }

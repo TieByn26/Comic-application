@@ -2,6 +2,7 @@ package DAO;
 
 import Connect.DatabaseConnect;
 import Server.ObjectGson.GsonForServer.SV_Chapter;
+import Server.ObjectGson.GsonForServer.SV_ChapterOfComics;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

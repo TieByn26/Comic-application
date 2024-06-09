@@ -16,6 +16,12 @@ public class SV_Notification {
     public SV_Notification() {
     }
 
+    public SV_Notification(int idNotification, String content, Boolean status) {
+        this.idNotification = idNotification;
+        this.content = content;
+        this.status = status;
+    }
+
     public int getIdUser() {
         return idUser;
     }

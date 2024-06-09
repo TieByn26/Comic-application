@@ -4,19 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c2a3be2-4610-4147-9f42-baabe1c037f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/NotificationDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/NotificationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_UsernameToNotifi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_CheckUsername.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ListUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="bbc2d37d-cf4d-4484-a107-f6fc7121f1c5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_IdComicsAndIdUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_Notification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_UpComicsByUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForClient/CL_User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ChapterOfComics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ListNotification.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ChapterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ChapterDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ComicsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/HistoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/HistoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/NotificationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/NotificationDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ComicServer/ComicServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/NewComicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/NewComicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/ChapterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/ChapterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/ComicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/ComicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/HistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ListUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_ListUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_Reply.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ObjectGson/GsonForServer/SV_User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,20 +78,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "Merging server"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -106,6 +106,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1c2a3be2-4610-4147-9f42-baabe1c037f6" name="Changes" comment="" />
+      <changelist id="997ba22c-b271-4daa-9cf5-378f4f96bce3" name="Changes" comment="" />
       <created>1717254285024</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

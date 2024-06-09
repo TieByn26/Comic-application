@@ -29,4 +29,20 @@ public class ComicController {
         SV_ComicsInformation comicsInformation = ComicsDAO.selectFullComicsInformationByNameComics(nameComics.getNameComics());
         new StreamSocket<SV_ComicsInformation>().sendDataToCLient(socket,comicsInformation);
     }
+    public static void upComicsByUser(Socket socket) {
+        Gson gson = new Gson();
+        StreamSocket.checkConnect(socket);
+        String dataQueryJson = StreamSocket.readGsonFromClient(socket);
+        CL_UpComicsByUser dataQueryClass = gson.fromJson(dataQueryJson,CL_UpComicsByUser.class);
+
+        SV_CheckUpdate statusUpdate = ComicsDAO.upComicsByUser(dataQueryClass.getNameComic(),dataQueryClass.getCategory(),dataQueryClass.getStatus(),dataQueryClass.getAvatarComics(),dataQueryClass.getLinkImageOfChapter(),dataQueryClass.getDescription(),dataQueryClass.getChapter(),dataQueryClass.getAuthor());
+
+        new StreamSocket<SV_CheckUpdate>().sendDataToCLient(socket,statusUpdate);
+    }
+
+    public static void responeTopComics(Socket socket) {  // tra ve 20 truyen hot
+        StreamSocket.checkConnect(socket);
+        SV_ListComicsInformations listComics = ComicsDAO.selectTopComics();
+        new StreamSocket<SV_ListComicsInformations>().sendDataToCLient(socket,listComics);
+    }
 }

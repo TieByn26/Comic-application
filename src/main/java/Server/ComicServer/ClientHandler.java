@@ -250,9 +250,99 @@ public class ClientHandler {
                         throw new RuntimeException(e);
                     }
                 }
+                case "/get/lastReadChapter":{
+                    try {
+                        HistoryController.responelastChapter(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/ExperienceAndLevelUser":{
+                    try {
+                        UserController.updateExperienceAndLevelUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/AllInformationUser":{
+                    try {
+                        UserController.responeUserinformaitonByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/StoryUser":{
+                    try {
+                        UserController.updateStoryUserByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/ComicByUser":{
+                    try {
+                        ComicController.upComicsByUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+
+                case "/get/FullnameUser":{
+                    try {
+                        UserController.responeFullnameUserByIdUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/TopUser":{
+                    try {
+                        UserController.responeListTopUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/TopComics":{
+                    try {
+                        ComicController.responeTopComics(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/AllNotificaitons":{
+                    try {
+                        NotificationController.responeAllNotification(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/delete/Notification":{
+                    try {
+                        NotificationController.deleteNotification(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/StatusNotification":{
+                    try {
+                        NotificationController.updateStatus(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
                 default:
                     break;
             }
+
         } catch (IOException e){
             e.printStackTrace();
         }
