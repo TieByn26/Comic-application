@@ -80,11 +80,6 @@
                 <Image url="@../../image/icons8-fun-48.png" />
             </image>
         </ImageView>
-        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="480.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
-            <content>
-                <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
-            </content>
-        </ScrollPane>
       <ImageView fx:id="RC_next" fitHeight="40.0" fitWidth="40.0" layoutX="613.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/icons8-arrow-readComcis.png" />
@@ -131,6 +126,11 @@
             <Font size="20.0" />
          </font>
       </TextArea>
+        <ScrollPane fx:id="TL_scroll_ListCategory" fitToHeight="true" fitToWidth="true" layoutX="480.0" layoutY="95.0" prefHeight="500.0" prefWidth="250.0" visible="false">
+            <content>
+                <TilePane fx:id="TL_listCategory" prefHeight="200.0" prefWidth="200.0" />
+            </content>
+        </ScrollPane>
       <Button fx:id="RC_btnSubmit" layoutX="999.0" layoutY="720.0" mnemonicParsing="false" text="Bình luận">
          <font>
             <Font size="16.0" />

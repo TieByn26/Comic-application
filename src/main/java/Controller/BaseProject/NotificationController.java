@@ -47,7 +47,8 @@ public class NotificationController {
     private Text NT_contentNotifications;
     @FXML
     private TilePane NT_ListNotification;
-
+    @FXML
+    private ImageView home_iconLogout;
     @FXML
     private Button NT_btnDeleteNotification;
 
@@ -74,6 +75,7 @@ public class NotificationController {
         //profile
         EvenOfNav.setEventForProfile(home_iconProfile, idUser);
         EvenOfNav.setEventForNavUpComics(nav_UpComics, idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
 
     public void uploadDataToScreen() {
@@ -85,7 +87,7 @@ public class NotificationController {
 
                 Label PNT_status = (Label) rootNotification.lookup("#PNT_status");
 
-                if (notification.isStatus()) {
+                if (notification.getStatus()) {
                     PNT_status.setText("Đọc rùi nà");
                     rootNotification.setOpacity(0.5);
                 } else {

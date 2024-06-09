@@ -9,11 +9,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ChangeSceneGeneral {
-    public static void ChangeScene(MouseEvent event, String pathFileFxml,String title,int idUser) {
+public class ChangedSceneToLogin {
+    public static void ChangeScene(MouseEvent event, String pathFileFxml,String title) {
         // Tạo một đối tượng FXMLLoader
-        FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
-
+        FXMLLoader loader = new FXMLLoader(ChangedSceneToLogin.class.getResource(pathFileFxml));
         // Tải giao diện mới từ tệp FXML
         Parent root = null;
         try {
@@ -21,11 +20,10 @@ public class ChangeSceneGeneral {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         // Lấy đối tượng Stage từ sự kiện (MouseEvent)
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setHeight(800);
-        stage.setWidth(1200);
+        stage.setHeight(500);
+        stage.setWidth(700);
         stage.setResizable(false);
         stage.centerOnScreen();
         // Đặt giao diện mới làm giao diện chính
@@ -36,6 +34,5 @@ public class ChangeSceneGeneral {
 
         // Hiển thị cửa sổ
         stage.show();
-
     }
 }

@@ -57,7 +57,8 @@ public class HomeController {
 
     @FXML
     private ImageView home_iconProfile;
-
+    @FXML
+    private ImageView home_iconLogout;
     @FXML
     private Label nav_category;
 
@@ -102,6 +103,8 @@ public class HomeController {
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
 
     public void decideDataWillUploadToPaneComics(String decided) throws Exception { // ham quyet dinh xem se in ra man hinh du lieu cua thang nao (vi se co su kien nhan vao the loai thi se load truyen ra giao dien theo thang idCategory)

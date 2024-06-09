@@ -28,6 +28,8 @@ public class FollowController {
 
     @FXML
     private Label nav_history;
+    @FXML
+    private ImageView home_iconLogout;
 
     @FXML
     private Label nav_follow;
@@ -71,6 +73,8 @@ public class FollowController {
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
 
     public void setValueForPaneComics() throws Exception {

@@ -54,6 +54,8 @@ public class ReadComicsController {
     private ImageView RC_back;
     @FXML
     private ImageView RC_next;
+    @FXML
+    private ImageView home_iconLogout;
 
     @FXML
     private Label nav_category;
@@ -121,6 +123,7 @@ public class ReadComicsController {
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
 
 

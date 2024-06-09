@@ -26,6 +26,7 @@ public class EvenOfNav {
     private static  String pathProfile = "/Controller/BaseProject/ViewProfile.fxml";
     private static  String pathHome = "/Controller/BaseProject/ViewHome.fxml";
     private static String pathUpComics = "/Controller/BaseProject/ViewUpComics.fxml";
+    private static String pathLogin = "/Controller/BaseProject/ViewLogin.fxml";
     private boolean isHide_listCategory = false;
 
     public static  void setEventForNavFollow (Label navFollow, int idUser) {
@@ -71,6 +72,16 @@ public class EvenOfNav {
             public void handle(MouseEvent event) {
                 //call function change scene
                 ChangedSceneToHome.ChangeScene(event, pathHome, "Thông báo",idUser);
+            }
+        });
+    }
+
+    public static void setEventChangeSceneToLogout(ImageView nav_home){
+        nav_home.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                //call function change scene
+                ChangedSceneToLogin.ChangeScene(event, pathLogin, "Thông báo");
             }
         });
     }

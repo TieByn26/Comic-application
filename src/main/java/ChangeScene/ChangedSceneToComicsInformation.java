@@ -13,7 +13,7 @@ import java.io.IOException;
 public class ChangedSceneToComicsInformation {
     public static void ChangeScene(MouseEvent event, String pathFileFxml, String title,String nameComics, int idUser) {
         // Tạo một đối tượng FXMLLoader
-        FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
+        FXMLLoader loader = new FXMLLoader(ChangedSceneToComicsInformation.class.getResource(pathFileFxml));
 
         // Tải giao diện mới từ tệp FXML
         Parent root = null;

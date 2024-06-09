@@ -73,7 +73,8 @@ public class ProfileController {
     private Button PF_btnUpdate;
     @FXML
     private TilePane PF_listComics;
-
+    @FXML
+    private ImageView home_iconLogout;
 
     private int idUser;
     private String userName;
@@ -134,6 +135,7 @@ public class ProfileController {
         EvenOfNav.setEventForProfile(home_iconProfile, idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
 
         PF_btnEdit.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

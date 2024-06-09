@@ -55,6 +55,8 @@ public class UploadComicsByUserController {
     @FXML
     private Button UC_previewComics;
     @FXML
+    private ImageView home_iconLogout;
+    @FXML
     private ImageView UC_avatarComic;
     @FXML
     private TilePane TL_listCategory;
@@ -132,6 +134,7 @@ public class UploadComicsByUserController {
         EvenOfNav.setEventForProfile(home_iconProfile, idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
 
         // khoa khong cho nguoi dung nhap ten tac gia
         UC_author.setEditable(false);

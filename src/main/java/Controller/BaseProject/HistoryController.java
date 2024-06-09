@@ -40,7 +40,8 @@ public class HistoryController {
     @FXML
     private Label nav_home;
 
-
+    @FXML
+    private ImageView home_iconLogout;
     @FXML
     private TilePane TL_listCategory;
     @FXML
@@ -76,6 +77,7 @@ public class HistoryController {
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
 
     public void setValueForPaneComics() throws Exception {

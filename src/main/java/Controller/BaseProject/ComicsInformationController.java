@@ -68,6 +68,8 @@ public class ComicsInformationController {
     private String nameComics; // bien de controller goi den tu phuong thuc changedScene de luu gia tri ten truyen
     private String idComics;
     private int idUser;
+    @FXML
+    private ImageView home_iconLogout;
     boolean isFollow = false;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
@@ -151,6 +153,7 @@ public class ComicsInformationController {
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
 
     public void loadComicsInformation () {
