@@ -1,7 +1,6 @@
 package DAO;
 
 import Connect.DatabaseConnect;
-import Server.ObjectGson.GsonForClient.CL_NewComic;
 import Server.ObjectGson.GsonForServer.*;
 
 import java.sql.Connection;
@@ -229,7 +228,7 @@ public class ComicsDAO {
         return list;
     }
 
-    public static void addNewComic(CL_NewComic cl_newComic) {
+    public static void addNewComic(SV_ComicsInformation cl_newComic) {
         try (Connection con = DatabaseConnect.getConnect()) {
             String sql = "INSERT INTO comicsinformation(nameComics,idComics,author,status,description,avatarComics,numberOfChapter) VALUES(?,?,?,?,?,?,?) ";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
@@ -250,7 +249,7 @@ public class ComicsDAO {
         }
     }
 
-    public static void addStatistics(CL_NewComic cl_newComic) {
+    public static void addStatistics(SV_ComicsInformation cl_newComic) {
         try (Connection con = DatabaseConnect.getConnect()) {
             String sql = "INSERT INTO statistics(idComics,allViews) VALUES (?,?)";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
@@ -266,7 +265,7 @@ public class ComicsDAO {
         }
     }
 
-    public static void updateComics(CL_NewComic cl_newComic) {
+    public static void updateComics(SV_ComicsInformation cl_newComic) {
         try (Connection con = DatabaseConnect.getConnect()) {
             String sql = "UPDATE comicsinformation SET nameComics = ?, author = ?, status = ?, description = ?, avatarComics = ? WHERE idComics = ?";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
@@ -285,7 +284,7 @@ public class ComicsDAO {
             e.printStackTrace();
         }
     }
-    public static void deleteComic(CL_NewComic cl_newComic){
+    public static void deleteComic(SV_ComicsInformation cl_newComic){
         try (Connection con = DatabaseConnect.getConnect()){
             String sql = "DELETE FROM comicsinformation WHERE id = ?";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
@@ -299,5 +298,6 @@ public class ComicsDAO {
             e.printStackTrace();
         }
     }
+
 
 }

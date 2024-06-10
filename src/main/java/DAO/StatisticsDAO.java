@@ -1,12 +1,15 @@
 package DAO;
 
 import Connect.DatabaseConnect;
+import Server.ObjectGson.GsonForServer.SV_CategoryManager;
 import Server.ObjectGson.GsonForServer.SV_CheckUpdate;
+import Server.ObjectGson.GsonForServer.SV_ComicsInformation;
 import Server.ObjectGson.GsonForServer.SV_Statistic;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class StatisticsDAO {
     public static SV_Statistic selectAllView(String idComics) {  //ham tong so views cua truyen
@@ -65,5 +68,19 @@ public class StatisticsDAO {
         }
         System.out.println("database tra ve: " + checkPerform);
         return statusUpdate;
+    }
+    public static void deleteView(SV_ComicsInformation sv_categoryManager){
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "DELETE FROM statistics WHERE id = ?";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setString(1, sv_categoryManager.getIdComic());
+
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: " + sql);
+                System.out.println("Co " + ketqua + " dong duoc thay doi");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

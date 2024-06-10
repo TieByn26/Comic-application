@@ -45,4 +45,5 @@ public class ComicController {
         SV_ListComicsInformations listComics = ComicsDAO.selectTopComics();
         new StreamSocket<SV_ListComicsInformations>().sendDataToCLient(socket,listComics);
     }
+
 }

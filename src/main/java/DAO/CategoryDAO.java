@@ -6,6 +6,7 @@ import Server.ObjectGson.GsonForServer.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CategoryDAO {
@@ -143,4 +144,33 @@ public class CategoryDAO {
         return listComics;
     }
 
+    public static void addCategoryForComic(SV_CategoryManager sv_categoryManager){
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "INSERT INTO managercategorycomics(idComics,idCategory) VALUES (?,?)";
+            try (PreparedStatement pstm = con.prepareStatement(sql)){
+                pstm.setString(1,sv_categoryManager.getIdComic());
+                pstm.setString(2, sv_categoryManager.getIdCategory());
+
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: " + sql);
+                System.out.println("Co " + ketqua + " dong duoc thay doi");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void deleteCategory(SV_ComicsInformation sv_categoryManager){
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "DELETE FROM managercategorycomics WHERE id = ?";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setString(1, sv_categoryManager.getIdComic());
+
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: " + sql);
+                System.out.println("Co " + ketqua + " dong duoc thay doi");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

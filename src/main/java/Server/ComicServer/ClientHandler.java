@@ -165,7 +165,7 @@ public class ClientHandler {
                 }
                 case "/add/new/comic":{
                     try{
-
+                        NewComicController.addNewComic(socket);
                     } catch (Exception e){
                         e.printStackTrace();
                     }
@@ -249,6 +249,7 @@ public class ClientHandler {
                     }catch (Exception e){
                         throw new RuntimeException(e);
                     }
+                    break;
                 }
                 case "/get/lastReadChapter":{
                     try {
@@ -339,10 +340,34 @@ public class ClientHandler {
                     }
                     break;
                 }
+                case "/get/comic/of/user":{
+                    try{
+                        ComicUserController.listComicOfUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/delele/comic": {
+                    try {
+                        NewComicController.deleteComic(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/update/chapter/comic" :{
+                    try{
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+
                 default:
                     break;
             }
-
         } catch (IOException e){
             e.printStackTrace();
         }
