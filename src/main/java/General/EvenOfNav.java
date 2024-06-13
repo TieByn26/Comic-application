@@ -65,7 +65,6 @@ public class EvenOfNav {
             }
         });
     }
-
     public static void setEventForNavHome(Label nav_home, int idUser){
         nav_home.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -75,7 +74,6 @@ public class EvenOfNav {
             }
         });
     }
-
     public static void setEventChangeSceneToLogout(ImageView nav_home){
         nav_home.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

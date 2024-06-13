@@ -1,6 +1,7 @@
 package Controller.BaseProject;
 
 import General.EvenOfNav;
+import General.Search;
 import ObjectGson.GsonForServer.SV_Notification;
 import RequestForServer.GetData.GetInformationNotification;
 import RequestForServer.PostData.Notification;
@@ -8,10 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
@@ -52,6 +50,11 @@ public class NotificationController {
     @FXML
     private Button NT_btnDeleteNotification;
 
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
+
     private int idUser;
     @FXML
     private Label nav_UpComics;
@@ -77,7 +80,9 @@ public class NotificationController {
         EvenOfNav.setEventForNavUpComics(nav_UpComics, idUser);
         EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
-
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind,home_iconFind,idUser);
+    }
     public void uploadDataToScreen() {
         ArrayList<SV_Notification> listNotification = GetInformationNotification.getAllCategoryInformation(idUser);
         for (SV_Notification notification : listNotification) {

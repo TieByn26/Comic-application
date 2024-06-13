@@ -4,6 +4,7 @@ package Controller.BaseProject;
 import ChangeScene.ChangedSceneToComicsInformation;
 import ChangeScene.ChangedSceneToFollow;
 import General.EvenOfNav;
+import General.Search;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
 import ObjectGson.GsonForServer.SV_ListUser;
 import ObjectGson.GsonForServer.SV_User;
@@ -17,6 +18,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -48,6 +50,10 @@ public class HomeController {
 
     @FXML
     private Label nav_notfications;
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
 
     @FXML
     private Label nav_history;
@@ -105,6 +111,10 @@ public class HomeController {
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
 
         EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
+    }
+
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind,home_iconFind,idUser);
     }
 
     public void decideDataWillUploadToPaneComics(String decided) throws Exception { // ham quyet dinh xem se in ra man hinh du lieu cua thang nao (vi se co su kien nhan vao the loai thi se load truyen ra giao dien theo thang idCategory)

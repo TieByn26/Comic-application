@@ -35,6 +35,7 @@ public class ChangeSceneToHistory {
             controller.setValueForPaneComics();
             //set su kien cho thanh nav
             controller.setEventForNav();
+            controller.eventSearch();
         }
         else {
             System.out.println("controller ComicsInformation");

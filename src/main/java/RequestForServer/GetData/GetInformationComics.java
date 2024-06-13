@@ -127,27 +127,24 @@ public class GetInformationComics {
             //gửi dữ liệu JSon từ client cho Server
             sendReqtoServer.write(reqJson + "\n");
             sendReqtoServer.flush();
-            Connect.receiveStatus(socket);
 
             //nhận và đọc dữ liệu json từ server
             BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String comicsInformations = receive.readLine();
-
+            System.out.println(comicsInformations);
             // chuyển đổi từ json sang đối tượng
             SV_ListComicsInformations dataConvertFromServer = gson.fromJson(comicsInformations, SV_ListComicsInformations.class);
-
+            System.out.println(dataConvertFromServer);
             // truyền dữ liệu từ server vào arrayList đã tạo sẵn
             if(dataConvertFromServer != null) {
                 for (SV_ComicsInformation data : dataConvertFromServer.getListComicsInfomations()) {
                     listComicsInformation.add(data);
-                    System.out.println(data);
+                    System.out.println("top truyen tra ve: " + data);
                 }
             }
             else {
                 System.out.println("/get/TopComics return null");
             }
-
-
             sendReqtoServer.close();
             receive.close();
             socket.close();
@@ -156,7 +153,6 @@ public class GetInformationComics {
             e.printStackTrace();
         }
         return listComicsInformation;
-
     }
 
     //  lay het thong tin truyen de load ra giao dien thong tin truyen

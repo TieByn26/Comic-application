@@ -31,6 +31,7 @@ public class ChangedSceneToFollow {
             //set gia tri ten truyen cho bien nameComics trong controller
             controller.setIdUser(idUser);
             controller.setValueForPaneComics();
+            controller.eventSearch();
             //set event for nav
             controller.setEventForNav();
         }

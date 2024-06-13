@@ -1,6 +1,7 @@
 package Controller.BaseProject;
 
 import General.EvenOfNav;
+import General.Search;
 import ObjectGson.GsonForServer.SV_Chapter;
 import ObjectGson.GsonForServer.SV_User;
 import ObjectGson.GsonForServer.SV_Comments;
@@ -101,6 +102,12 @@ public class ReadComicsController {
     @FXML
     private Label nav_UpComics;
     ExecutorService executors;
+
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
+
     ConcurrentHashMap<Integer, Image> imgMap;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
@@ -126,6 +133,9 @@ public class ReadComicsController {
         EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
 
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind,home_iconFind,idUser);
+    }
 
     public void setDataForComment() {
         //lam moi lai list comment

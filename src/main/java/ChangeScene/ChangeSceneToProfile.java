@@ -33,6 +33,8 @@ public class ChangeSceneToProfile {
             controller.uploadDataUser();
             //set su kien cho update va eidt tieu su
             controller.setEventForStory();
+            controller.eventSearch();
+            controller.updateAvatarUser();
 
             controller.uploadAllComicUploadByUser();
         }

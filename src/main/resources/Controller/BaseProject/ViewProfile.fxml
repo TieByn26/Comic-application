@@ -154,12 +154,12 @@
             </Text>
          </children>
       </Pane>
-      <Label layoutX="888.0" layoutY="100.0" style="-fx-font-weight: bold;" text="Tiểu sử" textFill="#0e3b87">
+      <Label layoutX="980.0" layoutY="101.0" style="-fx-font-weight: bold;" text="Tiểu sử" textFill="#0e3b87">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="PF_btnEdit" layoutX="826.0" layoutY="323.0" minHeight="45.0" minWidth="70.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="109.0" style="-fx-background-color: #F1AF00; -fx-border-radius: 100; -fx-font-weight: bold;" text="Chỉnh sửa" textFill="WHITE">
+      <Button fx:id="PF_btnEdit" layoutX="890.0" layoutY="322.0" minHeight="45.0" minWidth="70.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="109.0" style="-fx-background-color: #F1AF00; -fx-border-radius: 100; -fx-font-weight: bold;" text="Chỉnh sửa" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -170,15 +170,26 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="PF_btnUpdate" layoutX="948.0" layoutY="323.0" minHeight="45.0" minWidth="100.0" mnemonicParsing="false" style="-fx-cursor: hand; -fx-background-color: #009298; -fx-font-weight: bold;" text="Cập nhật" textFill="WHITE">
+      <Button fx:id="PF_btnUpdate" layoutX="1014.0" layoutY="322.0" minHeight="45.0" minWidth="100.0" mnemonicParsing="false" style="-fx-cursor: hand; -fx-background-color: #009298; -fx-font-weight: bold;" text="Cập nhật" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <TextArea fx:id="PF_story" layoutX="716.0" layoutY="130.0" prefHeight="188.0" prefWidth="439.0" wrapText="true">
+      <TextArea fx:id="PF_story" layoutX="845.0" layoutY="130.0" prefHeight="188.0" prefWidth="310.0" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </TextArea>
+      <TextField fx:id="PF_inputLinkAvatar" layoutX="641.0" layoutY="131.0" prefHeight="40.0" prefWidth="200.0" promptText="Nhập link avatar" />
+      <Button fx:id="PF_btnChangeAvatar" layoutX="691.0" layoutY="178.0" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" style="-fx-cursor: hand; -fx-background-color: #009298; -fx-font-weight: bold;" text="Cập nhật" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="692.0" layoutY="101.0" style="-fx-font-weight: bold;" text="Đổi avatar" textFill="#0e3b87">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

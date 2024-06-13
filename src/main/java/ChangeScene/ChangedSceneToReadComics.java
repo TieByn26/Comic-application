@@ -47,7 +47,7 @@ public class ChangedSceneToReadComics {
             controller.updateView();
             //cap nhat lich su doc truyen
             controller.updateListHistory();
-
+            controller.eventSearch();
             //set event for Nav
             controller.setEventForNav();
 

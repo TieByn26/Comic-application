@@ -31,8 +31,8 @@ public class ChangedSceneToComicsInformation {
             controller.setNameComics(nameComics);
             controller.setIdUser(idUser);
             //set event for nav
-
             controller.setEventForNav();
+            controller.eventSearch();
 
             // goi cac ham de upload du lieu
             controller.loadComicsInformation();

@@ -2,6 +2,7 @@ package Controller.BaseProject;
 
 import ChangeScene.ChangedSceneToPreviewComic;
 import General.EvenOfNav;
+import General.Search;
 import ObjectGson.GsonForServer.SV_User;
 import RequestForServer.GetData.GetInformationUser;
 import RequestForServer.PostData.Comics;
@@ -62,6 +63,12 @@ public class UploadComicsByUserController {
     private TilePane TL_listCategory;
     @FXML
     private ScrollPane TL_scroll_ListCategory;
+
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
+    
     private String pathPreviewComics = "/Controller/BaseProject/ViewPreviewComics.fxml";
 
 
@@ -138,6 +145,9 @@ public class UploadComicsByUserController {
 
         // khoa khong cho nguoi dung nhap ten tac gia
         UC_author.setEditable(false);
+    }
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind,home_iconFind,idUser);
     }
     public void UpComics() {
         UC_btnUpComic.setOnMouseClicked(new EventHandler<MouseEvent>() {

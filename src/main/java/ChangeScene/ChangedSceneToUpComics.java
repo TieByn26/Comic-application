@@ -37,6 +37,7 @@ public class ChangedSceneToUpComics {
 
             controller.checkValidData();
 
+            controller.eventSearch();
 
 
             System.out.println("id user upComics: "+controller.getIdUSer());

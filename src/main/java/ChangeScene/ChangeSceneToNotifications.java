@@ -31,7 +31,7 @@ public class ChangeSceneToNotifications {
             controller.setIdUser(idUser);
             //set event for navv
             controller.setEventForNav();
-
+            controller.eventSearch();
             controller.uploadDataToScreen();
             System.out.println("id user upComics: "+controller.getIdUser());
         }

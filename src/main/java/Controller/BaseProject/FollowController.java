@@ -3,6 +3,7 @@ package Controller.BaseProject;
 import ChangeScene.ChangedSceneToComicsInformation;
 import ChangeScene.ChangedSceneToFollow;
 import General.EvenOfNav;
+import General.Search;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
 import RequestForServer.GetData.GetInformationFollow;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +32,12 @@ public class FollowController {
     private Label nav_history;
     @FXML
     private ImageView home_iconLogout;
+
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
+
 
     @FXML
     private Label nav_follow;
@@ -75,6 +83,9 @@ public class FollowController {
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
 
         EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
+    }
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind,home_iconFind,idUser);
     }
 
     public void setValueForPaneComics() throws Exception {

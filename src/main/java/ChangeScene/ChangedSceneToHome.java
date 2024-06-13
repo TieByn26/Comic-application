@@ -29,9 +29,9 @@ public class ChangedSceneToHome {
             controller.setIdUser(idUser);
             //set event for nav
             controller.setEventForNav();
+            controller.eventSearch();
             //load thong tin truyen ra giao dien
             try {
-                System.out.println(324);
                 controller.decideDataWillUploadToPaneComics("byHome");
             } catch (Exception e) {
                 throw new RuntimeException(e);

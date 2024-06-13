@@ -2,6 +2,7 @@ package Controller.BaseProject;
 
 import ChangeScene.ChangedSceneToComicsInformation;
 import General.EvenOfNav;
+import General.Search;
 import ObjectGson.GsonForServer.SV_CheckUpdate;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
 import ObjectGson.GsonForServer.SV_User;
@@ -76,6 +77,15 @@ public class ProfileController {
     @FXML
     private ImageView home_iconLogout;
 
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
+    @FXML
+    private TextField PF_inputLinkAvatar;
+    @FXML
+    private Button PF_btnChangeAvatar;
+
     private int idUser;
     private String userName;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
@@ -144,6 +154,9 @@ public class ProfileController {
             }
         });
     }
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind,home_iconFind,idUser);
+    }
 
     public void uploadDataUser() {
         SV_User dataUser = GetInformationUser.getAllInforUserByIdUser(idUser);
@@ -160,6 +173,39 @@ public class ProfileController {
 
         Image avt = new Image(dataUser.getAvatar());
         PF_avatarUser.setImage(avt);
+    }
+    public void updateAvatarUser() {
+        PF_btnChangeAvatar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                String linkAvatar = PF_inputLinkAvatar.getText();
+                try {
+                    Image image = new Image(linkAvatar, true);
+                    // Kiểm tra lỗi khi tải hình ảnh
+                    image.errorProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue) {
+                            showAlert("Error" ,"Sai định dạng link ảnh (định dạng phải là dạng https://)");
+                        }
+                    });
+                    image.progressProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue.doubleValue() == 1.0 && !image.isError()) {
+                            int statusUpdate = User.updateAvatarUser(idUser,linkAvatar);
+                            if(statusUpdate > 0) {
+                                showAlert("Success", "cập nhật ảnh thành công");
+                                PF_avatarUser.setImage(image);
+                            }
+                            else {
+                                showAlert("Error", "cập nhật thất bại");
+                            }
+                        }
+                    });
+                }
+                catch (Exception e) {
+                    // Hiển thị cảnh báo nếu URL không hợp lệ hoặc không tìm thấy tài nguyên
+                    showAlert("Error", "Invalid URL or resource not found");
+                }
+            }
+        });
     }
 
     public void uploadAllComicUploadByUser(){
@@ -203,6 +249,14 @@ public class ProfileController {
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public int getIdUSer() {
