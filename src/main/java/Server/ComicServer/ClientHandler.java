@@ -25,8 +25,8 @@ public class ClientHandler {
             System.out.println(clRequest.getRequest());
 
             //thuc hien request
-            switch (clRequest.getRequest()){
-                case "/get/allcomic" : {
+            switch (clRequest.getRequest()) {
+                case "/get/allcomic": {
                     try {
                         ComicController.responeALLComics(socket);
                     } catch (Exception e) {
@@ -34,7 +34,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/get/comicInformationByNameComics" : {
+                case "/get/comicInformationByNameComics": {
                     try {
 
                         ComicController.responeComicInformationByNameComics(socket);
@@ -43,7 +43,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/get/viewByIdComics" : {
+                case "/get/viewByIdComics": {
                     try {
                         StatisticsController.responeAllViews(socket);
                     } catch (Exception e) {
@@ -51,7 +51,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/get/IdCategoryByIdComics" : {
+                case "/get/IdCategoryByIdComics": {
                     try {
                         CategoryController.responeIdCategoryByIdComics(socket);
                     } catch (Exception e) {
@@ -59,7 +59,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/get/CategoryNameByIdCategory" : {
+                case "/get/CategoryNameByIdCategory": {
                     try {
                         CategoryController.responeCategoryNameByIdCategory(socket);
                     } catch (Exception e) {
@@ -67,7 +67,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/get/AllCommentByIdComics" : {
+                case "/get/AllCommentByIdComics": {
                     try {
                         CommentController.responeAllComment(socket);
                     } catch (Exception e) {
@@ -75,7 +75,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/get/InforUserForComment" : {
+                case "/get/InforUserForComment": {
                     try {
                         UserController.responeInforUserForComment(socket);
                     } catch (Exception e) {
@@ -83,7 +83,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/update/numberOfLike" : {
+                case "/update/numberOfLike": {
                     try {
                         CommentController.updateNumberOflike(socket);
                     } catch (Exception e) {
@@ -91,7 +91,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/update/numberOfDislike" : {
+                case "/update/numberOfDislike": {
                     try {
                         CommentController.updateNumberOfDislike(socket);
                     } catch (Exception e) {
@@ -99,7 +99,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/update/newComment" : {
+                case "/update/newComment": {
                     try {
                         CommentController.createNewComment(socket);
                     } catch (Exception e) {
@@ -107,7 +107,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/get/AllImagesOfChapter" : {
+                case "/get/AllImagesOfChapter": {
                     try {
                         ChapterController.responeAllImagesOfChapter(socket);
                     } catch (Exception e) {
@@ -115,240 +115,246 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/register/new/account" :{
-                    try{
+                case "/register/new/account": {
+                    try {
                         RegisterController.resisterNewAcount(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 }
-                case "/login/account":{
-                    try{
+                case "/login/account": {
+                    try {
                         LoginController.checkLogin(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 }
-                case "/get/otp":{
-                    try{
+                case "/get/otp": {
+                    try {
                         LoginController.sendOtp(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 }
-                case "/change/password":{
+                case "/change/password": {
                     try {
                         LoginController.changePassword(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/all/comics":{
+                case "/get/all/comics": {
                     try {
                         ListComicsController.getAllComic(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/all/view/comics":{
+                case "/get/all/view/comics": {
                     try {
                         ListComicsController.getAllNumView(socket);
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/add/new/comic":{
-                    try{
+                case "/add/new/comic": {
+                    try {
 
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/update/AllView":{
+                case "/update/AllView": {
                     try {
                         StatisticsController.updateView(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/update/addNewFollow":{
+                case "/update/addNewFollow": {
                     try {
                         FollowController.addNewFollow(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/update/deleteFollow":{
+                case "/update/deleteFollow": {
                     try {
                         FollowController.deletedFollow(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/check/statusFollow":{
+                case "/check/statusFollow": {
                     try {
                         FollowController.checkFollow(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/update/ChapterHistory":{
+                case "/update/ChapterHistory": {
                     try {
                         HistoryController.updateChapterHistory(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/AllComicsFollow":{
+                case "/get/AllComicsFollow": {
                     try {
                         FollowController.responeComicsFollowInformationByIdUser(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/AllComicsHistory":{
+                case "/get/AllComicsHistory": {
                     try {
                         HistoryController.responeComicsHistoryInformationByIdUser(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/AllComicsByCategory":{
+                case "/get/AllComicsByCategory": {
                     try {
                         CategoryController.responeAllComicsByCategory(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/AllCategory":{
+                case "/get/AllCategory": {
                     try {
                         CategoryController.selectAllCategory(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/send/notification":{
-                    try{
+                case "/send/notification": {
+                    try {
                         NotificationController.sendNotification(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                 }
-                case "/get/lastReadChapter":{
+                case "/get/lastReadChapter": {
                     try {
                         HistoryController.responelastChapter(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/update/ExperienceAndLevelUser":{
+                case "/update/ExperienceAndLevelUser": {
                     try {
                         UserController.updateExperienceAndLevelUser(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/AllInformationUser":{
+                case "/get/AllInformationUser": {
                     try {
                         UserController.responeUserinformaitonByIdUser(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/update/StoryUser":{
+                case "/update/StoryUser": {
                     try {
                         UserController.updateStoryUserByIdUser(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/update/ComicByUser":{
+                case "/update/ComicByUser": {
                     try {
                         ComicController.upComicsByUser(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
 
-                case "/get/FullnameUser":{
+                case "/get/FullnameUser": {
                     try {
                         UserController.responeFullnameUserByIdUser(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/TopUser":{
+                case "/get/TopUser": {
                     try {
                         UserController.responeListTopUser(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/TopComics":{
+                case "/get/TopComics": {
                     try {
                         ComicController.responeTopComics(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/AllNotificaitons":{
+                case "/get/AllNotificaitons": {
                     try {
                         NotificationController.responeAllNotification(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/delete/Notification":{
+                case "/delete/Notification": {
                     try {
                         NotificationController.deleteNotification(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/update/StatusNotification":{
+                case "/update/StatusNotification": {
                     try {
                         NotificationController.updateStatus(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case "/get/AllComicsUploadByUser":{
+                case "/get/AllComicsUploadByUser": {
                     try {
                         ComicController.responeAllComicsByUsername(socket);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                default:
+                case "/get/AvatarUser": {
+                    try {
+                        UserController.updateAvatarUser(socket);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
+                }
             }
 
         } catch (IOException e){

@@ -41,7 +41,6 @@ public class ComicController {
     }
 
     public static void responeTopComics(Socket socket) {  // tra ve 20 truyen hot
-        StreamSocket.checkConnect(socket);
         SV_ListComicsInformations listComics = ComicsDAO.selectTopComics();
         new StreamSocket<SV_ListComicsInformations>().sendDataToCLient(socket,listComics);
     }
