@@ -289,4 +289,28 @@ public class UserDAO {
         System.out.println("database tra ve: " + listUser.toString());
         return listUser;
     }
+    public static SV_CheckUpdate updateAvatarUser(int idUser, String linkAvatar) {
+        Connection connection = DatabaseConnect.getConnect();
+        System.out.println(idUser);
+        SV_CheckUpdate statusUpdate = null;
+        try {
+            String querySQL = "UPDATE `user` SET `avatar`= ? WHERE idUser = ?";
+            PreparedStatement st = connection.prepareStatement(querySQL);
+
+            st.setString(1,linkAvatar);
+            st.setInt(2,idUser);
+
+            int checkPerform  = st.executeUpdate();
+            if (checkPerform > 0) {
+                statusUpdate = new SV_CheckUpdate(checkPerform);
+            }
+            else {
+                System.out.println("update avatar user fail");
+            }
+            DatabaseConnect.closeConnect(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return statusUpdate;
+    }
 }
