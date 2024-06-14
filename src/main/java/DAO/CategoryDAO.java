@@ -143,14 +143,29 @@ public class CategoryDAO {
         System.out.println("database tra ve: " + listComics);
         return listComics;
     }
+    public static String getIdCategory(SV_CategoryComics sv_categoryComics){
+        String idCate = null;
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "SELECT * FROM categorycomics WHERE categoryInformation = ?";
+            try (PreparedStatement pstm = con.prepareStatement(sql)){
+                pstm.setString(1,sv_categoryComics.getCategoryName());
+                ResultSet rs = pstm.executeQuery();
+                if (rs.next()){
+                    idCate = rs.getString("idCategory");
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return idCate;
+    }
 
-    public static void addCategoryForComic(SV_CategoryManager sv_categoryManager){
+    public static void addCategoryForComic(SV_CategoryManager sv_categoryManager, String idCate){
         try (Connection con = DatabaseConnect.getConnect()){
             String sql = "INSERT INTO managercategorycomics(idComics,idCategory) VALUES (?,?)";
             try (PreparedStatement pstm = con.prepareStatement(sql)){
                 pstm.setString(1,sv_categoryManager.getIdComic());
-                pstm.setString(2, sv_categoryManager.getIdCategory());
-
+                pstm.setString(2,idCate);
                 int ketqua = pstm.executeUpdate();
                 System.out.println("Da thuc thi sql: " + sql);
                 System.out.println("Co " + ketqua + " dong duoc thay doi");
@@ -159,18 +174,63 @@ public class CategoryDAO {
             e.printStackTrace();
         }
     }
-    public static void deleteCategory(SV_ComicsInformation sv_categoryManager){
-        try (Connection con = DatabaseConnect.getConnect()){
-            String sql = "DELETE FROM managercategorycomics WHERE id = ?";
+    public static void updateCategory(SV_CategoryManager sv_categoryManager){
+        try (Connection con = DatabaseConnect.getConnect()) {
+            String sql = "UPDATE managercategorycomics SET idCategory = ? WHERE idComics = ?";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
-                pstm.setString(1, sv_categoryManager.getIdComic());
+                pstm.setString(1,sv_categoryManager.getIdComic());
+                pstm.setString(2,sv_categoryManager.getIdCategory());
 
                 int ketqua = pstm.executeUpdate();
-                System.out.println("Da thuc thi sql: " + sql);
-                System.out.println("Co " + ketqua + " dong duoc thay doi");
+                System.out.println("Da thuc thi sql: "+sql);
+                System.out.println("Co "+ketqua+" dong duoc thay doi");
             }
-        } catch (SQLException e) {
+        } catch (SQLException e){
             e.printStackTrace();
         }
+    }
+    public static SV_ListCategoryManager getAllCategoryManager(){
+        SV_ListCategoryManager sv_listCategoryManager = new SV_ListCategoryManager();
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "SELECT * FROM managercategorycomics";
+            try (PreparedStatement pstm = con.prepareStatement(sql)){
+                ResultSet rs = pstm.executeQuery();
+
+                while (rs.next()){
+                    sv_listCategoryManager.getListCategoryManager().add(
+                            new SV_CategoryManager(
+                                    rs.getString("idComics"),
+                                    rs.getString("idCategory")
+                            )
+                    );
+                }
+                System.out.println("da thuc query: "+sql);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return sv_listCategoryManager;
+    }
+    public static SV_ListCategoryComic getAllCategoryComic(){
+        SV_ListCategoryComic sv_listCategoryComic = new SV_ListCategoryComic();
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "SELECT * FROM categorycomics";
+            try (PreparedStatement pstm = con.prepareStatement(sql)){
+                ResultSet rs = pstm.executeQuery();
+
+                while (rs.next()){
+                    sv_listCategoryComic.getListCategoryComic().add(
+                      new SV_CategoryComics(
+                              rs.getString("idCategory"),
+                              rs.getString("categoryInformation")
+                      )
+                    );
+                }
+                System.out.println("da thuc query: "+sql);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return sv_listCategoryComic;
     }
 }

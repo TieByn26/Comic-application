@@ -10,6 +10,7 @@ import Server.ObjectGson.GsonForServer.SV_ListUser;
 import Server.ObjectGson.GsonForServer.SV_User;
 import com.google.gson.Gson;
 
+import java.io.BufferedWriter;
 import java.net.Socket;
 
 public class UserController {
@@ -76,9 +77,11 @@ public class UserController {
     }
 
     public static void responeListTopUser(Socket socket) {
-        StreamSocket.checkConnect(socket);
-
-        SV_ListUser listTopUser = UserDAO.selectTop10User();
-        new StreamSocket<SV_ListUser>().sendDataToCLient(socket,listTopUser);
+        try {
+            SV_ListUser listTopUser = UserDAO.selectTop10User();
+            new StreamSocket<SV_ListUser>().sendDataToCLient(socket,listTopUser);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -69,18 +69,4 @@ public class StatisticsDAO {
         System.out.println("database tra ve: " + checkPerform);
         return statusUpdate;
     }
-    public static void deleteView(SV_ComicsInformation sv_categoryManager){
-        try (Connection con = DatabaseConnect.getConnect()){
-            String sql = "DELETE FROM statistics WHERE id = ?";
-            try (PreparedStatement pstm = con.prepareStatement(sql)) {
-                pstm.setString(1, sv_categoryManager.getIdComic());
-
-                int ketqua = pstm.executeUpdate();
-                System.out.println("Da thuc thi sql: " + sql);
-                System.out.println("Co " + ketqua + " dong duoc thay doi");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }

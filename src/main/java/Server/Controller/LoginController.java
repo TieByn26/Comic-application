@@ -29,6 +29,7 @@ public class LoginController {
             //xac nhan la dung tai khoan mat khau
             svCheckLogin.setCheck(true);
             svCheckLogin.setIdUser(UserDAO.getIdByUsernameLogin(cl_loginInformation));
+            svCheckLogin.setAuthority(UserDAO.getAuthorityByUsernameLogin(cl_loginInformation));
             //gui du lieu xac minh ve cho client
             new StreamSocket<SV_CheckLogin>().sendDataToCLient(socket, svCheckLogin);
         }else{

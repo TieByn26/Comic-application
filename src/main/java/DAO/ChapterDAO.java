@@ -4,6 +4,7 @@ import Connect.DatabaseConnect;
 import Server.ObjectGson.GsonForServer.SV_Chapter;
 import Server.ObjectGson.GsonForServer.SV_ChapterOfComics;
 import Server.ObjectGson.GsonForServer.SV_ComicsInformation;
+import Server.ObjectGson.GsonForServer.SV_ListChapter;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,7 +48,7 @@ public class ChapterDAO {
 
         return chapterInformation;
     }
-    public static void addNewChapter(SV_Chapter sv_chapter){
+    public static void addUpdateChapter(SV_Chapter sv_chapter){
         try (Connection con = DatabaseConnect.getConnect()) {
             String sql = "INSERT INTO chapter(idComics,chapter,linkImages) VALUES (?,?,?)";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
@@ -63,18 +64,79 @@ public class ChapterDAO {
             e.printStackTrace();
         }
     }
-    public static void deleteChapter(SV_ComicsInformation sv_chapter){
-        try (Connection con = DatabaseConnect.getConnect()){
-            String sql = "DELETE FROM chapter WHERE id = ?";
+    public static void updateChapter(SV_Chapter sv_chapter){
+        try (Connection con = DatabaseConnect.getConnect()) {
+            String sql = "UPDATE chapter SET linkImages = ? WHERE idComics = ?";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
-                pstm.setString(1, sv_chapter.getIdComic());
+                pstm.setString(1,sv_chapter.getIdComic());
+                pstm.setString(2,sv_chapter.getLinkImage());
 
                 int ketqua = pstm.executeUpdate();
                 System.out.println("Da thuc thi sql: " + sql);
                 System.out.println("Co " + ketqua + " dong duoc thay doi");
             }
-        } catch (SQLException e) {
+        } catch (SQLException e){
             e.printStackTrace();
         }
     }
+    public static Boolean checkChapter(SV_Chapter sv_chapter){
+        Boolean check = true;
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "SELECT * FROM chapter WHERE chapter = ? and idComics = ?";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setInt(1, sv_chapter.getChapter());
+                pstm.setString(2,sv_chapter.getIdComic());
+
+                ResultSet rs = pstm.executeQuery();
+                if (rs.next()){
+                    System.out.println(rs.next());
+                    System.out.println("co du lieu");
+                    check = false;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+    public static void addNewChapter(SV_Chapter sv_chapter){
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "INSERT INTO chapter(idComics,chapter,linkImages) VALUES (?,?,?)";
+            try (PreparedStatement pstm = con.prepareStatement(sql)){
+                pstm.setString(1,sv_chapter.getIdComic());
+                pstm.setInt(2,sv_chapter.getChapter());
+                pstm.setString(3, sv_chapter.getLinkImage());
+
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: " + sql);
+                System.out.println("Co " + ketqua + " dong duoc thay doi");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static SV_ListChapter getAllChapter(){
+        SV_ListChapter sv_listChapter = new SV_ListChapter();
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "SELECT * FROM chapter";
+            try (PreparedStatement pstm = con.prepareStatement(sql)){
+                ResultSet rs = pstm.executeQuery();
+
+                while (rs.next()){
+                    sv_listChapter.getListChapter().add(
+                            new SV_Chapter(
+                                    rs.getString("idComics"),
+                                    rs.getInt("chapter"),
+                                    rs.getString("linkImages")
+                            )
+                    );
+                }
+                System.out.println("da thuc query: "+sql);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return sv_listChapter;
+    }
+
 }

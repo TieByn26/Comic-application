@@ -23,4 +23,11 @@ public class HashController {
             throw new RuntimeException(e);
         }
     }
+    public static void tryHash(){
+        System.out.println(sha256("admin1"));
+    }
+
+    public static void main(String[] args) {
+        tryHash();
+    }
 }

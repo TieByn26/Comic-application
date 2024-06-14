@@ -95,6 +95,29 @@ public class ComicsDAO {
         }
         return listComics;
     }
+    public static SV_ListComicsInformations selectAllComicsByUsername(String username) {  // lay danh sach truyen ma nguoi dung đăng
+        Connection connection = DatabaseConnect.getConnect();
+
+        SV_ListComicsInformations listComics = new SV_ListComicsInformations();
+        String sql = "SELECT `nameComics`, `avatarComics`, `numberOfChapter` FROM `comicsinformation` WHERE author = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1,username);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String nameComic = rs.getString(1);
+                String avt = rs.getString(2);
+                int numberOfChapter = rs.getInt(3);
+
+
+                SV_ComicsInformation newComics = new SV_ComicsInformation(nameComic, avt, numberOfChapter);
+                listComics.getListComicsInfomations().add(newComics);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listComics;
+    }
 
     public static SV_ComicsInformation selectFullComicsInformationByNameComics(String nameComics) {  //ham lay tat ca thong tin cua truyen
         //tao connect toi server
@@ -238,7 +261,7 @@ public class ComicsDAO {
                 pstm.setString(4, cl_newComic.getStatus());
                 pstm.setString(5, cl_newComic.getDescription());
                 pstm.setString(6, cl_newComic.getAvatarComic());
-                pstm.setInt(7, cl_newComic.getNumberOfChapter());
+                pstm.setInt(7, 1);
 
                 int ketqua = pstm.executeUpdate();
                 System.out.println("Da thuc thi sql: " + sql);
@@ -267,14 +290,13 @@ public class ComicsDAO {
 
     public static void updateComics(SV_ComicsInformation cl_newComic) {
         try (Connection con = DatabaseConnect.getConnect()) {
-            String sql = "UPDATE comicsinformation SET nameComics = ?, author = ?, status = ?, description = ?, avatarComics = ? WHERE idComics = ?";
+            String sql = "UPDATE comicsinformation SET nameComics = ?, status = ?, description = ?, avatarComics = ? WHERE idComics = ?";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
                 pstm.setString(1, cl_newComic.getNameComic());
-                pstm.setString(2, cl_newComic.getAuthor());
-                pstm.setString(3, cl_newComic.getStatus());
-                pstm.setString(4, cl_newComic.getDescription());
-                pstm.setString(5, cl_newComic.getAvatarComic());
-                pstm.setString(7, cl_newComic.getIdComic());
+                pstm.setString(2, cl_newComic.getStatus());
+                pstm.setString(3, cl_newComic.getDescription());
+                pstm.setString(4, cl_newComic.getAvatarComic());
+                pstm.setString(5, cl_newComic.getIdComic());
 
                 int ketqua = pstm.executeUpdate();
                 System.out.println("Da thuc thi sql: "+sql);
@@ -284,11 +306,12 @@ public class ComicsDAO {
             e.printStackTrace();
         }
     }
-    public static void deleteComic(SV_ComicsInformation cl_newComic){
+    public static void deleteComic(SV_ComicsInformation cl_newComic, SV_Chapter sv_chapter){
         try (Connection con = DatabaseConnect.getConnect()){
-            String sql = "DELETE FROM comicsinformation WHERE id = ?";
+            String sql = "DELETE FROM chapter WHERE idComics = ? and chapter = ?";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
                 pstm.setString(1, cl_newComic.getIdComic());
+                pstm.setInt(2, sv_chapter.getChapter());
 
                 int ketqua = pstm.executeUpdate();
                 System.out.println("Da thuc thi sql: " + sql);
@@ -298,6 +321,67 @@ public class ComicsDAO {
             e.printStackTrace();
         }
     }
+    public static void updateChapterNumber(SV_ComicsInformation sv_comicsInformation){
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "UPDATE comicsinformation SET numberOfChapter = ? WHERE idComics = ? ";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setInt(1,sv_comicsInformation.getNumberOfChapter() - 1);
+                pstm.setString(2, sv_comicsInformation.getIdComic());
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: " + sql);
+                System.out.println("Co " + ketqua + " dong duoc thay doi");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static void updateChapterNumber2(SV_ComicsInformation sv_comicsInformation, int numberChapter){
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "UPDATE comicsinformation SET numberOfChapter = ? WHERE idComics = ? ";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setInt(1,numberChapter + 1);
+                pstm.setString(2, sv_comicsInformation.getIdComic());
+                int ketqua = pstm.executeUpdate();
+                System.out.println("Da thuc thi sql: " + sql);
+                System.out.println("Co " + ketqua + " dong duoc thay doi");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static int getNumChapter(SV_ComicsInformation sv_comicsInformation){
+        int numberChapter = 0;
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "SELECT numberOfChapter FROM comicsinformation WHERE idComics = ?";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setString(1,sv_comicsInformation.getIdComic());
+                ResultSet rs = pstm.executeQuery();
+                if (rs.next()){
+                    numberChapter = rs.getInt("numberOfChapter");
+                }
+                System.out.println("Da thuc thi sql: " + sql);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return numberChapter;
+    }
+    public static Boolean checkNamecomic(SV_ComicsInformation sv_comicsInformation){
+        Boolean check = true;
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "SELECT * FROM comicsinformation WHERE nameComics = ?";
+            try (PreparedStatement pstm = con.prepareStatement(sql)) {
+                pstm.setString(1, sv_comicsInformation.getNameComic());
 
+                ResultSet rs = pstm.executeQuery();
+                while (rs.next()){
+                    check = false;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
 }

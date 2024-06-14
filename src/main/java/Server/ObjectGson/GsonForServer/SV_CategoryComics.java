@@ -17,6 +17,7 @@ public class SV_CategoryComics {
     }
 
 
+
     public String getIdCategory() {
         return idCategory;
     }

@@ -1,9 +1,10 @@
 package Server.Controller;
 
 import Connect.StreamSocket;
+import DAO.CategoryDAO;
+import DAO.ChapterDAO;
 import DAO.ComicsDAO;
-import Server.ObjectGson.GsonForServer.SV_ListComicsInformations;
-import Server.ObjectGson.GsonForServer.SV_ListStatistic;
+import Server.ObjectGson.GsonForServer.*;
 import com.google.gson.Gson;
 
 import java.net.Socket;
@@ -27,6 +28,36 @@ public class ListComicsController {
         //gui du lieu ve client
         try {
             new StreamSocket<SV_ListStatistic>().sendDataToCLient(socket, ComicsDAO.getAllNumView());
+            System.out.println("Du lieu da gui thanh cong ");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void getAllCategoryManager(Socket socket){
+        StreamSocket.checkConnect(socket);
+        //gui du lieu ve client
+        try {
+            new StreamSocket<SV_ListCategoryManager>().sendDataToCLient(socket, CategoryDAO.getAllCategoryManager());
+            System.out.println("Du lieu da gui thanh cong ");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void getAllChapter(Socket socket){
+        StreamSocket.checkConnect(socket);
+        //gui du lieu ve client
+        try {
+            new StreamSocket<SV_ListChapter>().sendDataToCLient(socket, ChapterDAO.getAllChapter());
+            System.out.println("Du lieu da gui thanh cong ");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void getAllCategoryComic(Socket socket){
+        StreamSocket.checkConnect(socket);
+        //gui du lieu ve client
+        try {
+            new StreamSocket<SV_ListCategoryComic>().sendDataToCLient(socket, CategoryDAO.getAllCategoryComic());
             System.out.println("Du lieu da gui thanh cong ");
         } catch (Exception e) {
             e.printStackTrace();

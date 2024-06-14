@@ -38,11 +38,11 @@ public class ComicUserDAO {
         sv_listComicOfUser.setListComicOfUser(list);
         return sv_listComicOfUser;
     }
-    public static void deleteComicOfUser(String nameComic){
+    public static void deleteComicOfUser(SV_ComicOfUser sv_comicOfUser){
         try (Connection con = DatabaseConnect.getConnect()) {
             String sql = "DELETE FROM comicsofuser WHERE nameComic = ?";
             try (PreparedStatement pstm = con.prepareStatement(sql)) {
-                pstm.setString(1, nameComic);
+                pstm.setString(1, sv_comicOfUser.getNameComic());
 
                 int ketqua = pstm.executeUpdate();
                 System.out.println("Da thuc thi sql: " + sql);

@@ -76,6 +76,24 @@ public class UserDAO {
         }
         return idUser;
     }
+    public static int getAuthorityByUsernameLogin(CL_LoginInformation cl_loginInformation){
+        int authority = 0;
+        try (Connection con = DatabaseConnect.getConnect()){
+            String sql = "SELECT authority FROM account WHERE username = ?";
+            try (PreparedStatement pstm = con.prepareStatement(sql)){
+                pstm.setString(1,cl_loginInformation.getUsername());
+                try (ResultSet rs = pstm.executeQuery()){
+                    if (rs.next()) {
+                        authority = rs.getInt("authority");
+                        System.out.println("Da thuc thi: "+sql);
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return authority;
+    }
 
     // ham tra ve thong tin fullName, avatar cua user, dung cho comment
     public static SV_User getInforUserForComment(int idUser) {

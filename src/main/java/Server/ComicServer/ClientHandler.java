@@ -1,9 +1,5 @@
 package Server.ComicServer;
 
-import Connect.StreamSocket;
-import DAO.CategoryDAO;
-import DAO.FollowDAO;
-import DAO.UserDAO;
 import Server.Controller.*;
 import Server.ObjectGson.GsonForClient.CL_Request;
 import com.google.gson.Gson;
@@ -23,7 +19,6 @@ public class ClientHandler {
             //chuyen doi du lieu gson thanh doi tuong java va anh xa vao model
             CL_Request clRequest = gson.fromJson(clientRequest, CL_Request.class);
             System.out.println(clRequest.getRequest());
-
             //thuc hien request
             switch (clRequest.getRequest()){
                 case "/get/allcomic" : {
@@ -163,7 +158,7 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/add/new/comic":{
+                case "add/new/comic":{
                     try{
                         NewComicController.addNewComic(socket);
                     } catch (Exception e){
@@ -291,7 +286,6 @@ public class ClientHandler {
                     }
                     break;
                 }
-
                 case "/get/FullnameUser":{
                     try {
                         UserController.responeFullnameUserByIdUser(socket);
@@ -356,18 +350,57 @@ public class ClientHandler {
                     }
                     break;
                 }
-                case "/update/chapter/comic" :{
+                case "/update/comic" :{
                     try{
-
+                        NewComicController.updateComic(socket);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
                     break;
                 }
-
+                case "/get/AllComicsUploadByUser":{
+                    try {
+                        ComicController.responeAllComicsByUsername(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/all/chapter/comics":{
+                    try{
+                        ListComicsController.getAllChapter(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/all/category/comics":{
+                    try {
+                        ListComicsController.getAllCategoryComic(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/get/all/category/manager":{
+                    try {
+                        ListComicsController.getAllCategoryManager(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case "/delele/comic/of/user": {
+                    try {
+                        ComicUserController.deleleComicOfUser(socket);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
                 default:
                     break;
             }
+
         } catch (IOException e){
             e.printStackTrace();
         }
