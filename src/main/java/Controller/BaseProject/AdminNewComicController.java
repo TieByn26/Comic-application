@@ -1,5 +1,6 @@
 package Controller.BaseProject;
 
+import ChangeScene.ChangedSceneToPreviewComic;
 import ObjectGson.GsonForServer.SV_CategoryComics;
 import ObjectGson.GsonForServer.SV_CategoryManager;
 import ObjectGson.GsonForServer.SV_Chapter;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class AdminNewComicController {
     @FXML
@@ -45,7 +47,7 @@ public class AdminNewComicController {
         choiceBoxSetValue();
         buttonAddNew.setOnAction(event -> addNewComic());
         buttonReviewAvatar.setOnAction(event -> reviewAvatar());
-        buttonReview.setOnAction(event -> reviewComic());
+        buttonReview.setOnMouseClicked(this::reviewComic);
     }
 
     public void choiceBoxSetValue(){
@@ -58,8 +60,8 @@ public class AdminNewComicController {
         Image image = new Image(textAvatar.getText());
         viewAvatar.setImage(image);
     }
-    public void reviewComic(){
-
+    public void reviewComic(MouseEvent event){
+        ChangedSceneToPreviewComic.ChangeScene(event,"/Controller/BaseProject/ViewPreviewComics.fxml","ReviewComic",textLinkChapter.getText(),textNameComic.getText());
     }
     public void addNewComic(){
         //thong tin truyen

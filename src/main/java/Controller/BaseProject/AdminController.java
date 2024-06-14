@@ -1,5 +1,6 @@
 package Controller.BaseProject;
 
+import ChangeScene.ChangedSceneToPreviewComic;
 import ObjectGson.GsonForClient.CL_UsernameToNotifi;
 import ObjectGson.GsonForServer.*;
 import RequestForServer.GetData.GetAllComic;
@@ -19,6 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -75,7 +77,6 @@ public class AdminController {
     private TableColumn<SV_ComicsInformation, String> colum1;
     @FXML
     private TableColumn<SV_ComicsInformation, String> colum2;
-    private ObservableList<SV_ComicOfUser> data;
     //du lieu chinh
     private SV_ListComicsInformations sv_listComicsInformations;
     private SV_ListStatistic sv_listStatistic;
@@ -112,6 +113,7 @@ public class AdminController {
         newComicButton.setOnAction(event -> changeAddNew());
         deleteButton.setOnAction(this::deleteComicOfUser);
         acceptButton.setOnAction(event -> acceptComicOfUser());
+        reviewButton.setOnMouseClicked(this::reviewComic1);
     }
     public void setSizeTable(){ // thay doi kich co , thuc hien lang nghe su kien
         // Tạo một RowFactory tùy chỉnh để thay đổi chiều cao của các hàng
@@ -236,6 +238,7 @@ public class AdminController {
             }
         }
         //them du lieu vao array list
+        listChapter.clear();
        for (SV_Chapter svChapter : sv_listChapter.getListChapter()){
            if (svChapter.getIdComic().equals(sv_comicsInformation.getIdComic())) {
                listChapter.add(svChapter);
@@ -261,7 +264,7 @@ public class AdminController {
         tableListComic.setItems(data);
         //an hien button
         editButton.setVisible(true);
-        reviewButton2.setVisible(true);
+        reviewButton2.setVisible(false);
         reviewButton.setVisible(false);
         acceptButton.setVisible(false);
         deleteButton.setVisible(false);
@@ -282,7 +285,7 @@ public class AdminController {
         tableListUserComic.setVisible(true);
         textIdComic.setVisible(true);
 
-        data = FXCollections.observableArrayList();
+        ObservableList<SV_ComicOfUser> data = FXCollections.observableArrayList();
         for (SV_ComicOfUser sv_comicOfUser : sv_listComicOfUser.getListComicOfUser()) {
             data.add(sv_comicOfUser);
         }
@@ -346,7 +349,10 @@ public class AdminController {
         //xoa khoi danh sach cho
         RequestDeleteComicUser.deleleComicUser(sv_comicOfUser);
     }
-    public void reviewComic(){
-
+    public void reviewComic1(MouseEvent event){
+        ChangedSceneToPreviewComic.ChangeScene(event,"/Controller/BaseProject/ViewPreviewComics.fxml","ReviewComic",sv_comicOfUser.getImageChapter(),sv_comicOfUser.getNameComic());
+    }
+    public void reviewComic2(MouseEvent event){
+//        ChangedSceneToPreviewComic.ChangeScene();
     }
 }

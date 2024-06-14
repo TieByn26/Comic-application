@@ -1,5 +1,6 @@
 package Controller.BaseProject;
 
+import ChangeScene.ChangedSceneToPreviewComic;
 import ObjectGson.GsonForServer.*;
 import RequestForServer.PostData.RequestDeleteComic;
 import RequestForServer.PostData.RequestUpdateComic;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
@@ -53,7 +55,7 @@ public class AdminEditController {
         buttonReviewAvatar.setOnAction(event -> viewAvatar());
         buttonDelete.setOnAction(event -> deleteComic());
         buttonUpdate.setOnAction(event -> updateComic());
-        buttonReview.setOnAction(event -> reviewComic());
+        buttonReview.setOnMouseClicked(this::reviewComic);
     }
     public void viewAvatar(){
         Image image = new Image(textAvatar.getText());
@@ -132,7 +134,7 @@ public class AdminEditController {
             }
         });
     }
-    public void reviewComic(){
-
+    public void reviewComic(MouseEvent event){
+        ChangedSceneToPreviewComic.ChangeScene(event,"/Controller/BaseProject/ViewPreviewComics.fxml","ReviewComic",textLinkChapter.getText(),textNameComic.getText());
     }
 }
