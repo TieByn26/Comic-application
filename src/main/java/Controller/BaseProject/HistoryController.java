@@ -6,6 +6,7 @@ import General.Search;
 import ObjectGson.GsonForServer.SV_ComicsInformation;
 import RequestForServer.GetData.GetInformationFollow;
 import RequestForServer.GetData.GetInformationHistory;
+import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -93,31 +94,45 @@ public class HistoryController {
 
     public void setValueForPaneComics() throws Exception {
         ArrayList<SV_ComicsInformation> listComics = GetInformationHistory.getAllComicsHistoryInformation(idUser);
-        // Thêm các phần tử vào TilePane
+
         for (SV_ComicsInformation comics : listComics) {
             FXMLLoader newComicsLoader = new FXMLLoader(getClass().getResource(pathPaneComics));
             Parent comicPane = newComicsLoader.load();
-            // lay cac bien cua paneComics
+
+            // Lấy các biến của paneComics
             ImageView avtComics = (ImageView) comicPane.lookup("#PC_img");
             Label nameComic = (Label) comicPane.lookup("#PC_nameComics");
             Label chapter = (Label) comicPane.lookup("#PC_chapter");
-            // set du lieu cho bien paneComics
-            Image imgAvt = new Image(comics.getAvatarComic());  //tao hinh anh de nhet vao avt comics
-            avtComics.setImage(imgAvt);
-            nameComic.setText(comics.getNameComic());
-            chapter.setText(comics.getNumberOfChapter()+"");
 
-            // set su kien click vao cac bo truyen
-            comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    ChangedSceneToComicsInformation.ChangeScene(event,pathComicsInformation,"Thông tin truyện",nameComic.getText(), idUser);
-                }
+            // Tải ảnh không đồng bộ
+            loadImageAsync(comics.getAvatarComic(), avtComics);
+
+            // Set dữ liệu cho biến paneComics
+            nameComic.setText(comics.getNameComic());
+            chapter.setText(comics.getNumberOfChapter() + "");
+
+            // Set sự kiện click vào các bộ truyện
+            comicPane.setOnMouseClicked(event -> {
+                ChangedSceneToComicsInformation.ChangeScene(event, pathComicsInformation, "Thông tin truyện", nameComic.getText(), idUser);
             });
 
             HT_listComics.getChildren().add(comicPane);
         }
     }
+
+    // Phương thức tải ảnh không đồng bộ và hỗ trợ bộ nhớ đệm
+    private void loadImageAsync(String url, ImageView imageView) {
+        Task<Image> loadImageTask = new Task<Image>() {
+            @Override
+            protected Image call() {
+                return new Image(url, true); // true để tải trong nền và sử dụng bộ nhớ đệm
+            }
+        };
+
+        loadImageTask.setOnSucceeded(event -> imageView.setImage(loadImageTask.getValue()));
+        new Thread(loadImageTask).start();
+    }
+
 
     public int getIdUser() {
         return idUser;

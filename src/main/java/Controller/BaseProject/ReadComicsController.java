@@ -331,7 +331,7 @@ public class ReadComicsController {
           System.out.println("update view fail");
       }
     }
-public void updateListHistory () {
+    public void updateListHistory () {
         if(History.updateChapterOfHistory(idcomics,idUser,chapter) > 0) {
             System.out.println("update history success");
         }
@@ -453,24 +453,12 @@ public void updateListHistory () {
         this.chapter = chapter;
     }
 
-    public String getNameComics() {
-        return nameComics;
-    }
-
     public void setNameComics(String nameComics) {
         this.nameComics = nameComics;
     }
 
-    public int getNumberOfChapter() {
-        return numberOfChapter;
-    }
-
     public void setNumberOfChapter(int numberOfChapter) {
         this.numberOfChapter = numberOfChapter;
-    }
-
-    public int getAllView() {
-        return allView;
     }
 
     public void setAllView(int allView) {
