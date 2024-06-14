@@ -2,16 +2,14 @@ package Controller.BaseProject;
 
 import ChangeScene.ChangedSceneToReadComics;
 import General.EvenOfNav;
+import General.Search;
 import RequestForServer.GetData.GetInformationComics;
 import ObjectGson.GsonForServer.*;
 import RequestForServer.GetData.GetInformationHistory;
 import RequestForServer.PostData.Follow;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -68,6 +66,14 @@ public class ComicsInformationController {
     private String nameComics; // bien de controller goi den tu phuong thuc changedScene de luu gia tri ten truyen
     private String idComics;
     private int idUser;
+    @FXML
+    private ImageView home_iconLogout;
+
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
+
     boolean isFollow = false;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
@@ -130,6 +136,9 @@ public class ComicsInformationController {
             }
         });
     }
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind,home_iconFind,idUser);
+    }
 
     public void setEventForNav () {
         //set event click for nav_category
@@ -151,6 +160,7 @@ public class ComicsInformationController {
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
 
     public void loadComicsInformation () {

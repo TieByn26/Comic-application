@@ -12,9 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ChangeSceneToHistory {
-    public static void ChangeScene(MouseEvent event, String pathFileFxml, String title, int idUser) throws Exception{
+    public static void ChangeScene(MouseEvent event, String pathFileFxml, String title, int idUser) throws Exception {
         // Tạo một đối tượng FXMLLoader
-        FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
+        FXMLLoader loader = new FXMLLoader(ChangeSceneToHistory.class.getResource(pathFileFxml));
 
         // Tải giao diện mới từ tệp FXML
         Parent root = null;
@@ -35,8 +35,8 @@ public class ChangeSceneToHistory {
             controller.setValueForPaneComics();
             //set su kien cho thanh nav
             controller.setEventForNav();
-        }
-        else {
+            controller.eventSearch();
+        } else {
             System.out.println("controller ComicsInformation");
         }
 

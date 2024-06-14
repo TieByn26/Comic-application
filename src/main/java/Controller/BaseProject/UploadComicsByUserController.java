@@ -2,6 +2,7 @@ package Controller.BaseProject;
 
 import ChangeScene.ChangedSceneToPreviewComic;
 import General.EvenOfNav;
+import General.Search;
 import ObjectGson.GsonForServer.SV_User;
 import RequestForServer.GetData.GetInformationUser;
 import RequestForServer.PostData.Comics;
@@ -55,11 +56,19 @@ public class UploadComicsByUserController {
     @FXML
     private Button UC_previewComics;
     @FXML
+    private ImageView home_iconLogout;
+    @FXML
     private ImageView UC_avatarComic;
     @FXML
     private TilePane TL_listCategory;
     @FXML
     private ScrollPane TL_scroll_ListCategory;
+
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
+    
     private String pathPreviewComics = "/Controller/BaseProject/ViewPreviewComics.fxml";
 
 
@@ -132,9 +141,13 @@ public class UploadComicsByUserController {
         EvenOfNav.setEventForProfile(home_iconProfile, idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
 
         // khoa khong cho nguoi dung nhap ten tac gia
         UC_author.setEditable(false);
+    }
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind,home_iconFind,idUser);
     }
     public void UpComics() {
         UC_btnUpComic.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -145,8 +158,20 @@ public class UploadComicsByUserController {
 
                 String status = (String) UC_status.getValue();
                 if (isCorrect == true) {
-                    System.out.println(12);
-                    Comics.upComicByUser(UC_nameComic.getText(), UC_category.getText(), status, UC_linkAvatarComic.getText(), UC_LinkImageOfChapter.getText(), UC_description.getText(), Integer.parseInt(UC_chapter.getText()), UC_author.getText());
+                    int statusUpComic = Comics.upComicByUser(UC_nameComic.getText(), UC_category.getText(), status, UC_linkAvatarComic.getText(), UC_LinkImageOfChapter.getText(), UC_description.getText(), Integer.parseInt(UC_chapter.getText()), UC_author.getText());
+                    if (statusUpComic > 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Thành công");
+                        alert.setContentText("Đăng truyện thành công. Hãy chờ admin duyệt truyện của bạn");
+                        alert.show();
+                    }
+                    else {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Thất ");
+                        alert.setContentText("Đăng truyện thất bại");
+                        alert.show();
+                    }
+
                 }
             }
         });

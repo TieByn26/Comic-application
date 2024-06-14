@@ -13,7 +13,7 @@ import java.io.IOException;
 public class ChangeSceneToProfile {
     public static void ChangeScene(MouseEvent event, String pathFileFxml,String title,int idUser) {
         // Tạo một đối tượng FXMLLoader
-        FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
+        FXMLLoader loader = new FXMLLoader(ChangeSceneToProfile.class.getResource(pathFileFxml));
 
         // Tải giao diện mới từ tệp FXML
         Parent root = null;
@@ -33,6 +33,10 @@ public class ChangeSceneToProfile {
             controller.uploadDataUser();
             //set su kien cho update va eidt tieu su
             controller.setEventForStory();
+            controller.eventSearch();
+            controller.updateAvatarUser();
+
+            controller.uploadAllComicUploadByUser();
         }
         else  {
             System.out.println("profile controller is null");

@@ -11,16 +11,16 @@ public class SV_User {
     public SV_User() {
     }
 
+    public SV_User(int idUser) {
+        this.idUser = idUser;
+    }
+
     public SV_User(String fullName, String avatar, int experience, String level, String story) {
         this.fullName = fullName;
         this.avatar = avatar;
         this.experience = experience;
         this.level = level;
         this.story = story;
-    }
-
-    public SV_User(String fullName) {
-        this.fullName = fullName;
     }
 
     public SV_User(int idUser, String fullName, String avatar, int experience, String level) {
@@ -31,23 +31,20 @@ public class SV_User {
         this.level = level;
     }
 
-    public SV_User(String fullName, String avatar) {
+    public SV_User(String fullName) {
         this.fullName = fullName;
-        this.avatar = avatar;
     }
 
-    public SV_User(String fullName, String avatar, String level) {
+    public SV_User(String fullName, String avatar, int experience, String level) {
         this.fullName = fullName;
         this.avatar = avatar;
+        this.experience = experience;
         this.level = level;
     }
 
-    public String getStory() {
-        return story;
-    }
-
-    public void setStory(String story) {
-        this.story = story;
+    public SV_User(String fullName, String avatar) {
+        this.fullName = fullName;
+        this.avatar = avatar;
     }
 
     public int getIdUser() {
@@ -88,6 +85,14 @@ public class SV_User {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getStory() {
+        return story;
+    }
+
+    public void setStory(String story) {
+        this.story = story;
     }
 
     @Override

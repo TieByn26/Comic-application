@@ -14,7 +14,7 @@ import java.io.IOException;
 public class ChangedSceneToFollow {
     public static void ChangeScene(MouseEvent event, String pathFileFxml, String title, int idUser) throws Exception{
         // Tạo một đối tượng FXMLLoader
-        FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
+        FXMLLoader loader = new FXMLLoader(ChangedSceneToFollow.class.getResource(pathFileFxml));
 
         // Tải giao diện mới từ tệp FXML
         Parent root = null;
@@ -31,6 +31,7 @@ public class ChangedSceneToFollow {
             //set gia tri ten truyen cho bien nameComics trong controller
             controller.setIdUser(idUser);
             controller.setValueForPaneComics();
+            controller.eventSearch();
             //set event for nav
             controller.setEventForNav();
         }

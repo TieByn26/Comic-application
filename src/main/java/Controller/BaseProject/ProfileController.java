@@ -1,12 +1,19 @@
 package Controller.BaseProject;
 
+import ChangeScene.ChangedSceneToComicsInformation;
 import General.EvenOfNav;
+import General.Search;
 import ObjectGson.GsonForServer.SV_CheckUpdate;
+import ObjectGson.GsonForServer.SV_ComicsInformation;
 import ObjectGson.GsonForServer.SV_User;
+import RequestForServer.GetData.GetInformationComics;
 import RequestForServer.GetData.GetInformationUser;
 import RequestForServer.PostData.User;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,8 +21,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+
 
 public class ProfileController {
+    private String pathPaneComics = "/Controller/BaseProject/ViewPaneComics.fxml";
+    private String pathComicsInformation = "/Controller/BaseProject/ViewComicsInformation.fxml";
 
     @FXML
     private Label nav_notfications;
@@ -63,9 +74,20 @@ public class ProfileController {
     private Button PF_btnUpdate;
     @FXML
     private TilePane PF_listComics;
+    @FXML
+    private ImageView home_iconLogout;
 
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
+    @FXML
+    private TextField PF_inputLinkAvatar;
+    @FXML
+    private Button PF_btnChangeAvatar;
 
     private int idUser;
+    private String userName;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
     @FXML
@@ -79,7 +101,7 @@ public class ProfileController {
         PF_btnUpdate.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                int statusUpdate = User.updateStoryUser(idUser,PF_story.getText());
+                int statusUpdate = User.updateStoryUser(idUser, PF_story.getText());
 
                 if (statusUpdate > 0) {
                     Alert notification = new Alert(Alert.AlertType.INFORMATION);
@@ -87,15 +109,14 @@ public class ProfileController {
                     notification.setHeaderText("Cập nhật tiểu sử");
                     notification.setContentText("Cập nhật thành công");
                     // Hiển thị Alert
-                    notification.showAndWait();
-                }
-                else {
+                    notification.show();
+                } else {
                     Alert notification = new Alert(Alert.AlertType.INFORMATION);
                     notification.setTitle("Thông báo");
                     notification.setHeaderText("Cập nhật tiểu sử");
-                    notification.setContentText("Cập nhật thành công");
+                    notification.setContentText("Cập nhật thất bại");
                     // Hiển thị Alert
-                    notification.showAndWait();
+                    notification.show();
                 }
                 //khong cho nguoi dung sua tieu su
                 PF_story.setEditable(false);
@@ -114,7 +135,7 @@ public class ProfileController {
         EvenOfNav.setEventForNavHistory(nav_history, idUser);
 
         //set event click for nav_notification
-        EvenOfNav.setEventForNavNotifications(nav_notfications,idUser);
+        EvenOfNav.setEventForNavNotifications(nav_notfications, idUser);
 
         //set event click for nav_home
         EvenOfNav.setEventForNavHome(nav_home, idUser);
@@ -122,7 +143,8 @@ public class ProfileController {
         //profile
         EvenOfNav.setEventForProfile(home_iconProfile, idUser);
 
-        EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+        EvenOfNav.setEventForNavUpComics(nav_UpComics, idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
 
         PF_btnEdit.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -132,6 +154,10 @@ public class ProfileController {
         });
     }
 
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind, home_iconFind, idUser);
+    }
+
     public void uploadDataUser() {
         SV_User dataUser = GetInformationUser.getAllInforUserByIdUser(idUser);
 
@@ -139,13 +165,96 @@ public class ProfileController {
         PF_fullName.setText(dataUser.getFullName());
         PF_experience.setText(dataUser.getExperience() + "");
         PF_level.setText(dataUser.getLevel());
-        PF_idUSer.setText(idUser+"");
+        PF_idUSer.setText(idUser + "");
+        userName = dataUser.getFullName();
 
         //khong cho nguoi dung nhap tieu su
         PF_story.setEditable(false);
 
         Image avt = new Image(dataUser.getAvatar());
         PF_avatarUser.setImage(avt);
+    }
+
+    public void updateAvatarUser() {
+        PF_btnChangeAvatar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                String linkAvatar = PF_inputLinkAvatar.getText();
+                try {
+                    Image image = new Image(linkAvatar, true);
+                    // Kiểm tra lỗi khi tải hình ảnh
+                    image.errorProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue) {
+                            showAlert("Error", "Sai định dạng link ảnh (định dạng phải là dạng https://)");
+                        }
+                    });
+                    image.progressProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue.doubleValue() == 1.0 && !image.isError()) {
+                            int statusUpdate = User.updateAvatarUser(idUser, linkAvatar);
+                            if (statusUpdate > 0) {
+                                showAlert("Success", "cập nhật ảnh thành công");
+                                PF_avatarUser.setImage(image);
+                            } else {
+                                showAlert("Error", "cập nhật thất bại");
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    // Hiển thị cảnh báo nếu URL không hợp lệ hoặc không tìm thấy tài nguyên
+                    showAlert("Error", "Invalid URL or resource not found");
+                }
+            }
+        });
+    }
+
+    public void uploadAllComicUploadByUser() {
+        try {
+            ArrayList<SV_ComicsInformation> listComics = GetInformationComics.getAllComicsUploadByUser(userName);
+
+            if (listComics != null) {
+                for (SV_ComicsInformation comic : listComics) {
+                    FXMLLoader newComicsLoader = new FXMLLoader(getClass().getResource(pathPaneComics));
+                    Parent comicPane = newComicsLoader.load();
+                    // lay cac bien cua paneComics
+                    ImageView avtComics = (ImageView) comicPane.lookup("#PC_img");
+                    Label nameComic = (Label) comicPane.lookup("#PC_nameComics");
+                    Label chapter = (Label) comicPane.lookup("#PC_chapter");
+                    // set du lieu cho bien paneComics
+                    Image imgAvt = new Image(comic.getAvatarComic());  //tao hinh anh de nhet vao avt comics
+                    avtComics.setImage(imgAvt);
+                    nameComic.setText(comic.getNameComic());
+                    chapter.setText(comic.getNumberOfChapter() + "");
+
+                    // set su kien click vao cac bo truyen
+                    comicPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            ChangedSceneToComicsInformation.ChangeScene(event, pathComicsInformation, "Thông tin truyện", nameComic.getText(), idUser);
+                        }
+                    });
+
+                    PF_listComics.getChildren().add(comicPane);
+
+                }
+
+                // Thiết lập TilePane
+                PF_listComics.setPadding(new Insets(10));
+                PF_listComics.setHgap(10);
+                PF_listComics.setVgap(10);
+            } else {
+                System.out.println("Nguoi dung chua up truyen nao");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public int getIdUSer() {

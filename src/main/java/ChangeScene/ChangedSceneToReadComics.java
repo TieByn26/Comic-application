@@ -13,7 +13,7 @@ import java.io.IOException;
 public class ChangedSceneToReadComics {
     public static void ChangeScene(MouseEvent event, String pathFileFxml, String title, String idComics,int idUser,String nameComics,int numberOfChapter,int allView,int chapter) throws Exception {
         // Tạo một đối tượng FXMLLoader
-        FXMLLoader loader = new FXMLLoader(ChangeSceneGeneral.class.getResource(pathFileFxml));
+        FXMLLoader loader = new FXMLLoader(ChangedSceneToReadComics.class.getResource(pathFileFxml));
 
         // Tải giao diện mới từ tệp FXML
         Parent root = null;
@@ -47,7 +47,7 @@ public class ChangedSceneToReadComics {
             controller.updateView();
             //cap nhat lich su doc truyen
             controller.updateListHistory();
-
+            controller.eventSearch();
             //set event for Nav
             controller.setEventForNav();
 

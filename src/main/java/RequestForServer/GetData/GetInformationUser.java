@@ -188,15 +188,13 @@ public class GetInformationUser {
             //gửi dữ liệu JSon từ client cho Server
             sendReqtoServer.write(reqJson + "\n");
             sendReqtoServer.flush();
-            // ktra server đã nhận đc yêu cầu chưa
-            Connect.receiveStatus(socket);
+
             //đọc dữ liệu json từ server
             BufferedReader receive = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
             String inforUserJson = receive.readLine();
-
             // chuyển đổi từ json sang đối tượng
             SV_ListUser dataConvertFromServer = gson.fromJson(inforUserJson, SV_ListUser.class);
-
+            System.out.println(dataConvertFromServer);
             // truyền dữ liệu từ server vào arrayList đã tạo sẵn
             if(dataConvertFromServer != null) {
                 for (SV_User user : dataConvertFromServer.getListUser()) {

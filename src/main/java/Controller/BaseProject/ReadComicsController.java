@@ -1,6 +1,7 @@
 package Controller.BaseProject;
 
 import General.EvenOfNav;
+import General.Search;
 import ObjectGson.GsonForServer.SV_Chapter;
 import ObjectGson.GsonForServer.SV_User;
 import ObjectGson.GsonForServer.SV_Comments;
@@ -54,6 +55,8 @@ public class ReadComicsController {
     private ImageView RC_back;
     @FXML
     private ImageView RC_next;
+    @FXML
+    private ImageView home_iconLogout;
 
     @FXML
     private Label nav_category;
@@ -99,6 +102,12 @@ public class ReadComicsController {
     @FXML
     private Label nav_UpComics;
     ExecutorService executors;
+
+    @FXML
+    private TextField home_inputDataFind;
+    @FXML
+    private ImageView home_iconFind;
+
     ConcurrentHashMap<Integer, Image> imgMap;
     //tao doi tuong EvenOfNav moi de cap nhan lai bien isHide_listCategory moi khi chuyen scene
     EvenOfNav evenOfNav = new EvenOfNav();
@@ -121,8 +130,12 @@ public class ReadComicsController {
         EvenOfNav.setEventForProfile(home_iconProfile,idUser);
 
         EvenOfNav.setEventForNavUpComics(nav_UpComics,idUser);
+        EvenOfNav.setEventChangeSceneToLogout(home_iconLogout);
     }
 
+    public void eventSearch() {
+        Search.setEventForSearch(home_inputDataFind,home_iconFind,idUser);
+    }
 
     public void setDataForComment() {
         //lam moi lai list comment
@@ -318,7 +331,7 @@ public class ReadComicsController {
           System.out.println("update view fail");
       }
     }
-public void updateListHistory () {
+    public void updateListHistory () {
         if(History.updateChapterOfHistory(idcomics,idUser,chapter) > 0) {
             System.out.println("update history success");
         }
@@ -440,24 +453,12 @@ public void updateListHistory () {
         this.chapter = chapter;
     }
 
-    public String getNameComics() {
-        return nameComics;
-    }
-
     public void setNameComics(String nameComics) {
         this.nameComics = nameComics;
     }
 
-    public int getNumberOfChapter() {
-        return numberOfChapter;
-    }
-
     public void setNumberOfChapter(int numberOfChapter) {
         this.numberOfChapter = numberOfChapter;
-    }
-
-    public int getAllView() {
-        return allView;
     }
 
     public void setAllView(int allView) {
