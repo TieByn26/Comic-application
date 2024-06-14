@@ -12,18 +12,17 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #E0FFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BaseProject.AdminEditController">
     <children>
-        <TextArea layoutX="652.0" layoutY="308.0" prefHeight="146.0" prefWidth="244.0" promptText="Mỗi link ảnh cách nhau bởi dấu &quot;,&quot;" />
-        <ImageView fitHeight="354.0" fitWidth="266.0" layoutX="34.0" layoutY="33.0" pickOnBounds="true">
+        <TextArea fx:id="textLinkChapter" layoutX="652.0" layoutY="308.0" prefHeight="146.0" prefWidth="244.0" promptText="Mỗi link ảnh cách nhau bởi dấu &quot;,&quot;" wrapText="true" />
+        <ImageView fx:id="viewAvatar" fitHeight="354.0" fitWidth="266.0" layoutX="34.0" layoutY="33.0" pickOnBounds="true">
             <image>
                 <Image url="@../../image/nhat-luc-pha-chu-thien-van-gioi.jpg" />
             </image>
         </ImageView>
-        <TextField layoutX="357.0" layoutY="46.0" prefHeight="39.0" prefWidth="244.0" promptText="Nhập tên tác giả" />
-        <TextField layoutX="357.0" layoutY="127.0" prefHeight="39.0" prefWidth="244.0" promptText="Nhập thể loại" />
-        <TextField layoutX="653.0" layoutY="46.0" prefHeight="39.0" prefWidth="244.0" promptText="Nhập tên truyện" />
-        <TextField layoutX="654.0" layoutY="128.0" prefHeight="39.0" prefWidth="244.0" promptText="Nhập chapter thứ ?" />
-        <TextArea layoutX="353.0" layoutY="308.0" prefHeight="146.0" prefWidth="244.0" promptText="Nhập mô tả truyện" />
-        <Label layoutX="399.0" layoutY="19.0" text="Tác giả">
+        <TextField fx:id="textIdComic" layoutX="357.0" layoutY="46.0" prefHeight="39.0" prefWidth="244.0" promptText="Nhập id truyện" />
+        <TextField fx:id="textCategory" layoutX="357.0" layoutY="127.0" prefHeight="39.0" prefWidth="244.0" promptText="Nhập thể loại" />
+        <TextField fx:id="textNameComic" layoutX="653.0" layoutY="46.0" prefHeight="39.0" prefWidth="244.0" promptText="Nhập tên truyện" />
+        <TextArea fx:id="textDescription" layoutX="357.0" layoutY="308.0" prefHeight="146.0" prefWidth="244.0" promptText="Nhập mô tả truyện" wrapText="true" />
+        <Label layoutX="399.0" layoutY="19.0" text="ID Truyện">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -38,18 +37,18 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Label layoutX="689.0" layoutY="87.0" text="Chapter">
+        <Label layoutX="689.0" layoutY="100.0" text="Chapter">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Label layoutX="393.0" layoutY="182.0" text="Tình trạng">
+        <Label layoutX="393.0" layoutY="176.0" text="Tình trạng">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Button layoutX="815.0" layoutY="507.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" style="-fx-border-color: #009ACD; -fx-border-width: 3; -fx-background-color: #B0E0E6;" text="Xem Trước" />
-        <Button layoutX="705.0" layoutY="507.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" style="-fx-border-color: #009ACD; -fx-border-width: 3; -fx-background-color: #B0E0E6;" text="Cập nhật" />
+        <Button fx:id="buttonReview" layoutX="815.0" layoutY="507.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" style="-fx-border-color: #009ACD; -fx-border-width: 3; -fx-background-color: #B0E0E6;" text="Xem Trước" />
+        <Button fx:id="buttonUpdate" layoutX="705.0" layoutY="507.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" style="-fx-border-color: #009ACD; -fx-border-width: 3; -fx-background-color: #B0E0E6;" text="Cập nhật" />
         <Label layoutX="399.0" layoutY="279.0" text="Mô tả truyện">
             <font>
                 <Font name="System Bold" size="18.0" />
@@ -60,14 +59,15 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <TextField layoutX="653.0" layoutY="210.0" prefHeight="39.0" prefWidth="244.0" promptText="Nhập link ảnh truyện" />
+        <TextField fx:id="textAvatar" layoutX="653.0" layoutY="210.0" prefHeight="39.0" prefWidth="244.0" promptText="Nhập link ảnh truyện" />
         <Label layoutX="694.0" layoutY="176.0" text="link avatar truyện">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-      <Button layoutX="589.0" layoutY="507.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" style="-fx-border-color: #009ACD; -fx-border-width: 3; -fx-background-color: #B0E0E6;" text="Xóa" />
-      <Button layoutX="103.0" layoutY="409.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="122.0" style="-fx-border-color: #009ACD; -fx-border-width: 3; -fx-background-color: #B0E0E6;" text="Xem trước avatar" />
-      <ChoiceBox layoutX="354.0" layoutY="217.0" prefHeight="39.0" prefWidth="244.0" />
+      <Button fx:id="buttonDelete" layoutX="589.0" layoutY="507.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" style="-fx-border-color: #009ACD; -fx-border-width: 3; -fx-background-color: #B0E0E6;" text="Xóa" />
+      <Button fx:id="buttonReviewAvatar" layoutX="103.0" layoutY="409.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="122.0" style="-fx-border-color: #009ACD; -fx-border-width: 3; -fx-background-color: #B0E0E6;" text="Xem trước avatar" />
+      <ChoiceBox fx:id="choiceStatus" layoutX="357.0" layoutY="210.0" prefHeight="39.0" prefWidth="244.0" />
+      <ChoiceBox fx:id="chooseChapter" layoutX="653.0" layoutY="127.0" prefHeight="39.0" prefWidth="244.0" />
     </children>
 </AnchorPane>

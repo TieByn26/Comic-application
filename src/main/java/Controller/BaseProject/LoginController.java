@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class LoginController {
@@ -149,9 +150,19 @@ public class LoginController {
             } else {
                 CL_LoginInformation cl_loginInformation = new CL_LoginInformation(textfield.getText(),textpassword1.getText());
                 SV_CheckLogin svCheckLogin = RequestLogin.requestLogin(cl_loginInformation);
-                if (svCheckLogin.getCheck()) {
+                if (svCheckLogin.getCheck() && (svCheckLogin.getAuthority() == 0)) {
                     ChangedSceneToHome.ChangeScene(event,"/Controller/BaseProject/ViewHome.fxml","Home",svCheckLogin.getIdUser());
-                } else {
+                } else if (svCheckLogin.getCheck() && (svCheckLogin.getAuthority() == 1)) {
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewAdmin.fxml"));
+                        Parent root = fxmlLoader.load();
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root, 1100, 650);
+                        stage.setScene(scene);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }else {
                     alert.setTitle("Information Dialog");
                     alert.setContentText("Sai tài khoản hoặc mật khẩu");
                     alert.showAndWait();

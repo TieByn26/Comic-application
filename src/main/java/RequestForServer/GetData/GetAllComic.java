@@ -2,9 +2,7 @@ package RequestForServer.GetData;
 
 import ConnectServer.Connect;
 import ObjectGson.GsonForClient.CL_Request;
-import ObjectGson.GsonForServer.SV_CheckLogin;
-import ObjectGson.GsonForServer.SV_ListComicsInformations;
-import ObjectGson.GsonForServer.SV_ListStatistic;
+import ObjectGson.GsonForServer.*;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -59,5 +57,74 @@ public class GetAllComic {
             e.printStackTrace();
         }
         return sv_listStatistic;
+    }
+    public static SV_ListChapter getAllChapter(){
+        Gson gson = new Gson();
+        Socket socket = Connect.getSocket();
+        SV_ListChapter sv_listChapter = null;
+        try (BufferedWriter fromClient = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+             BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+            // Gửi yêu cầu tới server
+            CL_Request request = new CL_Request("/get/all/chapter/comics");
+            String jsonRequest = gson.toJson(request);
+            fromClient.write(jsonRequest);
+            fromClient.newLine();
+            fromClient.flush();
+            Connect.receiveStatus(socket);
+
+            // Lay du lieu tu server gui ve
+            String read = fromServer.readLine();
+            sv_listChapter = gson.fromJson(read, SV_ListChapter.class);
+            System.out.println(sv_listChapter);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return sv_listChapter;
+    }
+    public static SV_ListCategoryManager getAllIdCategory(){
+        Gson gson = new Gson();
+        Socket socket = Connect.getSocket();
+        SV_ListCategoryManager sv_listCategoryManager = null;
+        try (BufferedWriter fromClient = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+             BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+            // Gửi yêu cầu tới server
+            CL_Request request = new CL_Request("/get/all/category/manager");
+            String jsonRequest = gson.toJson(request);
+            fromClient.write(jsonRequest);
+            fromClient.newLine();
+            fromClient.flush();
+            Connect.receiveStatus(socket);
+
+            // Lay du lieu tu server gui ve
+            String read = fromServer.readLine();
+            sv_listCategoryManager = gson.fromJson(read, SV_ListCategoryManager.class);
+            System.out.println(sv_listCategoryManager);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return sv_listCategoryManager;
+    }
+    public static SV_ListCategoryComic getAllNameCategory(){
+        Gson gson = new Gson();
+        Socket socket = Connect.getSocket();
+        SV_ListCategoryComic sv_listCategoryComic = null;
+        try (BufferedWriter fromClient = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+             BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+            // Gửi yêu cầu tới server
+            CL_Request request = new CL_Request("/get/all/category/comics");
+            String jsonRequest = gson.toJson(request);
+            fromClient.write(jsonRequest);
+            fromClient.newLine();
+            fromClient.flush();
+            Connect.receiveStatus(socket);
+
+            // Lay du lieu tu server gui ve
+            String read = fromServer.readLine();
+            sv_listCategoryComic = gson.fromJson(read, SV_ListCategoryComic.class);
+            System.out.println(sv_listCategoryComic);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return sv_listCategoryComic;
     }
 }

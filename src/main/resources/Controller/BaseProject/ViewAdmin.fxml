@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,6 +53,12 @@
       </Pane>
       <Pane layoutY="75.0" prefHeight="571.0" prefWidth="410.0" style="-fx-background-color: yellow;">
          <children>
+            <TableView fx:id="tableListUserComic" prefHeight="571.0" prefWidth="410.0" visible="false">
+              <columns>
+                <TableColumn fx:id="columnUser1" prefWidth="105.60000306367874" text="Tác giả" />
+                <TableColumn fx:id="columnUser2" prefWidth="301.59999084472656" text="Tên truyện" />
+              </columns>
+            </TableView>
             <TableView fx:id="tableListComic" prefHeight="571.0" prefWidth="410.0" style="-fx-background-color: #FDF5E6;">
               <columns>
                 <TableColumn fx:id="colum1" prefWidth="71.20001220703125" text="Cột 1" />
@@ -88,15 +95,15 @@
             </Label>
             <Pane layoutX="291.0" layoutY="314.0" prefHeight="226.0" prefWidth="333.0" style="-fx-background-color: white; -fx-border-color: #A0522D;">
                <children>
+                  <ScrollBar layoutX="319.0" orientation="VERTICAL" prefHeight="226.0" prefWidth="14.0" />
                   <Text fx:id="description" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="332.9999999999998">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <ScrollBar layoutX="319.0" orientation="VERTICAL" prefHeight="226.0" prefWidth="14.0" />
                </children>
             </Pane>
-            <Label layoutX="291.0" layoutY="176.0" prefHeight="54.0" prefWidth="130.0" text="Số chapter:">
+            <Label layoutX="291.0" layoutY="176.0" prefHeight="54.0" prefWidth="130.0" text="Số Chapter:">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -141,6 +148,7 @@
             </Label>
             <Button fx:id="reviewButton2" layoutX="37.0" layoutY="269.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: #EEE8AA; -fx-border-color: #A0522D;" text="Xem trước" />
             <Button fx:id="editButton" layoutX="133.0" layoutY="269.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #EEE8AA; -fx-border-color: #A0522D;" text="Edit" />
+            <TextField fx:id="textIdComic" layoutX="37.0" layoutY="336.0" prefHeight="45.0" prefWidth="174.0" promptText="Nhập IDComic đầu bằng CM" visible="false" />
          </children>
       </Pane>
    </children>

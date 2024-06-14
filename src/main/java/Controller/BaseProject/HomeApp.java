@@ -8,6 +8,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HomeApp extends Application {
+//    @Override
+//    public void start(Stage stage) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(HomeApp.class.getResource("ViewAdmin.fxml"));
+//        Scene scene = new Scene(loader.load(), 1100, 647) ;
+//        stage.setScene(scene);
+//        stage.show();
+//    }
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(HomeApp.class.getResource("ViewLogin.fxml"));
@@ -15,13 +22,6 @@ public class HomeApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-//    @Override
-//    public void start(Stage stage) throws IOException {
-//        FXMLLoader loader = new FXMLLoader(HomeApp.class.getResource("ViewLogin.fxml"));
-//        Scene scene = new Scene(loader.load(), 700, 500) ;
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 
     public static void main(String[] args) {
         launch();

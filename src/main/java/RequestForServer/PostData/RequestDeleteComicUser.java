@@ -1,9 +1,8 @@
-package RequestForServer.GetData;
+package RequestForServer.PostData;
 
 import ConnectServer.Connect;
 import ObjectGson.GsonForClient.CL_Request;
-import ObjectGson.GsonForServer.SV_ListComicOfUser;
-import ObjectGson.GsonForServer.SV_ListStatistic;
+import ObjectGson.GsonForServer.SV_ComicOfUser;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -12,27 +11,32 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
-public class GetRequestOfUser {
-    public static SV_ListComicOfUser getRequestOfUser(){
+public class RequestDeleteComicUser {
+    public static void deleleComicUser(SV_ComicOfUser sv_comicOfUser){
         Gson gson = new Gson();
         Socket socket = Connect.getSocket();
-        SV_ListComicOfUser sv_listComicOfUser = null;
+
+        String confirmation = null;
         try (BufferedWriter fromClient = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
              BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
             // Gửi yêu cầu tới server
-            CL_Request request = new CL_Request("/get/comic/of/user");
+            CL_Request request = new CL_Request("/delele/comic/of/user");
             String jsonRequest = gson.toJson(request);
             fromClient.write(jsonRequest);
             fromClient.newLine();
             fromClient.flush();
+            //check connect
+            Connect.receiveStatus(socket);
 
-            // Lay du lieu tu server gui ve
-            String read = fromServer.readLine();
-            sv_listComicOfUser = gson.fromJson(read, SV_ListComicOfUser.class);
-            System.out.println(sv_listComicOfUser);
-        } catch (Exception e){
+            // Gửi dữ liệu kiểm tra lên server
+            String jsonComicInfor = gson.toJson(sv_comicOfUser);
+            fromClient.write(jsonComicInfor);
+            fromClient.newLine();
+            fromClient.flush();
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return sv_listComicOfUser;
     }
 }

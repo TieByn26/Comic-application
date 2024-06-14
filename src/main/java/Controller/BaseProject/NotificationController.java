@@ -85,7 +85,7 @@ public class NotificationController {
 
                 Label PNT_status = (Label) rootNotification.lookup("#PNT_status");
 
-                if (notification.isStatus()) {
+                if (notification.getStatus()) {
                     PNT_status.setText("Đọc rùi nà");
                     rootNotification.setOpacity(0.5);
                 } else {
